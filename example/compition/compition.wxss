@@ -1,0 +1,21 @@
+.page swiper{
+	margin-bottom: 2%;
+}
+.banner{
+	width: 100%;
+	height: 150px;
+	background-size: 100% 100%;
+	position: relative;
+	margin-bottom: 2%;
+}
+.banner_item{
+	width: 140px;
+	position: absolute;
+	z-index: 100;
+	bottom: 4%;
+	right: 5%;
+}
+.banner_item image{
+	
+	
+}

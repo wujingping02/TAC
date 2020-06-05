@@ -1,0 +1,59 @@
+<import src="../../template/component.wxml"/>
+
+<view class="page">
+	<view class="page__hd">
+		<template is="swiper" data="{{swiper}}" />
+	</view>
+	<view class="page__bd">
+		<!-- 比赛场馆信息 -->
+		<view class="weui-panel">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_small-appmsg">
+                    <view class="weui-cells weui-cells_in-small-appmsg">
+                        <view class="weui-cell weui-cell_access weui-titles title" >
+                            <view class="weui-cell__bd weui-cell_primary ">
+                            	<view style="float: left;line-height: 1.5;margin-top: 2%;">预定</view>
+                                <view style="float: right;margin-top: 2%">
+									<image src="{{banner[0].staus}}" style="width: 60px;height: 22px;"/>
+                                </view>
+                            </view>
+                        </view>
+                        <block wx:for="{{pition_detail}}" wx:key="*this">
+	                        <view class="weui-cell weui-cell_access" >
+								<view class="weui-cell__bd weui-cell_primary ">
+	                                <view style="float: left;color:#999999;font-size: 0.98rem;">{{item.title}}</view>
+	                                <view style="float: left;margin-left: 4%;font-size: 0.98rem;">{{item.desc}}</view>
+	                            </view>
+	                        </view>
+                        </block>
+                       
+                    </view>
+                </view>
+            </view>
+        </view>
+		<!-- 组织机构信息 -->
+        <view class="weui-panel">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_small-appmsg">
+                    <view class="weui-cells weui-cells_in-small-appmsg"> 
+                    	<view class="weui-cell weui-cell_access weui-titles title" >
+                            <view class="weui-cell__bd weui-cell_primary ">
+                            	<view class="organize">组织机构及竞赛说明</view>
+                            </view>
+                        </view>                  
+                        <view class="weui-cell weui-cell_access weui-assess" >
+							<view class="weui-cell__bd weui-cell_primary ">
+								<block wx:for="{{organize}}" wx:key="*this">
+									<view class="sec_title">{{item.sec_title}}</view>
+                               		<view class="sec_desc">{{item.sec_desc}}</view>
+								</block>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <button class="weui-btn report" bindtap="setting" type="primary">报名</button>
+	</view>
+	<view class="page__ft"></view>
+</view>

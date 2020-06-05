@@ -1,0 +1,106 @@
+<import src="../../template/component.wxml"/>
+
+<view class="page">
+    <view class="page__bd">
+        <!-- 轮播 -->
+        <swiper 
+        indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" 
+        interval="{{interval}}" 
+        duration="{{duration}}">
+          <block wx:for="{{imgUrls}}" wx:key="*this">
+            <swiper-item>
+              <image src="{{item}}" class="slide-image" style="width:100%;"/>
+            </swiper-item>
+          </block>
+        </swiper>
+        <!-- 场馆信息 -->
+        <view class="weui-panel place">
+           <!--  <view class="weui-panel__hd">羽毛球馆</view> -->
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_small-appmsg">
+                    <view class="weui-cells weui-cells_in-small-appmsg">
+                        <view class="weui-cell weui-cell_access weui-titles" >
+                            <view class="weui-cell__bd weui-cell_primary ">
+                                <view class="weui-desc">深圳市龙岗区龙岗大道</view>
+                                 <view>
+                                  <image src="{{icon[3]}}" style="width: 16px;height: 16px;margin-right: 5px" />
+                                  <image src="{{icon[3]}}" style="width: 16px;height: 16px;margin-right: 5px" />
+                                  <image src="{{icon[3]}}" style="width: 16px;height: 16px;margin-right: 5px" />
+                                  <image src="{{icon[3]}}" style="width: 16px;height: 16px;margin-right: 5px" />
+                                  <image src="{{icon[4]}}" style="width: 16px;height: 16px;margin-right: 5px" />
+                                </view>
+                            </view>
+                            <view class="weui-cell__ft time_f">营业时间:9:00-20:00</view>
+                        </view>
+                        <view class="weui-cell weui-cell_access" >
+                            <view class="weui-cell__hd"><image src="{{icon[0]}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                            <view class="weui-cell__bd weui-cell_primary ">
+                                <view>深圳市龙岗区龙岗大道</view>
+                            </view>
+                            <view class="weui-cell__ft icon_line" bindtap="popMap">
+                              <image src="{{icon[5]}}" style="width: 20px;height: 20px;margin-right: 5px" />
+                            </view>
+                        </view>
+                        <view class="weui-cell weui-cell_access">
+                            <view class="weui-cell__hd"><image src="{{icon[1]}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view>0755-123465577</view>
+                            </view>
+                            <view class="weui-cell__ft icon_line" bindtap="call">
+                              <image src="{{icon[6]}}" style="width: 20px;height: 20px;margin-right: 5px" />
+                            </view>
+                        </view>
+                        <view class="weui-cell weui-cell_access">
+                            <view class="weui-cell__hd"><image src="{{icon[2]}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view>
+                                  <button bindtap='bintop' type="primary" class="weui-btn mini-btn" size="mini" plain>可点击</button>
+                                  <button bindtap="scroll" type="primary" class="weui-btn mini-btn" size="mini" plain>可点击</button> 
+                                  <button bindtap="pay"  type="primary" class="weui-btn mini-btn" size="mini" plain>pay</button> 
+                                  <button type="primary" class="weui-btn mini-btn" size="mini" plain>停车场</button>
+                                </view>
+                            </view>
+                            <view class="weui-cell__ft"></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 预定场馆 -->
+        <view class="weui-panel reserve">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_small-appmsg">
+                    <view class="weui-cells weui-cells_in-small-appmsg">
+                        <view class="weui-cell weui-cell_access weui-titles" >
+                            <view class="weui-cell__bd weui-cell_primary ">
+                                <view>预定</view>
+                            </view>
+                        </view>
+                        <block wx:for="{{requires}}" wx:key="*this" wx:for-item="item_re">
+                            <template is="requires" data="{{item_re}}" />
+                        </block>   
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 评价 -->
+        <view class="weui-panel assess">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_small-appmsg">
+                    <view class="weui-cells weui-cells_in-small-appmsg">
+                        <view class="weui-cell weui-cell_access weui-titles" >
+                            <view class="weui-cell__bd weui-cell_primary ">
+                                <view>评价</view>
+                            </view>
+                        </view>
+                        <block wx:for="{{assessData}}" wx:key="*this">
+                            <template is="assessed" data="{{item}}"/>
+                        </block>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+   
+</view>

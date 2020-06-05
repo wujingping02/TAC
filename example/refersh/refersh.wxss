@@ -1,0 +1,23 @@
+.weui-navbar__slider {
+	height:2px;
+	background-color:#39c3f2;
+}
+.weui-navbar__item.weui-bar__item_on {
+	color:#39c3f2;
+}
+.weui-navbar__item {
+padding:8px 0;
+text-align:center;
+}
+.weui-tab__content{
+	padding: 10px 12px;
+}
+.content2{
+	padding: 0;
+}
+/* .weui-uploader__img {
+	display:block;
+	width:33%;
+	height:79px;
+
+} */

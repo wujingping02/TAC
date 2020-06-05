@@ -1,0 +1,40 @@
+.weui-search-bar {
+  	background-color:#39c3f2;
+  	border-top:none;
+  	border-bottom:none;
+}
+.weui-search-bar__form {
+  	border-radius:16px;
+  	background:#FFFFFF;
+  	border:1rpx solid #E6E6EA;
+}
+.weui-search-bar__label {
+  	border-radius:16px;
+}
+.weui-navbar__item {
+	padding:7px 0;
+	text-align:center;
+	font-size:0;
+}
+.weui-navbar__item.weui-bar__item_on {
+	color:#39c3f2;
+}
+.tab{
+  display: flex;
+  border-bottom: 0.5px solid #E6E6EA;
+}
+.tab-item{
+  flex: 1;
+  text-align: center;
+  padding: 7px 0;
+}
+.address{
+	padding: 0 15px;
+	line-height: 35px;
+	color: #999999;
+	border-bottom:0.5px solid #e6e6ea;
+}
+
+
+
+

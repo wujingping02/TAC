@@ -1,0 +1,116 @@
+<!-- 轮播组件 -->
+<template name="swiper">
+  <swiper 
+    indicator-dots="{{swiper.indicatorDots}}"
+    autoplay="{{swiper.autoplay}}" 
+    interval="{{swiper.interval}}" 
+    duration="{{swiper.duration}}">
+      <block wx:for="{{swiper.imgUrls}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" style="width:100%;height: 150px;"/>
+        </swiper-item>
+      </block>
+  </swiper>
+</template>
+
+<template name="swiperM">
+  <swiper style="height: 100px;"
+    indicator-dots="{{Middlebanner.indicatorDots}}"
+    autoplay="{{Middlebanner.autoplay}}" 
+    interval="{{Middlebanner.interval}}" 
+    duration="{{Middlebanner.duration}}">
+      <block wx:for="{{Middlebanner.imgUrls}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" bindtap="setPition" class="slide-image" style="width:100%;height: 100px;"/>
+        </swiper-item>
+      </block>
+  </swiper>
+</template>
+<!-- 选项 -->
+<template name="chooseItem">
+  <swiper 
+    style="height: 160px;"
+    indicator-dots="{{swiper.indicatorDots}}"
+    autoplay="{{swiper.autoplay}}" 
+    interval="{{swiper.interval}}" 
+    duration="{{swiper.duration}}">
+        <swiper-item>
+          <view class="weui-grids">
+            <block wx:for="{{[0,1,2,3,4,5,6,7,8]}}" wx:key="*this">
+                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="" />
+                    <view class="weui-grid__label">Grid</view>
+                </navigator>
+            </block>
+          </view>
+        </swiper-item>
+        <swiper-item>
+          <view class="weui-grids">
+            <block wx:for="{{[0,1,2,3,4,5,6,7,8]}}" wx:key="*this">
+                <navigator url="" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="" />
+                    <view class="weui-grid__label">Grid</view>
+                </navigator>
+            </block>
+          </view>
+        </swiper-item>
+  </swiper>
+</template>
+
+<!-- 场馆详情页   评价item -->
+<template name="assessed">
+  <view class="weui-cell weui-cell_access" >
+    <view class="weui-cell__hd"><image src="{{item.userImg}}" style="width: 26px;height: 26px;margin-right: 5px;display: inline-block;" /></view>
+    <view class="weui-cell__bd weui-cell_primary ">
+        <view class="weui-desc">{{item.user}}</view>
+        <view>
+          <block wx:for="{{item.star}}" wx:for-item="star_item" wx:key="*this">
+            <image src="{{star_item}}" style="width: 14px;height: 14px;margin-right: 5px" />
+          </block>
+        </view>
+    </view>
+    <view class="weui-cell__ft">{{item.time}}</view>
+  </view>
+  <view class="weui-cell weui-cell_access content" >
+    <view class="weui-desc">{{item.content}}</view>
+  </view>
+</template>
+<!-- 场馆列表item -->
+<template name="navigator">
+  <navigator url="../index/index" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+        <image class="weui-media-box__thumb" src="{{item.itemImg}}" />
+    </view>
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">{{item.itemTitle}}</view>
+        <view class="weui-media-box__desc">
+          <view style="margin:2% 0">
+              <block wx:for="{{item.itemStar}}" wx:key="*this" wx:for-item="star">
+                <image src="{{star}}" style="width: 15px;height: 15px;" />
+              </block>
+          </view>
+          <view>
+              <view style="color:red;float: left;">{{item.itemprice}}</view>
+              <view style="float: left;margin-left: 5%;">{{item.itempriceH}}</view>  
+              <view style="float: right;">{{item.range}}</view>    
+          </view>
+        </view>
+    </view>
+  </navigator>
+</template>
+<!-- 预定场馆 -->
+<template name="requires">
+  <view class="weui-cell weui-cell_access" >
+      <view class="weui-cell__hd"><image src="{{item_re.img}}" style="width: 26px;height: 26px;margin-right: 5px;display: inline-block; padding-top: 20%;" /></view>
+      <view class="weui-cell__bd weui-cell_primary ">
+          <view style="float: left;">{{item_re.project}}</view>
+          <view style="float: left;margin-left: 9%;">{{item_re.place}}</view>
+          <view style="float: left;margin-left: 9%;color:#ff9900;">{{item_re.price}}</view>
+      </view>
+      <view class="weui-cell__ft">
+        <button class="weui-btn" size="mini" type="primary" bindtap="requires">立即预定</button>
+      </view>
+  </view>
+</template>
+
+

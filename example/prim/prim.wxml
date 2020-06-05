@@ -1,0 +1,28 @@
+<view class="page">
+	<!-- <view class="page__hd">
+		<view class="page__title">Picker</view>
+	</view>	 -->
+	<view class="page__bd">
+		<view class="weui-btn-area">
+			<picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+				<button type="primary" plain class="weui-btn">单列选择器</button>
+				<view class="city_desc">您选择的城市:{{array[index]}}</view>
+			</picker>
+
+			<picker bindchange="bindTimeChange" mode="time" value="{{time}}" start="09:01" end="21:09">
+				<button type="primary" plain class="weui-btn">时间选择器</button>
+				<view class="city_desc">您选择的城市:{{time}}</view>
+			</picker>
+
+			<picker bindchange="bindDateChange" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01">
+				<button type="primary" plain class="weui-btn">日期选择器</button>
+				<view class="city_desc">您选择的城市:{{date}}</view>
+			</picker>
+		</view>
+
+	</view>	
+	<view class="page__ft"></view>	
+
+
+
+</view>

@@ -1,0 +1,11 @@
+
+<view class="page">
+	<block wx:for="{{banner}}" wx:key="*this">
+		<view class="banner" style="background-image:url({{item.url}});" bindtap="pition">
+			<view class="banner_item">
+				<image src="{{item.stausing}}" style="width: 65px;height: 25px;margin-right:7px;" />
+				<image src="{{item.staus}}" style="width: 65px;height: 25px;"/>	
+			</view>
+		</view>
+	</block>	
+</view>
