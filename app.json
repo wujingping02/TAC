@@ -1,59 +1,38 @@
 {
   "pages": [
-    "example/first/first",
-    "example/index/index",
-    "example/refersh/refersh",
-    "example/refersh/msg_success",
-    "example/refersh/msg_fail",
-    "example/compition/compition",
-    "example/prim/prim",
-    "example/compition-detail/compition-detail",
-    "example/per-info/per-info",
-    "example/vunue-item/vunue-item",
-    "example/pay/pay",
-    "example/selectPlace/selectPlace",
-    
-    "example/collect/collect",
-    "example/order/order",
-    "example/setion/setion",
-    "example/fdback/fdback",
-    
-    
-    
-    
-
-    "pages/index/index"
+    "pages/home/index",
+    "pages/detail/index",
+    "pages/mine/index"
   ],
-  "window": { 
-    "navigationBarTextStyle": "#fff",
+  "window": {
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "WeUI-SPA",
     "navigationBarBackgroundColor": "#39c3f2",
     "backgroundColor": "#f8f8f8"
   },
   "tabBar": {
     "color": "#aaaaaa",
-    "selectedColor":"#39c3f2",
-    "backgroundColor":"#fff",
-    "borderStyle":"black",
-    "position":"bottom",
+    "selectedColor": "#39c3f2",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "position": "bottom",
     "list": [
       {
-        "pagePath": "example/first/first",
+        "pagePath": "pages/home/index",
         "text": "首页",
-        "iconPath": "weui-SPA-index/017-1.png",
-        "selectedIconPath": "weui-SPA-index/016-1.png"
+        "iconPath": "",
+        "selectedIconPath": ""
       },
       {
-        "pagePath": "example/compition/compition",
-        "text": "赛事",
-        "iconPath": "weui-SPA-index/018-1.png",
-        "selectedIconPath": "weui-SPA-index/019-1.png"
-      },
-      {
-        "pagePath": "pages/index/index",
-        "text": "我的",
-        "iconPath": "weui-SPA-index/020-1.png",
-        "selectedIconPath": "weui-SPA-index/021-1.png"
+        "pagePath": "pages/detail/index",
+        "text": "行事历",
+        "iconPath": "",
+        "selectedIconPath": ""
+      },{
+        "pagePath": "pages/mine/index",
+        "text": "个人中心",
+        "iconPath": "",
+        "selectedIconPath": ""
       }
     ]
   },
@@ -63,5 +42,6 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   },
-  "debug": true
+  "debug": true,
+  "sitemapLocation": "sitemap75.json"
 }

@@ -1,0 +1,28 @@
+{
+  "name": "tas",
+  "version": "1.0.0",
+  "description": "my first wxProgram",
+  "main": "app.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wujingping02/TAC.git"
+  },
+  "keywords": [
+    "WjpZxf1314"
+  ],
+  "author": "wujingping754",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wujingping02/TAC/issues"
+  },
+  "homepage": "https://github.com/wujingping02/TAC#readme",
+  "dependencies": {
+    "vant-weapp": "^0.5.28"
+  }
+}
