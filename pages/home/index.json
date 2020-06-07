@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "首页",
   "usingComponents": {  
-    "myToast": "../../components/myToast"
+    "myCourseList": "../../components/myCourseList",
+    "van-search": "../../miniprogram_npm/vant-weapp/search"
   }
 }

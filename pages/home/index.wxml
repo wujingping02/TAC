@@ -1,4 +1,4 @@
 <view class="home">
-  <myToast id="toastedit">666</myToast>   
-  <button type="primary" bindtap="showToast"> showToast! </button>
+  <van-search></van-search>
+  <myCourseList list="{{courseList}}" bind:watchCourseDetail="watchCourseDetail"></myCourseList>
 </view>

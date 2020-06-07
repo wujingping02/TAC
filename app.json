@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/home/index",
+    "pages/mine/index",
     "pages/detail/index",
-    "pages/mine/index"
+    "pages/home/index",
+    "pages/courseDetail/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -20,19 +21,19 @@
       {
         "pagePath": "pages/home/index",
         "text": "首页",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home.png"
       },
       {
         "pagePath": "pages/detail/index",
         "text": "行事历",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "iconPath": "images/detail.png",
+        "selectedIconPath": "images/detail.png"
       },{
         "pagePath": "pages/mine/index",
         "text": "个人中心",
-        "iconPath": "",
-        "selectedIconPath": ""
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine.png"
       }
     ]
   },

@@ -1,3 +1,20 @@
 <view class="mine">
-  
+  <image src="{{ Avatar }}"></image>
+  <text>{{ name }}</text>
+  <view>
+    <text>机构详情</text>
+  </view> 
+  <view>
+    <text>地址管理</text>
+  </view>
+  <view>
+    <text>教师管理</text>
+  </view>
+  <view>
+    <text>助教管理</text>
+  </view>
+  <view>
+    <text>课程列表</text>
+  </view>
+  <button wx-if="{{ false }}" open-type="getUserInfo" bindtap="getUserInfo" bindgetuserinfo="getUserInfoFun">1111</button>
 </view>

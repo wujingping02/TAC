@@ -1,3 +1,10 @@
 <view class="detail">
-  
+  <van-cell title="选择日期区间" bindtap="showCalendar"></van-cell>
+  <van-calendar
+    show="{{ show }}"
+    type="range"
+    bind:close="onClose"
+    bind:confirm="onConfirm"
+  ></van-calendar>
+  <myClassList list="{{classList}}" bind:watchCourseDetail="watchCourseDetail"></myClassList>
 </view>

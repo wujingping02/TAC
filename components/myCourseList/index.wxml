@@ -1,0 +1,5 @@
+<view class='home_courseList'>
+  <block wx:key="box" wx:for="{{list}}">
+    <view bindtap="watchCourseDetail" data-index="{{index}}">{{item.name}}</view>
+  </block>
+</view>
