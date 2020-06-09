@@ -1,6 +1,6 @@
 import store from '../../store'
 import create from '../../utils/create'
-import {ajax,mockRequest} from '../../utils/util'
+import {ajax, mockRequest} from '../../utils/util'
 import service from '../../utils/service'
 
 create(store, {
@@ -26,7 +26,7 @@ create(store, {
   },
 
   // 用户点击课程列表
-  watchCourseDetail: function (data) {
+  toCourseDetail: function (data) {
     let index = data.detail;
     wx.navigateTo({
       url: "/pages/courseDetail/index?index=" + index

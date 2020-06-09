@@ -1,0 +1,3 @@
+<view>
+  <myLessonList list="{{lessonList}}"></myLessonList>
+</view>

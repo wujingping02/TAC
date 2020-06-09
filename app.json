@@ -3,7 +3,20 @@
     "pages/mine/index",
     "pages/detail/index",
     "pages/home/index",
-    "pages/courseDetail/index"
+    "pages/courseDetail/index",
+    "pages/orgDetail/index",
+    "pages/editAddress/index",
+    "pages/teacherList/index",
+    "pages/assistantList/index",
+    "pages/editCourse/index",
+    "pages/clsRoomList/index",
+    "pages/lessonList/index",
+    "pages/personInfo/index",
+    "pages/orgList/index",
+    "pages/exchangeClsList/index",
+    "pages/myPhoto/index",
+    "pages/classList/index",
+    "pages/myChildren/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

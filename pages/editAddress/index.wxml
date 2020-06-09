@@ -1,0 +1,3 @@
+<view>
+  <myAddressList list="{{addressList}}" bind:toClsRoomList="toClsRoomList"></myAddressList>
+</view>

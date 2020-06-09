@@ -1,4 +1,4 @@
 <view class="home">
   <van-search></van-search>
-  <myCourseList list="{{courseList}}" bind:watchCourseDetail="watchCourseDetail"></myCourseList>
+  <myCourseList list="{{courseList}}" bind:toCourseDetail="toCourseDetail"></myCourseList>
 </view>

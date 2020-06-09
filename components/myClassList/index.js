@@ -9,15 +9,15 @@ Component({
       value: []
     }  
   },  
-  // 组件的初始数据   
+  // 组件的初始数据
   data: {  
     
   },  
-  // 组件的方法列表 
+  // 组件的方法列表
   methods: {
-    watchClassDetail : function(e) {
+    toClassDetail : function(e) {
       let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
-      this.triggerEvent("watchCourseDetail", index);
+      this.triggerEvent("toLessonList", index);// 默认跳转到课节列表，但不同的页面可能传的“toLessonList”事件内容不一样
     }
   }   
 })

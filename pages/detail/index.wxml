@@ -6,5 +6,5 @@
     bind:close="onClose"
     bind:confirm="onConfirm"
   ></van-calendar>
-  <myClassList list="{{classList}}" bind:watchCourseDetail="watchCourseDetail"></myClassList>
+  <myClassList list="{{classList}}" bind:toCourseDetail="toCourseDetail"></myClassList>
 </view>

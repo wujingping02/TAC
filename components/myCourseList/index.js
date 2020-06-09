@@ -15,9 +15,9 @@ Component({
   },  
   // 组件的方法列表 
   methods: {
-    watchCourseDetail : function(e) {
+    toCourseDetail : function(e) {
       let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
-      this.triggerEvent("watchCourseDetail", index);
+      this.triggerEvent("toCourseDetail", index);
     }
   }   
 })

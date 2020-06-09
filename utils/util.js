@@ -1,24 +1,4 @@
 import service from './service.js'
-
-// 公用function
-function formatTime(date) {
-  var year = date.getFullYear()
-  var month = date.getMonth() + 1
-  var day = date.getDate()
-
-  var hour = date.getHours()
-  var minute = date.getMinutes()
-  var second = date.getSeconds() 
-
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-function formatNumber(n) {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
-
 // ajax请求
 function ajax(data) {
   return new Promise((suc, fail) => {
@@ -29,7 +9,9 @@ function ajax(data) {
     wx.request({
       url: data.url,
       data: data.data,
-      header: {},
+      header: {
+        cookie: wx.getStorageSync("token")
+      },
       method: data.method || "get",
       dataType: 'json',
       responseType: 'text',
@@ -65,12 +47,41 @@ function mockRequest(data) {
       }else{
         wx.showToast({title: res.msg,icon: "none"})
       }
-    }, 1000)
+    }, 500)
   })
 }
 
+// 判断用户是否注册
+function isLogin() {
+  
+}
+
+// 注册 + 登录
+function getUserInfo() {
+  return new Promise((suc, fail) => {
+    wx.login({// 先拿一下code
+      success (res) {
+        if (res.code) {
+          // 发起网络请求
+          mockRequest({// 去登陆
+            url: service.userLogin.url,
+            data: {
+              code: res.code
+            }
+          }).then((res) => {
+            wx.setStorageSync("token", res.token)
+            suc(res)// 返回用户信息
+          })
+        }else{
+          wx.showToast({title: res.msg,icon: "none"})
+        }
+      }
+    })
+  }) 
+}
+
 module.exports = {
-  formatTime: formatTime,
   ajax: ajax,
-  mockRequest : mockRequest
+  mockRequest : mockRequest,
+  getUserInfo : getUserInfo
 }

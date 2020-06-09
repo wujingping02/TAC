@@ -1,0 +1,3 @@
+<view>
+  <myCourseList list="{{courseList}}" bind:toCourseDetail="toCourseDetail"></myCourseList>
+</view>

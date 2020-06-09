@@ -1,0 +1,3 @@
+<view>
+  <myChildrenList list="{{childrenList}}" ></myChildrenList>
+</view>
