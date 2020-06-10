@@ -1,0 +1,3 @@
+<view>
+  <input value="{{value}}" bindblur="onBlur" id="val" type="{{type}}" label="{{lable}}"/>
+</view>

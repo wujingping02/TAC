@@ -80,8 +80,26 @@ function getUserInfo() {
   }) 
 }
 
+// 获取一个模块里面所有功能组件的值的集合
+function collectVals(filedList) {
+  let vals = [],page = this.selectComponent("#page");
+  // 先校验下值是不是合法
+  for(let i = 0;i<filedList.length;i++){
+    if(page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).check() === false){
+      return
+    }else{
+      vals.push({
+        key : filedList[i].key,
+        value : page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).getValue()
+      });
+    }
+  }
+  return vals
+}
+
 module.exports = {
   ajax: ajax,
   mockRequest : mockRequest,
-  getUserInfo : getUserInfo
+  getUserInfo : getUserInfo,
+  collectVals : collectVals
 }

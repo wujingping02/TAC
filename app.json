@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/personInfo/index",
     "pages/mine/index",
     "pages/detail/index",
     "pages/home/index",
@@ -11,7 +12,7 @@
     "pages/editCourse/index",
     "pages/clsRoomList/index",
     "pages/lessonList/index",
-    "pages/personInfo/index",
+    
     "pages/orgList/index",
     "pages/exchangeClsList/index",
     "pages/myPhoto/index",
@@ -57,5 +58,8 @@
     "downloadFile": 10000
   },
   "debug": true,
-  "sitemapLocation": "sitemap75.json"
+  "sitemapLocation": "sitemap75.json",
+  "usingComponents": {  
+    "myPopup": "./miniprogram_npm/myPopup"
+  }
 }

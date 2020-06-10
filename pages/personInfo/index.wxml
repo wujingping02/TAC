@@ -1,3 +1,4 @@
 <view>
-  <text>个人信息</text>
+  <myPopup id="page" list="{{fieldList}}"/>
+  <button type="primary" bindtap="submit">提交</button>
 </view>

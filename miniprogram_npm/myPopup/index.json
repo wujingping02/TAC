@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": { 
+    "myInput" : "../../components/myInput",
+    "mySelect" : "../../components/mySelect"
+  }
+}

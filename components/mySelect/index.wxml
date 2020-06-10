@@ -1,0 +1,7 @@
+<view>
+  <picker mode="{{type || 'selector'}}" bindchange="bindchange" range="{{list}}">
+    <view class="picker">
+      当前选择：{{list[index]}}
+    </view>
+  </picker>
+</view>

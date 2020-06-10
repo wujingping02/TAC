@@ -1,3 +1,0 @@
-<view class='wx_toast_container' hidden="{{!toastShow}}">
-  <view class='wx_toast_text'>{{toastText}}</view>
-</view>
