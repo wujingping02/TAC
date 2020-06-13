@@ -1,6 +1,27 @@
-<view>
+<view class="{{className}}">
   <block wx:key="box" wx:for="{{list}}">
-    <myInput wx:if="{{item.type === 'text'}}" value="{{item.value}}" isMust="{{item.isMust}}" id="{{item.key}}" type="{{item.type}}" lable="{{item.lable}}"/>
-    <mySelect wx:if="{{item.type === 'selector'}}" list="{{item.nameList}}" idList="{{item.idList}}" value="{{item.value}}" isMust="{{item.isMust}}" id="{{item.key}}" type="{{item.type}}" lable="{{item.lable}}"/>
+    <myInput 
+      wx:if="{{item.type === 'text'}}" 
+      value="{{item.value}}" 
+      isMust="{{item.isMust}}" 
+      id="{{item.key}}" 
+      type="{{item.type}}" 
+      lable="{{item.lable}}"/>
+    <mySelect 
+      wx:if="{{item.type === 'selector' || item.type === 'time' || item.type === 'date' || item.type === 'calendar' || item.type === 'region'}}" 
+      list="{{item.nameList}}" 
+      idList="{{item.idList}}" 
+      value="{{item.value}}" 
+      isMust="{{item.isMust}}" 
+      id="{{item.key}}" 
+      type="{{item.type}}" 
+      lable="{{item.lable}}"/>
+    <!-- <myCalendar
+      wx:if="{{item.type === 'calendar'}}"
+      value="{{item.value}}" 
+      isMust="{{item.isMust}}" 
+      id="{{item.key}}" 
+      type="{{item.type}}" 
+      lable="{{item.lable}}"/> -->
   </block>
 </view>

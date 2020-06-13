@@ -15,7 +15,7 @@ Component({
     value : ""
   },  
   ready: function(){// 组件加载完毕
-    console.log(this.properties)
+    
   },
   // 组件的方法列表
   methods: {  

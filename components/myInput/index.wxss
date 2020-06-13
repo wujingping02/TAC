@@ -1,0 +1,23 @@
+.box {
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.lable {
+    font-size: 24rpx;
+    color: #000000;
+    line-height: 34rpx;
+}
+.val {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 32rpx;
+    color: #333333;
+    height: 80rpx;
+    line-height: 80rpx;
+    border: 2rpx solid #E5E5E9;
+    border-radius: 12rpx;
+    margin-top: 20rpx;
+    padding: 0 4%;
+    position: relative;
+}

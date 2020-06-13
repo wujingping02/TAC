@@ -1,3 +1,4 @@
-<view>
-  <input value="{{value}}" bindblur="onBlur" id="val" type="{{type}}" label="{{lable}}"/>
+<view class="box">
+    <text class="lable">{{lable}}</text>
+    <input class="val" placeholder="{{'请输出' + lable}}" value="{{value}}" bindblur="onBlur" id="val" type="{{type}}" label="{{lable}}"/>
 </view>

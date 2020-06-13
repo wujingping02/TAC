@@ -74,18 +74,18 @@ VantComponent({
     },
     methods: {
         onInput(event) {
-            // const { value = '' } = event.detail || {};
-            // this.set({ value }, () => {
-            //     this.emitChange(value);
-            // });
+            const { value = '' } = event.detail || {};
+            this.set({ value }, () => {
+                this.emitChange(value);
+            });
         },
         onFocus(event) {
             this.set({ focused: true });
             this.$emit('focus', event.detail);
         },
         onBlur(event) {
-            // this.set({ focused: false });
-            // this.$emit('blur', event.detail);
+            this.set({ focused: false });
+            this.$emit('blur', event.detail);
             this.setData({
                 val : event.detail.value
             })

@@ -16,15 +16,35 @@ Component({
   // 组件的初始数据
   data: {
     index : "",
-    value : ""
+    value : "",
+    show : false,
+    zh_value : ""
   },  
   ready: function(){// 组件加载完毕
+    console.log(this.properties)
     this.setData({
       index : this.properties.idList.indexOf(this.properties.value)
     })
   },
   // 组件的方法列表
   methods: {  
+    getTime : function(ms){
+      function addZero(num){
+        if(parseInt(num) < 10){
+            num = '0'+num;
+        }
+        return num;
+      }
+      var oDate = new Date(ms),
+      oYear = oDate.getFullYear(),
+      oMonth = oDate.getMonth()+1,
+      oDay = oDate.getDate(),
+      oHour = oDate.getHours(),
+      oMin = oDate.getMinutes(),
+      oSen = oDate.getSeconds(),
+      oTime = oYear +'-'+ addZero(oMonth) +'-'+ addZero(oDay);
+      return oTime;
+    },
     setValue : function(val){
       this.setData({
         index : this.properties.idList.indexOf(val),
@@ -32,13 +52,37 @@ Component({
       })
     },
     bindchange : function(e){// 每次焦点离开，拿一下值
-      this.setData({
-        index : e.detail.value,
-        value : this.properties.idList[e.detail.value]
-      })
+      if(this.properties.type === "time"){// 时间
+        this.setData({
+          value : e.detail.value
+        })
+      }else if(this.properties.type === "calendar"){// 日历
+        this.setData({
+          show : false,
+          value : e.detail.map(v => {
+            return v = this.getTime(v)
+          })
+        })
+      }else if(this.properties.type === "region"){// 省市区
+        this.setData({
+          zh_value : e.detail.value,
+          value : e.detail.value
+        })
+      }else{
+        this.setData({
+          index : e.detail.value,
+          value : this.properties.idList[e.detail.value]
+        })
+      }
     },
     getValue : function(){// 获取值
-      return this.properties.value;
+      if(this.properties.type === "calendar"){
+        return this.properties.value.split(",");
+      }else if(this.properties.type === "region"){
+        return this.properties.value.replace(/,/g, "-");
+      }else{
+        return this.properties.value
+      }
     },
     check : function(){
       if(this.properties.isMust && !this.properties.value){
@@ -48,6 +92,11 @@ Component({
         })
         return false
       }
+    },
+    click : function(){
+      this.setData({
+        show : true
+      })
     }
   }  
 })

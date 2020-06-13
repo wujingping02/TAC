@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/personInfo/index",
-    "pages/mine/index",
-    "pages/detail/index",
+
     "pages/home/index",
+    "pages/detail/index",
+    "pages/mine/index",
     "pages/courseDetail/index",
     "pages/orgDetail/index",
     "pages/editAddress/index",
@@ -12,7 +12,7 @@
     "pages/editCourse/index",
     "pages/clsRoomList/index",
     "pages/lessonList/index",
-    
+    "pages/personInfo/index",
     "pages/orgList/index",
     "pages/exchangeClsList/index",
     "pages/myPhoto/index",
@@ -22,7 +22,7 @@
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "WeUI-SPA",
-    "navigationBarBackgroundColor": "#39c3f2",
+    "navigationBarBackgroundColor": "#FFCE00",
     "backgroundColor": "#f8f8f8"
   },
   "tabBar": {
@@ -58,7 +58,8 @@
     "downloadFile": 10000
   },
   "debug": true,
-  "sitemapLocation": "sitemap75.json",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
   "usingComponents": {  
     "myPopup": "./miniprogram_npm/myPopup"
   }

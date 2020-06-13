@@ -1,4 +1,4 @@
-<view>
-  <myPopup id="page" list="{{fieldList}}"/>
-  <button type="primary" bindtap="submit">提交</button>
+<view id="pageBox">
+  <myPopup id="page" className="page" list="{{fieldList}}"/>
+  <view class="btnBox"><button id="pageBtn" type="primary" bindtap="submit">提交</button></view>
 </view>

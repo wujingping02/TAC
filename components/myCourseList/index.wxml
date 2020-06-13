@@ -1,5 +1,40 @@
 <view>
-  <block wx:key="box" wx:for="{{list}}">
-    <view bindtap="toCourseDetail" data-index="{{index}}">{{item.name}}</view>
-  </block>
+  <view class="listLeft list" >
+    <block wx:key="box" wx:for="{{listLeft}}">
+      <view class="box" bindtap="toCourseDetail" data-index="{{index * 2}}">
+        <view class="imgBox">
+          <text class="eAge" >{{item.sAge + '-' + item.eAge + "岁"}}</text>
+          <image class="url" src="{{item.url}}" mode="widthFix"></image>
+          <text class="address">{{item.address}}</text>
+        </view>
+        <view class="textBox">
+          <view class="name">{{item.name}}</view>
+          <text class="price_unit">¥</text><text class="price">{{item.price}}</text>
+          <view>
+            <image class="orgImg" src="{{item.orgImg}}"></image>
+            <text class="orgName">{{item.orgName}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>  
+  <view class="listRight list">
+    <block wx:key="box" wx:for="{{listRight}}">
+      <view class="box" bindtap="toCourseDetail" data-index="{{index * 2 + 1}}">
+        <view class="imgBox">
+          <text class="eAge" >{{item.sAge + '-' + item.eAge + "岁"}}</text>
+          <image class="url" src="{{item.url}}" mode="widthFix"></image>
+          <text class="address">{{item.address}}</text>
+        </view>
+        <view class="textBox">
+          <view class="name">{{item.name}}</view>
+          <text class="price_unit">¥</text><text class="price">{{item.price}}</text>
+          <view>
+            <image class="orgImg" src="{{item.orgImg}}"></image>
+            <text class="orgName">{{item.orgName}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
 </view>

@@ -1,4 +1,26 @@
-<view class="home">
-  <van-search></van-search>
-  <myCourseList list="{{courseList}}" bind:toCourseDetail="toCourseDetail"></myCourseList>
+<view id="rr" class="home">
+  <van-search 
+    id="search"
+    value="{{searchValue}}"
+    shape="round"
+    show-action="{{true}}"
+    placeholder="搜索课程"
+    bind:search="onSearch"
+  ></van-search>
+  <view class="operatBox">
+    <view class="recommendBox">
+      <text class="recommend">推荐</text>
+      <text class="recommendButtom"></text>
+    </view>
+    <text class="{{upArrow}} age" bind:tap="showAge">年龄</text>
+    <view hidden="{{hideAge}}" class="chooseAgeBox">
+      <block wx:key="ageBox" wx:for="{{ageList}}">
+        <view class="{{item.class}} chooseAge" bind:tap="chooseAge" data-index="{{index}}">
+          <text class="icon"></text>
+          <text class="chooseAgeText">{{item.age}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  <myCourseList listLeft="{{listLeft}}" listRight="{{listRight}}" bind:toCourseDetail="toCourseDetail"></myCourseList>
 </view>

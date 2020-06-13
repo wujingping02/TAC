@@ -32,6 +32,7 @@ VantComponent({
     },
     methods: {
         onChange(event) {
+            console.log(event)
             this.set({ value: event.detail });
             this.$emit('change', event.detail);
         },

@@ -1,0 +1,10 @@
+.page {
+    padding-top: 60rpx;
+    background: #ffffff;
+    display: inline-block;
+    border-radius: 100rpx 100rpx 0 0;
+    width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    box-sizing: border-box;
+}

@@ -14,10 +14,10 @@ create(store, {
         "isMust" : "1"
       },
       {
-        "type" : "selector",
+        "type" : "region",
         "lable" : "文本2",
+        "value" : "10:10",
         "key" : "name2",
-        "value" : "02",
         "idList" : ["01","02","03"],
         "nameList" : ["张三","李四","王五"],
       }
