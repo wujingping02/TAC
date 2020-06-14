@@ -11,7 +11,7 @@
 .val {
     width: 100%;
     box-sizing: border-box;
-    font-size: 32rpx;
+    font-size: 28rpx;
     color: #333333;
     height: 80rpx;
     line-height: 80rpx;

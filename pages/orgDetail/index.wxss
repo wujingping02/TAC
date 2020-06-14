@@ -1,0 +1,49 @@
+.orgDetail {
+    min-height: 100vh;
+    background: #ffffff;
+}
+.orgAvatarBox {
+    border-radius: 0 0 0 0;
+}
+.orgDetailBox {
+    border-radius: 100rpx 100rpx 0 0;
+    transform: translateY(-100rpx);
+    background: #ffffff;
+    display: inline-block;
+}
+.name {
+    font-size: 48rpx;
+    color: #3D3B5E;
+    margin-top: 82rpx;
+    text-align: center;
+}
+.introduction {
+    font-size: 24rpx;
+    color: #3D3B5E;
+    line-height: 20px; 
+    margin-top: 32rpx;
+    padding: 0 4vw;
+}
+.orgPhotoText {
+    font-size: 28rpx;
+    color: #3D3B5E;
+    padding: 0 4vw;
+    margin-top: 66rpx;
+}
+.orgPhotoBox {
+    margin-top: 24rpx;
+    padding: 0 4vw;
+}
+.orgAddressBox {
+    margin-top: 24rpx;
+}
+.orgAddress {
+    font-size: 24rpx;
+    color: #3D3B5E;
+    padding: 0 4vw;
+}
+.avatarImg2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

@@ -10,13 +10,35 @@ view {
 #pageBtn {
     background-color: #FF8711;
     font-size: 32rpx;
-    text-align: center;
+    font-weight: 100;
     border-radius: 58rpx;
-    height: 100rpx;
-    line-height: 60rpx;
     width: 64%;
     margin-top: 48rpx;
 }
 #pageBox {
     background: #FFCE00;
+}
+.avatarBox {
+    width: 100%;
+    height: 500rpx;
+    background-color: #FFCE00;
+    text-align: center;
+    display: inline-block;
+    border-radius: 0 0 72rpx 72rpx;
+}
+.avatarBg {
+    display: inline-block;
+    width: 240rpx;
+    height: 240rpx;
+    border-radius: 120rpx;
+    background: #fff;
+    margin-top: 72rpx;
+}
+.avatarImg {
+    width: 224rpx;
+    height: 224rpx;
+    border-radius: 112rpx;
+    background: #fff;
+    position: relative;
+    top: 8rpx;
 }

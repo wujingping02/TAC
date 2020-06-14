@@ -8,19 +8,34 @@ create(store, {
     fieldList : [// 字段list
       {
         "type" : "text",
-        "lable" : "文本2",
-        "key" : "name",
-        "value" : "666",
+        "lable" : "机构名称",
+        "key" : "orgName",
         "isMust" : "1"
       },
       {
-        "type" : "region",
-        "lable" : "文本2",
-        "value" : "10:10",
-        "key" : "name2",
-        "idList" : ["01","02","03"],
-        "nameList" : ["张三","李四","王五"],
-      }
+        "type" : "text",
+        "lable" : "联系人姓名",
+        "key" : "name",
+        "isMust" : "1"
+      },
+      {
+        "type" : "text",
+        "lable" : "手机号",
+        "key" : "phone",
+        "isMust" : "1"
+      },
+      {
+        "type" : "text",
+        "lable" : "邮箱",
+        "key" : "email",
+        "isMust" : "1"
+      },
+      {
+        "type" : "text",
+        "lable" : "身份证号",
+        "key" : "identity",
+        "isMust" : "1"
+      },
     ]
   },
 

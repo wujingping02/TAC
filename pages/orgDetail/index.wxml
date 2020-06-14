@@ -1,3 +1,21 @@
-<view>
-  <view>机构详情</view>
+<view class="orgDetail">
+  <view class="orgAvatarBox avatarBox">
+    <view class="avatarBg">
+      <image class="avatarImg" src="{{ orgImg }}"/>
+    </view>
+  </view>
+  <view class="orgDetailBox">
+    <view class="name">{{orgName}}</view>
+    <view class="introduction">{{orgDetail}}</view>
+    <view class="orgPhotoText">机构相册</view>
+    <view class="orgPhotoBox">
+      <van-uploader previewImage="{{true}}" fileList="{{orgPhoto}}"></van-uploader>
+    </view>
+    <view class="orgPhotoText">机构地址</view>
+    <view class="orgAddressBox">
+      <block wx:key="box" wx:for="{{orgAddress}}">
+        <view class="orgAddress">{{item}}</view>
+      </block>
+    </view>
+  </view>
 </view>

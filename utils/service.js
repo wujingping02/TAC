@@ -13,7 +13,7 @@ export default{
                 // 20 助教
                 // 30 教师
                 // 40 家长
-                userType : "40"
+                userType : "10"
             },
             token : "123"
         }
@@ -152,5 +152,28 @@ export default{
                 {name : "课程1"}
             ]
         }
-    }
+    },
+    // 查询机构详情
+    "introductionGetDetail" : {
+        url : "/institute/introduction/getDetail",
+        mockData : {
+            code : "0000",
+            msg : "失败了",
+            data : {
+                image : "http://img1.imgtn.bdimg.com/it/u=1931440835,1335623672&fm=26&gp=0.jpg",
+                name : "孙悟空",
+                detail : "《龙珠Z》（DRAGON BALLZ （Zetto）），是《龙珠》系列中的第二部，根据日本著名漫画家鸟山明的同名《龙珠》漫画改编，于1989年4月19日在日本富士电视台首播1996年1月31日播放完毕。改编于漫画中第195篇-第519篇，因为这期间鸟山明的漫画风格转为超激战，而且故事也和前194篇风格没有太大关联，因此由东映动画公司改编成为独立的动画片。题目中的“Z”为鸟山明所取，字母表最后一个字母，意为“结束”。",
+                phone : [
+                    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592150153352&di=bd2c2d643e6b69e5a321c8057afad823&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1731565382%2C3695015853%26fm%3D214%26gp%3D0.jpg"
+                    ,"http://img2.imgtn.bdimg.com/it/u=1873874002,1324989472&fm=26&gp=0.jpg"
+                    ,"http://img5.imgtn.bdimg.com/it/u=132539127,2703113384&fm=26&gp=0.jpg"
+                ],
+                address : [
+                    "徐汇区宛平我拿你1109号急急急",
+                    "徐汇区宛平我拿你1109号急急急",
+                    "徐汇区宛平我拿你1109号急急急"
+                ]
+            }
+        }
+    },
 }
