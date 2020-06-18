@@ -1,0 +1,34 @@
+.add,.save {
+    width: 100%;
+    height: 116rpx;
+    display: inline-block;
+    background: #ffffff;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.16);
+}
+.submit {
+    width: 100%;
+    height: 190rpx;
+    display: inline-block;
+    background: #ffffff;
+    padding-top: 74.4rpx;
+}
+.btn {
+    font-size: 32rpx;
+    border-radius: 40rpx;
+    width: 680rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    border: 1px solid #FF8711;
+    color: #FF8711;
+    margin: 14rpx auto 0;
+    text-align: center;
+}
+.submit>.btn,.save>.btn {
+    color: #FFFFFF;
+    background: #FF8711;
+}
+.submit>.btn {
+    width: 64%;
+}

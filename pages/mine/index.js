@@ -10,7 +10,7 @@ create(store, {
     userType : "",
   },
 
-  onReady: function () {
+  onShow: function () {
     wx.getUserInfo({
       success: (res) => {
         this.setData({
@@ -51,14 +51,14 @@ create(store, {
   // 【机构】查看教师信息
   toTeacherList: function () {
     wx.navigateTo({
-      url: "/pages/teacherList/index"
+      url: "/pages/teacherList/index?type=teacher"
     });
   },
 
   // 【机构】查看助教信息
   toAssistantList: function () {
     wx.navigateTo({
-      url: "/pages/assistantList/index"
+      url: "/pages/teacherList/index?type=assistant"
     });
   },
 

@@ -8,7 +8,7 @@ create(store, {
     
   },
 
-  onReady: function () {
+  onShow: function () {
     
   },
 })

@@ -8,7 +8,7 @@ create(store, {
     orgList : null
   },
 
-  onReady: function () {
+  onShow: function () {
     mockRequest({// 上来获取一下机构列表
       url: service.relativeList.url,
       method: "post",

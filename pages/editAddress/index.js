@@ -5,10 +5,11 @@ import service from '../../utils/service'
 
 create(store, {
   data: {
+    title : "地址管理",
     addressList : null
   },
 
-  onReady: function () {
+  onShow: function () {
     mockRequest({// 上来获取一下地址列表
       url: service.addressList.url,
       method: "post",
@@ -25,4 +26,10 @@ create(store, {
       url: "/pages/clsRoomList/index?index=" + index
     });
   },
+
+  click: function () {
+    wx.navigateTo({
+      url: "/pages/addAddress/index"
+    });
+  }
 })

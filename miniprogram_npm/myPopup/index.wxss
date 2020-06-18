@@ -4,7 +4,39 @@
     display: inline-block;
     border-radius: 100rpx 100rpx 0 0;
     width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 40rpx;
+    padding-right: 40rpx;
     box-sizing: border-box;
+}
+.toast>.contBox {
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    bottom: 0;
+    padding: 60rpx 40rpx 100rpx;
+    box-sizing: border-box;
+    z-index: 9;
+    display: inline-block;
+}
+.cancel {
+    display: inline-block;
+    width: 45%;
+    height: 96rpx;
+    line-height: 96rpx;
+    background: #ffffff;
+    color: #FF8711;
+    border-radius: 58rpx;
+    border: 1px solid #FF8711;
+    text-align: center;
+    margin-top: 80rpx;
+}
+.sure {
+    float: right;
+    background: #FF8711;
+    color: #ffffff;
+}
+.prompt {
+    font-size: 28rpx;
+    color: #3D3C5C;
+    margin-top: 40rpx;
 }

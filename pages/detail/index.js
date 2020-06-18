@@ -6,14 +6,18 @@ import service from '../../utils/service'
 create(store, {
   data: {
     show: false,
-    classList: []
+    classList: [],
+    fieldList : [// 字段list
+      {
+        "type" : "calendar",
+        "lable" : "日期",
+        "key" : "orgName",
+        "isMust" : "1"
+      }
+    ]
   },
-
-  onShow: function (){
-    this.setData({ show: true });
-  },
-  
-  onReady: function () {
+ 
+  onShow: function () {
     mockRequest({// 上来获取一下课程列表
       url: service.classList.url,
       method: "post",

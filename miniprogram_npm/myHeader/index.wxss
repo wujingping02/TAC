@@ -1,0 +1,26 @@
+.headerBox {
+    width: 100%;
+    background: #FFCE00;
+    height: 128rpx;
+    position: relative;
+    position: fixed;
+    top: 0;
+    z-index: 9;
+}
+.back {
+    position: absolute;
+    top: 71rpx;
+    left: 40rpx;
+    width: 33.2rpx;
+    height: 26rpx;
+}
+.title {
+    position: absolute;
+    top: 62rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 32rpx;
+    height: 32rpx;
+    color: #3D3B5E;
+    font-weight: 800;
+}

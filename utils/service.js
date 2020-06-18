@@ -72,7 +72,11 @@ export default{
             code : "0000",
             msg : "失败了",
             data : [
-                {name : "班级1"}
+                {name : "班级1"},
+                {name : "班级2"},
+                {name : "班级3"},
+                {name : "班级4"},
+                {name : "班级5"}
             ]
         }
     },
@@ -94,7 +98,19 @@ export default{
             code : "0000",
             msg : "失败了",
             data : [
-                {name : "地址1"}
+                {
+                    name : "地址1",
+                    provice : "上海市",
+                    city : "上海市",
+                    area : "徐汇区",
+                    address : "宛平南路1109号"
+                },{
+                    name : "地址2",
+                    provice : "河北省",
+                    city : "石家庄市",
+                    area : "长安区",
+                    address : "宛平南路1109号"
+                }
             ]
         }
     },
@@ -105,7 +121,17 @@ export default{
             code : "0000",
             msg : "失败了",
             data : [
-                {name : "地址1"}
+                {name : "教室1",number : "20"},
+                {name : "教室1",number : "20"},
+                {name : "教室1",number : "20"},
+                {name : "教室1",number : "20"},
+                {name : "教室1",number : "20"},
+                {name : "教室1",number : "20"},
+                {name : "教室1",number : "20"},
+                {name : "教室1",number : "20"},
+                {name : "教室1",number : "20"},
+                {name : "教室1",number : "20"},
+                {name : "教室2",number : "20"}
             ]
         }
     },
@@ -176,4 +202,66 @@ export default{
             }
         }
     },
+    // 机构添加教室
+    classroomAdd : {
+        url : "/institute/classroom/add",
+        mockData : {
+            code : "0000",
+            msg : "失败了",
+            data : {
+                name : "新教室",
+                number : "999"
+            }
+        }
+    },
+    // 获取教师列表
+    teacherList : {
+        url : "/institute/class/teacher/list",
+        mockData : {
+            code : "0000",
+            msg : "失败了",
+            data : [
+                {
+                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=773859522,545547748&fm=26&gp=0.jpg",
+                    name : "教师1",
+                    phone : "131123"
+                },
+                {   
+                    url : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3099595195,3442150895&fm=26&gp=0.jpg",
+                    name : "教师2",
+                    phone : "13114"
+                }
+            ]
+        }
+    },
+    // 获取助教列表
+    userList : {
+        url : "/institute/user/list",
+        mockData : {
+            code : "0000",
+            msg : "失败了",
+            data : [
+                {
+                    name : "助教1",
+                    phone : "13112341234"
+                },
+                {
+                    name : "助教2",
+                    phone : "13112341234"
+                }
+            ]
+        }
+    },
+    // 查询教师、助教信息
+    userQuery : {
+        url : "/institute/user/query",
+        mockData : {
+            code : "0000",
+            msg : "失败了",
+            data : {
+                name : "张三",
+                phone : "13112341234"
+            },
+        }
+    }
 }

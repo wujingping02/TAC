@@ -12,7 +12,7 @@ create(store, {
     orgAddress : []
   },
 
-  onReady: function () {
+  onShow: function () {
     mockRequest({// 上来查询一下机构信息
       url: service.introductionGetDetail.url,
       method: "post",

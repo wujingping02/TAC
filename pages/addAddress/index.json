@@ -1,5 +1,5 @@
 {
-  "component": true,
+  "navigationBarTitleText": "地址管理",
   "usingComponents": { 
     "myAddressList": "../../components/myAddressList"
   }

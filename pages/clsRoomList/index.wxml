@@ -1,3 +1,6 @@
 <view>
-  <view>教室列表</view>
+  <myHeader title="{{title}}"/>
+  <view class="topBG"></view>
+  <myPopup id="page" hidePopup="{{hidePopup}}" bind:sure="sureAdd" className="toast" list="{{fieldList}}"/>
+  <myClassRoom type="classroom" list="{{classList}}" bind:addItem="addItem"></myClassRoom>
 </view>

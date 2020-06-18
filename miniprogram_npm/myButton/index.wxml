@@ -1,0 +1,3 @@
+<view>
+  <view class="{{className ? className : 'btnBox'}}"><view class="btn" bindtap="click">{{content}}</view></view>
+</view>

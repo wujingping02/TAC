@@ -5,7 +5,20 @@ Component({
   // 组件的属性列表
   properties: {
     list : Array,
-    className : String
+    className : String,
+    hidePopup : {
+      type : Boolean,
+      value : false
+    },
+    cancel : {
+      type : String,
+      value : '取消'
+    },
+    sure : {
+      type : String,
+      value : '确认'
+    },
+    promptText : String
   },  
   // 组件的初始数据 
   data: {  
@@ -16,6 +29,16 @@ Component({
   }, 
   // 组件的方法列表
   methods: {  
-    
-  }  
+    cancle : function(){// 影藏弹窗
+      this.setData({
+        hidePopup : true
+      })
+    },
+    true : function(){// 提交信息
+      this.triggerEvent("sure")
+    },
+    onSearch : function(data){// 搜索
+      this.triggerEvent("onSearch", data.detail)
+    }
+  }
 })

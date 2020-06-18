@@ -2,6 +2,8 @@
   "component": true,
   "usingComponents": { 
     "myInput" : "../../components/myInput",
-    "mySelect" : "../../components/mySelect"
+    "mySelect" : "../../components/mySelect",
+    "van-overlay": "../vant-weapp/overlay",
+    "van-search": "../vant-weapp/search"
   }
 }

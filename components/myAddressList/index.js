@@ -18,6 +18,12 @@ Component({
     toClsRoomList : function(e) {
       let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
       this.triggerEvent("toClsRoomList", index);
+    },
+    edit : function(e) {
+      let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
+      wx.navigateTo({
+        url: "/pages/addAddress/index?index=" + index
+      });
     }
   }   
 })

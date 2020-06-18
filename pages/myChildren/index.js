@@ -8,7 +8,7 @@ create(store, {
     childrenList : null
   },
 
-  onReady: function () {
+  onShow: function () {
     mockRequest({// 上来获取一下地址列表
       url: service.childrenList.url,
       method: "post",

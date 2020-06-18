@@ -1,27 +1,36 @@
-<view class="{{className}}">
-  <block wx:key="box" wx:for="{{list}}">
-    <myInput 
-      wx:if="{{item.type === 'text'}}" 
-      value="{{item.value}}" 
-      isMust="{{item.isMust}}" 
-      id="{{item.key}}" 
-      type="{{item.type}}" 
-      lable="{{item.lable}}"/>
-    <mySelect 
-      wx:if="{{item.type === 'selector' || item.type === 'time' || item.type === 'date' || item.type === 'calendar' || item.type === 'region'}}" 
-      list="{{item.nameList}}" 
-      idList="{{item.idList}}" 
-      value="{{item.value}}" 
-      isMust="{{item.isMust}}" 
-      id="{{item.key}}" 
-      type="{{item.type}}" 
-      lable="{{item.lable}}"/>
-    <!-- <myCalendar
-      wx:if="{{item.type === 'calendar'}}"
-      value="{{item.value}}" 
-      isMust="{{item.isMust}}" 
-      id="{{item.key}}" 
-      type="{{item.type}}" 
-      lable="{{item.lable}}"/> -->
-  </block>
+<view class="{{className}}" hidden="{{hidePopup}}">
+  <van-overlay show="true" wx:if="{{className === 'toast'}}"/>
+  <view class="contBox">
+    <block wx:key="box" wx:for="{{list}}">
+      <myInput 
+        wx:if="{{item.type === 'text'}}" 
+        value="{{item.value}}" 
+        isMust="{{item.isMust}}" 
+        id="{{item.key}}" 
+        type="{{item.type}}" 
+        lable="{{item.lable}}"/>
+      <mySelect 
+        wx:elif="{{item.type === 'selector' || item.type === 'time' || item.type === 'date' || item.type === 'calendar' || item.type === 'region'}}" 
+        list="{{item.nameList}}" 
+        idList="{{item.idList}}" 
+        value="{{item.value}}" 
+        isMust="{{item.isMust}}" 
+        id="{{item.key}}" 
+        type="{{item.type}}" 
+        lable="{{item.lable}}"/>
+      <van-search 
+        wx:else="{{item.type === 'search'}}" 
+        value="{{item.value}}" 
+        shape="round"
+        show-action="{{true}}"
+        placeholder="{{item.lable}}"
+        bind:search="onSearch"
+      ></van-search>
+    </block>
+    <view hidden="{{promptText === ''}}" class="prompt">{{promptText}}</view>
+    <view wx:if="{{className === 'toast'}}">
+      <text bind:tap="cancle" class="cancel">{{cancel}}</text>
+      <text bind:tap="true" class="cancel sure">{{sure}}</text>
+    </view>
+  </view>
 </view>

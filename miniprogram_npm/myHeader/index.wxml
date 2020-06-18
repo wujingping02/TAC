@@ -1,0 +1,4 @@
+<view class="headerBox">
+  <image bind:tap="back" class="back"src="../../images/back.png"/>
+  <text class="title">{{title}}</text>
+</view>

@@ -57,7 +57,6 @@ VantComponent({
     viewStyle: '',
   },
   mounted() {
-    console.log(this.properties)
     this.setMode();
     this.setStyle();
   },
@@ -80,7 +79,6 @@ VantComponent({
         style += 'overflow: hidden;';
         style += `border-radius: ${addUnit(radius)};`;
       }
-      console.log(style)
       this.setData({ viewStyle: style });
     },
     onLoad(event) {

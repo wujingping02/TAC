@@ -21,7 +21,6 @@ Component({
     zh_value : ""
   },  
   ready: function(){// 组件加载完毕
-    console.log(this.properties)
     this.setData({
       index : this.properties.idList.indexOf(this.properties.value)
     })

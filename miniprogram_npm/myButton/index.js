@@ -4,20 +4,16 @@ Component({
   },  
   // 组件的属性列表 
   properties: {  
-    list: Array,
-    type: String
-  },  
-  // 组件的初始数据   
-  data: {  
+    content: String,
+    className: String
+  },
+  ready: function(){
     
-  },  
+  },
   // 组件的方法列表
   methods: {
-    addItem : function(){
-      this.triggerEvent("addItem")
+    click : function() {
+      this.triggerEvent("click");// 按钮的点击事件
     }
-  },
-  ready: function () {
-    
-  }
+  }   
 })

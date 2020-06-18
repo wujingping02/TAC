@@ -4,20 +4,16 @@ Component({
   },  
   // 组件的属性列表 
   properties: {  
-    list: Array,
-    type: String
+    title: String
   },  
-  // 组件的初始数据   
+  // 组件的初始数据
   data: {  
     
   },  
   // 组件的方法列表
   methods: {
-    addItem : function(){
-      this.triggerEvent("addItem")
+    back : function() {
+      wx.navigateBack({delta: 1})
     }
-  },
-  ready: function () {
-    
-  }
+  }   
 })

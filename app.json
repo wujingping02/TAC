@@ -1,13 +1,14 @@
 {
   "pages": [
-    
-    "pages/home/index",
+    "pages/teacherList/index",
     "pages/detail/index",
+    "pages/home/index",
     "pages/mine/index",
     "pages/courseDetail/index",
     "pages/orgDetail/index",
     "pages/editAddress/index",
-    "pages/teacherList/index",
+    "pages/addAddress/index",
+    
     "pages/assistantList/index",
     "pages/editCourse/index",
     "pages/clsRoomList/index",
@@ -23,7 +24,8 @@
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "WeUI-SPA",
     "navigationBarBackgroundColor": "#FFCE00",
-    "backgroundColor": "#f8f8f8"
+    "backgroundColor": "#f8f8f8",
+    "navigationStyle": "custom"
   },
   "tabBar": {
     "color": "#aaaaaa",
@@ -61,6 +63,8 @@
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "usingComponents": {  
-    "myPopup": "./miniprogram_npm/myPopup"
+    "myPopup": "./miniprogram_npm/myPopup",
+    "myButton": "./miniprogram_npm/myButton",
+    "myHeader": "./miniprogram_npm/myHeader"
   }
 }

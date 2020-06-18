@@ -1,10 +1,5 @@
-<view class="detail">
-  <van-cell title="选择日期区间" bindtap="showCalendar"></van-cell>
-  <van-calendar
-    show="{{ show }}"
-    type="range"
-    bind:close="onClose"
-    bind:confirm="onConfirm"
-  ></van-calendar>
+<view class="pageBox">
+  <myHeader title="{{title}}"></myHeader>
+  <myPopup id="page" className="page" list="{{fieldList}}"/>
   <myClassList list="{{classList}}" bind:toCourseDetail="toCourseDetail"></myClassList>
 </view>

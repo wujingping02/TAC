@@ -21,6 +21,7 @@
     margin-bottom: 40rpx;
     background-color: #ffffff;
     position: relative;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.16);
 }
 .listBox>view>image {
     width: 36rpx;

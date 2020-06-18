@@ -8,7 +8,7 @@ create(store, {
     courseList: null,
   },
 
-  onReady: function () {
+  onShow: function () {
     mockRequest({// 上来获取一下课程列表
       url: service.courseList2.url,
       method: "post",

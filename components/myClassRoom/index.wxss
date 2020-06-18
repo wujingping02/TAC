@@ -1,0 +1,72 @@
+@import "../../app.wxss";
+
+.itemBox {
+    width: 100%;
+    display: inline-block;
+    padding-top: 26rpx;
+    transform: translateX(-2.1665%);
+}
+.oneItemBox,.addItemBox {
+    display: inline-block;
+    width: 28%;
+    background: #3FBAF1;
+    margin-left: 4.333%;
+    margin-top: 40rpx;
+    height: 240rpx;
+    border-radius: 16rpx;
+}
+.oneItemBox {
+    position: relative;
+    text-align: center;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.16);
+}
+.addItemBox {
+    border: 1px dashed #999999;
+    background: #e5e5e5;
+}
+.teacher {
+    background: #ffffff;
+}
+.name,.number {
+    width: 100%;
+    color: #ffffff;
+    overflow: hidden;
+}
+.name {
+    font-size: 36rpx;
+    height: 36rpx;
+    line-height: 36rpx;
+    margin-top: 79rpx;
+}
+.addIcon {
+    display: block;
+    width: 66rpx;
+    height: 66rpx;
+    margin: 88rpx auto 0;
+}
+.teacher_avatar {
+    margin: 36rpx auto 18.8rpx;
+    width: 84rpx;
+    height: 84rpx;
+    border-radius: 42rpx;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.16); 
+}
+.teacher_name {
+    font-size: 28rpx;
+    color: #3D3B5E;
+    text-align: center;
+}
+.teacher_phone {
+    font-size: 24rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    color: #9D9DAF;
+    text-align: center;
+}
+.del {
+    width: 40rpx;
+    height: 40rpx;
+    position: absolute;
+    right: -10rpx;
+    top: -10rpx;
+}

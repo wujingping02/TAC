@@ -5,6 +5,7 @@ import service from '../../utils/service'
 
 create(store, {
   data: {
+    title: "基本信息",
     fieldList : [// 字段list
       {
         "type" : "text",
@@ -39,7 +40,7 @@ create(store, {
     ]
   },
 
-  onReady: function () {
+  onShow: function () {
       
   },
 
