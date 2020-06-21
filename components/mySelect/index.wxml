@@ -1,4 +1,4 @@
-<view class="box">
+<view class="{{className || 'box'}}">
   <text class="lable">{{lable}}</text>
   <picker class="val" mode="{{type}}" bind:tap="click" bindchange="bindchange" range="{{list}}">
     <view wx:if="{{type === 'selector'}}" class="prompt">{{index === -1 ? '请选择' + lable : list[index]}}</view>
@@ -13,6 +13,5 @@
         bind:confirm="bindchange"
       ></van-calendar>
     </view>
-
   </picker>
 </view>

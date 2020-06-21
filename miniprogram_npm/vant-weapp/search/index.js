@@ -14,6 +14,7 @@ VantComponent({
     useActionSlot: Boolean,
     useLeftIconSlot: Boolean,
     useRightIconSlot: Boolean,
+    cancel: String,
     leftIcon: {
       type: String,
       value: 'search',

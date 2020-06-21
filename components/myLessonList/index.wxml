@@ -1,5 +1,13 @@
-<view>
+<view class="bigBox">
   <block wx:key="box" wx:for="{{list}}">
-    <view>{{item.name}}</view>
+    <view class="box">
+      <view class="time">{{item.date + " " + item.time}}</view>
+      <view class="calssBox">
+        <image class="url" src="{{item.url}}"/>
+        <text class="name">{{item.name}}</text>
+        <text class="className">{{item.className}}</text>
+        <text class="del">删除</text>
+      </view>
+    </view>
   </block>
 </view>

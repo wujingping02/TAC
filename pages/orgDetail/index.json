@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "机构详情",
   "usingComponents": {
-    "van-uploader": "../../miniprogram_npm/vant-weapp/uploader/index"
+    "myPhoto": "../../components/myPhoto"
   }
 }

@@ -1,5 +1,23 @@
-<view class="pageBox">
-  <myHeader title="{{title}}"></myHeader>
-  <myPopup id="page" className="page" list="{{fieldList}}"/>
-  <myClassList list="{{classList}}" bind:toCourseDetail="toCourseDetail"></myClassList>
+<view class="pageBox" style="background : #ffffff">
+  <myHeader color="#ffffff" title="{{title}}"></myHeader>
+  <myCalendar 
+    color= "#FF8100"
+    minDate= "{{ minDate }}"
+    maxDate= "{{ maxDate }}"
+    default-date= "{{ nowDate }}"
+    bind:confirm= "bindchange"
+    position="top"
+    title= "日期"
+    showTitle= "true"
+    show= "{{true}}"
+    bind:keepCalendar="keepCalendar"
+    bind:select="getDate"
+  />
+  <view class="sortKey" style="margin-top: {{top}}">
+    <text bind:tap="changeActiveL" class="classSort {{activeL}}">教室维度</text>
+    <text bind:tap="changeActiveR" class="teacherSort {{activeR}}">教师维度</text>
+  </view>
+  <view class="classListBox">
+    <myClassList class="" list="{{classList}}" bind:toCourseDetail="toCourseDetail"></myClassList>
+  </view>
 </view>

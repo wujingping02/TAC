@@ -1,6 +1,20 @@
 .mine {
     min-height: 100vh;
-    background: #f5f5f5;
+    background: #f9f9f9;
+    transform: translate(-1px, -1px);
+}
+.avatarBox {
+    width: 101%;
+    height: 550rpx;
+    background-image: url('http://img3.imgtn.bdimg.com/it/u=1996410545,3787547474&fm=26&gp=0.jpg');
+    background-size: 100% 100%;
+    text-align: center;
+    display: inline-block;
+    border-radius: 0 0 72rpx 72rpx;
+}
+.headerBox {
+    position: static;
+    background: transparent;
 }
 .avatarName {
     font-size: 48rpx;
@@ -21,7 +35,7 @@
     margin-bottom: 40rpx;
     background-color: #ffffff;
     position: relative;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.16);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 .listBox>view>image {
     width: 36rpx;

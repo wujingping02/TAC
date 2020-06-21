@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "详情页",
   "usingComponents": {  
-    "van-calendar": "../../miniprogram_npm/vant-weapp/calendar",
+    "myCalendar": "../../miniprogram_npm/vant-weapp/calendar3",
     "van-cell": "../../miniprogram_npm/vant-weapp/cell",
     "myClassList": "../../components/myClassList"
   }

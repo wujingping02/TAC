@@ -1,4 +1,6 @@
-<view class="headerBox">
-  <image bind:tap="back" class="back"src="../../images/back.png"/>
+<view class="headerBox"  style="background : {{color || '#FFCE00'}}">
+  <view bind:tap="back" class="backBox">
+    <image class="back" src="../../images/back.png"/>
+  </view>
   <text class="title">{{title}}</text>
 </view>

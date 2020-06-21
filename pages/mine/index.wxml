@@ -1,5 +1,9 @@
 <view class="mine">
   <view class="avatarBox">
+    <view class="headerBox">
+      <!-- <image bind:tap="back" class="back"src="../../images/back.png"/> -->
+      <text class="title">个人中心</text>
+    </view>
     <view class="avatarBg">
       <image class="avatarImg" src="{{ Avatar }}"/>
     </view>

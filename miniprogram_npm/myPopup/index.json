@@ -4,6 +4,8 @@
     "myInput" : "../../components/myInput",
     "mySelect" : "../../components/mySelect",
     "van-overlay": "../vant-weapp/overlay",
-    "van-search": "../vant-weapp/search"
+    "van-search": "../vant-weapp/search",
+    "myCourseAttr": "../../components/myCourseAttr",
+    "myPhoto" : "../../components/myPhoto"
   }
 }

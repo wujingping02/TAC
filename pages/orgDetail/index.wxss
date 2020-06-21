@@ -3,7 +3,17 @@
     background: #ffffff;
 }
 .orgAvatarBox {
+    width: 101%;
+    height: 600rpx;
+    background-image: url('http://img3.imgtn.bdimg.com/it/u=1996410545,3787547474&fm=26&gp=0.jpg');
+    background-size: 100% 100%;
+    text-align: center;
+    display: inline-block;
     border-radius: 0 0 0 0;
+}
+.headerBox {
+    position: static;
+    background: transparent;
 }
 .orgDetailBox {
     border-radius: 100rpx 100rpx 0 0;
@@ -22,17 +32,17 @@
     color: #3D3B5E;
     line-height: 20px; 
     margin-top: 32rpx;
-    padding: 0 20rpx;
+    padding: 0 40rpx;
 }
 .orgPhotoText {
     font-size: 28rpx;
     color: #3D3B5E;
-    padding: 0 20rpx;
+    padding: 0 40rpx;
     margin-top: 66rpx;
 }
 .orgPhotoBox {
     margin-top: 24rpx;
-    padding: 0 20rpx;
+    padding: 0 40rpx;
 }
 .orgAddressBox {
     margin-top: 24rpx;
@@ -40,7 +50,7 @@
 .orgAddress {
     font-size: 24rpx;
     color: #3D3B5E;
-    padding: 0 20rpx;
+    padding: 0 40rpx;
 }
 .avatarImg2 {
     position: absolute;

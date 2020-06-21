@@ -1,0 +1,17 @@
+<view class="addressBox">
+  <block wx:key="box" wx:for="{{list}}">
+    <view class="addressListBox">
+      <image src="../../images/classIcon.png" class="icon"/>
+      <view class="addressDetail">{{item.name}}</view>
+      <view class="introd">{{item.address}}</view>
+      <view class="addClassBox">
+        <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">删除</view>
+        <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">开班</view>
+        <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">课程详情</view>
+      </view>
+    </view>
+  </block>
+  <view class="bottomBox"></view>
+  <text class="noAddress noAddress2" wx:if='{{list.length === 0}}'>暂无课程</text>
+  <text class="noAddress" wx:if='{{list.length === 0}}'>请点击底部按钮添加课程信息</text>
+</view>

@@ -5,7 +5,10 @@ Component({
   // 组件的属性列表
   properties: {
     list : Array,
-    className : String,
+    className : {
+      type : String,
+      value : "page"
+    },
     hidePopup : {
       type : Boolean,
       value : false
@@ -17,6 +20,14 @@ Component({
     sure : {
       type : String,
       value : '确认'
+    },
+    paddingTop : {
+      type : String,
+      value : '60rpx'
+    },
+    background : {
+      type : String,
+      value : '#ffffff'
     },
     promptText : String
   },  

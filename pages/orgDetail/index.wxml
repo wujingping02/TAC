@@ -1,5 +1,11 @@
 <view class="orgDetail">
-  <view class="orgAvatarBox avatarBox">
+  <view class="orgAvatarBox">
+    <view class="headerBox">
+      <view bind:tap="back" class="backBox">
+        <image class="back" src="../../images/back.png"/>
+      </view>
+      <text class="title">个人中心</text>
+    </view>
     <view class="avatarBg">
       <image class="avatarImg" src="{{ orgImg }}"/>
     </view>
@@ -8,9 +14,7 @@
     <view class="name">{{orgName}}</view>
     <view class="introduction">{{orgDetail}}</view>
     <view class="orgPhotoText">机构相册</view>
-    <view class="orgPhotoBox">
-      <van-uploader previewImage="{{true}}" fileList="{{orgPhoto}}"></van-uploader>
-    </view>
+    <myPhoto previewImage="{{true}}" padding="0 40rpx" orgPhoto="{{orgPhoto}}"/>
     <view class="orgPhotoText">机构地址</view>
     <view class="orgAddressBox">
       <block wx:key="box" wx:for="{{orgAddress}}">

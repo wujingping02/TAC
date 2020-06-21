@@ -9,7 +9,7 @@ create(store, {
     courseList: null,
     listLeft: [],
     listRight: [],
-    ageList: [{age: '0岁'},{age: '1岁'},{age: '2岁'},{age: '3岁'},{age: '4岁'},{age: '5岁'},{age: '5岁以上'}],
+    ageList: [{age: '0岁'},{age: '1岁'},{age: '2岁'},{age: '3岁'},{age: '4岁'},{age: '5岁'},{age: '5岁以上'},{age: "全部"}],
     hideAge: true,
     upArrow: "",
     searchValue: ""
@@ -54,9 +54,14 @@ create(store, {
 
   // 用户点击课程列表
   toCourseDetail: function (data) {
-    let index = data.detail;
+    let id,index = data.detail;
+    if(index.indexOf('l') > -1){
+      id = this.data.listLeft[index.slice(1)].name;
+    }else{
+      id = this.data.listRight[index.slice(1)].name;
+    }
     wx.navigateTo({
-      url: "/pages/courseDetail/index?index=" + index
+      url: "/pages/courseDetail/index?id=" + id
     });
   },
  
@@ -105,9 +110,14 @@ create(store, {
         }
       }
     });
-    let list = this.store.data.courseList.filter(v => {
-      return index > (v.sAge - 1) && index < (v.eAge * 1 + 1)
-    })
+    let list;
+    if(index < 7){
+      list = this.store.data.courseList.filter(v => {
+        return index > (v.sAge - 1) && index < (v.eAge * 1 + 1)
+      })
+    }else{
+      list = this.store.data.courseList;
+    }
     let obj = this.getNewList(list);
     this.setData({
       listLeft: obj.l,

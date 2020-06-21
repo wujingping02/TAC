@@ -18,7 +18,7 @@ export default{
             token : "123"
         }
     },
-    // 首页获取课程列表
+    // 选课获取课程列表
     "courseList" : {
         url : "/course/list",
         mockData : {
@@ -65,6 +65,57 @@ export default{
             ]
         }
     },
+    // 选课获取课程列表
+    "courseList2" : {
+        url : "/institute/course/list2",
+        mockData : {
+            code : "0000",
+            msg : "失败了",
+            data : [
+                {
+                    name : "英语1",
+                    url : "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2137031589,1389711183&fm=11&gp=0.jpg",
+                    sAge : "1",
+                    eAge : "2",
+                    address : "徐汇区宛平南路1109号",
+                    price : "200",
+                    introd : "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈",
+                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
+                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
+                },{
+                    name : "英语2",
+                    url : "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3233389117,473746678&fm=11&gp=0.jpg",
+                    sAge : "2",
+                    eAge : "3",
+                    address : "徐汇区宛平南路1109号",
+                    price : "200",
+                    introd : "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈",
+                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
+                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
+                },{
+                    name : "语文3",
+                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1264197438,3434707790&fm=11&gp=0.jpg",
+                    sAge : "3",
+                    eAge : "4",
+                    address : "徐汇区宛平南路1109号",
+                    price : "200",
+                    introd : "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈",
+                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
+                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
+                },{
+                    name : "数学4",
+                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=905759001,1131007225&fm=11&gp=0.jpg",
+                    sAge : "4",
+                    eAge : "5",
+                    address : "徐汇区宛平南路1109号",
+                    price : "500",
+                    introd : "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈",
+                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
+                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
+                }
+            ]
+        }
+    },
     // 获取班级列表
     "classList" : {
         url : "/institute/class/list",
@@ -72,11 +123,11 @@ export default{
             code : "0000",
             msg : "失败了",
             data : [
-                {name : "班级1"},
-                {name : "班级2"},
-                {name : "班级3"},
-                {name : "班级4"},
-                {name : "班级5"}
+                {name: "班级1",address: "上课地址：上海市徐汇区龙华中立1109号"},
+                {name: "班级2",address: "上课地址：上海市徐汇区龙华中立1109号"},
+                {name: "班级3",address: "上课地址：上海市徐汇区龙华中立1109号"},
+                {name: "班级4",address: "上课地址：上海市徐汇区龙华中立1109号"},
+                {name: "班级5",address: "上课地址：上海市徐汇区龙华中立1109号"}
             ]
         }
     },
@@ -87,7 +138,13 @@ export default{
             code : "0000",
             msg : "失败了",
             data : [
-                {name : "课节1"}
+                {
+                    date : "2020-09-09",
+                    time : "10:00-10:00",
+                    name : "张三",
+                    url : "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1025402524,1094237387&fm=26&gp=0.jpg",
+                    className : "哈哈班"
+                }
             ]
         }
     },
@@ -168,17 +225,6 @@ export default{
             ]
         }
     },
-    // 机构查询课程列表
-    "courseList2" : {
-        url : "/institute/course/list2",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {name : "课程1"}
-            ]
-        }
-    },
     // 查询机构详情
     "introductionGetDetail" : {
         url : "/institute/introduction/getDetail",
@@ -234,7 +280,7 @@ export default{
             ]
         }
     },
-    // 获取助教列表
+    // 获取助教列表获取助教列表
     userList : {
         url : "/institute/user/list",
         mockData : {
@@ -261,6 +307,43 @@ export default{
             data : {
                 name : "张三",
                 phone : "13112341234"
+            },
+        }
+    },
+    // 首页查询课程详情
+    courseQuery : {
+        url : "/course/query",
+        mockData : {
+            code : "0000",
+            msg : "失败了",
+            data : {
+                name : "张三",
+                age1: "2",
+                age2: "3",
+                address: "岚皋路597号十八公尺806",
+                phone : "13112341234",
+                orgPhoto: [
+                    "http://img2.imgtn.bdimg.com/it/u=1873874002,1324989472&fm=26&gp=0.jpg",
+                    "http://img5.imgtn.bdimg.com/it/u=132539127,2703113384&fm=26&gp=0.jpg"
+                ],
+                teacher : [
+                    {
+                        url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=773859522,545547748&fm=26&gp=0.jpg",
+                        name : "教师1",
+                        phone : "13112341234"
+                    },{   
+                        url : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3099595195,3442150895&fm=26&gp=0.jpg",
+                        name : "教师2",
+                        phone : "13112341234"
+                    },{   
+                        url : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3099595195,3442150895&fm=26&gp=0.jpg",
+                        name : "教师3",
+                        phone : "13112341234"
+                    }
+                ],
+                courseIntrd: "这是啊实打实大快速的拉升的接口连接上大师级的垃圾收到了sad就拉倒就卡死的进口丝萨贝达哈弗力缆狂澜喀什东路卡死了的卡拉斯科达拉斯",
+                orgName: "哈哈哈哈",
+                orgIntrd: "看看监控登记卡SDK撒娇的凯撒肯德基卡时间段卡时间段卡加斯打卡机山东矿机撒开的凯撒奖打卡时间贷款啦啦啦啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿"
             },
         }
     }

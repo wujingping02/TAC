@@ -1,3 +1,23 @@
-<view class="detail">
-  <view>{{courseName}}</view>
+<view class="box">
+  <myHeader title="{{title}}"/>
+  <view class="topBG">
+    <view class="radius"></view>
+  </view>
+  <view class="courseCardBox">
+    <view class="courseCard">
+      <view class="name">{{name}}</view>
+      <view class="age">{{ "适合年龄" + age1 + "-" + age2 + "岁" }}</view>
+      <view class="address">{{address}}</view>
+      <view class="phoneBox" bind:tap="callOrg">
+        <text class="phone">电话联系</text>
+      </view>
+    </view>
+  </view>
+  <myPopup background="#f9f9f9" id="page" paddingTop="0rpx" list="{{fieldList}}"/>
+  <myButton className="reservation" bind:click="submit" content="立即预约"/>
+  <view class="introduction">{{courseIntrd}}</view>
+  <myPhoto previewImage="{{true}}" disable="{{true}}" padding="0 40rpx" orgPhoto="{{orgPhoto}}"/>
+  <myClassRoom type="teacher" className="preview" disable="{{true}}" list="{{classList}}" bind:itemClick="itemClick"></myClassRoom>
+  <view class="orgName">{{orgName}}</view>
+  <view class="introduction">{{orgIntrd}}</view>
 </view>

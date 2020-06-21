@@ -1,4 +1,24 @@
 import service from './service.js'
+
+// 获取时间的年月日
+function getTime(ms) {
+  function addZero(num){
+    if(parseInt(num) < 10){
+        num = '0'+num;
+    }
+    return num;
+  }
+    var oDate = new Date(ms),
+    oYear = oDate.getFullYear(),
+    oMonth = oDate.getMonth()+1,
+    oDay = oDate.getDate(),
+    oHour = oDate.getHours(),
+    oMin = oDate.getMinutes(),
+    oSen = oDate.getSeconds(),
+    oTime = oYear +'-'+ addZero(oMonth) +'-'+ addZero(oDay);
+    return oTime;
+}
+
 // ajax请求
 function ajax(data) {
   return new Promise((suc, fail) => {
@@ -81,17 +101,23 @@ function getUserInfo() {
 }
 
 // 获取一个模块里面所有功能组件的值的集合
-function collectVals(filedList) {
-  let vals = [],page = this.selectComponent("#page");
+function collectVals(filedList, id) {
+  id = id || "page";
+  let vals = {},page = this.selectComponent("#" + id);
   // 先校验下值是不是合法
   for(let i = 0;i<filedList.length;i++){
-    if(page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).check() === false){
+    if(page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).check() === false && false){
       return
     }else{
-      vals.push({
-        key : filedList[i].key,
-        value : page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).getValue()
-      });
+      if(filedList[i].key === "courseAttr"){
+        // vals.push(...page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).getValue());
+      }else{
+        // vals.push({
+        //   key : filedList[i].key,
+        //   value : page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).getValue()
+        // });
+        vals[filedList[i].key] = page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).getValue()
+      }
     }
   }
   return vals
@@ -101,5 +127,6 @@ module.exports = {
   ajax: ajax,
   mockRequest : mockRequest,
   getUserInfo : getUserInfo,
-  collectVals : collectVals
+  collectVals : collectVals,
+  getTime : getTime
 }

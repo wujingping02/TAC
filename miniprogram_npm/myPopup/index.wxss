@@ -1,6 +1,4 @@
 .page {
-    padding-top: 60rpx;
-    background: #ffffff;
     display: inline-block;
     border-radius: 100rpx 100rpx 0 0;
     width: 100%;

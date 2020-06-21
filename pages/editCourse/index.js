@@ -6,6 +6,7 @@ import service from '../../utils/service'
 create(store, {
   data: {
     courseList: null,
+    title: "课程管理"
   },
 
   onShow: function () {
@@ -18,11 +19,18 @@ create(store, {
     })
   },
 
- // 用户点击课程列表
- toCourseDetail: function (data) {
-  let index = data.detail;
-  wx.navigateTo({
-    url: "/pages/classList/index?index=" + index
-  });
-},
+  // 跳到班级列表
+  toClsRoomList: function (data) {
+    let index = data.detail;
+    wx.navigateTo({
+      url: "/pages/addClass/index?index=" + index
+    });
+  },
+
+  // 新建一个课程
+  click: function () {
+    wx.navigateTo({
+      url: "/pages/addCourse/index"
+    });
+  }
 })

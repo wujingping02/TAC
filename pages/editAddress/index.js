@@ -27,6 +27,7 @@ create(store, {
     });
   },
 
+  // 新建一个教室
   click: function () {
     wx.navigateTo({
       url: "/pages/addAddress/index"

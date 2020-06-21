@@ -1,4 +1,4 @@
-<view class="{{className}}" hidden="{{hidePopup}}">
+<view class="{{className}}" style="padding-top : {{paddingTop}};background : {{background}}" hidden="{{hidePopup}}">
   <van-overlay show="true" wx:if="{{className === 'toast'}}"/>
   <view class="contBox">
     <block wx:key="box" wx:for="{{list}}">
@@ -10,22 +10,33 @@
         type="{{item.type}}" 
         lable="{{item.lable}}"/>
       <mySelect 
-        wx:elif="{{item.type === 'selector' || item.type === 'time' || item.type === 'date' || item.type === 'calendar' || item.type === 'region'}}" 
+        wx:if="{{item.type === 'selector' || item.type === 'time' || item.type === 'date' || item.type === 'calendar' || item.type === 'region'}}" 
         list="{{item.nameList}}" 
         idList="{{item.idList}}" 
         value="{{item.value}}" 
         isMust="{{item.isMust}}" 
         id="{{item.key}}" 
         type="{{item.type}}" 
+        className="{{item.className}}" 
+        lable="{{item.lable}}"/>
+      <myPhoto 
+        wx:if="{{item.type === 'photo'}}"
+        fileList="{{orgPhoto}}"
+        value="{{item.value}}" 
+        isMust="{{item.isMust}}" 
+        id="{{item.key}}" 
+        type="{{item.type}}" 
         lable="{{item.lable}}"/>
       <van-search 
-        wx:else="{{item.type === 'search'}}" 
+        wx:if="{{item.type === 'search'}}" 
         value="{{item.value}}" 
         shape="round"
+        id="{{item.key}}" 
         show-action="{{true}}"
         placeholder="{{item.lable}}"
         bind:search="onSearch"
       ></van-search>
+      <myCourseAttr id="{{item.key}}" wx:if="{{item.type === 'courseAttr'}}"/>
     </block>
     <view hidden="{{promptText === ''}}" class="prompt">{{promptText}}</view>
     <view wx:if="{{className === 'toast'}}">

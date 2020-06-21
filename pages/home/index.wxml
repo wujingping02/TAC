@@ -1,12 +1,17 @@
-<view id="rr" class="home">
-  <van-search 
-    id="search"
-    value="{{searchValue}}"
-    shape="round"
-    show-action="{{true}}"
-    placeholder="搜索课程"
-    bind:search="onSearch"
-  ></van-search>
+<view class="home">
+  <view class="searchBg">
+    <view class="searchBox">
+      <van-search 
+        background="transparent"
+        id="search"
+        value="{{searchValue}}"
+        shape="round"
+        show-action="{{true}}"
+        placeholder="搜索课程"
+        bind:search="onSearch"
+      ></van-search>
+    </view>
+  </view>
   <view class="operatBox">
     <view class="recommendBox">
       <text class="recommend">推荐</text>
@@ -22,5 +27,6 @@
       </block>
     </view>
   </view>
+  <van-overlay show="{{!hideAge}}"/>
   <myCourseList listLeft="{{listLeft}}" listRight="{{listRight}}" bind:toCourseDetail="toCourseDetail"></myCourseList>
 </view>

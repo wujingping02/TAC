@@ -1,0 +1,11 @@
+<view class="box" style="padding : {{padding}}">
+    <view class="lable">{{lable}}</view>
+    <view class="orgPhotoBox">
+      <van-uploader 
+        previewImage="{{true}}"
+        fileList="{{orgPhoto}}"
+        deletable="{{!disable}}"
+        showUpload="{{!disable}}"
+        id="val"/>
+    </view>
+</view>

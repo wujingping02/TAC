@@ -1,5 +1,6 @@
 import { VantComponent } from '../common/component';
 import { transition } from '../mixins/transition';
+
 VantComponent({
   classes: [
     'enter-class',
@@ -23,6 +24,14 @@ VantComponent({
     zIndex: {
       type: Number,
       value: 100,
+    },
+    url: {
+      type: String,
+      value: "../../../images/up.png"
+    },
+    height: {
+      type: String,
+      value: "760rpx"
     },
     overlay: {
       type: Boolean,
@@ -77,5 +86,20 @@ VantComponent({
       }
       this.setData(updateData);
     },
+    keepCalendar() {
+      if(this.data.url == "../../../images/up.png"){// 默认是展开的，点击收起
+        this.setData({
+          url : "../../../images/down.png",
+          height : "178rpx"
+        })
+        
+      }else{// 再点击展开
+        this.setData({
+          url : "../../../images/up.png",
+          height : "760rpx"
+        })
+      }
+      this.triggerEvent("keepCalendar");
+    }
   },
 });

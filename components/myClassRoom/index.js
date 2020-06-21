@@ -5,7 +5,9 @@ Component({
   // 组件的属性列表 
   properties: {  
     list: Array,
-    type: String
+    type: String,
+    disable: Boolean,
+    className: String
   },  
   // 组件的初始数据   
   data: {  
@@ -15,6 +17,10 @@ Component({
   methods: {
     addItem : function(){
       this.triggerEvent("addItem")
+    },
+    clickItem : function(e){
+      let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
+      this.triggerEvent("itemClick", index)
     }
   },
   ready: function () {

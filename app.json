@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/teacherList/index",
+    
     "pages/detail/index",
     "pages/home/index",
     "pages/mine/index",
@@ -8,16 +8,18 @@
     "pages/orgDetail/index",
     "pages/editAddress/index",
     "pages/addAddress/index",
-    
+    "pages/teacherList/index",
     "pages/assistantList/index",
     "pages/editCourse/index",
     "pages/clsRoomList/index",
-    "pages/lessonList/index",
     "pages/personInfo/index",
     "pages/orgList/index",
     "pages/exchangeClsList/index",
     "pages/myPhoto/index",
     "pages/classList/index",
+    "pages/addCourse/index",
+    "pages/addClass/index",
+    "pages/editClass/index",
     "pages/myChildren/index"
   ],
   "window": {
@@ -29,27 +31,27 @@
   },
   "tabBar": {
     "color": "#aaaaaa",
-    "selectedColor": "#39c3f2",
+    "selectedColor": "#FF8711",
     "backgroundColor": "#fff",
-    "borderStyle": "black",
+    "borderStyle": "white",
     "position": "bottom",
     "list": [
       {
         "pagePath": "pages/home/index",
-        "text": "首页",
+        "text": "选课",
         "iconPath": "images/home.png",
-        "selectedIconPath": "images/home.png"
+        "selectedIconPath": "images/home2.png"
       },
       {
         "pagePath": "pages/detail/index",
         "text": "行事历",
         "iconPath": "images/detail.png",
-        "selectedIconPath": "images/detail.png"
+        "selectedIconPath": "images/detail2.png"
       },{
         "pagePath": "pages/mine/index",
         "text": "个人中心",
         "iconPath": "images/mine.png",
-        "selectedIconPath": "images/mine.png"
+        "selectedIconPath": "images/mine2.png"
       }
     ]
   },

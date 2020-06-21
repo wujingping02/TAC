@@ -1,0 +1,92 @@
+
+.box {
+    background: #f9f9f9;
+    padding-bottom: 40rpx;
+}
+.courseCardBox {
+    width: 100%;
+    padding: 0 40rpx;
+    background: #f9f9f9;
+    transform: translateY(-20rpx);
+    border-radius: 100rpx 100rpx 0 0;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.courseCard {
+    background: #3FBAF1;
+    width: 100%;
+    border-radius: 20rpx;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    display: inline-block;
+    text-align: center;
+}
+.name {
+    font-size: 44rpx;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 80rpx;
+}
+.age {
+    display: inline-block;
+    background: rgba(255,255,255,0.10);
+    border-radius: 28rpx;
+    border-radius: 28rpx;
+    padding: 16rpx 31rpx;
+    font-size: 24rpx;
+    color: #FFFFFF;
+    margin-top: 25rpx;
+}
+.address {
+    font-size: 32rpx;
+    color: #FFFFFF;
+    line-height: 32rpx;
+    margin-top: 47rpx;
+}
+.address::before {
+    content: "";
+    display: inline-block;
+    width: 34rpx;
+    height: 32rpx;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAgCAMAAABAUVr7AAAAolBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8ELnaCAAAANXRSTlMASjb1+tyG39OKNCUfFg/oqYDj1aF8bCwoCNnMyLm1lHNdVkI+MhgE95tlRjoL7MGZkEx5ThHhsokAAAF9SURBVDjLfZLbdqJAEEUPAspFQJHxrhkTEzVqbjP7/39toMVBO8b90NRi1epdnEKXRO15/jZdDl/0A+MlNW57olt8ueDNd5+9DjC7ddGTBw8vp3IGg1Q2yRuuo5pNAT3ZPMCjNOnPssVX2bOAtdVx3LIsO2ZU9KWu9+2aR9hLIcw/MoikHq71VW28jeTzXl6wpS29wkhXFHTK06scmlaOJ3DsabPyDAiOOnj8kv7CQVf8htSc2buHG5sysYKDV1VDAttVWc3JZeEzmFRfVizCcflcU9oshrC7yDrHTWSzgOJY16OBydommUJwWuPKhVA3SJfgd2VSc1eyiFutVrTRB+TjaqpspKR6lVyGAgRm3dkn5LGePaAKqKYDYDYQmqK0HTC0644Ido6zT80663kUO44zxa9bQhjrzHrY/JF9eD57gmZsQ901Opui/1kPqXG7MgzwLc8fary4MV171HJOdNWYGs93GlMIq9ZPFMbkc5++FHAPM0W6d+6xlv4BsVJCnC5tUnsAAAAASUVORK5CYII=');
+    background-size: 100% 100%;
+    transform: translate(-5px, 2px);
+}
+.phoneBox {
+    margin-top: 40rpx;
+    display: inline-block;
+    width: 220rpx;
+    padding: 15rpx;
+    border-radius: 64rpx;
+    border: 1px solid #ffffff;
+    text-align: center;
+    margin-bottom: 56rpx;
+}
+.phone {
+    font-size: 24rpx;
+    color: #FFFFFF;
+}
+.phone::before {
+    content: "";
+    display: inline-block;
+    width: 30rpx;
+    height: 32rpx;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAA2hJREFUSA2tlstLVVEUh729tJeSlYElof4DUVDZg6gGTTJHDXvSJDIjqCAsECFJalRhk0op7AFZCUGDSohq0ECDnlQDBYNKoTQHZq/b9zucpbt9z7k36S74XGuv/Vtrn3PuPtuTkxNaMpkshnYYgC5YZ3Pj8dTdgVOQyFiHaCo8B9e+M6jIWOwJqNkCv+AspF8cQSPIfkINdIPsPRR5vTMOqdkO6RdHkA+DIGtUV/xiGFYC64CJGVfzBNRsAy3eBKl3TnIHyEZgntUT71IytOOW9z3zu+FKDHpispN+3QQSq8Pk40Qi8ckExOeIm8PxIYqrbM7zsxjPjmFSqC3waoLH+jK4pmSy3p8knwfa4TLt9nJfEzdGWwXaoFch9aci2QeynVFNyJfCZwmwy1EaP4duE8QvqgIEtok2+w1sjKYOZK8tF+fRVIIWvQb2qFPlTH4B2dbU2eDC9jL3LVDQLErj5tA9BD3e+EVVgMAOjlqvgV4znWRmPQQLXU1UjCb9glaE8FbY+a+7IXc6zMvdAO3e7BkN96sz1g+jLzrxGyWxpuytNtZJ7/G9cDgHv2psKscu4oOTy27IXdnv3GqdybXodjG9biWWz6qncbVWwLR756s5vhyGQPYUpmd10XCRAhrbIdFiC5DTQaCDXnYT7PGb5P89TW2T/SZeah2JD4JZg+Wz5uk8Bd6FK7zFz7DmxM1hXq4BIu+cfAno8HgFrVBqPdJ6hBXwA2QXTUysi7qvZGht+Gk2L8+4ELrBNZ2Kla4uNkZ4xKmsMyE5LX7BmeskDjaiNMQ6ZGTaoPVge0Y/3THQqxtvEoDuyKzaVZM8ALbhPhIfBn1lmNVIz0D/1bosib8Lc91eKTGCXHgAZnWuiORG+GqTjr/t6fKYO+/M9xIvczUpMQK9Yu7ilxi7G66McTNoI+p4PQP5KY1IkNdnlP2HGyFeG6UbzSHQnV8HMy0y+qqNCv8hoG4J9ISNOjOWINRvXgu227VZWqA4Y7EnoGYfyAa8qfgh4uWgR2qmR6fHvwIi32vrxnwR6NvdNmV72gIrNE/hZOI9cBQKLY/vgw54Br0wDDNBB8hK0H+9XJC9gA1BNN4/XIA2nj6J7AuVMKPpLTgBwcEzrjuOukAaLSK/HtZAGSwA3d0Q9MMTeARtfKsP4gP7AyS5ovNgIW18AAAAAElFTkSuQmCC');
+    background-size: 100% 100%;
+    transform: translate(-2px, 4px);
+}
+.introduction {
+    font-size: 24rpx;
+    color: #3D3B5E;
+    line-height: 20px; 
+    margin-top: 16rpx;
+    padding: 0 40rpx;
+}
+.orgPhotoBox {
+    margin-top: 24rpx;
+    padding: 0 40rpx;
+}
+.orgName {
+    padding: 52rpx 0 10rpx 40rpx;
+    font-size: 28rpx;
+    color: #3D3B5E;
+}

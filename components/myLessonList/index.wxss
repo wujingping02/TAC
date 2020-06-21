@@ -1,0 +1,51 @@
+.bigBox {
+    padding: 0 40rpx;
+    background: #ffffff;
+}
+.box {
+    width: 100%;
+    height: 220rpx;
+    background: #DBF0FF;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1); 
+    padding: 44rpx 32rpx;
+    border-radius: 44rpx;
+    display: inline-block;
+    box-sizing: border-box;
+}
+.time {
+    font-size: 24rpx;
+    color: #9D9DAF;
+}
+.calssBox {
+    margin-top: 28rpx;
+    position: relative;
+}
+.url {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 80rpx;
+}
+.name {
+    position: absolute;
+    top: 1rpx;
+    left: 100rpx;
+    font-size: 28rpx;
+    color: #3D3B5E;
+}
+.className {
+    position: absolute;
+    bottom: 1rpx;
+    left: 100rpx;
+    font-size: 24rpx;
+    color: #3D3B5E;
+}
+.del {
+    position: absolute;
+    bottom: 1rpx;
+    right: 0;
+    font-size: 24rpx;
+    color: #3D3B5E;
+    border: 1px solid #3D3B5E;
+    border-radius: 28px;
+    padding: 15rpx 22rpx;
+}

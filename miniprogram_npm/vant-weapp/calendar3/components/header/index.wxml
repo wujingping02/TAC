@@ -1,0 +1,22 @@
+<view style="box-shadow: none;" class="van-calendar__header">
+  <block wx:if="{{ showTitle }}">
+    <view style="border-bottom: 1px solid #E6E6EA;">
+      <view class="van-calendar__header-title"><slot name="title"></slot></view>
+      <view style="text-align: left;font-size: 28rpx;color: #3D3B5E;" class="van-calendar__header-title">{{ title }}</view>
+      <view wx:if="{{ showSubtitle }}" style="font-size: 28rpx;color: #3D3B5E;display: inline-block;position: absolute;right: 40rpx;top: 0;" class="van-calendar__header-subtitle">
+        {{ subtitle }}
+      </view>
+    </view>
+    
+  </block>
+
+  <!-- <view wx:if="{{ showSubtitle }}" class="van-calendar__header-subtitle">
+    {{ subtitle }}
+  </view> -->
+
+  <view class="van-calendar__weekdays">
+    <view wx:for="{{ weekdays }}" wx:key="index" class="van-calendar__weekday">
+      {{ item }}
+    </view>
+  </view>
+</view>

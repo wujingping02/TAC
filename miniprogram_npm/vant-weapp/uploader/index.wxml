@@ -39,7 +39,7 @@
       </view>
       <van-icon
         wx:if="{{ deletable }}"
-        name="clear"
+        name="../../../images/del.png"
         class="van-uploader__preview-delete"
         data-index="{{ index }}"
         catch:tap="deleteItem"

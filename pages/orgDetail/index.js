@@ -30,5 +30,9 @@ create(store, {
         orgAddress : res.data.address
       });
     })
+  },
+
+  back: function () {
+    wx.navigateBack({delta: 1})
   }
 })

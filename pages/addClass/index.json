@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "新增课节",
+  "navigationBarTitleText": "基本信息",
   "usingComponents": { 
     "myLessonList" : "../../components/myLessonList"
   }

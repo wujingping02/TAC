@@ -1,5 +1,5 @@
 <view class="pageBox">
   <myHeader title="{{title}}"/>
-  <myPopup id="page" className="page" list="{{fieldList}}"/>
+  <myPopup id="page" list="{{fieldList}}"/>
   <myButton className="save" bind:click="click" content="保存"/>
 </view>

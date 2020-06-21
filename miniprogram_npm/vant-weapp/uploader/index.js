@@ -7,7 +7,10 @@ VantComponent({
       {
         disabled: Boolean,
         multiple: Boolean,
-        uploadText: String,
+        uploadText: {
+          type: String,
+          value: "上传图片"
+        },
         useBeforeRead: Boolean,
         afterRead: null,
         beforeRead: null,
@@ -58,7 +61,7 @@ VantComponent({
         },
         uploadIcon: {
           type: String,
-          value: 'photograph',
+          value: '../../../images/camera.png',
         }
       },
       chooseImageProps

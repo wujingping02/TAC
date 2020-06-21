@@ -14,6 +14,13 @@
     background: #ffffff;
     padding-top: 74.4rpx;
 }
+.reservation {
+    width: 100%;
+    height: 100rpx;
+    display: inline-block;
+    background: #f9f9f9;
+    padding-top: 34rpx;
+}
 .btn {
     font-size: 32rpx;
     border-radius: 40rpx;
@@ -25,9 +32,16 @@
     margin: 14rpx auto 0;
     text-align: center;
 }
-.submit>.btn,.save>.btn {
+.reservation>.btn,.submit>.btn,.save>.btn {
     color: #FFFFFF;
     background: #FF8711;
+}
+.reservation>.btn {
+    width: 240rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    font-size: 24rpx;
+    color: #FFFFFF;
 }
 .submit>.btn {
     width: 64%;

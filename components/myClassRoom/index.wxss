@@ -4,21 +4,19 @@
     width: 100%;
     display: inline-block;
     padding-top: 26rpx;
-    transform: translateX(-2.1665%);
 }
 .oneItemBox,.addItemBox {
     display: inline-block;
     width: 28%;
     background: #3FBAF1;
-    margin-left: 4.333%;
+    margin-right: 4.333%;
     margin-top: 40rpx;
     height: 240rpx;
     border-radius: 16rpx;
+    position: relative;
 }
 .oneItemBox {
-    position: relative;
-    text-align: center;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.16);
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 .addItemBox {
     border: 1px dashed #999999;
@@ -27,41 +25,53 @@
 .teacher {
     background: #ffffff;
 }
-.name,.number {
-    width: 100%;
-    color: #ffffff;
-    overflow: hidden;
-}
 .name {
+    position: absolute;
+    top: 79rpx;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 36rpx;
-    height: 36rpx;
-    line-height: 36rpx;
-    margin-top: 79rpx;
+}
+.number {
+    position: absolute;
+    top: 126rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28rpx;
 }
 .addIcon {
-    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 66rpx;
     height: 66rpx;
-    margin: 88rpx auto 0;
 }
 .teacher_avatar {
-    margin: 36rpx auto 18.8rpx;
+    position: absolute;
+    top: 36rpx;
+    left: 50%;
+    transform: translateX(-50%);
     width: 84rpx;
     height: 84rpx;
     border-radius: 42rpx;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.16); 
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
 }
 .teacher_name {
+    position: absolute;
+    top: 130rpx;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 28rpx;
     color: #3D3B5E;
-    text-align: center;
 }
 .teacher_phone {
+    position: absolute;
+    top: 170rpx;
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 24rpx;
-    height: 30rpx;
-    line-height: 30rpx;
     color: #9D9DAF;
-    text-align: center;
 }
 .del {
     width: 40rpx;
@@ -69,4 +79,7 @@
     position: absolute;
     right: -10rpx;
     top: -10rpx;
+}
+.preview {
+    padding: 0 0 0 40rpx;
 }

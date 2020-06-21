@@ -1,3 +1,5 @@
+import { getTime } from "../../utils/util"
+
 Component({  
   options: {  
     multipleSlots: true // 在组件定义时的选项中启用多slot支持
@@ -11,7 +13,8 @@ Component({
     value : String,
     mode : String,
     list : Array,
-    idList : Array
+    idList : Array,
+    className : String
   },  
   // 组件的初始数据
   data: {
@@ -26,24 +29,7 @@ Component({
     })
   },
   // 组件的方法列表
-  methods: {  
-    getTime : function(ms){
-      function addZero(num){
-        if(parseInt(num) < 10){
-            num = '0'+num;
-        }
-        return num;
-      }
-      var oDate = new Date(ms),
-      oYear = oDate.getFullYear(),
-      oMonth = oDate.getMonth()+1,
-      oDay = oDate.getDate(),
-      oHour = oDate.getHours(),
-      oMin = oDate.getMinutes(),
-      oSen = oDate.getSeconds(),
-      oTime = oYear +'-'+ addZero(oMonth) +'-'+ addZero(oDay);
-      return oTime;
-    },
+  methods: {
     setValue : function(val){
       this.setData({
         index : this.properties.idList.indexOf(val),
@@ -59,7 +45,7 @@ Component({
         this.setData({
           show : false,
           value : e.detail.map(v => {
-            return v = this.getTime(v)
+            return v = getTime(v)
           })
         })
       }else if(this.properties.type === "region"){// 省市区

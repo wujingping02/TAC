@@ -1,7 +1,7 @@
 <view>
   <view class="listLeft list" >
     <block wx:key="box" wx:for="{{listLeft}}">
-      <view class="box" bindtap="toCourseDetail" data-index="{{index * 2}}">
+      <view class="box" bindtap="toCourseDetail" data-index="{{'l' + index}}">
         <view class="imgBox">
           <text class="eAge" >{{item.sAge + '-' + item.eAge + "岁"}}</text>
           <image class="url" src="{{item.url}}" mode="widthFix"></image>
@@ -20,7 +20,7 @@
   </view>  
   <view class="listRight list">
     <block wx:key="box" wx:for="{{listRight}}">
-      <view class="box" bindtap="toCourseDetail" data-index="{{index * 2 + 1}}">
+      <view class="box" bindtap="toCourseDetail" data-index="{{'r' + index}}">
         <view class="imgBox">
           <text class="eAge" >{{item.sAge + '-' + item.eAge + "岁"}}</text>
           <image class="url" src="{{item.url}}" mode="widthFix"></image>

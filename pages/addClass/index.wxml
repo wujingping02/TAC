@@ -1,0 +1,7 @@
+<view class="pageBox">
+  <myHeader title="{{title}}"></myHeader>
+  <myPopup id="page" bind:sure="sureAdd" list="{{fieldList}}"/>
+  <myPopup id="page2" hidePopup="{{hidePopup}}" bind:sure="sureAdd" className="toast" list="{{fieldList2}}"/>
+  <myButton className="submit" bind:click="submit" content="添加班级"/>
+  <myLessonList list="{{lessonList}}"></myLessonList>
+</view>
