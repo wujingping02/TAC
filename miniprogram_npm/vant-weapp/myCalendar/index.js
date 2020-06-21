@@ -108,6 +108,7 @@ VantComponent({
     subtitle: '',
     currentDate: null,
     scrollIntoView: '',
+    hideMonth: false
   },
   created() {
     this.setData({
@@ -130,7 +131,7 @@ VantComponent({
         this.contentObserver.disconnect();
       }
       const contentObserver = this.createIntersectionObserver({
-        thresholds: [0, 0.1, 0.9, 1],
+        thresholds: [0, 0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9, 1,1.1],
         observeAll: true,
       });
       this.contentObserver = contentObserver;
@@ -286,5 +287,8 @@ VantComponent({
         this.$emit('confirm', copyDates(this.data.currentDate));
       });
     },
+    keepCalendar() {
+      this.triggerEvent("keepCalendar")
+    }
   },
 });

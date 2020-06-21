@@ -16,6 +16,7 @@
     background: transparent;
 }
 .orgDetailBox {
+    width: 100vw;
     border-radius: 100rpx 100rpx 0 0;
     transform: translateY(-100rpx);
     background: #ffffff;
