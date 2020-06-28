@@ -1,12 +1,12 @@
-<view class="addressBox">
+<view>
   <block wx:key="box" wx:for="{{list}}">
     <view class="addressListBox">
       <image src="../../images/classIcon.png" class="icon"/>
       <view class="addressDetail">{{item.name}}</view>
       <view class="introd">{{item.address}}</view>
       <view class="addClassBox">
-        <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">删除</view>
-        <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">开班</view>
+        <view wx:if="{{!fromMine}}" class="addClass" bindtap="toClsRoomList" data-index="{{index}}">删除</view>
+        <view wx:if="{{!fromMine}}" class="addClass" bindtap="toClsRoomList" data-index="{{index}}">开班</view>
         <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">课程详情</view>
       </view>
     </view>

@@ -17,7 +17,7 @@
         src="{{ item.url || item.path }}"
         alt="{{ item.name || ('图片' + index) }}"
         class="van-uploader__preview-image"
-        style="width: {{ utils.addUnit(previewSize) }}; height: {{ utils.addUnit(previewSize) }};"
+        style="width: 26vw; height: 26vw;"
         data-index="{{ index }}"
         bind:tap="onPreviewImage"
       />

@@ -1,3 +1,12 @@
 <view>
-  <text>课程拍照</text>
+  <myHeader title="{{title}}"/>
+  <view class="topBG"></view>
+  <view class="addressBox">
+    <view class="nowClassBox">
+      <text>当前课程：</text>
+      <text>{{className + ' '}}</text>
+      <text>{{time}}</text>
+    </view>
+    <myPhoto previewImage="{{true}}" orgPhoto="{{orgPhoto}}"/>
+  </view>
 </view>

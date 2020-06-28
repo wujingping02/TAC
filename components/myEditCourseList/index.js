@@ -15,9 +15,9 @@ Component({
   },  
   // 组件的方法列表 
   methods: {
-    toClsRoomList : function(e) {
+    toEditClass : function(e) {
       let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
-      this.triggerEvent("toClsRoomList", index);
+      this.triggerEvent("toEditClass", index);
     },
     edit : function(e) {
       let index = e.currentTarget.dataset['index'];// 当前点击的课程信息

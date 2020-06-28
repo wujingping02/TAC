@@ -1,0 +1,7 @@
+.nowClassBox {
+    font-size: 32rpx;
+    color: #3D3B5E;
+    margin-top: 56rpx;
+    margin-bottom: 40rpx;
+    text-align: center;
+}

@@ -1,30 +1,24 @@
 import store from '../../store'
 import create from '../../utils/create'
-import { ajax, mockRequest, getUserInfo } from '../../utils/util'
+import { ajax, mockRequest, getUserInfo, checkLogin } from '../../utils/util'
 import service from '../../utils/service'
 
 create(store, {
   data: {
     Avatar: "",
-    name: "",
-    userType : "",
+    userInfo: null
+  },
+
+  onLoad() {
+    checkLogin.call(this);
+  },
+
+  onReady() {
+    
   },
 
   onShow: function () {
-    wx.getUserInfo({
-      success: (res) => {
-        this.setData({
-          Avatar: res.userInfo.avatarUrl,
-          name: res.userInfo.nickName
-        })
-      }
-    }),
-    // 获取一下用户信息
-    getUserInfo().then((res) => {
-      this.setData({
-        userType : res.data.userType
-      })
-    });
+    
   },
 
   // 【所有人】查看基本信息
@@ -77,9 +71,9 @@ create(store, {
   },
 
   // 【老师，家长】换补课列表
-  toExchangeClsList: function () {
+  toChangeClsList: function () {
     wx.navigateTo({
-      url: "/pages/exchangeClsList/index"
+      url: "/pages/changeClsList/index"
     });
   },
 
@@ -94,6 +88,13 @@ create(store, {
   toMyChildren: function () {
     wx.navigateTo({
       url: "/pages/myChildren/index"
+    });
+  },
+
+  // 【老师，助教，家长】班级列表
+  toClassList: function () {
+    wx.navigateTo({
+      url: "/pages/editClass/index?fromMine=1"
     });
   },
 

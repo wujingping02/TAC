@@ -1,3 +1,0 @@
-<view class="detail">
-  <view>{{courseName}}</view>
-</view>

@@ -1,0 +1,3 @@
+<view>
+  <view hidden="{{hide}}" style="z-index: {{zIndex}}" class="box"></view>
+</view>

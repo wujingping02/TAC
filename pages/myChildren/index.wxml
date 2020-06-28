@@ -1,3 +1,6 @@
 <view>
-  <myChildrenList list="{{childrenList}}" ></myChildrenList>
+  <myHeader title="{{title}}"/>
+  <view class="topBG"></view>
+  <myPopup id="page" hidePopup="{{hidePopup}}" bind:sure="sureAdd" className="toast" list="{{fieldList}}"/>
+  <myClassRoom type="child" list="{{classList}}" bind:addItem="addItem" bind:del="del"></myClassRoom>
 </view>

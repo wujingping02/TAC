@@ -1,6 +1,6 @@
 <view>
   <myHeader title="{{title}}"/>
   <view class="topBG"></view>
-  <myEditCourseList list="{{courseList}}" bind:toClsRoomList="toClsRoomList"></myEditCourseList>
+  <myEditCourseList list="{{courseList}}" bind:toEditClass="toEditClass"></myEditCourseList>
   <myButton className="add" bind:click="click" content="新增课程"/>
 </view>

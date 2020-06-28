@@ -1,0 +1,6 @@
+<view>
+  <myHeader title="{{title}}"/>
+  <view style="padding-top : 140rpx">
+    <myPhoto previewImage="{{true}}" padding="0 40rpx" orgPhoto="{{list}}"/>
+  </view>
+</view>

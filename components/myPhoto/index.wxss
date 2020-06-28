@@ -7,8 +7,12 @@
 .lable {
     font-size: 24rpx;
     color: #000000;
-    line-height: 34rpx;
-}
-.orgPhotoBox {
+    line-height: 24rpx;
     margin-top: 24rpx;
+}
+.orgPhotoBox.round {
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 100%;
+    overflow: hidden;
 }

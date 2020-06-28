@@ -1,6 +1,6 @@
 {
-  "navigationBarTitleText": "机构列表",
+  "navigationBarTitleText": "点名",
   "usingComponents": { 
-    "myOrgList": "../../components/myOrgList"
+    
   }
 }

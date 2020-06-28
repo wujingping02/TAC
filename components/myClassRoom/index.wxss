@@ -59,7 +59,7 @@
 }
 .teacher_name {
     position: absolute;
-    top: 130rpx;
+    top: 140rpx;
     left: 50%;
     transform: translateX(-50%);
     font-size: 28rpx;

@@ -1,26 +1,30 @@
 {
   "pages": [
-    
-    "pages/detail/index",
     "pages/home/index",
+    "pages/detail/index",
+    
     "pages/mine/index",
+    "pages/login/index",
+    "pages/role/index",
     "pages/courseDetail/index",
     "pages/orgDetail/index",
     "pages/editAddress/index",
     "pages/addAddress/index",
     "pages/teacherList/index",
-    "pages/assistantList/index",
     "pages/editCourse/index",
     "pages/clsRoomList/index",
     "pages/personInfo/index",
     "pages/orgList/index",
-    "pages/exchangeClsList/index",
+    "pages/changeClsList/index",
     "pages/myPhoto/index",
-    "pages/classList/index",
+    "pages/photoDetail/index",
     "pages/addCourse/index",
     "pages/addClass/index",
     "pages/editClass/index",
-    "pages/myChildren/index"
+    "pages/checkStu/index",
+    "pages/classPhoto/index",
+    "pages/myChildren/index",
+    "pages/protocol/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -67,6 +71,7 @@
   "usingComponents": {  
     "myPopup": "./miniprogram_npm/myPopup",
     "myButton": "./miniprogram_npm/myButton",
+    "myOvermask": "./miniprogram_npm/myOvermask",
     "myHeader": "./miniprogram_npm/myHeader"
   }
 }

@@ -1,3 +1,11 @@
 <view>
-  <text>我的相册</text>
+  <myHeader title="{{title}}"/>
+  <view class="operatBox">
+    <view class="recommendBox">
+      <text bind:tap="timeGetActive" class="recommend {{timeActive}}">时间</text>
+      <text class="recommendButtom" style="left: {{timeActive === 'active' ? '0' : '108rpx'}}"></text>
+      <text bind:tap="courseGetActive" class="recommend {{courseActive}}" style="margin-left: 44rpx;">课程</text>
+    </view>
+  </view>
+  <myCourseList type="photo" listLeft="{{listLeft}}" listRight="{{listRight}}" bind:toCourseDetail="toCourseDetail"></myCourseList>
 </view>

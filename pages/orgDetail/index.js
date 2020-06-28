@@ -9,7 +9,8 @@ create(store, {
     orgName : "",
     orgDetail : "",
     orgPhoto : [],
-    orgAddress : []
+    orgAddress : [],
+    userInfo : null
   },
 
   onShow: function () {

@@ -3,6 +3,6 @@
   "usingComponents": {  
     "myCalendar": "../../miniprogram_npm/vant-weapp/myCalendar",
     "van-cell": "../../miniprogram_npm/vant-weapp/cell",
-    "myClassList": "../../components/myClassList"
+    "myCalendarClassList": "../../components/myCalendarClassList"
   }
 }

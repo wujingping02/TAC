@@ -1,0 +1,141 @@
+.classBigBox {
+    padding-top: 54rpx;
+}
+.classBox {
+    width: 100vw;
+    padding-left: 30%;
+    padding-right: 40rpx;
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: 36rpx;
+}
+.classBoxLeft {
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    padding-left: 40rpx;
+    box-sizing: border-box;
+}
+.name {
+    padding-top: 10rpx;
+    font-size: 28rpx;
+    color: #3D3B5E;
+}
+.nowPeo,.maxPeo {
+    padding-top: 6rpx;
+    font-size: 28rpx;
+    color: #3D3B5E; 
+}
+.classBoxRight {
+    width: 100%;
+    padding-right: 40rpx;
+    border-radius: 44rpx;
+    box-sizing: border-box;
+    display: inline-block;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+.time {
+    font-size: 24rpx;
+    color: #3D3B5E;
+    margin-top: 11rpx;
+    margin-left: 38rpx;
+}
+.lessonName,.teacher {
+    font-size: 28rpx;
+    color: #3D3B5E;
+    margin-left: 38rpx;
+}
+.lessonName {
+    margin-top: 30rpx;
+}
+.teacher {
+    margin-top: 14.8rpx;
+    margin-bottom: 31rpx;
+}
+.buttomBox {
+    width: 100%;
+    border-top: 1px solid #EBD2B8;
+    padding: 25rpx 0 25rpx 30%;
+    position: relative;
+    box-sizing: border-box;
+}
+.bz {
+    width: 30%;
+    font-size: 24rpx;
+    color: #9D9DAF;
+    position: absolute;
+    left: 40rpx;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.remark {
+    font-size: 24rpx;
+    color: #9D9DAF;
+    width: 100%;
+}
+.teac_box {
+    width: 100%;
+    padding-left: 50%;
+    position: relative;
+    box-sizing: border-box;
+}
+.url {
+    position: absolute;
+    left: 40rpx;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 100%;
+}
+.teac_box_right {
+    width: 100%;
+}
+.teac_time {
+    font-size: 24rpx;
+    color: #3D3B5E;
+    margin-top: 28rpx;
+}
+.teac_lessonName,.teac_teacher {
+    font-size: 28rpx;
+    color: #3D3B5E;
+    margin-top: 17rpx;
+}
+.teac_lessonName {
+    margin-top: 30rpx;
+}
+.teac_teacher {
+    margin-bottom: 31rpx;
+}
+.rollCall,.photo {
+    display: inline-block;
+    width: 140rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    text-align: center;
+    font-size: 24rpx;
+    border-radius: 54rpx;
+}
+.rollCall {
+    color: #FFFFFF;
+    background: #FF8814;
+    margin: 30rpx 20rpx 30rpx 40rpx;
+}
+.photo {
+    color: #FF8814;
+    border: 1px solid #FF8814;
+}
+.signInStatus {
+    width: 100rpx;
+    height: 48rpx;
+    font-size: 24rpx;
+    line-height: 48rpx;
+    background: #FF8814;
+    border-radius: 0 48rpx 0 48rpx;
+    position: absolute;
+    right: 40rpx;
+    top: 0;
+    color: #ffffff;
+    text-align: center;
+}

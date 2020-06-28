@@ -3,7 +3,7 @@
   "usingComponents": { 
     "myInput" : "../../components/myInput",
     "mySelect" : "../../components/mySelect",
-    "van-overlay": "../vant-weapp/overlay",
+    "myOvermask": "../myOvermask",
     "van-search": "../vant-weapp/search",
     "myCourseAttr": "../../components/myCourseAttr",
     "myPhoto" : "../../components/myPhoto"

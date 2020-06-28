@@ -1,3 +1,0 @@
-<view>
-  <myClassList list="{{classList}}" bind:toLessonList="toLessonList"></myClassList>
-</view>

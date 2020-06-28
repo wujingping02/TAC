@@ -1,0 +1,30 @@
+.protocol {
+    font-size: 24rpx;
+    color: #BBBBBB;
+    text-align: center;
+    height: 60rpx;
+    line-height: 60rpx;
+    position: relative;
+}
+.gou {
+    display: inline-block;
+    width: 24rpx;
+    height: 24rpx;
+    border: 1px solid #FF8711;
+    transform: translateY(-50%);
+    border-radius: 8rpx; 
+    position: absolute;
+    top: 50%;
+    left: 12%;
+}
+.agree {
+    width: 32rpx;
+    height: 32rpx;
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 12%;
+}
+.fuxy,.ystk {
+    color: #FF8711;
+}

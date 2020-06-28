@@ -1,15 +1,23 @@
 .orgDetail {
+    width: 100vw;
+    overflow-x: hidden;
     min-height: 100vh;
     background: #ffffff;
 }
 .orgAvatarBox {
     width: 101%;
-    height: 600rpx;
+    /* height: 600rpx; */
     background-image: url('http://img3.imgtn.bdimg.com/it/u=1996410545,3787547474&fm=26&gp=0.jpg');
     background-size: 100% 100%;
     text-align: center;
     display: inline-block;
     border-radius: 0 0 0 0;
+}
+.teachName {
+    font-size: 48rpx;
+    height: 140rpx;
+    line-height: 140rpx;
+    color: #FF8100;
 }
 .headerBox {
     position: static;
@@ -21,11 +29,11 @@
     transform: translateY(-100rpx);
     background: #ffffff;
     display: inline-block;
+    padding-top: 82rpx;
 }
 .name {
     font-size: 48rpx;
     color: #3D3B5E;
-    margin-top: 82rpx;
     text-align: center;
 }
 .introduction {

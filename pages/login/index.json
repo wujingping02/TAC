@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "课程详情",
+  "usingComponents": {
+    "myPhoto": "../../components/myPhoto",
+    "myClassRoom": "../../components/myClassRoom"
+  }
+}

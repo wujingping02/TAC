@@ -1,0 +1,25 @@
+<view class="rolePage">
+  <view class="roleTitle">您的角色是?</view>
+  <view class="rolePropmt">我们根据选择为您提供精准服务</view>
+  <view class="roleBox" bind:tap="choose" data-role="active1">
+    <text class="role">家长</text>
+    <text class="roleCon">管理宝贝孩子的时间，学习生活更充实</text>
+    <image class="roleImg {{active1}}" src="../../images/par.png"/>
+  </view>
+  <view class="roleBox" bind:tap="choose" data-role="active2">
+    <text class="role">教师</text>
+    <text class="roleCon">智能安排上课时间，签到沟通更方便</text>
+    <image class="roleImg {{active2}}" src="../../images/tea.png"/>
+  </view>
+  <view class="roleBox" bind:tap="choose" data-role="active3">
+    <text class="role">机构</text>
+    <text class="roleCon">快速排课，合理安排资源</text>
+    <image class="roleImg {{active3}}" src="../../images/org.png"/>
+  </view>
+  <view class="roleBox" bind:tap="choose" data-role="active4">
+    <text class="role">助教</text>
+    <text class="roleCon">助您精准选课</text>
+    <image class="roleImg {{active4}}" src="../../images/ass.png"/>
+  </view>
+  <myButton className="submit" bind:click="click" content="确认"/>
+</view>

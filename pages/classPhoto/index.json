@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "课程拍照",
   "usingComponents": { 
-    
+    "myPhoto": "../../components/myPhoto"
   }
 }

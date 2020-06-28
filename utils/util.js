@@ -26,6 +26,7 @@ function ajax(data) {
       title: '加载中',
       mask: true,
     })
+    debugger
     wx.request({
       url: data.url,
       data: data.data,
@@ -72,8 +73,24 @@ function mockRequest(data) {
 }
 
 // 判断用户是否注册
-function isLogin() {
-  
+function checkLogin() {
+  if(!this.store.data.userInfo.userType){// 没有用户信息
+    mockRequest({// 先查查有没有登录
+      url: service.userLogin.url,
+      method: "post",
+    }).then((res) => {
+      if(!res.data.name){// 没登录，去登陆
+        wx.navigateTo({
+          url: "/pages/login/index"
+        });
+      }else{// 登陆过，有信息
+        this.store.data.userInfo.name = res.data.name;
+        this.store.data.userInfo.phone = res.data.name;
+        this.store.data.userInfo.userType = res.data.name;
+        this.update();
+      }
+    })
+  }
 }
 
 // 注册 + 登录
@@ -128,5 +145,6 @@ module.exports = {
   mockRequest : mockRequest,
   getUserInfo : getUserInfo,
   collectVals : collectVals,
-  getTime : getTime
+  getTime : getTime,
+  checkLogin : checkLogin
 }

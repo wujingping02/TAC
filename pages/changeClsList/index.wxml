@@ -1,0 +1,18 @@
+<view>
+  <myHeader title="{{title}}"/>
+  <view class="topBG"></view>
+  <view class="addressBox">
+    <block wx:key="box" wx:for="{{list}}">
+      <view class="box" data-index="{{index}}">
+        <image class="kidImg" src="{{item.url}}"/>
+        <view class="leftBox">
+          <view class="name">{{item.name}}</view>
+          <view class="teacher">{{item.teacher}}</view>
+          <view wx:if="{{userInfo.userType === '30'}}" class="change">换补课</view>
+          <view class="date">{{item.date}}</view>
+        </view>
+        <view class="teacher">{{item.address}}</view>
+      </view>
+    </block>
+  </view>
+</view>

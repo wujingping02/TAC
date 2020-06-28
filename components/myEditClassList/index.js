@@ -7,19 +7,26 @@ Component({
     list: {// 属性名      
       type: Array,  
       value: []
-    }  
+    },
+    fromMine: Boolean
   },  
   // 组件的初始数据   
   data: {  
     
   },  
   ready: function(){
-    console.log(this.properties)
+    
   },
   // 组件的方法列表 
   methods: {
     toClsRoomList : function(e) {
       let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
+      if(this.properties.fromMine){// 跳转班级详情
+        wx.navigateTo({
+          url: "/pages/courseDetail/index?calssId=" + index
+        });
+        return
+      }
       this.triggerEvent("toClsRoomList", index);
     },
     edit : function(e) {

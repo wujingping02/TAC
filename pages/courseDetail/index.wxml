@@ -5,19 +5,55 @@
   </view>
   <view class="courseCardBox">
     <view class="courseCard">
-      <view class="name">{{name}}</view>
-      <view class="age">{{ "适合年龄" + age1 + "-" + age2 + "岁" }}</view>
-      <view class="address">{{address}}</view>
-      <view class="phoneBox" bind:tap="callOrg">
-        <text class="phone">电话联系</text>
+      <view>
+        <view class="name">{{name}}</view>
+        <view class="age">{{ "适合年龄" + age1 + "-" + age2 + "岁" }}</view>
+        <view class="address" style="{{ calssId && userInfo.userType != '40' ? 'margin-bottom : 90rpx' : '' }}">{{address}}</view>
+      </view>
+      <!-- 二维码报名，仅在班级详情时展示 -->
+      <view class="erweimaBox" wx:if="{{calssId && userInfo.userType != '40'}}">
+        <text class="roundLeft"></text>
+        <text class="roundRight"></text>
+        <text class="rountCenter"></text>
+        <view class="canvasBox">
+          <canvas class="canvas" canvas-id="canvas" style="width:300px; height:300px;"></canvas>
+        </view>
+        <view class="ewmPrompt">扫描二维码，添加课程</view>
+      </view>
+      <view wx:if="{{courseId || userInfo.userType === '40'}}">
+        <view class="phoneBox" bind:tap="callOrg">
+          <text class="phone">电话联系</text>
+        </view>
       </view>
     </view>
   </view>
-  <myPopup background="#f9f9f9" id="page" paddingTop="0rpx" list="{{fieldList}}"/>
-  <myButton className="reservation" bind:click="submit" content="立即预约"/>
+  <!-- 预约模块，仅在课程详情时展示 -->
+  <myPopup wx:if="{{courseId && userInfo.userType === '40'}}" background="#f9f9f9" id="page" paddingTop="0rpx" list="{{fieldList}}"/>
+  <myButton wx:if="{{courseId && userInfo.userType === '40'}}" className="reservation" bind:click="submit" content="立即预约"/>
   <view class="introduction">{{courseIntrd}}</view>
   <myPhoto previewImage="{{true}}" disable="{{true}}" padding="0 40rpx" orgPhoto="{{orgPhoto}}"/>
+  <!-- 课时列表，仅在班级详情时展示 -->
+  <view wx:if="{{calssId}}" class="lessonBigBox">
+    <view class="lessonBox">
+      <view class="lessonTop">
+        <text class="lessonTopLeft">日期</text>
+        <text class="lessonTopRight">时间</text>
+      </view>
+      <view class="lessonDetail">
+        <block wx:key="box" wx:for="{{lessonList}}">
+          <view class="lessonDetailBox">
+            <text class="lessonDetailBoxLeft">{{item.date}}</text>
+            <text class="lessonDetailBoxRight">{{item.startTime + "~" + item.endTime}}</text>
+          </view>
+        </block>
+      </view>
+      <view class="upDownIconBox" bind:tap="upArrow">
+        <image class="upDownIcon" src="{{upArrow}}"/>
+      </view>
+    </view>
+  </view>
   <myClassRoom type="teacher" className="preview" disable="{{true}}" list="{{classList}}" bind:itemClick="itemClick"></myClassRoom>
-  <view class="orgName">{{orgName}}</view>
-  <view class="introduction">{{orgIntrd}}</view>
+  <!-- 机构介绍，仅在班级详情时展示 -->
+  <view wx:if="{{courseId}}" class="orgName">{{orgName}}</view>
+  <view wx:if="{{courseId}}" class="introduction">{{orgIntrd}}</view>
 </view>

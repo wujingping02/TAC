@@ -1,0 +1,39 @@
+<view class="classBigBox">
+  <block wx:key="box" wx:for="{{list}}">
+    <view bind:tap="toClassDetail" class="classBox" bindtap="toClassDetail" data-index="{{index}}">
+      <view class="classBoxLeft">
+        <view class="name">{{activeL === 'active' ? item.name : item.teacher}}</view>
+        <text wx:if="{{activeL === 'active' && userType === '10'}}" class="nowPeo">{{item.nowPeo + "/"}}</text>
+        <text wx:if="{{activeL === 'active' && userType === '10'}}" class="maxPeo">{{item.maxPeo}}</text>
+      </view>
+      <view class="classBoxRight" style="background : {{classCardBG}}">
+        <!-- 班级维度班级列表 -->
+        <view wx:if="{{activeL === 'active' && (userType === '10' || userType === '30' || userType === '20')}}">
+          <view class="time">{{item.time}}</view>
+          <view wx:if="{{userType === '10' || userType === '20'}}" class="lessonName">{{item.lessonName}}</view>
+          <view wx:if="{{userType === '10' || userType === '20'}}" class="teacher">{{item.teacher}}</view>
+          <view wx:if="{{userType === '30'}}" class="lessonName">{{item.address}}</view>
+          <text wx:if="{{userType === '30'}}" catchtap="rollCall" data-index="{{index}}" class="rollCall">点名情况</text>
+          <text wx:if="{{userType === '30'}}" catchtap="photo" data-index="{{index}}" class="photo">拍照</text>
+        </view>
+        <!-- 老师维度班级列表 -->
+        <view wx:else class="teac_box">
+          <image class="url" src="{{item.url}}"/>
+          <view class="teac_box_right">
+            <view class="teac_time">{{item.time}}</view>
+            <view class="teac_lessonName">{{item.lessonName}}</view>
+            <view wx:if="{{userType != '40'}}" class="teac_teacher">{{item.name}}</view>
+            <view wx:if="{{userType === '40'}}" class="teac_teacher">{{item.address}}</view>
+          </view>
+        </view>
+        <!-- 备注 -->
+        <view wx:if="{{userType != '40'}}" class="buttomBox">
+          <view class="bz">备注：</view>
+          <view class="remark">{{item.remark}}</view>
+        </view>
+        <!-- 签到状态 -->
+        <view wx:if="{{userType === '40' && item.signInStatus === '1'}}" class="signInStatus">已签到</view>
+      </view>
+    </view>
+  </block>
+</view>

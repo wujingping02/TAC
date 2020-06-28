@@ -1,11 +1,12 @@
 <view class="box" style="padding : {{padding}}">
-    <view class="lable">{{lable}}</view>
-    <view class="orgPhotoBox">
+    <view wx:if="{{lable}}" class="lable">{{lable}}</view>
+    <view class="orgPhotoBox {{round}}">
       <van-uploader 
         previewImage="{{true}}"
         fileList="{{orgPhoto}}"
         deletable="{{!disable}}"
         showUpload="{{!disable}}"
+        uploadText="{{uploadText}}"
         id="val"/>
     </view>
 </view>

@@ -19,6 +19,8 @@
     display: inline-block;
     background: #f9f9f9;
     border-radius: 20rpx;
+    background: #ffffff;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 .imgBox {
     position: relative;
@@ -53,11 +55,22 @@
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
+    padding-left: 34rpx;
+}
+.address::before{
+    content: "";
+    width: 16rpx;
+    height: 20rpx;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAWCAMAAAD6gTxzAAAAZlBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+Vn2moAAAAIXRSTlMA9+kEjO/RC7ZqS0IYyq2nl1AnJBUQ2tmhoIGAcWNaNzJJanE6AAAAk0lEQVQY02WPVxKEQAhEGSfpqKuu6+bE/S+p4CT1/dDVNFAAcVZGi1v/g4BUAlc6650SI2ZiS2FGyXtWLfywCyHxkdIVIWZIVJSvubkITeICBMcaqgerpfreDD5ZVFYOHDot1uiv+1JTvscAh4ipSI5ugHHJ+rKRf/mAgDTIXC1ERs03/5AxxEcTL8Q77OjatOjIDPJMF7QkmtvwAAAAAElFTkSuQmCC');
+    background-size: 100% 100%;
+    position: absolute;
+    top: 10rpx;
+    left: 10rpx;
 }
 .textBox {
     background: #ffffff;
-    padding-left: 40rpx;
-    padding-right: 40rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
     border-radius: 0 0 20rpx 20rpx;
     padding-bottom: 20rpx;
 }
@@ -69,6 +82,12 @@
     padding-bottom: 20rpx;
 }
 .price_unit {
+    display: inline-block;
+    font-size: 24rpx;
+    color: #FF8100;
+    padding-bottom: 22rpx;
+}
+.lessonTime {
     display: inline-block;
     font-size: 24rpx;
     color: #FF8100;

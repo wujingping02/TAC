@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText": "子女管理",
   "usingComponents": { 
-    "myChildrenList": "../../components/myChildrenList"
+    "myClassRoom": "../../components/myClassRoom"
   }
 }

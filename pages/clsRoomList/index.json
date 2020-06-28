@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "教室列表",
   "usingComponents": { 
-    "myClassRoom": "../../components/myClassRoom",
-    "van-overlay": "../../miniprogram_npm/vant-weapp/overlay"
+    "myClassRoom": "../../components/myClassRoom"
   }
 }

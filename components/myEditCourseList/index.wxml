@@ -6,7 +6,7 @@
       <view class="introd">{{item.introd}}</view>
       <view class="addClassBox">
         <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">发布</view>
-        <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">排班</view>
+        <view class="addClass" bindtap="toEditClass" data-index="{{index}}">排班</view>
         <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">下架</view>
         <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">编辑</view>
       </view>

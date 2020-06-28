@@ -52,6 +52,7 @@
     min-height: 45vh;
     padding-top: 14rpx;
     position: relative;
+    box-sizing: border-box;
 }
 .bottomBox {
     width: 100%;
@@ -87,4 +88,9 @@
     height: 32rpx;
     color: #3D3B5E;
     font-weight: 800;
+}
+.fixed {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }

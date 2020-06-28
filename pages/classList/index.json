@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "班级信息",
-  "usingComponents": { 
-    "myClassList": "../../components/myClassList"
-  }
-}

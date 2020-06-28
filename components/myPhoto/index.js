@@ -10,6 +10,8 @@ Component({
     lable : String,
     value : String,
     orgPhoto : Array,
+    round: String,
+    uploadText: String,
     padding : {
       type : String,
       value : "0"

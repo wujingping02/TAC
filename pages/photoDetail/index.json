@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "选课",
+  "usingComponents": {  
+    "myCourseList": "../../components/myCourseList",
+    "van-search": "../../miniprogram_npm/vant-weapp/search",
+    "myPhoto": "../../components/myPhoto"
+  }
+}

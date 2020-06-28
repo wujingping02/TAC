@@ -20,10 +20,10 @@ create(store, {
   },
 
   // 跳到班级列表
-  toClsRoomList: function (data) {
+  toEditClass: function (data) {
     let index = data.detail;
     wx.navigateTo({
-      url: "/pages/addClass/index?index=" + index
+      url: "/pages/editClass/index?index=" + index
     });
   },
 

@@ -1,3 +1,27 @@
 <view>
-  <text>点名</text>
+  <myHeader title="{{title}}"/>
+  <view class="topBG"></view>
+  <view class="addressBox">
+    <view class="nowClassBox">
+      <text>当前课程：</text>
+      <text>{{className + ' '}}</text>
+      <text>{{time}}</text>
+    </view>
+    <block wx:key="box" wx:for="{{list}}">
+      <view class="bigBox">
+        <view class="classBoxRight">
+          <image class="teac_url" src="{{item.url}}"/>
+          <view class="teac_box_right">
+            <view class="teac_time">{{item.name}}</view>
+            <text bindtap="signIn" data-index="{{index}}" class="rollCall {{item.signInSta === true ? 'active' : ''}}">签到</text>
+            <text bindtap="changeClass" data-index="{{index}}" class="photo {{item.changeClassSta === true ? 'active' : ''}}">换补课</text>
+          </view>
+        </view>
+        <view class="buttomBox">
+          <view class="bz">备注：</view>
+          <textarea class="remark"></textarea>
+        </view>
+      </view>
+    </block>
+  </view>
 </view>

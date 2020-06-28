@@ -1,6 +1,11 @@
 <view>
   <myHeader title="{{title}}"/>
   <view class="topBG"></view>
-  <myEditClassList list="{{classList}}" bind:toClsRoomList="toClsRoomList"></myEditClassList>
-  <myButton className="add" bind:click="click" content="添加班级"/>
+  <view class="addressBox">
+    <picker wx:if="{{fromMine}}" class="val" mode="selector" bind:tap="clickSel" bindchange="bindchange" range="{{list}}">
+      <view class="prompt">{{index === -1 ? '课程选择' : list[index]}}</view>
+    </picker>
+    <myEditClassList fromMine="{{fromMine}}" list="{{classList}}" bind:toClsRoomList="toClsRoomList"></myEditClassList>
+  </view>
+  <myButton wx:if="{{!fromMine}}" className="add" bind:click="click" content="添加班级"/>
 </view>

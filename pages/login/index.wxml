@@ -1,0 +1,17 @@
+<view class="box">
+  <button style=
+    "font-size: 40rpx;font-weight: 100;box-sizing: border-box;width: 88%;background: #95ec69;height: 120rpx;line-height: 100rpx;border-radius: 120rpx;margin: 550rpx auto;color:#ffffff"
+    open-type="getPhoneNumber"
+    bind:tap="getUserInfo"
+    bindgetphonenumber="bindgetphonenumber">
+    微信手机号快捷登录
+  </button>
+  <view class="protocol">
+    <text wx:if="{{!agree}}" class="gou" bind:tap="checked"></text>
+    <image wx:if="{{agree}}" class="agree" src="../../images/agree.png" bind:tap="checked"/>
+    <text>我已阅读并同意</text>
+    <text bind:tap="checkPro" class="fuxy">《服务协议》</text>
+    <text>及</text>
+    <text bind:tap="checkTerms" class="ystk">《隐私条款》</text>
+  </view>
+</view>

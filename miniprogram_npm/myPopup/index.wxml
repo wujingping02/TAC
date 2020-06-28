@@ -1,5 +1,5 @@
-<view class="{{className}}" style="padding-top : {{paddingTop}};background : {{background}}" hidden="{{hidePopup}}">
-  <van-overlay show="true" wx:if="{{className === 'toast'}}"/>
+<view class="{{className}}" style="width : 100vw;padding-top : {{paddingTop}};background : {{background}}" hidden="{{hidePopup}}">
+  <myOvermask wx:if="{{className === 'toast'}}" zIndex="999"/>
   <view class="contBox">
     <block wx:key="box" wx:for="{{list}}">
       <myInput 
@@ -22,10 +22,13 @@
       <myPhoto 
         wx:if="{{item.type === 'photo'}}"
         fileList="{{orgPhoto}}"
-        value="{{item.value}}" 
-        isMust="{{item.isMust}}" 
+        value="{{item.value}}"
+        isMust="{{item.isMust}}"
         id="{{item.key}}" 
         type="{{item.type}}" 
+        round="{{item.round}}"
+        orgPhoto="{{item.orgPhoto}}"
+        uploadText="{{item.uploadText}}"
         lable="{{item.lable}}"/>
       <van-search 
         wx:if="{{item.type === 'search'}}" 

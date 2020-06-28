@@ -13,14 +13,14 @@ export default{
                 // 20 助教
                 // 30 教师
                 // 40 家长
-                userType : "10"
+                userType : "30"
             },
             token : "123"
         }
     },
     // 选课获取课程列表
     "courseList" : {
-        url : "/course/list",
+        url : "https://timeafterschool.net/tas/course/getCourseList",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -61,6 +61,37 @@ export default{
                     price : "500",
                     orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
                     orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
+                }
+            ]
+        }
+    },
+    // 家长查询图片列表
+    "photoList" : {
+        url : "/parent/photo/list",
+        mockData : {
+            code : "0000",
+            msg : "失败了",
+            data : [
+                {
+                    name : "英语1",
+                    url : "http://t7.baidu.com/it/u=1278269090,484809810&fm=193",                    
+                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会",
+                    time : "2020-10-10 10:10~10:00"
+                },{
+                    name : "英语1",
+                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1134228055,3453265759&fm=26&gp=0.jpg",
+                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会",
+                    time : "2020-10-10 10:10~10:00"
+                },{
+                    name : "英语1",
+                    url : "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3660044098,2807486520&fm=26&gp=0.jpg",
+                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会",
+                    time : "2020-10-10 10:10~10:00"
+                },{
+                    name : "英语1",
+                    url : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3349106034,2428154400&fm=26&gp=0.jpg",
+                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会",
+                    time : "2020-10-10 10:10~10:00"
                 }
             ]
         }
@@ -123,11 +154,29 @@ export default{
             code : "0000",
             msg : "失败了",
             data : [
-                {name: "班级1",address: "上课地址：上海市徐汇区龙华中立1109号"},
-                {name: "班级2",address: "上课地址：上海市徐汇区龙华中立1109号"},
-                {name: "班级3",address: "上课地址：上海市徐汇区龙华中立1109号"},
-                {name: "班级4",address: "上课地址：上海市徐汇区龙华中立1109号"},
-                {name: "班级5",address: "上课地址：上海市徐汇区龙华中立1109号"}
+                {
+                    name: "班级1",
+                    address: "上课地址：上海市徐汇区龙华中立1109号",
+                    nowPeo: "6",
+                    signInStatus: "1",
+                    maxPeo: "10",
+                    time: "10:10 ~ 11:00",
+                    lessonName: "英语系统课本",
+                    teacher: "陈晓光",
+                    url: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1129653791,3279761061&fm=26&gp=0.jpg",
+                    remark: "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或"
+                },{
+                    name: "班级2",
+                    address: "上课地址：上海市徐汇区龙华中立1109号",
+                    nowPeo: "7",
+                    signInStatus: "0",
+                    maxPeo: "10",
+                    time: "10:10 ~ 11:00",
+                    lessonName: "英语系统课本",
+                    teacher: "陈晓光",
+                    url: "http://i-1-binzz.qqxzb-img.com/2018/8/16/d4ca486c-fbf4-4c62-a464-05091fcf9ad7.png?imageView2/2/q/65/w/600",
+                    remark: "哈哈哈哈哈哈哈哈哈哈或或或"
+                }
             ]
         }
     },
@@ -210,7 +259,19 @@ export default{
             code : "0000",
             msg : "失败了",
             data : [
-                {name : "换补课1"}
+                {
+                    name : "换补课1阿萨德法师的法师打发第三方",
+                    url : "http://t7.baidu.com/it/u=2693777839,2096851452&fm=193",
+                    teacher : "张三",
+                    address : "上海市徐汇区宛平南路1109号",
+                    date : "2020-07-09 10:00-11:00"
+                },{
+                    name : "换补课2",
+                    url : "http://t8.baidu.com/it/u=2247732864,1483251733&fm=193",
+                    teacher : "李四",
+                    address : "上海市徐汇区宛平南路1109号",
+                    date : "2020-07-09 10:00-11:00"
+                },
             ]
         }
     },
@@ -342,8 +403,35 @@ export default{
                     }
                 ],
                 courseIntrd: "这是啊实打实大快速的拉升的接口连接上大师级的垃圾收到了sad就拉倒就卡死的进口丝萨贝达哈弗力缆狂澜喀什东路卡死了的卡拉斯科达拉斯",
-                orgName: "哈哈哈哈",
-                orgIntrd: "看看监控登记卡SDK撒娇的凯撒肯德基卡时间段卡时间段卡加斯打卡机山东矿机撒开的凯撒奖打卡时间贷款啦啦啦啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿"
+                orgName: "上海市第一师范附属小学",
+                orgIntrd: "看看监控登记卡SDK撒娇的凯撒肯德基卡时间段卡时间段卡加斯打卡机山东矿机撒开的凯撒奖打卡时间贷款啦啦啦啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿",
+                lessonList: [
+                    {
+                        date : "2020-09-01",
+                        startTime : "10:00", 
+                        endTime : "11:00"
+                    },{
+                        date : "2020-19-01",
+                        startTime : "11:00", 
+                        endTime : "11:00"
+                    },{
+                        date : "2020-09-01",
+                        startTime : "12:01", 
+                        endTime : "15:00"
+                    },{
+                        date : "2020-09-01",
+                        startTime : "12:01", 
+                        endTime : "15:00"
+                    },{
+                        date : "2020-09-01",
+                        startTime : "12:01", 
+                        endTime : "15:00"
+                    },{
+                        date : "2020-09-01",
+                        startTime : "12:01", 
+                        endTime : "15:00"
+                    }
+                ]
             },
         }
     }

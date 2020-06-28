@@ -12,7 +12,8 @@ create(store, {
     ageList: [{age: '0岁'},{age: '1岁'},{age: '2岁'},{age: '3岁'},{age: '4岁'},{age: '5岁'},{age: '5岁以上'},{age: "全部"}],
     hideAge: true,
     upArrow: "",
-    searchValue: ""
+    searchValue: "",
+    fixed: ""
   },
  
   // 生命周期函数--监听页面加载
@@ -39,7 +40,7 @@ create(store, {
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
-    mockRequest({// 上来获取一下课程列表
+    ajax({// 上来获取一下课程列表
       url: service.courseList.url,
       method: "post",
     }).then((res) => {
@@ -61,7 +62,7 @@ create(store, {
       id = this.data.listRight[index.slice(1)].name;
     }
     wx.navigateTo({
-      url: "/pages/courseDetail/index?id=" + id
+      url: "/pages/courseDetail/index?courseId=" + id
     });
   },
  
@@ -123,6 +124,7 @@ create(store, {
       listLeft: obj.l,
       listRight: obj.r,
       ageList : ageList,
+      fixed: this.data.upArrow ? '' : 'fixed',
       hideAge: true,
       upArrow: this.data.upArrow ? "" : "upArrow"
     })
@@ -132,6 +134,7 @@ create(store, {
   showAge: function() {
     this.setData({
       hideAge: this.data.upArrow ? true : false,
+      fixed: this.data.upArrow ? '' : 'fixed',
       upArrow: this.data.upArrow ? "" : "upArrow"// 收起
     })
   },

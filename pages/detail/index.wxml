@@ -13,11 +13,19 @@
     bind:keepCalendar="keepCalendar"
     bind:select="getDate"
   />
-  <view class="sortKey" style="margin-top: {{top}}">
-    <text bind:tap="changeActiveL" class="classSort {{activeL}}">教室维度</text>
-    <text bind:tap="changeActiveR" class="teacherSort {{activeR}}">教师维度</text>
-  </view>
-  <view class="classListBox">
-    <myClassList class="" list="{{classList}}" bind:toCourseDetail="toCourseDetail"></myClassList>
+  <myPopup id="page" hidePopup="{{hidePopup}}" bind:sure="sureAdd" className="toast" list="{{fieldList}}"/>
+  <view style="margin-top: {{top}};">
+    <view wx:if="{{userInfo.userType === '10' || userInfo.userType === '40'}}" class="sortKey">
+      <text wx:if="{{userInfo.userType === '10'}}" bind:tap="changeActiveL" class="classSort {{activeL}}">教室维度</text>
+      <text wx:if="{{userInfo.userType === '10'}}" bind:tap="changeActiveR" class="teacherSort {{activeR}}">教师维度</text>
+      <view wx:if="{{userInfo.userType === '40'}}" class="addCustomizeClass" bind:tap="addCustomize">
+        <image class="addCustomize" src="../../images/add.png"/>
+        添加自定义课程
+      </view>
+    </view>
+    <view class="bgBox" style="background : {{userInfo.userType === '10' || userInfo.userType === '40' ? '#F9F9FA' : '#ffffff'}}" wx:if="{{classList}}"></view>
+    <view class="classListBox" wx:if="{{classList}}">
+      <myCalendarClassList id="myCalendarClassList" userType="{{userInfo.userType}}" bind:toClassDetail="toClassDetail" activeL="{{activeL}}" list="{{classList}}" bind:toCourseDetail="toCourseDetail"></myCalendarClassList>
+    </view>
   </view>
 </view>
