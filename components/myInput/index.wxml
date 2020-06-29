@@ -1,4 +1,4 @@
 <view class="box">
     <text class="lable">{{lable}}</text>
-    <input class="val" placeholder="{{'请输出' + lable}}" value="{{value}}" bindblur="onBlur" id="val" type="{{type}}" label="{{lable}}"/>
+    <input disabled="{{disabled}}" class="val {{className}}" placeholder="{{'请输出' + lable}}" value="{{value}}" bindblur="onBlur" id="val" type="{{type}}" label="{{lable}}"/>
 </view>

@@ -94,3 +94,7 @@
     height: 100vh;
     overflow: hidden;
 }
+.orgDetail {
+    width: 100vw;
+    overflow-x: hidden;
+}

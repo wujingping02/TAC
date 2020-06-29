@@ -5,10 +5,11 @@ Component({
   // 组件的属性列表
   properties: {
     isMust : String,
-    disable : Boolean,
+    disabled : Boolean,
     type : String,
     lable : String,
-    value : String 
+    className : String,
+    value : String
   },  
   // 组件的初始数据
   data: {  

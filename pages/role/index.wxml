@@ -21,5 +21,9 @@
     <text class="roleCon">助您精准选课</text>
     <image class="roleImg {{active4}}" src="../../images/ass.png"/>
   </view>
-  <myButton className="submit" bind:click="click" content="确认"/>
+  <button
+    style = "width: 64%;font-size: 32rpx;font-weight: 100;background: #FF8711;border-radius: 40rpx;height: 84rpx;line-height: 54rpx;color: #ffffff;margin: 52rpx auto;text-align: center;"
+    open-type="getUserInfo"
+    bindgetuserinfo="bindgetuserinfo">确认
+  </button>
 </view>

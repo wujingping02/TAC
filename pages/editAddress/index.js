@@ -10,12 +10,12 @@ create(store, {
   },
 
   onShow: function () {
-    mockRequest({// 上来获取一下地址列表
-      url: service.addressList.url,
-      method: "post",
+    ajax({// 上来获取一下地址列表
+      url: service.addressList.url
     }).then((res) => {
+      debugger
       this.store.data.addressList = res.data;// 把列表存一下
-      this.update();
+      this.store.update();
     })
   },
 

@@ -1,10 +1,6 @@
 export default {
     data: {
-        userInfo: {
-            name : "张三",
-            phone : "13112341234",
-            userType : "40"// 10 培训机构管理员，20 助教，30 教师，40 家长
-        },// 用户信息，记录的用户的角色信息
+        userInfo: {},// 用户信息，记录的用户的角色信息
         valueInfo: {},// 表单信息，用户在页面上录入的信息
         store_courseList: null,// 课程列表
         store_classList: null,// 班级列表

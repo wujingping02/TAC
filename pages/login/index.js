@@ -14,13 +14,16 @@ create(store, {
     
   },
 
-  getUserInfo(data) {
+  bindgetphonenumber() {
     if(this.data.agree === false){
       wx.showToast({
         title: '请先勾选协议',
         icon: 'none'
       });
-    }
+    };
+    wx.navigateTo({
+      url: "/pages/role/index"
+    })
     return
   },
 

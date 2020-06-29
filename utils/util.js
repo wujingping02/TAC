@@ -26,25 +26,25 @@ function ajax(data) {
       title: '加载中',
       mask: true,
     })
-    debugger
     wx.request({
       url: data.url,
       data: data.data,
       header: {
-        cookie: wx.getStorageSync("token")
+        'cookie': 'token=' + wx.getStorageSync('token') + ";",
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      method: data.method || "get",
+      method: data.method || "post",
       dataType: 'json',
       responseType: 'text',
       success: function(res) {
         wx.hideLoading()
-        if(res.code === '0000'){
-          suc(res)
+        if(res.data.code === '0000'){
+          suc(res.data)
         }else{
-          wx.showToast({title: res.msg,icon: "none"})
+          wx.showToast({title: res.data.msg,icon: "none"})
         }
       },
-      fail: function(err) {
+      fail: function() {
         wx.hideLoading()
         wx.showToast({title: "系统异常，请稍后再试",icon: "none"})
       }
@@ -73,42 +73,49 @@ function mockRequest(data) {
 }
 
 // 判断用户是否注册
-function checkLogin() {
-  if(!this.store.data.userInfo.userType){// 没有用户信息
-    mockRequest({// 先查查有没有登录
-      url: service.userLogin.url,
-      method: "post",
-    }).then((res) => {
-      if(!res.data.name){// 没登录，去登陆
-        wx.navigateTo({
-          url: "/pages/login/index"
-        });
-      }else{// 登陆过，有信息
-        this.store.data.userInfo.name = res.data.name;
-        this.store.data.userInfo.phone = res.data.name;
-        this.store.data.userInfo.userType = res.data.name;
-        this.update();
-      }
+function isLogin() {
+  if(!this.store.data.userInfo.userType){// 没有角色信息就去拿一下
+    getWXCode().then(code => {
+      ajax({
+        url : service.login.url,
+        data : {
+          code : code
+        }
+      }).then(res => {
+        if(res.data.isRegister === "N"){// 没登录
+          wx.navigateTo({
+            url: "/pages/login/index"
+          });
+        }else{
+          wx.setStorageSync('token', res.data.token);
+          this.store.data.userInfo.userType = res.data.userType || "10";// 10 培训机构管理员，20 助教，30 教师，40 家长
+          this.store.data.userInfo.photo = res.data.mobileNo || "13112341234";
+          if(!res.data.headImageId){// 没有头像使用微信头像
+            let that = this;
+            wx.getUserInfo({
+              success(res) {
+                that.store.data.userInfo.avatar = res.userInfo.avatarUrl;// 头像
+                that.store.data.userInfo.userName = res.userInfo.nickName;// 姓名
+                that.store.update();
+              }
+            });
+          }else{// 有头像用上传后的头像
+            this.store.data.userInfo.avatar = "https://timeafterschool.net/tas/image/preview?imageId=" + res.data.headImageId;
+            this.store.update();
+          }
+        }
+      })
     })
   }
 }
 
-// 注册 + 登录
-function getUserInfo() {
+// 获取用户code
+function getWXCode() {
   return new Promise((suc, fail) => {
     wx.login({// 先拿一下code
       success (res) {
         if (res.code) {
-          // 发起网络请求
-          mockRequest({// 去登陆
-            url: service.userLogin.url,
-            data: {
-              code: res.code
-            }
-          }).then((res) => {
-            wx.setStorageSync("token", res.token)
-            suc(res)// 返回用户信息
-          })
+          suc( res.code )
         }else{
           wx.showToast({title: res.msg,icon: "none"})
         }
@@ -143,8 +150,8 @@ function collectVals(filedList, id) {
 module.exports = {
   ajax: ajax,
   mockRequest : mockRequest,
-  getUserInfo : getUserInfo,
   collectVals : collectVals,
   getTime : getTime,
-  checkLogin : checkLogin
+  isLogin : isLogin,
+  getWXCode : getWXCode
 }

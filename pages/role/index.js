@@ -1,6 +1,6 @@
 import store from '../../store'
 import create from '../../utils/create'
-import {ajax, mockRequest, collectVals} from '../../utils/util'
+import {ajax, mockRequest, collectVals, getWXCode} from '../../utils/util'
 import service from '../../utils/service'
 import QRCode from '../../utils/qrCode'
 
@@ -54,12 +54,28 @@ create(store, {
     }
   },
 
-  // 提交角色信息
-  click() {
+  // 获取用户信息
+  bindgetuserinfo() {
     if(this.data.role === ""){
       wx.showToast({
         title: "请选择角色",
         icon: 'none'
+      })
+    }else{
+      // 注册一下
+      getWXCode().then(code => {
+        ajax({
+          url: service.register.url,
+          method: "post",
+          data : {
+            code : code,
+            userType : this.data.role,
+            mobileNo : "13112341234"
+          }
+        }).then((res) => {
+          wx.setStorageSync('token', res.data.token);
+          wx.navigateBack({delta: 2})
+        })
       })
     }
   }

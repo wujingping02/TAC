@@ -16,7 +16,7 @@
     <view class="introduction">{{orgDetail}}</view>
     <view class="orgPhotoText" wx:if="{{userInfo.userType === '10'}}">机构相册</view>
     <view class="orgPhotoText" wx:if="{{userInfo.userType === '30'}}">个人相册</view>
-    <myPhoto previewImage="{{true}}" padding="0 40rpx" orgPhoto="{{orgPhoto}}"/>
+    <myPhoto bind:before-read='upload' previewImage="{{true}}" padding="0 40rpx" orgPhoto="{{orgPhoto}}"/>
     <view class="orgPhotoText" wx:if="{{userInfo.userType === '10'}}">机构地址</view>
     <view class="orgAddressBox" wx:if="{{userInfo.userType === '10'}}">
       <block wx:key="box" wx:for="{{orgAddress}}">

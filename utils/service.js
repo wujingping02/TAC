@@ -1,8 +1,10 @@
 // 记录了所有接口的地址和mock数据
+let domain = "https://timeafterschool.net/";
+
 export default{
     // 获取登录信息
-    "userLogin" : {
-        url : "/user/login",
+    login : {
+        url : domain + "tas/user/login",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -19,8 +21,8 @@ export default{
         }
     },
     // 选课获取课程列表
-    "courseList" : {
-        url : "https://timeafterschool.net/tas/course/getCourseList",
+    courseList : {
+        url : domain + "tas/course/getCourseList",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -66,8 +68,8 @@ export default{
         }
     },
     // 家长查询图片列表
-    "photoList" : {
-        url : "/parent/photo/list",
+    photoList : {
+        url : domain + "parent/photo/list",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -97,8 +99,8 @@ export default{
         }
     },
     // 选课获取课程列表
-    "courseList2" : {
-        url : "/institute/course/list2",
+    courseList2 : {
+        url : domain + "institute/course/list2",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -148,8 +150,8 @@ export default{
         }
     },
     // 获取班级列表
-    "classList" : {
-        url : "/institute/class/list",
+    classList : {
+        url : domain + "institute/class/list",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -181,8 +183,8 @@ export default{
         }
     },
     // 获取课节列表
-    "lessonList" : {
-        url : "/institute/class/lesson/list",
+    lessonList : {
+        url : domain + "institute/class/lesson/list",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -198,8 +200,8 @@ export default{
         }
     },
     // 机构获取地址列表
-    "addressList" : {
-        url : "/institute/address/list",
+    addressList : {
+        url : domain + "tas/institute/getAddressList",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -221,8 +223,8 @@ export default{
         }
     },
     // 机构获取教室列表
-    "classroomList" : {
-        url : "/institute/classroom/list",
+    classroomList : {
+        url : domain + "institute/classroom/list",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -242,8 +244,8 @@ export default{
         }
     },
     // 老师和助教获取机构列表
-    "relativeList" : {
-        url : "/institute/relative/list",
+    relativeList : {
+        url : domain + "institute/relative/list",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -253,8 +255,8 @@ export default{
         }
     },
     // 老师换补课列表
-    "changeList" : {
-        url : "/teacher/lesson/change/list",
+    changeList : {
+        url : domain + "teacher/lesson/change/list",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -276,8 +278,8 @@ export default{
         }
     },
     // 家长查询子女信息
-    "childrenList" : {
-        url : "/parent/children/list",
+    childrenList : {
+        url : domain + "parent/children/list",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -287,8 +289,8 @@ export default{
         }
     },
     // 查询机构详情
-    "introductionGetDetail" : {
-        url : "/institute/introduction/getDetail",
+    introductionGetDetail : {
+        url : domain + "institute/introduction/getDetail",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -311,7 +313,7 @@ export default{
     },
     // 机构添加教室
     classroomAdd : {
-        url : "/institute/classroom/add",
+        url : domain + "institute/classroom/add",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -323,7 +325,7 @@ export default{
     },
     // 获取教师列表
     teacherList : {
-        url : "/institute/class/teacher/list",
+        url : domain + "institute/class/teacher/list",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -343,7 +345,7 @@ export default{
     },
     // 获取助教列表获取助教列表
     userList : {
-        url : "/institute/user/list",
+        url : domain + "institute/user/list",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -361,7 +363,7 @@ export default{
     },
     // 查询教师、助教信息
     userQuery : {
-        url : "/institute/user/query",
+        url : domain + "institute/user/query",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -373,7 +375,7 @@ export default{
     },
     // 首页查询课程详情
     courseQuery : {
-        url : "/course/query",
+        url : domain + "course/query",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -434,5 +436,17 @@ export default{
                 ]
             },
         }
+    },
+    // 注册
+    register : {
+        url : domain + 'tas/user/register'
+    },
+    // 完善机构信息
+    submitInfo : {
+        url : domain + 'tas/institute/modifyBaseInfo'
+    },
+    // 查询基本信息
+    getAllInfo : {
+        url : domain + "tas/user/query"
     }
 }

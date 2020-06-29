@@ -8,6 +8,8 @@
         isMust="{{item.isMust}}" 
         id="{{item.key}}" 
         type="{{item.type}}" 
+        disabled="{{item.disabled}}"
+        className="{{item.className}}"
         lable="{{item.lable}}"/>
       <mySelect 
         wx:if="{{item.type === 'selector' || item.type === 'time' || item.type === 'date' || item.type === 'calendar' || item.type === 'region'}}" 

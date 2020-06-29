@@ -113,6 +113,7 @@ VantComponent({
         });
     },
     onBeforeRead(file) {
+      debugger
       const { beforeRead, useBeforeRead } = this.data;
       let res = true;
       if (typeof beforeRead === 'function') {

@@ -1,5 +1,5 @@
 <view class="pageBox">
   <myHeader title="{{title}}"></myHeader>
   <myPopup id="page" list="{{fieldList}}"/>
-  <myButton wx:if="{{disabled === false}}" className="submit" bind:click="submit" content="提交"/>
+  <myButton className="submit" bind:click="submit" content="提交"/>
 </view>

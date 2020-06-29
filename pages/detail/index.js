@@ -1,6 +1,6 @@
 import store from '../../store'
 import create from '../../utils/create'
-import {ajax,mockRequest,getTime} from '../../utils/util'
+import {ajax, mockRequest, getTime, getWXCode, isLogin } from '../../utils/util'
 import service from '../../utils/service'
 
 create(store, {
@@ -8,14 +8,6 @@ create(store, {
     show: false,
     classList: null,
     title: "行事历",
-    fieldList : [// 字段list
-      {
-        "type" : "calendar",
-        "lable" : "日期",
-        "key" : "orgName",
-        "isMust" : "1"
-      }
-    ],
     top: "800rpx",
     activeL: "active",
     activeR: "",
@@ -57,8 +49,14 @@ create(store, {
       }
     ]
   },
+
+  // 上来登录一下
+  onLoad() {
+    isLogin.call(this);
+  },
  
-  getClassList() {// 获取一下地址列表
+  // 获取一下地址列表
+  getClassList() {
     mockRequest({
       url: service.classList.url,
       method: "post",

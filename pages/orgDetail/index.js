@@ -33,7 +33,13 @@ create(store, {
     })
   },
 
+  // 返回上一页
   back: function () {
     wx.navigateBack({delta: 1})
+  },
+
+  // 上传图片
+  upload(url) {
+    console.log(url)
   }
 })

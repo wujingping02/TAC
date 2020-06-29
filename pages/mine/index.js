@@ -1,6 +1,6 @@
 import store from '../../store'
 import create from '../../utils/create'
-import { ajax, mockRequest, getUserInfo, checkLogin } from '../../utils/util'
+import { ajax, mockRequest, isLogin } from '../../utils/util'
 import service from '../../utils/service'
 
 create(store, {
@@ -10,7 +10,7 @@ create(store, {
   },
 
   onLoad() {
-    checkLogin.call(this);
+    isLogin.call(this);
   },
 
   onReady() {
@@ -96,6 +96,16 @@ create(store, {
     wx.navigateTo({
       url: "/pages/editClass/index?fromMine=1"
     });
+  },
+
+  // 家长扫码定课
+  saomadingke() {
+    wx.scanCode({
+      onlyFromCamera: true,
+      success (res) {
+        wx.navigateTo({ url : "/pages/ewmdk/index?data=" + res.result})
+      }
+    })
   },
 
   getUserInfoFun: function (res) {

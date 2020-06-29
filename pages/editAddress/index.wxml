@@ -1,6 +1,6 @@
 <view>
   <myHeader title="{{title}}"/>
   <view class="topBG"></view>
-  <myAddressList list="{{addressList}}" bind:toClsRoomList="toClsRoomList"></myAddressList>
+  <myAddressList background="red" list="{{addressList}}" bind:toClsRoomList="toClsRoomList"></myAddressList>
   <myButton className="add" bind:click="click" content="新增地址"/>
 </view>
