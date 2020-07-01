@@ -15,12 +15,15 @@ Component({
   },  
   // 组件的方法列表 
   methods: {
-    toClsRoomList : function(e) {
-      let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
-      this.triggerEvent("toClsRoomList", index);
+    toClsRoomList : function(e) {// 跳转到教室列表
+      let index = e.currentTarget.dataset['index'];
+      let addressId = this.data.list[index].addressId;
+      wx.navigateTo({
+        url: "/pages/clsRoomList/index?addressId=" + addressId
+      });
     },
-    edit : function(e) {
-      let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
+    edit : function(e) {// 编辑当前地址信息
+      let index = e.currentTarget.dataset['index'];
       wx.navigateTo({
         url: "/pages/addAddress/index?index=" + index
       });

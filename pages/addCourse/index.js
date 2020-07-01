@@ -1,22 +1,23 @@
 import store from '../../store'
 import create from '../../utils/create'
-import {ajax, mockRequest, collectVals} from '../../utils/util'
+import {ajax, mockRequest, collectVals, uploadImg} from '../../utils/util'
 import service from '../../utils/service'
 
 create(store, {
   data: {
-    title : "编辑地址",
+    title : "课程管理",
     fieldList : [// 字段list
       {
         "type" : "text",
         "lable" : "课程名称",
-        "key" : "name",
+        "key" : "courseName",
         "isMust" : "1"
       },
       {
         "type" : "photo",
         "lable" : "课程介绍主图",
-        "key" : "name",
+        "key" : "mainImageId",
+        "value" : [],
         "isMust" : "1"
       },
       {
@@ -24,7 +25,7 @@ create(store, {
         "lable" : "最小适合年龄",
         "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
         "idList" : ['0', '1','2','3','4','5','6'],
-        "key" : "name",
+        "key" : "sAgae",
         "isMust" : "1"
       },
       {
@@ -32,67 +33,93 @@ create(store, {
         "lable" : "最大适合年龄",
         "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
         "idList" : ['0', '1','2','3','4','5','6'],
-        "key" : "name",
+        "key" : "eAge",
         "isMust" : "1"
       },
       {
         "type" : "selector",
         "lable" : "上课地址",
-        "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
-        "idList" : ['0', '1','2','3','4','5','6'],
-        "key" : "name",
+        "nameList" : [],
+        "idList" : [],
+        "key" : "addressId",
         "isMust" : "1"
       },
       {
         "type" : "courseAttr",
         "lable" : "课程属性",
-        "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
-        "idList" : ['0', '1','2','3','4','5','6'],
-        "key" : "courseAttr",
+        "key" : "mainLabel",
         "isMust" : "1"
       },
       {
         "type" : "text",
         "lable" : "备注",
-        "key" : "name",
+        "key" : "remark",
         "isMust" : "1"
       },
       {
         "type" : "text",
         "lable" : "价格",
-        "key" : "name",
+        "key" : "price",
         "isMust" : "1"
       },
       {
         "type" : "text",
         "lable" : "课程介绍",
-        "key" : "name",
+        "key" : "courseIntroduce",
         "isMust" : "1"
       },
       {
         "type" : "photo",
         "lable" : "课程介绍",
-        "key" : "name",
-        "isMust" : "1",
-        "orgPhoto" : [
-          
-        ]
+        "key" : "courseIntroduceImg",
+        "isMust" : "1"
       }
     ]
   },
 
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
-    if(options.index){
-      let data = this.store.data.addressList[options.index];
-      this.data.fieldList[0].value = data.provice + ',' + data.city + ',' + data.area;
-      this.data.fieldList[1].value = data.address;
-    }
+    // if(options.index){
+    //   let data = this.store.data.addressList[options.index];
+    //   this.data.fieldList[0].value = data.provice + ',' + data.city + ',' + data.area;
+    //   this.data.fieldList[1].value = data.address;
+    // }
+    ajax({// 上来获取一下地址列表
+      url: service.addressList.url
+    }).then((res) => {
+      this.data.fieldList[4].nameList = res.data.map(v => {
+        return v = v.address
+      });
+      this.data.fieldList[4].idList = res.data.map(v => {
+        return v = v.addressId
+      });
+      this.setData({
+        fieldList : this.data.fieldList
+      })
+    })
   },
 
   click: function () {
     let vals = collectVals.call(this, this.data.fieldList);
-    ;
-    // wx.navigateBack({delta: 1})
+    if(vals === false){
+      return
+    };
+    ajax({
+      url : service.orgAddCourse.url,
+      data : {
+        courseName : vals.courseName,
+        price : vals.price,
+        mainLabel : vals.mainLabel[0].value,
+        subLabel1 : vals.mainLabel[1].value,
+        subLabel2 : vals.mainLabel[2].value,
+        ageStage : vals.sAgae + '-' + vals.eAgae,
+        addressId : vals.addressId,
+        mainImageId : vals.mainImageId,
+        courseIntroduce : vals.courseIntroduce,
+        remark : vals.remark
+      }
+    }).then(res => {
+      wx.navigateBack({delta: 1})
+    })
   }
 })

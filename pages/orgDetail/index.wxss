@@ -41,6 +41,16 @@
     margin-top: 32rpx;
     padding: 0 40rpx;
 }
+.textarea {
+    width: 100%;
+    margin: 32rpx auto 0;
+    font-size: 28rpx;
+    color: #333;
+    line-height: 40rpx; 
+    border: 1px solid #3D3B5E;
+    border-radius: 8rpx;
+    padding: 8rpx;
+}
 .orgPhotoText {
     font-size: 28rpx;
     color: #3D3B5E;

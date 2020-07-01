@@ -98,9 +98,9 @@ export default{
             ]
         }
     },
-    // 选课获取课程列表
-    courseList2 : {
-        url : domain + "institute/course/list2",
+    // 机构获取课程列表
+    orgCourseList : {
+        url : domain + "tas/institute/getCourseList",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -148,6 +148,10 @@ export default{
                 }
             ]
         }
+    },
+    // 机构新增课程
+    orgAddCourse : {
+        url : domain + "tas/institute/addCourse",
     },
     // 获取班级列表
     classList : {
@@ -224,7 +228,7 @@ export default{
     },
     // 机构获取教室列表
     classroomList : {
-        url : domain + "institute/classroom/list",
+        url : domain + "tas/institute/address/getClassroomList",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -308,18 +312,6 @@ export default{
                     "徐汇区宛平我拿你1109号急急急",
                     "徐汇区宛平我拿你1109号急急急"
                 ]
-            }
-        }
-    },
-    // 机构添加教室
-    classroomAdd : {
-        url : domain + "institute/classroom/add",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : {
-                name : "新教室",
-                number : "999"
             }
         }
     },
@@ -448,5 +440,25 @@ export default{
     // 查询基本信息
     getAllInfo : {
         url : domain + "tas/user/query"
+    },
+    // 新增机构校区
+    addAddress : {
+        url : domain + "tas/institute/addAddress"
+    },
+    // 编辑地址信息
+    editAddress : {
+        url : domain + "tas/institute/modifyAddress"
+    },
+    // 新增教室
+    addClassroom : {
+        url : domain + "tas/institute/address/addClassroom"
+    },
+    // 上传图片
+    upload : {
+        url : domain + "tas/image/uploadImage"
+    },
+    // 机构修改头像
+    changeAvatar : {
+        url : domain + "tas/institute/modifyHeadImage"
     }
 }

@@ -21,6 +21,13 @@ create(store, {
     
   },
 
+  // 编辑机构、老师介绍页
+  editOrgdetail() {
+    wx.navigateTo({
+      url: "/pages/orgDetail/index?edit=1"
+    });
+  },
+
   // 【所有人】查看基本信息
   toPersonInfo: function () {
     wx.navigateTo({

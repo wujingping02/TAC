@@ -13,21 +13,12 @@ create(store, {
     ajax({// 上来获取一下地址列表
       url: service.addressList.url
     }).then((res) => {
-      debugger
       this.store.data.addressList = res.data;// 把列表存一下
       this.store.update();
     })
   },
 
-  // 跳到教室列表
-  toClsRoomList: function (data) {
-    let index = data.detail;
-    wx.navigateTo({
-      url: "/pages/clsRoomList/index?index=" + index
-    });
-  },
-
-  // 新建一个教室
+  // 新增一个校区
   click: function () {
     wx.navigateTo({
       url: "/pages/addAddress/index"

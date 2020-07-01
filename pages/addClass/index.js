@@ -70,6 +70,9 @@ create(store, {
 
   submit: function () {
     let vals = collectVals.call(this, this.data.fieldList);
+    if(vals === false){
+      return
+    };
     this.setData({
       calssName : vals.calssName,
       maxNumber : vals.maxNumber,
@@ -79,5 +82,8 @@ create(store, {
 
   sureAdd: function () {
     let vals = collectVals.call(this, this.data.fieldList2, "page2");
+    if(vals === false){
+      return
+    };
   }
 })

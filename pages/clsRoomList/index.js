@@ -1,20 +1,22 @@
-import {ajax, mockRequest} from '../../utils/util'
+import {ajax, mockRequest, collectVals} from '../../utils/util'
 import service from '../../utils/service'
 
 Page({
   data: {
     title: "教室管理",
+    addressId: '',
     fieldList : [// 字段list
       {
         "type" : "text",
         "lable" : "教室名称",
-        "key" : "orgName",
+        "key" : "classroomName",
         "isMust" : "1"
       },
       {
         "type" : "text",
         "lable" : "教室最大人数",
-        "key" : "orgName",
+        "key" : "classroomSize",
+        "check" : "num",
         "isMust" : "1"
       }
     ],
@@ -22,10 +24,18 @@ Page({
     hidePopup : true
   },
 
+  onLoad(options) {
+    this.setData({
+      addressId : options.addressId
+    })
+  },
+
   onShow: function () {
-    mockRequest({// 上来获取一下教室列表
+    ajax({// 上来获取一下教室列表
       url: service.classroomList.url,
-      method: "post",
+      data: {
+        addressId : this.data.addressId
+      }
     }).then((res) => {
       this.setData({
         classList : res.data
@@ -39,12 +49,21 @@ Page({
     })
   },
   
-  sureAdd: function () {
-    mockRequest({// 添加一个教室
-      url: service.classroomAdd.url,
-      method: "post",
+  sureAdd: function () {// 添加一个教室
+    let vals = collectVals.call(this, this.data.fieldList);
+    if(vals === false){
+      return
+    };
+    let data = {
+      addressId : this.data.addressId,
+      classroomSize : vals.classroomSize,
+      classroomName : vals.classroomName
+    };
+    ajax({
+      url: service.addClassroom.url,
+      data: data
     }).then((res) => {
-      this.data.classList.push(res.data);
+      this.data.classList.push(data);
       this.setData({
         classList : this.data.classList,
         hidePopup : true

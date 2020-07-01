@@ -10,6 +10,7 @@
         type="{{item.type}}" 
         disabled="{{item.disabled}}"
         className="{{item.className}}"
+        check="{{item.check}}"
         lable="{{item.lable}}"/>
       <mySelect 
         wx:if="{{item.type === 'selector' || item.type === 'time' || item.type === 'date' || item.type === 'calendar' || item.type === 'region'}}" 
@@ -29,7 +30,7 @@
         id="{{item.key}}" 
         type="{{item.type}}" 
         round="{{item.round}}"
-        orgPhoto="{{item.orgPhoto}}"
+        value="{{item.value}}"
         uploadText="{{item.uploadText}}"
         lable="{{item.lable}}"/>
       <van-search 

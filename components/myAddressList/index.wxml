@@ -1,7 +1,7 @@
 <view class="addressBox">
   <block wx:key="box" wx:for="{{list}}">
     <view class="addressListBox">
-      <view class="addressDetail">{{item.name + ":" + item.provice + item.city + item.area + item.address}}</view>
+      <view class="addressDetail">{{item.provinceCode + "-" + item.areaCode + "-" + item.cityCode + " " + item.address}}</view>
       <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">管理教室</view>
       <view class="edit" bindtap="edit" data-index="{{index}}">编辑</view>
     </view>

@@ -12,7 +12,7 @@ Component({
     lable : String,
     value : String,
     mode : String,
-    list : Array,
+    list : null,
     idList : Array,
     className : String
   },  
@@ -72,7 +72,7 @@ Component({
     check : function(){
       if(this.properties.isMust && !this.properties.value){
         wx.showToast({
-          title: "请输入" + this.properties.lable,
+          title: "请选择" + this.properties.lable,
           icon: 'none'
         })
         return false

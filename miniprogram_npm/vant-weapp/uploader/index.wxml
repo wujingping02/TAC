@@ -17,7 +17,7 @@
         src="{{ item.url || item.path }}"
         alt="{{ item.name || ('图片' + index) }}"
         class="van-uploader__preview-image"
-        style="width: 26vw; height: 26vw;"
+        style="width: 27.5vw; height: 27.5vw;"
         data-index="{{ index }}"
         bind:tap="onPreviewImage"
       />
@@ -38,7 +38,7 @@
        <text wx:if="{{ item.message }}" class="van-uploader__upload-text">{{ item.message }}</text>
       </view>
       <van-icon
-        wx:if="{{ deletable }}"
+        wx:if="{{ deletable && !disabled }}"
         name="../../../images/del.png"
         class="van-uploader__preview-delete"
         data-index="{{ index }}"
@@ -47,7 +47,7 @@
     </view>
 
     <!-- 上传样式 -->
-    <block wx:if="{{ isInCount }}">
+    <block wx:if="{{ isInCount && !disabled }}">
       <view class="van-uploader__slot" bind:tap="startUpload">
         <slot />
       </view>
@@ -56,7 +56,7 @@
       <view
         wx:if="{{ showUpload }}"
         class="van-uploader__upload {{ disabled ? 'van-uploader__upload--disabled': ''}}"
-        style="width: {{ utils.addUnit(previewSize) }}; height: {{ utils.addUnit(previewSize) }};"
+        style="width: 27.5vw; height: 27.5vw;"
         bind:tap="startUpload"
       >
         <van-icon name="{{ uploadIcon }}" class="van-uploader__upload-icon" />

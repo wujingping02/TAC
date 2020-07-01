@@ -55,6 +55,8 @@ create(store, {
 
   submit: function () {
     let vals = collectVals.call(this, this.data.fieldList);
-    
+    if(vals === false){
+      return
+    };
   }
 })

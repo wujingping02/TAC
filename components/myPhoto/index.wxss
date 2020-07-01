@@ -1,13 +1,16 @@
 .box {
-    width: 100%;
+    width: 100vw;
     display: inline-block;
     box-sizing: border-box;
     margin-top: 20rpx;
+    padding-top: 24rpx;
 }
 .lable {
     font-size: 24rpx;
     color: #000000;
     line-height: 24rpx;
+}
+.orgPhotoBox {
     margin-top: 24rpx;
 }
 .orgPhotoBox.round {

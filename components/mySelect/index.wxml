@@ -1,9 +1,9 @@
 <view class="{{className || 'box'}}">
   <text class="lable">{{lable}}</text>
-  <picker class="val" mode="{{type}}" bind:tap="click" bindchange="bindchange" range="{{list}}">
+  <picker class="val" mode="{{type}}" value="{{value}}" bind:tap="click" bindchange="bindchange" range="{{list}}">
     <view wx:if="{{type === 'selector'}}" class="prompt">{{index === -1 ? '请选择' + lable : list[index]}}</view>
     <view wx:if="{{type === 'time'}}" class="prompt">{{value ? value : '请选择' + lable}}</view>
-    <view wx:if="{{type === 'region'}}" class="prompt">{{zh_value ? zh_value : '请选择' + lable}}</view>
+    <view wx:if="{{type === 'region'}}" class="prompt">{{value ? value : '请选择' + lable}}</view>
     <view wx:if="{{type === 'calendar'}}" class="prompt">
       {{value ? value : '请选择' + lable}}
       <van-calendar

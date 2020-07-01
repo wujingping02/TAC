@@ -4,8 +4,8 @@
     <view wx:if="{{type === 'classroom'}}">
       <block wx:key="box" wx:for="{{list}}">
         <view class="oneItemBox" bind:tap="clickItem" data-index="{{index}}">
-          <text class="name">{{item.name}}</text>
-          <text class="number">{{item.number + '人'}}</text>
+          <text class="name">{{item.classroomName}}</text>
+          <text class="number">{{item.classroomSize + '人'}}</text>
         </view>
       </block>
       <view wx:if="{{!disable}}" bind:tap="addItem" class="addItemBox">

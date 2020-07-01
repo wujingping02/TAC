@@ -113,7 +113,6 @@ VantComponent({
         });
     },
     onBeforeRead(file) {
-      debugger
       const { beforeRead, useBeforeRead } = this.data;
       let res = true;
       if (typeof beforeRead === 'function') {
@@ -131,11 +130,10 @@ VantComponent({
           );
         });
       }
-      if (!res) {
-        return;
-      }
-      if (isPromise(res)) {
-        res.then((data) => this.onAfterRead(data || file));
+      if (res != true) {
+        if (isPromise(res)) {
+          res.then((data) => this.onAfterRead(data || file));
+        }
       } else {
         this.onAfterRead(file);
       }
@@ -152,16 +150,18 @@ VantComponent({
       if (typeof this.data.afterRead === 'function') {
         this.data.afterRead(file, this.getDetail());
       }
-      this.$emit('after-read', Object.assign({ file }, this.getDetail()));
+      // this.$emit('after-read', Object.assign({ file }, this.getDetail()));
+      this.triggerEvent("afterRead", Object.assign({ file }, this.getDetail()));
     },
     deleteItem(event) {
       const { index } = event.currentTarget.dataset;
-      this.$emit(
-        'delete',
-        Object.assign(Object.assign({}, this.getDetail(index)), {
-          file: this.data.fileList[index],
-        })
-      );
+      this.triggerEvent("delete", index);
+      // this.$emit(
+      //   'delete',
+      //   Object.assign(Object.assign({}, this.getDetail(index)), {
+      //     file: this.data.fileList[index],
+      //   })
+      // );
     },
     onPreviewImage(event) {
       if (!this.data.previewFullImage) return;

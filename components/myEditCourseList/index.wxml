@@ -12,7 +12,7 @@
       </view>
     </view>
   </block>
-  <view class="bottomBox"></view>
-  <text class="noAddress noAddress2" wx:if='{{list.length === 0}}'>暂无课程</text>
-  <text class="noAddress" wx:if='{{list.length === 0}}'>请点击底部按钮添加课程信息</text>
+  <!-- <view class="bottomBox"></view> -->
+  <view class="noAddress noAddress2" wx:if='{{list.length === 0}}'>暂无课程</view>
+  <view class="noAddress" wx:if='{{list.length === 0}}'>请点击底部按钮添加课程信息</view>
 </view>

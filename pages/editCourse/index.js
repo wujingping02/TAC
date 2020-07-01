@@ -10,9 +10,8 @@ create(store, {
   },
 
   onShow: function () {
-    mockRequest({// 上来获取一下课程列表
-      url: service.courseList2.url,
-      method: "post",
+    ajax({// 上来获取一下课程列表
+      url: service.orgCourseList.url
     }).then((res) => {
       this.store.data.courseList = res.data;// 把列表存一下
       this.update();

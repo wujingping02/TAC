@@ -49,16 +49,3 @@
     padding: 0 22rpx;
     margin-left: 16rpx;
 }
-.noAddress {
-    position: absolute;
-    text-align: center;
-    bottom: 0;
-    font-size: 32rpx;
-    color: #9D9DAF;
-    line-height: 52rpx;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.noAddress2 {
-    bottom: 52rpx;
-}
