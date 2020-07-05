@@ -70,7 +70,7 @@ create(store, {
           data : {
             code : code,
             userType : this.data.role,
-            mobileNo : "13112341234"
+            mobileNo : "18601669725"
           }
         }).then((res) => {
           wx.setStorageSync('token', res.data.token);

@@ -11,6 +11,7 @@ create(store, {
     top: "800rpx",
     activeL: "active",
     activeR: "",
+    date: getTime(new Date()),
     nowDate: getTime(new Date()),
     minDate: getTime(new Date()).split("-")[1]  > 3 ? getTime(new Date()).split("-")[0] + "-" + (getTime(new Date()).split("-")[1] * 1 - 3) + "-01" : (getTime(new Date()).split("-")[0] - 1) + "-" + (getTime(new Date()).split("-")[1] * 1 - 3) + "-01",
     maxDate: getTime(new Date()).split("-")[1]  < 9 ? getTime(new Date()).split("-")[0] + "-" + (getTime(new Date()).split("-")[1] * 1 + 3) + "-30" : (getTime(new Date()).split("-")[0] + 1) + "-" + (getTime(new Date()).split("-")[1] * 1 - 9) + "-30",
@@ -55,11 +56,14 @@ create(store, {
     isLogin.call(this);
   },
  
-  // 获取一下地址列表
+  // 获取一下班级列表
   getClassList() {
-    mockRequest({
-      url: service.classList.url,
-      method: "post",
+    ajax({
+      url: service.getCalendarLessonList.url,
+      data : {
+        lessonDate : this.data.date,
+        dimensionType : this.data.activeL === 'active' ? '1' : '2'
+      }
     }).then((res) => {
       this.setData({
         classList : res.data
@@ -70,6 +74,9 @@ create(store, {
   // 用户选择日期
   getDate: function (data){
     let date = getTime(new Date(data.detail));
+    this.setData({
+      date : date
+    });
     this.getClassList();
   },
 

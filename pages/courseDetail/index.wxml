@@ -7,7 +7,7 @@
     <view class="courseCard">
       <view>
         <view class="name">{{name}}</view>
-        <view class="age">{{ "适合年龄" + age1 + "-" + age2 + "岁" }}</view>
+        <view class="age">{{ "适合年龄" + age + "岁" }}</view>
         <view class="address" style="{{ calssId && userInfo.userType != '40' ? 'margin-bottom : 90rpx' : '' }}">{{address}}</view>
       </view>
       <!-- 二维码报名，仅在班级详情时展示 -->
@@ -31,7 +31,7 @@
   <myPopup wx:if="{{courseId && userInfo.userType === '40'}}" background="#f9f9f9" id="page" paddingTop="0rpx" list="{{fieldList}}"/>
   <myButton wx:if="{{courseId && userInfo.userType === '40'}}" className="reservation" bind:click="submit" content="立即预约"/>
   <view class="introduction">{{courseIntrd}}</view>
-  <myPhoto previewImage="{{true}}" disable="{{true}}" padding="0 40rpx" orgPhoto="{{orgPhoto}}"/>
+  <myPhoto previewImage="{{true}}" disabled="{{true}}" padding="0 40rpx" value="{{orgPhoto}}"/>
   <!-- 课时列表，仅在班级详情时展示 -->
   <view wx:if="{{calssId}}" class="lessonBigBox">
     <view class="lessonBox">

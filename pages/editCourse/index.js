@@ -22,7 +22,7 @@ create(store, {
   toEditClass: function (data) {
     let index = data.detail;
     wx.navigateTo({
-      url: "/pages/editClass/index?index=" + index
+      url: "/pages/editClass/index?courseId=" + this.store.data.courseList[index].courseId
     });
   },
 

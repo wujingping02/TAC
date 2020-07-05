@@ -8,7 +8,7 @@ Component({
     disable : Boolean,
     type : String,
     lable : String,
-    value : String,
+    value : Array,
     mode : String,
     list : {
       type: Array,
@@ -21,21 +21,28 @@ Component({
   },  
   // 组件的初始数据
   data: {
-    index : "",
-    value : "",
-    index2 : "",
+    index : -1,
+    value1 : "",
+    index2 : -1,
     value2 : "",
-    index3 : "",
+    index3 : -1,
     value3 : "",
     show : false,
     zh_value : ""
   },  
   ready: function(){// 组件加载完毕
-    this.setData({
-      index : this.properties.idList.indexOf(this.properties.value),
-      index2 : this.properties.idList.indexOf(this.properties.value2),
-      index3 : this.properties.idList.indexOf(this.properties.value3),
-    })
+    setTimeout(() => {
+      if(this.properties.value && this.properties.value[0]){
+        this.setData({
+          index : this.properties.idList.indexOf(this.properties.value[0]),
+          index2 : this.properties.idList.indexOf(this.properties.value[1]),
+          index3 : this.properties.idList.indexOf(this.properties.value[2]),
+          value1 : this.properties.value[0],
+          value2 : this.properties.value[1],
+          value3 : this.properties.value[2]
+        })
+      }
+    }, 400)
   },
   // 组件的方法列表
   methods: { 
@@ -48,7 +55,7 @@ Component({
     bindchange : function(e){// 每次焦点离开，拿一下值 
       this.setData({
         index : e.detail.value,
-        value : this.properties.idList[e.detail.value]
+        value1 : this.properties.idList[e.detail.value]
       })
     },
     bindchange2 : function(e){// 副属性
@@ -65,7 +72,7 @@ Component({
     },
     getValue : function(){// 获取值
       return [
-        {key: "attr1", value: this.data.value},
+        {key: "attr1", value: this.data.value1},
         {key: "attr2", value: this.data.value2},
         {key: "attr3", value: this.data.value3}
       ]

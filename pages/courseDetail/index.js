@@ -49,7 +49,7 @@ create(store, {
       this.setData({
         calssId : options.calssId
       });
-      mockRequest({// 上来获取一下班级详情
+      ajax({// 上来获取一下班级详情
         url: service.courseQuery.url,
         method: "post",
       }).then((res) => {
@@ -87,26 +87,22 @@ create(store, {
       this.setData({
         courseId : options.courseId
       });
-      mockRequest({// 上来获取一下课程详情
+      ajax({// 上来获取一下课程详情
         url: service.courseQuery.url,
-        method: "post",
+        data: {
+          courseId : options.courseId
+        }
       }).then((res) => {
         this.setData({
-          name: res.data.name,
-          age1: res.data.age1,
-          age2: res.data.age2,
-          address: res.data.address,
-          phone: res.data.phone,
-          orgPhoto: res.data.orgPhoto.map((v) => {
-            return v = {
-              isImage : true,
-              url : v
-            }
-          }),
-          classList: res.data.teacher,
-          courseIntrd: res.data.courseIntrd,
-          orgName: res.data.orgName,
-          orgIntrd: res.data.orgIntrd
+          name: res.data.courseName,
+          age: res.data.ageStage,
+          address: res.data.classAddress,
+          phone: res.data.institutePhone,
+          orgPhoto: res.data.instituteImages,
+          classList: res.data.teachers,
+          courseIntrd: res.data.courseIntroduce,
+          orgName: res.data.instituteName,
+          orgIntrd: res.data.instituteIntro
         })
       })
     }

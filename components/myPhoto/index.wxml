@@ -1,15 +1,17 @@
 <view class="box" style="padding : {{padding}}">
-    <view wx:if="{{lable}}" class="lable">{{lable}}</view>
-    <view class="orgPhotoBox {{round}}">
-      <van-uploader 
-        previewImage="{{true}}"
-        fileList="{{orgPhoto}}"
-        deletable="{{!disable}}"
-        showUpload="{{!disable}}"
-        uploadText="{{uploadText}}"
-        bind:afterRead="upload"
-        bind:delete="delete"
-        disabled="{{disabled}}"
-        id="val"/>
-    </view>
+  <text wx:if="{{isMust}}" class="lable" style="color : #FF8711">* </text>
+  <text wx:if="{{lable}}" class="lable">{{lable}}</text>
+  <view class="orgPhotoBox {{round}}">
+    <van-uploader 
+      previewImage="{{true}}"
+      fileList="{{orgPhoto}}"
+      deletable="{{!disable}}"
+      showUpload="{{!disable}}"
+      uploadText="{{uploadText}}"
+      bind:afterRead="upload"
+      bind:delete="delete"
+      disabled="{{disabled}}"
+      maxCount="{{maxCount || 999}}"
+      id="val"/>
+  </view>
 </view>

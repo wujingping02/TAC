@@ -2,7 +2,6 @@
   <view class="orgAvatarBox" style="height : {{userInfo.userType === '30' ? '700rpx' : '600rpx'}}">
     <view class="headerBox">
       <view bind:tap="back" class="backBox">
-        
         <image class="back" src="../../images/back.png"/>
       </view>
       <text class="title">个人中心</text>
@@ -17,7 +16,7 @@
     <view class="name" wx:if="{{userInfo.userType === '10'}}">{{userInfo.instituteName}}</view>
     <view wx:if="{{!edit}}" class="introduction">{{orgDetail}}</view>
     <view wx:if="{{edit}}" style="padding : 0 40rpx;">
-      <textarea class="textarea" maxlength="-1" auto-height="{{true}}" value="{{orgDetail}}"></textarea>
+      <textarea class="textarea" bindblur="bindTextAreaBlur" maxlength="-1" auto-height="{{true}}" value="{{orgDetail}}"></textarea>
     </view>
     <view class="orgPhotoText" wx:if="{{userInfo.userType === '10'}}">机构相册</view>
     <view class="orgPhotoText" wx:if="{{userInfo.userType === '30'}}">个人相册</view>
@@ -29,4 +28,5 @@
       </block>
     </view>
   </view>
+  <myButton className="submit" paddingTop="0" bind:click="click" content="保存"/>
 </view>

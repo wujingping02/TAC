@@ -6,7 +6,7 @@
       <view class="edit" bindtap="edit" data-index="{{index}}">编辑</view>
     </view>
   </block>
-  <view class="bottomBox"></view>
+  <!-- <view class="bottomBox"></view> -->
   <text class="noAddress noAddress2" wx:if='{{list.length === 0}}'>暂时无信息</text>
   <text class="noAddress" wx:if='{{list.length === 0}}'>请点击底部按钮添加信息</text>
 </view>

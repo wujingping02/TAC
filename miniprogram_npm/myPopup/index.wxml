@@ -32,6 +32,7 @@
         round="{{item.round}}"
         value="{{item.value}}"
         uploadText="{{item.uploadText}}"
+        maxCount="{{item.maxCount}}"
         lable="{{item.lable}}"/>
       <van-search 
         wx:if="{{item.type === 'search'}}" 
@@ -42,7 +43,12 @@
         placeholder="{{item.lable}}"
         bind:search="onSearch"
       ></van-search>
-      <myCourseAttr id="{{item.key}}" wx:if="{{item.type === 'courseAttr'}}"/>
+      <myCourseAttr 
+        isMust="{{item.isMust}}" 
+        id="{{item.key}}" 
+        value="{{item.value}}"
+        lable="课程属性"
+        wx:if="{{item.type === 'courseAttr'}}"/>
     </block>
     <view hidden="{{promptText === ''}}" class="prompt">{{promptText}}</view>
     <view wx:if="{{className === 'toast'}}">

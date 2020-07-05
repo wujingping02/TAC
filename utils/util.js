@@ -93,7 +93,8 @@ function isLogin() {
             url : service.getAllInfo.url
           }).then(obj => {
             this.store.data.userInfo = obj.data;
-            this.store.data.userInfo.userType = res.data.userType || "10";// 10 培训机构管理员，20 助教，30 教师，40 家长
+            // this.store.data.userInfo.userType = res.data.userType || "10";// 10 培训机构管理员，20 助教，30 教师，40 家长
+            this.store.data.userInfo.userType = "10";// 10 培训机构管理员，20 助教，30 教师，40 家长
             this.store.data.userInfo.photo = res.data.mobileNo || "13112341234";
             if(!res.data.headImageId){// 没有头像使用微信头像
               let that = this;
@@ -117,10 +118,6 @@ function isLogin() {
 
 // 上传图片
 function uploadImg(data) {
-  // {
-  //   objectNo : "USE200629000002",
-  //   imageType : "jpg"
-  // }
   data = data || {};
   function uploaf(data){
     return new Promise(suc => {

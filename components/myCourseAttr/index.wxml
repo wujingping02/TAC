@@ -1,21 +1,22 @@
 <view class="box">
   <view>
+    <text wx:if="{{isMust}}" class="lable" style="color : #FF8711">* </text>
     <text class="lable">课程属性</text>
     <text class="explanation">?</text>
   </view>
   <view class="valBox">
     <picker class="val" bind:tap="click" bindchange="bindchange" range="{{list}}">
-      <view class="prompt">{{index === -1 ? '请选择' + lable : list[index]}}</view>
+      <view class="prompt">{{index === -1 ? '请选择' : list[index]}}</view>
     </picker>
   </view>
   <view class="valBox2">
     <picker class="val" bind:tap="click" bindchange="bindchange2" range="{{list}}">
-      <view class="prompt">{{index2 === -1 ? '请选择' + lable : list[index2]}}</view>
+      <view class="prompt">{{index2 === -1 ? '请选择' : list[index2]}}</view>
     </picker>
   </view>
   <view class="valBox3">
     <picker class="val" bind:tap="click" bindchange="bindchange3" range="{{list}}">
-      <view class="prompt">{{index3 === -1 ? '请选择' + lable : list[index3]}}</view>
+      <view class="prompt">{{index3 === -1 ? '请选择' : list[index3]}}</view>
     </picker>
   </view>
 </view>

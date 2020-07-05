@@ -2,13 +2,13 @@
   <block wx:key="box" wx:for="{{list}}">
     <view class="addressListBox">
       <image src="../../images/courseIcon.png" class="icon"/>
-      <view class="addressDetail">{{item.name}}</view>
-      <view class="introd">{{item.introd}}</view>
+      <view class="addressDetail">{{item.courseName}}</view>
+      <view class="introd">{{item.courseIntroduce}}</view>
       <view class="addClassBox">
-        <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">发布</view>
+        <view class="addClass" bindtap="publishCourse" data-index="{{index}}">发布</view>
         <view class="addClass" bindtap="toEditClass" data-index="{{index}}">排班</view>
-        <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">下架</view>
-        <view class="addClass" bindtap="toClsRoomList" data-index="{{index}}">编辑</view>
+        <view class="addClass" bindtap="offShelfCourse" data-index="{{index}}">下架</view>
+        <view class="addClass" bindtap="toEditCourse" data-index="{{index}}">编辑</view>
       </view>
     </view>
   </block>

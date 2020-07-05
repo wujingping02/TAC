@@ -5,9 +5,10 @@ import service from '../../utils/service'
 
 create(store, {
   data: {
-    title: "课时管理",
+    title: "添加班级",
     calssName : "",
     maxNumber : "",
+    lessonList : null,
     fieldList : [
       {
         "type" : "text",
@@ -19,19 +20,6 @@ create(store, {
         "lable" : "最大人数",
         "key" : "maxNumber",
         "isMust" : "1"
-      }
-    ],
-    fieldList2 : [// 字段list
-      {
-        "type" : "time",
-        "lable" : "开始时间",
-        "key" : "name",
-        "isMust" : "1"
-      },{
-        "type" : "time",
-        "lable" : "结束时间",
-        "key" : "name2",
-        "isMust" : "1"
       },{
         "type" : "text",
         "lable" : "选择教师",
@@ -41,6 +29,19 @@ create(store, {
         "type" : "text",
         "lable" : "选择教室",
         "key" : "name4",
+        "isMust" : "1"
+      }
+    ],
+    fieldList2 : [
+      {
+        "type" : "time",
+        "lable" : "开始时间",
+        "key" : "name",
+        "isMust" : "1"
+      },{
+        "type" : "time",
+        "lable" : "结束时间",
+        "key" : "name2",
         "isMust" : "1"
       },{
         "type" : "calendar",
@@ -54,17 +55,17 @@ create(store, {
         "isMust" : "1"
       }
     ],
-    hidePopup: true,
-    lessonList: []
+    hidePopup: true
   },
 
   onShow: function () {
-    mockRequest({// 上来获取一下地址列表
+    ajax({// 上来获取一下课节列表
       url: service.lessonList.url,
       method: "post",
     }).then((res) => {
-      this.store.data.lessonList = res.data;// 把列表存一下
-      this.update();
+      this.setData({
+        lessonList : res.data
+      })
     })
   },
 

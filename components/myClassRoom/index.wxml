@@ -13,7 +13,7 @@
       </view>
     </view>
     <!-- 教师、助教列表 -->
-    <view wx:if="{{type === 'teacher' || type === 'child'}}">
+    <view wx:if="{{type === 'teacher' || type === 'assistant' || type === 'child'}}">
       <block wx:key="box" wx:for="{{list}}">
         <view class="oneItemBox teacher" bind:tap="clickItem" data-index="{{index}}">
           <image class="teacher_avatar" src="{{item.url}}"/>

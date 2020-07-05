@@ -5,6 +5,7 @@ Component({
   // 组件的属性列表 
   properties: {  
     content: String,
+    paddingTop: String,
     className: String
   },
   ready: function(){

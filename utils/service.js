@@ -67,6 +67,10 @@ export default{
             ]
         }
     },
+    // 机构行事历获取班级列表
+    getCalendarLessonList : {
+        url : domain + "tas/institute/getCalendarLessonList"    
+    },
     // 家长查询图片列表
     photoList : {
         url : domain + "parent/photo/list",
@@ -153,42 +157,9 @@ export default{
     orgAddCourse : {
         url : domain + "tas/institute/addCourse",
     },
-    // 获取班级列表
-    classList : {
-        url : domain + "institute/class/list",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {
-                    name: "班级1",
-                    address: "上课地址：上海市徐汇区龙华中立1109号",
-                    nowPeo: "6",
-                    signInStatus: "1",
-                    maxPeo: "10",
-                    time: "10:10 ~ 11:00",
-                    lessonName: "英语系统课本",
-                    teacher: "陈晓光",
-                    url: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1129653791,3279761061&fm=26&gp=0.jpg",
-                    remark: "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或"
-                },{
-                    name: "班级2",
-                    address: "上课地址：上海市徐汇区龙华中立1109号",
-                    nowPeo: "7",
-                    signInStatus: "0",
-                    maxPeo: "10",
-                    time: "10:10 ~ 11:00",
-                    lessonName: "英语系统课本",
-                    teacher: "陈晓光",
-                    url: "http://i-1-binzz.qqxzb-img.com/2018/8/16/d4ca486c-fbf4-4c62-a464-05091fcf9ad7.png?imageView2/2/q/65/w/600",
-                    remark: "哈哈哈哈哈哈哈哈哈哈或或或"
-                }
-            ]
-        }
-    },
     // 获取课节列表
     lessonList : {
-        url : domain + "institute/class/lesson/list",
+        url : domain + "tas/institute/getClassLessonList",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -317,7 +288,7 @@ export default{
     },
     // 获取教师列表
     teacherList : {
-        url : domain + "institute/class/teacher/list",
+        url : domain + "tas/institute/getTeacherList",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -335,27 +306,13 @@ export default{
             ]
         }
     },
-    // 获取助教列表获取助教列表
-    userList : {
-        url : domain + "institute/user/list",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {
-                    name : "助教1",
-                    phone : "13112341234"
-                },
-                {
-                    name : "助教2",
-                    phone : "13112341234"
-                }
-            ]
-        }
+    // 添加教师
+    addTeacher : {
+        url : domain + "tas/institute/addTeacher"
     },
     // 查询教师、助教信息
     userQuery : {
-        url : domain + "institute/user/query",
+        url : domain + "tas/institute/queryTeacher",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -367,7 +324,7 @@ export default{
     },
     // 首页查询课程详情
     courseQuery : {
-        url : domain + "course/query",
+        url : domain + "tas/course/queryCourse",
         mockData : {
             code : "0000",
             msg : "失败了",
@@ -460,5 +417,49 @@ export default{
     // 机构修改头像
     changeAvatar : {
         url : domain + "tas/institute/modifyHeadImage"
+    },
+    // 机构获取课程信息
+    getCourseInfo : {
+        url : domain + "tas/institute/queryCourse"
+    },
+    // 编辑课程信息
+    editCourseInfo : {
+        url : domain + "tas/institute/modifyCourse"
+    },
+    // 机构删除老师接口
+    delTeacher : {
+        url : domain + "tas/institute/deleteTeacher"
+    },
+    // 获取助教列表
+    getAssistantList : {
+        url : domain + "tas/institute/getAssistantList"
+    },
+    // 机构删除助教接口
+    deleteAssistant : {
+        url : domain + "tas/institute/deleteAssistant"
+    },
+    // 查询可添加助教
+    queryAssistant : {
+        url : domain + "tas/institute/queryAssistant"
+    },
+    // 添加助教
+    addAssistant : {
+        url : domain + "tas/institute/addAssistant"
+    },
+    // 机构详情查询机构图片接口
+    queryInstituteImages : {
+        url : domain + "tas/institute/queryInstituteImages"
+    },
+    // 保存机构相册接口
+    saveInstituteImages : {
+        url : domain + "tas/institute/saveInstituteImages"
+    },
+    // 发布课程
+    publishCourse : {
+        url : domain + "tas/institute/publishCourse"
+    },
+    // 下架课程
+    offShelfCourse : {
+        url : domain + "tas/institute/offShelfCourse"
     }
 }

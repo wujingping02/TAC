@@ -3,12 +3,12 @@
     <block wx:key="box" wx:for="{{listLeft}}">
       <view class="box" bindtap="toCourseDetail" data-index="{{'l' + index}}">
         <view class="imgBox">
-          <text wx:if="{{type != 'photo'}}" class="eAge" >{{item.sAge + '-' + item.eAge + "岁"}}</text>
+          <text wx:if="{{type != 'photo'}}" class="eAge" >{{item.ageStage + "岁"}}</text>
           <image class="url" src="{{item.url}}" mode="widthFix"></image>
-          <text wx:if="{{type != 'photo'}}" class="address">{{item.address}}</text>
+          <text wx:if="{{type != 'photo'}}" class="address">{{item.classArea + item.classAddress}}</text>
         </view>
         <view class="textBox">
-          <view class="name">{{item.name}}</view>
+          <view class="name">{{item.courseName}}</view>
           <text wx:if="{{type != 'photo'}}" class="price_unit">¥</text><text wx:if="{{type != 'photo'}}" class="price">{{item.price}}</text>
           <!-- 课节时间 -->
           <text wx:if="{{type === 'photo'}}" class="lessonTime">{{item.time}}</text>
@@ -24,12 +24,12 @@
     <block wx:key="box" wx:for="{{listRight}}">
       <view class="box" bindtap="toCourseDetail" data-index="{{'r' + index}}">
         <view class="imgBox">
-          <text wx:if="{{type != 'photo'}}" class="eAge" >{{item.sAge + '-' + item.eAge + "岁"}}</text>
+          <text wx:if="{{type != 'photo'}}" class="eAge" >{{item.ageStage + "岁"}}</text>
           <image class="url" src="{{item.url}}" mode="widthFix"></image>
-          <text wx:if="{{type != 'photo'}}" class="address">{{item.address}}</text>
+          <text wx:if="{{type != 'photo'}}" class="address">{{item.classArea + item.classAddress}}</text>
         </view>
         <view class="textBox">
-          <view class="name">{{item.name}}</view>
+          <view class="name">{{item.courseName}}</view>
           <text wx:if="{{type != 'photo'}}"class="price_unit">¥</text><text wx:if="{{type != 'photo'}}" class="price">{{item.price}}</text>
           <!-- 课节时间 -->
           <text wx:if="{{type === 'photo'}}" class="lessonTime">{{item.time}}</text>

@@ -1,4 +1,5 @@
 <view class="box">
+    <text wx:if="{{isMust}}" class="lable" style="color : #FF8711">* </text>
     <text class="lable">{{lable}}</text>
     <input disabled="{{disabled}}" class="val {{className}}" placeholder="{{'请输出' + lable}}" value="{{value}}" bindblur="onBlur" id="val" type="{{type}}" label="{{lable}}"/>
 </view>

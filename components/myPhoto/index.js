@@ -18,27 +18,33 @@ Component({
       type : Array,
       value : []
     },
+    maxCount : Number,
     round: String,
     uploadText: String,
     padding : {
       type : String,
       value : "0"
-    }
+    },
+
   },  
   // 组件的初始数据
   data: {  
-    orgPhoto : []
+    orgPhoto : [],
+    myValue : []
   },  
   ready: function(){// 组件加载完毕
-    this.data.orgPhoto = this.data.value.map(v => {
-      return v = {
-        isImage : true,
-        url : "https://timeafterschool.net/tas/image/preview?imageId=" + v
-      }
-    });
-    this.setData({
-      orgPhoto : this.data.orgPhoto
-    });
+    setTimeout(() => {
+      this.data.orgPhoto = this.properties.value.map(v => {
+        return v = {
+          isImage : true,
+          url : "https://timeafterschool.net/tas/image/preview?imageId=" + v
+        }
+      });
+      this.setData({
+        orgPhoto : this.data.orgPhoto,
+        myValue : this.properties.value
+      });
+    }, 400)
   },
   // 组件的方法列表
   methods: {  
@@ -46,10 +52,10 @@ Component({
       
     },
     getValue : function(){// 获取值
-      return this.properties.value;
+      return this.data.myValue;
     },
     check : function(){
-      if(this.properties.isMust && this.properties.value.length === 0){
+      if(this.properties.isMust && this.data.myValue.length === 0){
         wx.showToast({
           title: "请拍摄" + this.properties.lable,
           icon: 'none'
@@ -70,20 +76,20 @@ Component({
           isImage : true,
           url : "https://timeafterschool.net/tas/image/preview?imageId=" + fileId
         });
-        this.properties.value.push(fileId);// 丢出去的值
+        this.data.myValue.push(fileId);// 丢出去的值
         this.setData({
           orgPhoto : this.data.orgPhoto,
-          value : this.properties.value
+          value : this.data.myValue
         });
       })
     },
     delete(res) {// 删除一张图片
       let index = res.detail;
       this.data.orgPhoto.splice(index, 1);
-      this.properties.value.splice(index, 1);
+      this.data.myValue.splice(index, 1);
       this.setData({
         orgPhoto : this.data.orgPhoto,
-        value : this.properties.value
+        value : this.data.myValue
       });
     }
   }  

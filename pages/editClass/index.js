@@ -6,29 +6,42 @@ import service from '../../utils/service'
 create(store, {
   data: {
     classList: null,
-    title: "课程管理",
-    fromMine: true,
+    title: "班级管理",
+    fromMine: false,
     list: [1,2,3,4,5],
     idList: [1,2,3,4,5],
-    index: -1
+    index: -1,
+    courseId: ""
   },
 
-  onLoad(data) {
-    if(data.fromMine === "1"){// 从个人中心来的
+  onLoad(options) {
+    if(options.fromMine === "1"){// 从个人中心来的
       this.setData({
         fromMine: true
       })
     }
-  },
-
-  onShow: function () {
-    mockRequest({// 上来获取一下课程列表
+    this.setData({
+      courseId : options.courseId
+    });
+    ajax({// 上来获取一下课程列表
       url: service.classList.url,
-      method: "post",
+      data: {
+        courseId : options.courseId
+      },
     }).then((res) => {
       this.store.data.classList = res.data;// 把列表存一下
       this.update();
     })
+  },
+
+  onShow: function () {
+    // ajax({// 上来获取一下课程列表
+    //   url: service.classList.url,
+    //   method: "post",
+    // }).then((res) => {
+    //   this.store.data.classList = res.data;// 把列表存一下
+    //   this.update();
+    // })
   },
 
   // 跳到班级列表

@@ -24,9 +24,11 @@ Component({
     zh_value : ""
   },  
   ready: function(){// 组件加载完毕
-    this.setData({
-      index : this.properties.idList.indexOf(this.properties.value)
-    })
+    setTimeout(() => {
+      this.setData({
+        index : this.properties.idList.indexOf(this.properties.value)
+      })
+    },400)
   },
   // 组件的方法列表
   methods: {

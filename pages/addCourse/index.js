@@ -18,7 +18,8 @@ create(store, {
         "lable" : "课程介绍主图",
         "key" : "mainImageId",
         "value" : [],
-        "isMust" : "1"
+        "isMust" : "1",
+        "maxCount" : 1
       },
       {
         "type" : "selector",
@@ -33,7 +34,7 @@ create(store, {
         "lable" : "最大适合年龄",
         "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
         "idList" : ['0', '1','2','3','4','5','6'],
-        "key" : "eAge",
+        "key" : "eAgae",
         "isMust" : "1"
       },
       {
@@ -71,19 +72,19 @@ create(store, {
       {
         "type" : "photo",
         "lable" : "课程介绍",
-        "key" : "courseIntroduceImg",
+        "key" : "imageArrStr",
         "isMust" : "1"
       }
-    ]
+    ],
+    courseId : ""
   },
 
   // 生命周期函数--监听页面加载
   onLoad: function (options) {
-    // if(options.index){
-    //   let data = this.store.data.addressList[options.index];
-    //   this.data.fieldList[0].value = data.provice + ',' + data.city + ',' + data.area;
-    //   this.data.fieldList[1].value = data.address;
-    // }
+    this.data.courseId = options.courseId;
+    this.setData({
+      courseId : options.courseId || ""
+    })
     ajax({// 上来获取一下地址列表
       url: service.addressList.url
     }).then((res) => {
@@ -95,8 +96,34 @@ create(store, {
       });
       this.setData({
         fieldList : this.data.fieldList
-      })
+      });
+      if(this.data.courseId){// 编辑进来的
+        ajax({
+          url : service.getCourseInfo.url,
+          data : {
+            courseId : this.data.courseId
+          }
+        }).then((res) => {
+          this.data.fieldList[0].value = res.data.courseName;
+          this.data.fieldList[1].value = [res.data.mainImageId];
+          this.data.fieldList[2].value = res.data.ageStage.split("-")[0];
+          this.data.fieldList[3].value = res.data.ageStage.split("-")[1];
+          this.data.fieldList[4].value = res.data.addressId;
+          this.data.fieldList[5].value = [res.data.mainLabel, res.data.subLabel1, res.data.subLabel2];
+          this.data.fieldList[6].value = res.data.remark;
+          this.data.fieldList[7].value = res.data.price;
+          this.data.fieldList[8].value = res.data.courseIntroduce;
+          this.data.fieldList[9].value = res.data.images;
+          this.setData({
+            fieldList : this.data.fieldList
+          });
+        });
+      }
     })
+  },
+
+  onShow() {
+    
   },
 
   click: function () {
@@ -104,20 +131,27 @@ create(store, {
     if(vals === false){
       return
     };
+    let data = {
+      courseName : vals.courseName,
+      price : vals.price,
+      mainLabel : vals.mainLabel[0].value,
+      subLabel1 : vals.mainLabel[1].value,
+      subLabel2 : vals.mainLabel[2].value,
+      ageStage : vals.sAgae + '-' + vals.eAgae,
+      addressId : vals.addressId,
+      mainImageId : vals.mainImageId[0],
+      courseIntroduce : vals.courseIntroduce,
+      remark : vals.remark,
+      imageArrStr : JSON.stringify(vals.imageArrStr)
+    };
+    let url = service.orgAddCourse.url;
+    if(this.data.courseId){// 编辑课程信息
+      data.courseId = this.data.courseId;
+      url = service.editCourseInfo.url;
+    }
     ajax({
-      url : service.orgAddCourse.url,
-      data : {
-        courseName : vals.courseName,
-        price : vals.price,
-        mainLabel : vals.mainLabel[0].value,
-        subLabel1 : vals.mainLabel[1].value,
-        subLabel2 : vals.mainLabel[2].value,
-        ageStage : vals.sAgae + '-' + vals.eAgae,
-        addressId : vals.addressId,
-        mainImageId : vals.mainImageId,
-        courseIntroduce : vals.courseIntroduce,
-        remark : vals.remark
-      }
+      url : url,
+      data : data
     }).then(res => {
       wx.navigateBack({delta: 1})
     })

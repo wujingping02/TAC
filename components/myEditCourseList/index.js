@@ -1,3 +1,6 @@
+import { ajax } from "../../utils/util"
+import service from "../../utils/service";
+
 Component({  
   options: {  
     multipleSlots: true // 在组件定义时的选项中启用多slot支持  
@@ -16,14 +19,42 @@ Component({
   // 组件的方法列表 
   methods: {
     toEditClass : function(e) {
-      let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
+      let index = e.currentTarget.dataset['index'];// 排班
       this.triggerEvent("toEditClass", index);
     },
-    edit : function(e) {
-      let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
+    toEditCourse : function(e) {
+      let index = e.currentTarget.dataset['index'];// 新增课程
       wx.navigateTo({
-        url: "/pages/addAddress/index?index=" + index
+        url: "/pages/addCourse/index?courseId=" + this.data.list[index].courseId
       });
+    },
+    publishCourse(e) {// 发布课程
+      let index = e.currentTarget.dataset['index'];
+      ajax({
+        url : service.publishCourse.url,
+        data : {
+          courseId : this.data.list[index].courseId
+        }
+      }).then(res => {
+        wx.showToast({
+          title : "发布成功",
+          icon : 'none'
+        })
+      })
+    },
+    offShelfCourse(e) {// 下架课程
+      let index = e.currentTarget.dataset['index'];
+      ajax({
+        url : service.offShelfCourse.url,
+        data : {
+          courseId : this.data.list[index].courseId
+        }
+      }).then(res => {
+        wx.showToast({
+          title : "下架成功",
+          icon : 'none'
+        })
+      })
     }
   }   
 })

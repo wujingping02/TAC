@@ -40,26 +40,16 @@ create(store, {
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
-    ajax({// 上来获取一下课程列表
-      url: service.courseList.url,
-      method: "post",
-    }).then((res) => {
-      this.store.data.courseList = res.data;// 把列表存一下
-      let obj = this.getNewList(res.data);
-      this.setData({
-        listLeft: obj.l,
-        listRight: obj.r
-      })
-    })
+    
   },
 
   // 用户点击课程列表
   toCourseDetail: function (data) {
     let id,index = data.detail;
     if(index.indexOf('l') > -1){
-      id = this.data.listLeft[index.slice(1)].name;
+      id = this.data.listLeft[index.slice(1)].courseId;
     }else{
-      id = this.data.listRight[index.slice(1)].name;
+      id = this.data.listRight[index.slice(1)].courseId;
     }
     wx.navigateTo({
       url: "/pages/courseDetail/index?courseId=" + id
@@ -68,7 +58,24 @@ create(store, {
  
   // 生命周期函数--监听页面显示
   onShow: function () {
-  
+    ajax({// 上来获取一下课程列表
+      url: service.courseList.url,
+      method: "post",
+    }).then((res) => {
+      this.store.data.courseList = res.data.map(v => {
+        return v = {
+          ...v,
+          url : "https://timeafterschool.net/tas/image/preview?imageId=" + v.mainImageId,
+          sAge : v.ageStage.split("-")[0],
+          eAge : v.ageStage.split("-")[1]
+        }
+      });// 把列表存一下
+      let obj = this.getNewList(this.store.data.courseList);
+      this.setData({
+        listLeft: obj.l,
+        listRight: obj.r
+      })
+    })
   },
  
   // 生命周期函数--监听页面隐藏
@@ -142,7 +149,7 @@ create(store, {
   // 搜索课程
   onSearch: function(data) {
     let list = this.store.data.courseList.filter(v => {
-      return v.name.indexOf(data.detail) > -1
+      return v.courseName.indexOf(data.detail) > -1
     })
     let obj = this.getNewList(list);
     this.setData({

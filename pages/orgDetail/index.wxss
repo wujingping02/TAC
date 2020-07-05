@@ -3,9 +3,8 @@
     background: #ffffff;
 }
 .orgAvatarBox {
-    width: 101%;
-    /* height: 600rpx; */
-    background-image: url('http://img3.imgtn.bdimg.com/it/u=1996410545,3787547474&fm=26&gp=0.jpg');
+    width: 102%;
+    background-image: url('https://timeafterschool.net/tas/static/bg.png');
     background-size: 100% 100%;
     text-align: center;
     display: inline-block;
@@ -44,12 +43,13 @@
 .textarea {
     width: 100%;
     margin: 32rpx auto 0;
-    font-size: 28rpx;
+    font-size: 24rpx;
     color: #333;
     line-height: 40rpx; 
-    border: 1px solid #3D3B5E;
+    border: 1px solid #999999;
     border-radius: 8rpx;
     padding: 8rpx;
+    box-sizing: border-box;
 }
 .orgPhotoText {
     font-size: 28rpx;
