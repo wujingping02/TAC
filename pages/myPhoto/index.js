@@ -7,8 +7,9 @@ create(store, {
   // 页面的初始数据
   data: {
     courseList: null,
-    listLeft: [],
-    listRight: [],
+    allImg: null,
+    listLeft: null,
+    listRight: null,
     title: "我的相册",
     timeActive: "active",
     courseActive: ""
@@ -33,14 +34,31 @@ create(store, {
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
-    mockRequest({// 上来获取一下课程列表
-      url: service.photoList.url,
-      method: "post",
+    ajax({// 上来获取一下课程列表
+      url: service.photoList
     }).then((res) => {
-      this.store.data.courseList = res.data;// 把列表存一下
-      let obj = this.getNewList(res.data);
+      let arr = [];// 当前页面要显示的list
+      for(let key in res.data){
+        arr.push({
+          id : key,
+          ...res.data[key][0]
+        });
+      };
+      arr = arr.map(v => {
+        return v = {
+          ...v,
+          time : v.lessonDate + " " + v.startTime + "~" + v.endTime,
+          courseName : v.courseName + "：" + v.className,
+          url : getApp().globalData.imgUrl + v.imageId
+        }
+      }).sort((a, b) => {
+        return b.lessonDate.replace(/-/g, "") - a.lessonDate.replace(/-/g, "")
+      });
+      let obj = this.getNewList(arr);
       this.setData({
+        courseList: arr,
         listLeft: obj.l,
+        allImg: res.data,
         listRight: obj.r
       })
     })
@@ -50,12 +68,13 @@ create(store, {
   toCourseDetail: function (data) {
     let id,index = data.detail;
     if(index.indexOf('l') > -1){
-      id = this.data.listLeft[index.slice(1)].name;
+      id = this.data.listLeft[index.slice(1)].id;
     }else{
-      id = this.data.listRight[index.slice(1)].name;
-    }
+      id = this.data.listRight[index.slice(1)].id;
+    };
+    this.store.data.parentPhotos = this.data.allImg[id].map(v => {return v.imageId});
     wx.navigateTo({
-      url: "/pages/photoDetail/index?list=" + id
+      url: "/pages/photoDetail/index"
     });
   },
 
@@ -64,7 +83,13 @@ create(store, {
     this.setData({
       timeActive: "active",
       courseActive: ""
-    })
+    });
+    this.data.courseList = this.data.courseList.sort((a, b) => {
+      return b.lessonDate.replace(/-/g, "") - a.lessonDate.replace(/-/g, "")
+    });
+    this.setData({
+      courseList: this.data.courseList
+    });
   },
 
   // 根据课程搜索
@@ -72,7 +97,13 @@ create(store, {
     this.setData({
       timeActive: "",
       courseActive: "active"
-    })
+    });
+    this.data.courseList = this.data.courseList.sort((a, b) => {
+      return a.courseName.localeCompare(b.courseName, "zh");
+    });
+    this.setData({
+      courseList: this.data.courseList
+    });
   }
 
 })

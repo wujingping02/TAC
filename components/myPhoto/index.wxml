@@ -4,14 +4,15 @@
   <view class="orgPhotoBox {{round}}">
     <van-uploader 
       previewImage="{{true}}"
-      fileList="{{orgPhoto}}"
-      deletable="{{!disable}}"
-      showUpload="{{!disable}}"
+      fileList="{{myValue || value}}"
+      deletable="{{!disabled}}"
+      showUpload="{{!disabled}}"
       uploadText="{{uploadText}}"
       bind:afterRead="upload"
       bind:delete="delete"
       disabled="{{disabled}}"
       maxCount="{{maxCount || 999}}"
       id="val"/>
+      <view wx:if="{{round && (myValue.length > 0 || value.length > 0)}}" class="changeAvatarText" catch:tap="changePhoto">编辑</view>
   </view>
 </view>

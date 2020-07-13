@@ -10,10 +10,12 @@
     background: #fff;
     width: 100%;
     bottom: 0;
-    padding: 60rpx 40rpx 100rpx;
+    padding: 40rpx;
     box-sizing: border-box;
     z-index: 999;
     display: inline-block;
+    max-height: 80vh;
+    overflow-y: scroll;
 }
 .cancel {
     display: inline-block;
@@ -25,7 +27,7 @@
     border-radius: 58rpx;
     border: 1px solid #FF8711;
     text-align: center;
-    margin-top: 80rpx;
+    margin-top: 60rpx;
 }
 .sure {
     float: right;

@@ -149,7 +149,7 @@ Component({
         })
         return false
       };
-      if(this.properties.check === "photo"){// 手机号校验
+      if(this.properties.check === "phone"){// 手机号校验
         if(!/^1\d{10}$/.test(this.properties.value)){
           wx.showToast({
             title: "请输入正确的" + this.properties.lable,
@@ -165,7 +165,7 @@ Component({
           })
           return false
         }
-      }else if(this.properties.check === "id"){// 邮箱校验
+      }else if(this.properties.check === "id"){// 身份证校验
         if(this.checkIDCARD(this.properties.value)){
           wx.showToast({
             title: "请输入正确的身份证号",
@@ -173,6 +173,14 @@ Component({
           })
           return false;        
         };
+      }else if(this.properties.check === "email"){// 身份证校验
+        if(!/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(this.properties.value)){
+          wx.showToast({
+            title: "请输入正确的" + this.properties.lable,
+            icon: 'none'
+          })
+          return false
+        }
       }
     }
   }  

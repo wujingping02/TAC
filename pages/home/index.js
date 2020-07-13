@@ -59,18 +59,19 @@ create(store, {
   // 生命周期函数--监听页面显示
   onShow: function () {
     ajax({// 上来获取一下课程列表
-      url: service.courseList.url,
+      url: service.courseList,
       method: "post",
     }).then((res) => {
-      this.store.data.courseList = res.data.map(v => {
+      this.data.courseList = res.data.map(v => {
         return v = {
           ...v,
-          url : "https://timeafterschool.net/tas/image/preview?imageId=" + v.mainImageId,
+          url : getApp().globalData.imgUrl + v.mainImageId,
+          orgUrl : getApp().globalData.imgUrl + v.instituteHeadImageId,
           sAge : v.ageStage.split("-")[0],
           eAge : v.ageStage.split("-")[1]
         }
       });// 把列表存一下
-      let obj = this.getNewList(this.store.data.courseList);
+      let obj = this.getNewList(this.data.courseList);
       this.setData({
         listLeft: obj.l,
         listRight: obj.r
@@ -120,11 +121,11 @@ create(store, {
     });
     let list;
     if(index < 7){
-      list = this.store.data.courseList.filter(v => {
+      list = this.data.courseList.filter(v => {
         return index > (v.sAge - 1) && index < (v.eAge * 1 + 1)
       })
     }else{
-      list = this.store.data.courseList;
+      list = this.data.courseList;
     }
     let obj = this.getNewList(list);
     this.setData({
@@ -148,7 +149,7 @@ create(store, {
 
   // 搜索课程
   onSearch: function(data) {
-    let list = this.store.data.courseList.filter(v => {
+    let list = this.data.courseList.filter(v => {
       return v.courseName.indexOf(data.detail) > -1
     })
     let obj = this.getNewList(list);

@@ -1,6 +1,6 @@
-<view class="box">
+<view class="box orgDetail">
   <myHeader title="{{title}}"/>
-  <view class="box">
+  <view class="box" style="padding: 70rpx 10rpx 0;box-sizing: border-box;">
     <view>一、提示条款
     </view><view>1.1 欢迎您与课后时间TAS平台经营者（详见定义条款）共同签署本《课后时间TAS平台服务协议》（下称“本协议”）并使用课后时间TAS平台服务。
     </view><view>1.2 在您注册成为用户前，应当认真阅读本协议，请您务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款、 法律适用和争议解决条款。免除或者限制责任的条款将以粗体下划线标识，您应重点阅读。如您对协议有任何疑问，可向客服咨询。

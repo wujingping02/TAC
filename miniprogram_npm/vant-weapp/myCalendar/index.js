@@ -49,7 +49,11 @@ VantComponent({
     },
     minDate: {
       type: null,
-      value: Date.now(),
+      value: new Date(
+        new Date().getFullYear(),
+        new Date().getMonth() - 3,
+        new Date().getDate()
+      ).getTime(),
     },
     maxDate: {
       type: null,
@@ -112,7 +116,7 @@ VantComponent({
   },
   created() {
     this.setData({
-      currentDate: this.getInitialDate(),
+      currentDate: Date.now(),
     });
   },
   mounted() {
@@ -123,7 +127,7 @@ VantComponent({
   },
   methods: {
     reset() {
-      this.setData({ currentDate: this.getInitialDate() });
+      this.setData({ currentDate: Date.now() });
       this.scrollIntoView();
     },
     initRect() {

@@ -37,20 +37,33 @@ create(store, {
       {
         "type" : "selector",
         "lable" : "选择子女",
-        "key" : "maxNumber",
+        "key" : "childId",
         "isMust" : "1",
-        "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
-        "idList" : ['0', '1','2','3','4','5','6']
+        "nameList" : null,
+        "idList" : null
       }
-    ]
+    ],
+    classId : "",
+    courseId : ""
   },
 
   onShow: function () {
-      
+        
   },
 
   onLoad: function (data) {
-    console.log(data)
+    // 获取子女列表
+    ajax({
+      url: service.childrenList
+    }).then((res) => {
+      this.data.fieldList[3].nameList = res.data.map(v => {return v = v.childrenName});
+      this.data.fieldList[3].idList = res.data.map(v => {return v = v.childrenId});
+      this.setData({
+        fieldList : this.data.fieldList,
+        classId : data.data.split("&")[0],
+        courseId : data.data.split("&")[1]
+      })
+    })
   },
 
   submit: function () {
@@ -58,5 +71,20 @@ create(store, {
     if(vals === false){
       return
     };
+    ajax({
+      url : service.enrollClass,
+      data : {
+        classId : this.data.classId,
+        childrenId : vals.childId
+      }
+    }).then(res => {
+      wx.showToast({
+        title : "报名成功",
+        icon : "none"
+      })
+      setTimeout(() => {
+        wx.navigateBack({delta: 1})
+      }, 500);
+    });
   }
 })

@@ -11,7 +11,7 @@ create(store, {
 
   onShow: function () {
     ajax({// 上来获取一下地址列表
-      url: service.addressList.url
+      url: service.addressList
     }).then((res) => {
       this.store.data.addressList = res.data;// 把列表存一下
       this.store.update();

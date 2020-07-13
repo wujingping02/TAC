@@ -1,12 +1,11 @@
 .mine {
     min-height: 100vh;
     background: #f9f9f9;
-    transform: translate(-1px, -1px);
 }
 .avatarBox {
     width: 100%;
-    height: 550rpx;
-    background-image: url('https://timeafterschool.net/tas/static/bg.png');
+    height: 580rpx;
+    background-image: url('https://timeafterschool.net/tas/static/bg.png?t=1');
     background-size: 100% 100%;
     text-align: center;
     display: inline-block;

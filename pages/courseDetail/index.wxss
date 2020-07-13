@@ -130,8 +130,8 @@
     margin: 50rpx auto 0;
 }
 .canvas {
-    transform: translate(10px, 10px) scale(0.6);
-    -webkit-transform: translate(10px, 10px) scale(0.6);
+    transform: translate(10px, 10px);
+    -webkit-transform: translate(10px, 10px);
     transform-origin: 0 0;
     -ms-transform-origin: 0 0;
     -webkit-transform-origin: 0 0;

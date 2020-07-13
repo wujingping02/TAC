@@ -7,6 +7,7 @@
       <text>{{className + ' '}}</text>
       <text>{{time}}</text>
     </view>
-    <myPhoto previewImage="{{true}}" orgPhoto="{{orgPhoto}}"/>
+    <myPhoto id="photo" previewImage="{{true}}" value="{{list}}"/>
   </view>
+  <myButton className="submit" paddingTop="0" bind:click="click" content="保存"/>
 </view>

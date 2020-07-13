@@ -62,7 +62,7 @@
     top: 140rpx;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 28rpx;
+    font-size: 24rpx;
     color: #3D3B5E;
 }
 .teacher_phone {

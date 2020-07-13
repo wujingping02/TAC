@@ -1,6 +1,6 @@
 import store from '../../store'
 import create from '../../utils/create'
-import {ajax, mockRequest} from '../../utils/util'
+import {ajax, collectVals} from '../../utils/util'
 import service from '../../utils/service'
 
 create(store, {
@@ -11,40 +11,66 @@ create(store, {
     fieldList: [
       {
         "type" : "photo",
-        "key" : "name",
+        "key" : "img",
         "isMust" : "1",
         "round" : "round",
         "uploadText" : "上传头像",
-        "orgPhoto" : [
-          {
-            isImage : true,
-            url : "http://img2.imgtn.bdimg.com/it/u=1873874002,1324989472&fm=26&gp=0.jpg"
-          }
-        ]
+        "lable" : "小朋友头像"
       },
       {
         "type" : "text",
-        "lable" : "孩子姓名",
-        "key" : "name",
+        "lable" : "小朋友姓名",
+        "key" : "childrenName",
         "isMust" : "1"
       }
     ]
   },
 
-  onShow: function () {
-    mockRequest({
-      url: service.childrenList.url,
-      method: "post",
+  // 获取子女列表
+  getChildren() {
+    ajax({
+      url: service.childrenList
     }).then((res) => {
-      this.store.data.classList = res.data;// 把列表存一下
-      this.update();
+      this.setData({
+        classList : res.data.map(res => {
+          return {
+            url : getApp().globalData.imgUrl + res.headImageId,
+            teacherName : res.childrenName,
+            childrenId : res.childrenId
+          }
+        })
+      })
     })
   },
 
+  onShow: function () {
+    this.getChildren();
+  },
+
   // 跳到教室列表
-  addItem: function (data) {
+  addItem: function () {
     this.setData({
       hidePopup : false
     }) 
+  },
+
+  // 新增子女
+  sureAdd: function () {
+    let vals = collectVals.call(this, this.data.fieldList);
+    if(vals === false){
+      return
+    };
+    ajax({
+      url : service.addChildren,
+      data : {
+        childrenName : vals.childrenName,
+        headImageId : vals.img[0]
+      }
+    }).then(res => {
+      this.setData({
+        hidePopup: true
+      });
+      this.getChildren();
+    })
   }
 })

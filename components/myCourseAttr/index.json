@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {  
-    "van-calendar": "../../miniprogram_npm/vant-weapp/calendar"
+    "van-calendar": "../../miniprogram_npm/vant-weapp/calendar",
+    "myOvermask": "../../miniprogram_npm/myOvermask"
   }
 }

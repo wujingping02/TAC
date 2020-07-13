@@ -32,18 +32,28 @@ Page({
         }]
       })
       ajax({
-        url: service.getAssistantList.url
+        url: service.getAssistantList
       }).then((res) => {
         this.setData({
-          classList : res.data
+          classList : res.data.map(v => {
+            return v = {
+              ...v,
+              url : getApp().globalData.imgUrl + v.teacherHeadImageId
+            }
+          })
         })
       })
     }else{// 上来获取一下教师列表
       ajax({
-        url: service.teacherList.url
+        url: service.teacherList
       }).then((res) => {
         this.setData({
-          classList : res.data
+          classList : res.data.map(v => {
+            return v = {
+              ...v,
+              url : getApp().globalData.imgUrl + v.teacherHeadImageId
+            }
+          })
         })
       })
     }
@@ -64,7 +74,7 @@ Page({
           "key" : "orgName",
           "isMust" : "1",
           "value" : "",
-          "check" : "photo"
+          "check" : "phone"
         }
       ]
     })
@@ -73,15 +83,15 @@ Page({
   sureAdd: function () {// 添加该老师or助教
     if(!this.data.teacherId){
       wx.showToast({
-        title: "暂无该老师信息",
+        title: "暂无该老师信息，请先搜索老师信息",
         icon: 'none'
       });
       return
     }
-    let url = service.addTeacher.url;
+    let url = service.addTeacher;
     let data = {teacherId : this.data.teacherId};
     if(this.data.type === 'assistant'){// 助教
-      url = service.addAssistant.url;
+      url = service.addAssistant;
       data = {assistantId : this.data.teacherId}
     };
     ajax({
@@ -94,22 +104,21 @@ Page({
     })
   },
 
-  del: function (e) {
-    let index = e.currentTarget.dataset['index'];
+  del: function (data) {
     if(this.data.type === "assistant"){// 删除助教
       ajax({
-        url : service.delTeacher.url,
+        url : service.deleteAssistant,
         data : {
-          teacherId : this.data.classList[index].teacherId
+          teacherId : data.detail
         }
       }).then(res => {
 
       })
     }else{// 删除老师
       ajax({
-        url : service.deleteAssistant.url,
+        url : service.delTeacher,
         data : {
-          teacherId : this.data.classList[index].assistantId
+          teacherId : data.detail
         }
       }).then(res => {
 
@@ -125,9 +134,9 @@ Page({
       });
       return
     }
-    let url = service.userQuery.url;
+    let url = service.userQuery;
     if(this.data.type === 'assistant'){
-      url = service.queryAssistant.url;
+      url = service.queryAssistant;
     }
     ajax({
       url: url,

@@ -21,66 +21,46 @@ Component({
   },  
   // 组件的初始数据
   data: {
-    index : -1,
-    value1 : "",
-    index2 : -1,
-    value2 : "",
-    index3 : -1,
-    value3 : "",
+    myValue : [null, null, null],// 组件的值
     show : false,
-    zh_value : ""
+    hidePromptBox : true
   },  
   ready: function(){// 组件加载完毕
-    setTimeout(() => {
-      if(this.properties.value && this.properties.value[0]){
-        this.setData({
-          index : this.properties.idList.indexOf(this.properties.value[0]),
-          index2 : this.properties.idList.indexOf(this.properties.value[1]),
-          index3 : this.properties.idList.indexOf(this.properties.value[2]),
-          value1 : this.properties.value[0],
-          value2 : this.properties.value[1],
-          value3 : this.properties.value[2]
-        })
-      }
-    }, 400)
+    
   },
   // 组件的方法列表
   methods: { 
     setValue : function(val){
-      this.setData({
-        index : this.properties.idList.indexOf(val),
-        value : val
-      })
+      
     },
-    bindchange : function(e){// 每次焦点离开，拿一下值 
+    bindchange : function(e){// 每次焦点离开，拿一下值
+      this.data.myValue[0] = this.properties.idList[e.detail.value];
       this.setData({
-        index : e.detail.value,
-        value1 : this.properties.idList[e.detail.value]
+        myValue : this.data.myValue
       })
     },
     bindchange2 : function(e){// 副属性
+      this.data.myValue[1] = this.properties.idList[e.detail.value];
       this.setData({
-        index2 : e.detail.value,
-        value2 : this.properties.idList[e.detail.value]
+        myValue : this.data.myValue
       })
     },
     bindchange3 : function(e){// 副属性2
+      this.data.myValue[2] = this.properties.idList[e.detail.value];
       this.setData({
-        index3 : e.detail.value,
-        value3 : this.properties.idList[e.detail.value]
+        myValue : this.data.myValue
       })
     },
     getValue : function(){// 获取值
-      return [
-        {key: "attr1", value: this.data.value1},
-        {key: "attr2", value: this.data.value2},
-        {key: "attr3", value: this.data.value3}
-      ]
+      if(!this.data.myValue[0]){
+        return this.properties.value
+      }
+      return this.data.myValue
     },
     check : function(){
-      if(this.properties.isMust && !this.properties.value){
+      if(this.properties.isMust && !this.data.myValue[0] && !this.properties.value[0]){
         wx.showToast({
-          title: "请输入" + this.properties.lable,
+          title: "请选择" + this.properties.lable,
           icon: 'none'
         })
         return false
@@ -89,6 +69,16 @@ Component({
     click : function(){
       this.setData({
         show : true
+      })
+    },
+    showPrompt() {
+      this.setData({
+        hidePromptBox : false,
+      })
+    },
+    hidePrompt() {
+      this.setData({
+        hidePromptBox : true,
       })
     }
   }  

@@ -4,19 +4,19 @@
       <view bind:tap="back" class="backBox">
         <image class="back" src="../../images/back.png"/>
       </view>
-      <text class="title">个人中心</text>
+      <text class="title">{{title}}</text>
     </view>
     <view bind:tap="changeAvatar" class="avatarBg">
       <view  wx:if="{{edit}}" class="changeAvatarText">编辑</view>
-      <image class="avatarImg" src="{{ userInfo.avatar }}"/>
+      <image class="avatarImg" src="{{ orgAvatar }}"/>
     </view>
-    <view class="teachName" wx:if="{{userInfo.userType === '30'}}">{{userInfo.instituteName}}</view>
+    <view class="teachName" wx:if="{{userInfo.userType === '30'}}">{{orgName}}</view>
   </view>
   <view class="orgDetailBox">
     <view class="name" wx:if="{{userInfo.userType === '10'}}">{{userInfo.instituteName}}</view>
     <view wx:if="{{!edit}}" class="introduction">{{orgDetail}}</view>
     <view wx:if="{{edit}}" style="padding : 0 40rpx;">
-      <textarea class="textarea" bindblur="bindTextAreaBlur" maxlength="-1" auto-height="{{true}}" value="{{orgDetail}}"></textarea>
+      <textarea class="textarea" bindblur="bindTextAreaBlur" maxlength="300" value="{{orgDetail}}"></textarea>
     </view>
     <view class="orgPhotoText" wx:if="{{userInfo.userType === '10'}}">机构相册</view>
     <view class="orgPhotoText" wx:if="{{userInfo.userType === '30'}}">个人相册</view>
@@ -28,5 +28,5 @@
       </block>
     </view>
   </view>
-  <myButton className="submit" paddingTop="0" bind:click="click" content="保存"/>
+  <myButton wx:if="{{edit}}" className="submit" paddingTop="0" bind:click="click" content="保存"/>
 </view>

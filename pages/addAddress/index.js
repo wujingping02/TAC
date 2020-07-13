@@ -26,7 +26,7 @@ create(store, {
       },{
         "type" : "text",
         "lable" : "联系电话",
-        "check" : "photo",
+        "check" : "phone",
         "key" : "contactPhone",
         "isMust" : "1"
       }
@@ -37,14 +37,6 @@ create(store, {
   onLoad: function (options) {
     if(options.index){
       let data = this.store.data.addressList[options.index];
-      // address: "2"
-      // addressId: "ADD200630000001"
-      // areaCode: "undefined"
-      // cityCode: "undefined"
-      // contactName: "undefined"
-      // contactPhone: "3"
-      // instituteId: "INS200629000001"
-      // provinceCode: "undefined"
       this.data.fieldList[0].value = data.provinceCode + '-' + data.cityCode + '-' + data.areaCode;
       this.data.fieldList[1].value = data.address;
       this.data.fieldList[2].value = data.contactName;
@@ -70,14 +62,14 @@ create(store, {
     if(this.data.addressId){// 编辑状态
       datas.addressId = this.data.addressId;
       ajax({
-        url : service.editAddress.url,
+        url : service.editAddress,
         data : datas
       }).then(res => {
         wx.navigateBack({delta: 1})
       })
     }else{// 新增地址
       ajax({
-        url : service.addAddress.url,
+        url : service.addAddress,
         data : datas
       }).then(res => {
         wx.navigateBack({delta: 1})

@@ -6,7 +6,27 @@ import service from '../../utils/service'
 create(store, {
   data: {
     title: "基本信息",
-    fieldList : null,
+    fieldList : [// 字段list
+      {
+        "type" : "text",
+        "lable" : "教师姓名",
+        "key" : "userName",
+        "isMust" : "1"
+      },
+      {
+        "type" : "text",
+        "lable" : "手机号",
+        "key" : "phone",
+        "isMust" : "1"
+      },
+      {
+        "type" : "text",
+        "lable" : "邮箱",
+        "key" : "email",
+        "check" : "email",
+        "isMust" : "1"
+      }
+    ],
     disabled: false
   },
 
@@ -16,81 +36,12 @@ create(store, {
 
   onLoad: function () {
     ajax({
-      url : service.getAllInfo.url
+      url : service.getAllInfo
     }).then(res => {
-      if(this.store.data.userInfo.userType === "20"){
-        this.setData({
-          fieldList : [// 字段list
-            {
-              "type" : "text",
-              "lable" : "教师姓名",
-              "key" : "name",
-              "isMust" : "1"
-            },
-            {
-              "type" : "text",
-              "lable" : "手机号",
-              "key" : "phone",
-              "isMust" : "1"
-            },
-            {
-              "type" : "text",
-              "lable" : "邮箱",
-              "key" : "email",
-              "isMust" : "1"
-            }
-          ]
-        })
-      }else if(this.store.data.userInfo.userType === "30"){
-        this.setData({
-          fieldList : [// 字段list
-            {
-              "type" : "text",
-              "lable" : "教师姓名",
-              "key" : "name",
-              "isMust" : "1"
-            },
-            {
-              "type" : "text",
-              "lable" : "手机号",
-              "key" : "phone",
-              "isMust" : "1"
-            },
-            {
-              "type" : "text",
-              "lable" : "邮箱",
-              "key" : "email",
-              "isMust" : "1"
-            }
-          ]
-        })
-      }else if(this.store.data.userInfo.userType === "40"){
-        this.setData({
-          fieldList : [// 字段list
-            {
-              "type" : "text",
-              "lable" : "教师姓名",
-              "key" : "name",
-              "isMust" : "1"
-            },
-            {
-              "type" : "text",
-              "lable" : "手机号",
-              "key" : "phone",
-              "isMust" : "1"
-            },
-            {
-              "type" : "text",
-              "lable" : "邮箱",
-              "key" : "email",
-              "isMust" : "1"
-            }
-          ]
-        })
-      }else{
+      if(this.store.data.userInfo.userType === "10"){// 机构
         let disabled = res.data.instituteName ? true : false;
         this.setData({
-          disabled: res.data.instituteName ? true : false,
+          disabled: disabled,
           fieldList : [// 字段list
             {
               "type" : "text",
@@ -112,8 +63,8 @@ create(store, {
               "type" : "text",
               "lable" : "手机号",
               "key" : "companyPhone",
-              "value" : res.data.companyPhone,
-              "disabled" : disabled,
+              "value" : this.store.data.userInfo.mobileNo,
+              "disabled" : true,
               "isMust" : "1"
             },
             {
@@ -134,7 +85,39 @@ create(store, {
             },
           ]
         })
-      };
+      }else{// 老师
+        let disabled = res.data.userName ? true : false;
+        this.setData({
+          disabled: disabled,
+          fieldList : [// 字段list
+            {
+              "type" : "text",
+              "lable" : "姓名",
+              "key" : "userName",
+              "isMust" : "1",
+              "value" : res.data.userName,
+              "disabled" : disabled
+            },
+            {
+              "type" : "text",
+              "lable" : "手机号",
+              "key" : "phone",
+              "disabled" : true,
+              "value" : this.store.data.userInfo.mobileNo,
+              "isMust" : "1"
+            },
+            {
+              "type" : "text",
+              "lable" : "邮箱",
+              "key" : "email",
+              "check" : "email",
+              "disabled" : disabled,
+              "value" : res.data.email,
+              "isMust" : "1"
+            }
+          ]
+        })
+      }
     })
   },
 
@@ -143,17 +126,30 @@ create(store, {
     if(vals === false){
       return
     };
-    ajax({
-      url : service.submitInfo.url,
-      data : {
-        instituteName : vals.instituteName,
-        companyPhone  : vals.companyPhone,
-        email : vals.email,
-        certNo : vals.certNo,
-        userName : vals.userName
+    let url,data={};
+    if(this.store.data.userInfo.userType === "10"){// 机构
+      url = service.submitInfo;
+      data.instituteName = vals.instituteName;
+      data.companyPhone  = vals.companyPhone;
+      data.email = vals.email;
+      data.certNo = vals.certNo;
+      data.userName = vals.userName;
+    }else{
+      if(this.store.data.userInfo.userType === "30"){// 老师
+        url = service.teaSubmitInfo;    
+      }else if(this.store.data.userInfo.userType === "20"){// 助教
+        url = service.ZJmodifyBaseInfo;    
+      }else{// 家长
+        url = service.parModifyBaseInfo;
       }
+      data.userName = vals.userName;
+      data.email  = vals.email;
+    }
+    ajax({
+      url : url,
+      data : data
     }).then(data => {
-
+      wx.navigateBack({delta: 1})
     })
   }
 })

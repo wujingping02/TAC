@@ -6,20 +6,47 @@ import service from '../../utils/service'
 create(store, {
   data: {
     title: "拍照",
-    className: "英语1",
-    time: "10:00~11:00",
-    orgPhoto: [
-      {
-        isImage : true,
-        url : "http://hbimg.b0.upaiyun.com/46df2a638c7477390a4bc5b2b3a9bb9ec5ce3ec73fd9b-hAtVRZ_fw658"
-      },{
-        isImage : true,
-        url : "http://img3.imgtn.bdimg.com/it/u=1776338472,1585271055&fm=26&gp=0.jpg"
-      }
-    ]
+    list: null,
+    className: null,
+    time: null,
+    lessonId: null
   },
 
-  onShow: function () {
-    
+  onLoad(options) {
+    let data = JSON.parse(decodeURIComponent(options.data));
+    this.setData({
+      className: data.className,
+      time: data.time,
+      lessonId: data.lessonId
+    });
+    // 获取一下点名信息
+    ajax({
+      url : service.queryLessonImages,
+      data : {
+        lessonId : this.data.lessonId
+      }
+    }).then(res => {
+      this.setData({
+        list : res.data.map(v => {
+          return v = {
+            isImage : true,
+            url : getApp().globalData.imgUrl + v
+          }
+        })
+      })
+    })
   },
+
+  // 保存图片
+  click() {
+    ajax({
+      url : service.saveLessonImages,
+      data : {
+        lessonId : this.data.lessonId,
+        imageArrStr : JSON.stringify(this.selectComponent('#photo').getValue())
+      }
+    }).then(res => {
+      wx.navigateBack({delta: 1});
+    });
+  }
 })

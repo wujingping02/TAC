@@ -3,7 +3,7 @@
 }
 .classBox {
     width: 100vw;
-    padding-left: 30%;
+    padding-left: 25%;
     padding-right: 40rpx;
     position: relative;
     box-sizing: border-box;
@@ -76,7 +76,7 @@
 }
 .teac_box {
     width: 100%;
-    padding-left: 50%;
+    padding-left: 40%;
     position: relative;
     box-sizing: border-box;
 }
@@ -129,7 +129,7 @@
 .signInStatus {
     width: 100rpx;
     height: 48rpx;
-    font-size: 24rpx;
+    font-size: 20rpx;
     line-height: 48rpx;
     background: #FF8814;
     border-radius: 0 48rpx 0 48rpx;

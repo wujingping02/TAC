@@ -24,7 +24,7 @@ App({
       })
     }
   },
-  globalData:{
-    userInfo:null,
+  globalData: {
+    imgUrl: "https://timeafterschool.net/tas/image/preview?imageId=",
   }
 })

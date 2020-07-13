@@ -1,6 +1,6 @@
 <view>
   <myHeader title="{{title}}"/>
   <view style="padding-top : 140rpx">
-    <myPhoto previewImage="{{true}}" padding="0 40rpx" orgPhoto="{{list}}"/>
+    <myPhoto disabled="{{true}}" padding="0 40rpx" value="{{list}}"/>
   </view>
 </view>

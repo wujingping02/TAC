@@ -139,14 +139,20 @@ VantComponent({
       }
     },
     onAfterRead(file) {
-      const { maxSize } = this.data;
-      const oversize = Array.isArray(file)
-        ? file.some((item) => item.size > maxSize)
-        : file.size > maxSize;
-      if (oversize) {
-        this.$emit('oversize', Object.assign({ file }, this.getDetail()));
-        return;
+      if(file.size > 10240000){
+        wx.showToast({
+          title : "图片过大，上传失败",
+          icon : "none"
+        })
       }
+      // const { maxSize } = this.data;
+      // const oversize = Array.isArray(file)
+      //   ? file.some((item) => item.size > maxSize)
+      //   : file.size > maxSize;
+      // if (oversize) {
+      //   this.$emit('oversize', Object.assign({ file }, this.getDetail()));
+      //   return;
+      // }
       if (typeof this.data.afterRead === 'function') {
         this.data.afterRead(file, this.getDetail());
       }

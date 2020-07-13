@@ -1,6 +1,6 @@
 import store from '../../store'
 import create from '../../utils/create'
-import {ajax, mockRequest, getTime, getWXCode, isLogin } from '../../utils/util'
+import {ajax, mockRequest, getTime, getWXCode, isLogin, collectVals } from '../../utils/util'
 import service from '../../utils/service'
 
 create(store, {
@@ -12,41 +12,43 @@ create(store, {
     activeL: "active",
     activeR: "",
     date: getTime(new Date()),
-    nowDate: getTime(new Date()),
-    minDate: getTime(new Date()).split("-")[1]  > 3 ? getTime(new Date()).split("-")[0] + "-" + (getTime(new Date()).split("-")[1] * 1 - 3) + "-01" : (getTime(new Date()).split("-")[0] - 1) + "-" + (getTime(new Date()).split("-")[1] * 1 - 3) + "-01",
-    maxDate: getTime(new Date()).split("-")[1]  < 9 ? getTime(new Date()).split("-")[0] + "-" + (getTime(new Date()).split("-")[1] * 1 + 3) + "-30" : (getTime(new Date()).split("-")[0] + 1) + "-" + (getTime(new Date()).split("-")[1] * 1 - 9) + "-30",
     userInfo: null,
     hidePopup: true,
     fieldList: [
       {
         "type" : "text",
         "lable" : "课程名称",
-        "key" : "name",
+        "key" : "courseName",
         "isMust" : "1"
-      },
-      {
+      },{
         "type" : "courseAttr",
         "lable" : "课程属性",
-        "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
-        "idList" : ['0', '1','2','3','4','5','6'],
-        "key" : "courseAttr",
+        "key" : "mainLabel",
         "isMust" : "1"
-      },
-      {
+      },{
         "type" : "time",
-        "lable" : "最小适合年龄",
-        "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
-        "idList" : ['0', '1','2','3','4','5','6'],
-        "key" : "name",
+        "lable" : "开始时间",
+        "key" : "startTime",
         "isMust" : "1"
-      },
-      {
+      },{
+        "type" : "time",
+        "lable" : "结束时间",
+        "key" : "endTime",
+        "isMust" : "1"
+      },{
+        "type" : "calendar",
+        "lable" : "上课日期",
+        "key" : "lessonDate",
+        "color" : "#FF8100",
+        "multiple" : "single",
+        "isMust" : "1"
+      },{
         "type" : "selector",
-        "lable" : "最小适合年龄",
-        "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
-        "idList" : ['0', '1','2','3','4','5','6'],
-        "key" : "name",
-        "isMust" : "1"
+        "lable" : "选择子女",
+        "key" : "studentId",
+        "isMust" : "1",
+        "nameList" : null,
+        "idList" : null
       }
     ]
   },
@@ -56,18 +58,72 @@ create(store, {
     isLogin.call(this);
   },
  
+  // 给课表元素赋值
+  setClassVal(v) {
+    return {
+      leftName : v.classroomName || v.className || v.classroom_name,
+      nowPeo : v.nowPeo || "0",
+      maxPeo : v.totalSize,
+      time : v.lessonDate.split("-")[1] + "-" + v.lessonDate.split("-")[2] +  " " + v.startTime + "~" + v.endTime,
+      // time : v.startTime + "~" + v.endTime,
+      lessonName : v.className,
+      teacher : v.teacherName,
+      address : (v.classCity || "") + (v.classArea || "") + v.classAddress,
+      url : v.teacherHeadImageId ? getApp().globalData.imgUrl + v.teacherHeadImageId : getApp().globalData.imgUrl + v.childrenHeadImageId,
+      teacherName : v.teacherName,
+      remark : v.remark,
+      courseId : v.courseId,
+      classId : v.classId,
+      lessonId : v.lessonId,
+      checkinStatus : v.checkinStatus
+    };
+  },
+
   // 获取一下班级列表
   getClassList() {
+    let url = service.teaGetLessonList;
+    if(this.store.data.userInfo.userType === "10"){// 机构
+      url = service.getCalendarLessonList;
+    }else if(this.store.data.userInfo.userType === "40"){// 家长
+      url = service.getEnrollLessonList;
+    }
     ajax({
-      url: service.getCalendarLessonList.url,
+      url: url,
       data : {
         lessonDate : this.data.date,
         dimensionType : this.data.activeL === 'active' ? '1' : '2'
       }
     }).then((res) => {
-      this.setData({
-        classList : res.data
-      })
+      let newList = [];
+      if(res.data && res.data.length > 0){
+        res.data.forEach(v => {// 最外层的list，其实没有意义，永远只有一项
+          if(this.store.data.userInfo.userType === "10"){// 机构结构不一样
+            for(let key in v){// 每一个课时
+              v[key].forEach(v => {// 课时详情
+                let data = this.setClassVal(v);
+                if(this.data.activeR === 'active'){// 右边的（仅机构才有）
+                  data.leftName = v.teacherName;
+                  data.teacherName = v.classroomName;
+                }
+                newList.push(data);
+              })
+            }  
+          }else{// 其他角色
+            let data = this.setClassVal(v);
+            newList.push(data);
+          }
+        });
+        this.setData({
+          classList : newList
+        });
+      }else{
+        this.setData({
+          classList: null
+        })
+        setTimeout(() => {
+          wx.showToast({title : "当天暂无课程安排",icon : "none"})
+        },500)
+      }
     })
   },
 
@@ -116,7 +172,7 @@ create(store, {
   // 跳转到班级详情页面
   toClassDetail(data) {
     wx.navigateTo({
-      url: "/pages/courseDetail/index?calssId=" + data.detail
+      url: "/pages/courseDetail/index?data=" + data.detail
     });
   },
 
@@ -124,6 +180,46 @@ create(store, {
   addCustomize() {
     this.setData({
       hidePopup : false
+    });
+    // 获取子女列表
+    ajax({
+      url: service.childrenList
+    }).then((res) => {
+      this.data.fieldList[5].nameList = res.data.map(v => {return v = v.childrenName});
+      this.data.fieldList[5].idList = res.data.map(v => {return v = v.childrenId});
+      this.setData({
+        fieldList : this.data.fieldList
+      })
+    });
+  },
+
+  // 确认添加课程
+  sureAdd() {
+    let vals = collectVals.call(this, this.data.fieldList);
+    if(vals === false){
+      return
+    };
+    let data = {
+      courseName : vals.courseName,
+      mainLabel : vals.mainLabel[0],
+      subLabel1 : vals.mainLabel[1],
+      subLabel2 : vals.mainLabel[2],
+      startTime : vals.startTime,
+      endTime : vals.endTime,
+      lessonDate : vals.lessonDate,
+      studentId : vals.studentId
+    }
+    ajax({
+      url : service.addCustomCourse,
+      data : data
+    }).then(r => {
+      wx.showToast({
+        title : "添加成功",
+        icon : "none"
+      });
+      this.setData({
+        hidePopup : true
+      });
     })
   }
 

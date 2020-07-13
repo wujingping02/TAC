@@ -8,15 +8,15 @@ function getTime(ms) {
     }
     return num;
   }
-    var oDate = new Date(ms),
-    oYear = oDate.getFullYear(),
-    oMonth = oDate.getMonth()+1,
-    oDay = oDate.getDate(),
-    oHour = oDate.getHours(),
-    oMin = oDate.getMinutes(),
-    oSen = oDate.getSeconds(),
-    oTime = oYear +'-'+ addZero(oMonth) +'-'+ addZero(oDay);
-    return oTime;
+  var oDate = new Date(ms),
+  oYear = oDate.getFullYear(),
+  oMonth = oDate.getMonth()+1,
+  oDay = oDate.getDate(),
+  oHour = oDate.getHours(),
+  oMin = oDate.getMinutes(),
+  oSen = oDate.getSeconds(),
+  oTime = oYear +'-'+ addZero(oMonth) +'-'+ addZero(oDay);
+  return oTime;
 }
 
 // ajax请求
@@ -75,11 +75,11 @@ function mockRequest(data) {
 // 获取用户登录信息
 function isLogin() {
   if(!this.store.data.userInfo.userType){// 没有角色信息就去拿一下
-    getWXCode().then(code => {// 查一下用户信息【token，姓名，头像】
+    function login() {
       ajax({
-        url : service.login.url,
+        url : service.login,
         data : {
-          code : code
+          code : this.store.data.userInfo.loginCode
         }
       }).then(res => {
         if(res.data.isRegister === "N"){// 没登录
@@ -90,43 +90,55 @@ function isLogin() {
           wx.setStorageSync('token', res.data.token);
           // 再拿一次详细信息
           ajax({
-            url : service.getAllInfo.url
+            url : service.getAllInfo
           }).then(obj => {
             this.store.data.userInfo = obj.data;
-            // this.store.data.userInfo.userType = res.data.userType || "10";// 10 培训机构管理员，20 助教，30 教师，40 家长
-            this.store.data.userInfo.userType = "10";// 10 培训机构管理员，20 助教，30 教师，40 家长
-            this.store.data.userInfo.photo = res.data.mobileNo || "13112341234";
-            if(!res.data.headImageId){// 没有头像使用微信头像
-              let that = this;
-              wx.getUserInfo({
-                success(res) {
-                  that.store.data.userInfo.avatar = res.userInfo.avatarUrl;// 头像
-                  that.store.data.userInfo.userName = res.userInfo.nickName;// 姓名
-                  that.store.update();
-                }
-              });
-            }else{// 有头像用上传后的头像
-              this.store.data.userInfo.avatar = "https://timeafterschool.net/tas/image/preview?imageId=" + res.data.headImageId;
-              this.store.update();
-            }
+            this.store.data.userInfo.userType = res.data.userType;// 10 培训机构管理员，20 助教，30 教师，40 家长
+            // this.store.data.userInfo.userType = "30";// 10 培训机构管理员，20 助教，30 教师，40 家长
+            this.store.data.userInfo.photo = res.data.mobileNo;
+            this.store.data.userInfo.userName = res.data.userName;// 姓名
+            this.store.data.userInfo.avatar = getApp().globalData.imgUrl + res.data.headImageId;
+            this.setData({Avatar : this.store.data.userInfo.avatar});
+            this.update();
+            // if(!res.data.headImageId){// 没有头像使用微信头像
+            //   let that = this;
+            //   wx.getUserInfo({
+            //     success(res) {
+            //       that.store.data.userInfo.avatar = res.userInfo.avatarUrl;// 头像
+            //       that.store.update();
+            //     }
+            //   });
+            // }else{// 有头像用上传后的头像
+            //   this.store.data.userInfo.avatar = getApp().globalData.imgUrl + res.data.headImageId;
+            //   this.setData({Avatar : this.store.data.userInfo.avatar});
+            //   this.update();
+            // }
           });
         }
       })
-    });
+    };
+    if(!this.store.data.userInfo.loginCode){// 注册过来的
+      getWXCode().then(code => {
+        this.store.data.userInfo.loginCode = code;
+        login.call(this);
+      })
+    }else{
+      login.call(this);
+    }
   }
 }
 
 // 上传图片
 function uploadImg(data) {
   data = data || {};
-  function uploaf(data){
+  function upload(data){
     return new Promise(suc => {
       wx.showLoading({
         title: '加载中',
         mask: true,
       })
       wx.uploadFile({
-        url: data.url || service.upload.url,
+        url: data.url || service.upload,
         filePath: data.path,
         name: 'file',
         header: { 
@@ -160,7 +172,7 @@ function uploadImg(data) {
     })
   }
   if(data.path){// 有图片直接调用上传
-    return uploaf(data);
+    return upload(data);
   }else{// 没图调用本地相册上传
     return chooseImg().then(file => {
       let obj = {
@@ -168,7 +180,7 @@ function uploadImg(data) {
         url : data.url,
         data : data
       };
-      return uploaf(obj);
+      return upload(obj);
     })
   };
 }
@@ -195,7 +207,7 @@ function collectVals(filedList, id) {
   // 先校验下值是不是合法
   for(let i = 0;i<filedList.length;i++){
     if(page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).check() === false){
-      // return false
+      return false
     }else{
       vals[filedList[i].key] = page.selectComponent("#" + filedList[i].key) && page.selectComponent("#" + filedList[i].key).getValue()
     }
@@ -210,5 +222,5 @@ module.exports = {
   getTime : getTime,
   isLogin : isLogin,
   getWXCode : getWXCode,
-  uploadImg : uploadImg
+  uploadImg : uploadImg,
 }

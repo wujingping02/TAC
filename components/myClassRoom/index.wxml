@@ -17,9 +17,9 @@
       <block wx:key="box" wx:for="{{list}}">
         <view class="oneItemBox teacher" bind:tap="clickItem" data-index="{{index}}">
           <image class="teacher_avatar" src="{{item.url}}"/>
-          <text class="teacher_name">{{item.name}}</text>
+          <text class="teacher_name">{{item.teacherName}}</text>
           <text wx:if="{{type === 'child'}}" class="teacher_phone">{{item.phone}}</text>
-          <image wx:if="{{!disable}}" bind:tap="del" data-index="{{index}}" class="del" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4T6XTvyuFcRTH8ddXZMAqRVnEoohk8ieYDDaWW9eqlMGqmFhJNxlNBvkTWAzcshhYlMXmV0l59NXzPD09devex3c73/M57/M953tOUDoJI1jGIqZT9w0ucBJ4KYaEzEjoxzGWkN+X+G/Yxn7gO/r+hAm9uMJM+UUt7GssBL4ywAHqbQZnssPAWkgYwz26OgT8YCIC9rDeYXAm34mAmH28IqAZAbGb3QXAEZ5bAIdKvfqMgFcMtAkYRq2g/YiAW0xVLOEhAnaxWRHQiIBRPFb4xphz7j+D1AjUiqN8idk2S2liPh/ldB96sIEt9LUAJTjDauA9X6aiOGEQK+k6T6a+O5zjNPBU1P8CuyA8GH7JluMAAAAASUVORK5CYII="/>
+          <image wx:if="{{!disable && type != 'child'}}" bind:tap="del" data-index="{{index}}" class="del" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABDUlEQVQ4T6XTvyuFcRTH8ddXZMAqRVnEoohk8ieYDDaWW9eqlMGqmFhJNxlNBvkTWAzcshhYlMXmV0l59NXzPD09devex3c73/M57/M953tOUDoJI1jGIqZT9w0ucBJ4KYaEzEjoxzGWkN+X+G/Yxn7gO/r+hAm9uMJM+UUt7GssBL4ywAHqbQZnssPAWkgYwz26OgT8YCIC9rDeYXAm34mAmH28IqAZAbGb3QXAEZ5bAIdKvfqMgFcMtAkYRq2g/YiAW0xVLOEhAnaxWRHQiIBRPFb4xphz7j+D1AjUiqN8idk2S2liPh/ldB96sIEt9LUAJTjDauA9X6aiOGEQK+k6T6a+O5zjNPBU1P8CuyA8GH7JluMAAAAASUVORK5CYII="/>
         </view>
       </block>
       <view wx:if="{{!disable}}" bind:tap="addItem" class="addItemBox">

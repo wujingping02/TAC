@@ -4,12 +4,13 @@
       <text class="title">个人中心</text>
     </view>
     <view class="avatarBg">
-      <image bind:tap="editOrgdetail" class="avatarImg" src="{{ userInfo.avatar }}"/>
+      <image bind:tap="editOrgdetail" class="avatarImg" src="{{ Avatar }}"/>
     </view>
-    <view class="avatarName">{{ userInfo.name }}</view>
+    <view class="avatarName">{{ userInfo.userName }}</view>
   </view>
   <view class="listBox">
-    <view wx-if="{{ userInfo.userType === '10' || userInfo.userType == '20' || userInfo.userType == '30' }}" bindtap="toPersonInfo">
+    <!-- <view wx-if="{{ userInfo.userType === '10' || userInfo.userType == '20' || userInfo.userType == '30' }}" bindtap="toPersonInfo"> -->
+    <view bindtap="toPersonInfo">
       <image src="../../images/JBXX.png"/>
       <text class="text">基本信息</text>
     </view>
@@ -46,14 +47,14 @@
       <text class="text">换补课列表</text>
     </view>
     <view wx-if="{{ userInfo.userType === '40' }}" bindtap="toMyPhoto">
-      <image src="../../images/home.png"/>
+      <image src="../../images/WDXC.png"/>
       <text class="text">我的相册</text>
     </view>
     <view wx-if="{{ userInfo.userType === '40' }}" bindtap="toMyChildren">
-      <image src="../../images/home.png"/>
+      <image src="../../images/WDZN.png"/>
       <text class="text">子女信息</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '20' || userInfo.userType === '30' || userInfo.userType === '40' }}" bindtap="toClassList">
+    <view wx-if="{{ userInfo.userType === '20' || userInfo.userType === '30' }}" bindtap="toClassList">
       <image src="../../images/BJLB.png"/>
       <text class="text">班级列表</text>
     </view>

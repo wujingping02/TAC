@@ -20,7 +20,9 @@
         isMust="{{item.isMust}}" 
         id="{{item.key}}" 
         type="{{item.type}}" 
+        color="{{item.color}}" 
         className="{{item.className}}" 
+        multiple="{{item.multiple}}"
         lable="{{item.lable}}"/>
       <myPhoto 
         wx:if="{{item.type === 'photo'}}"

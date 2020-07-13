@@ -10,14 +10,47 @@ create(store, {
     userInfo: null
   },
 
-  onShow: function () {
-    mockRequest({// 上来获取一下换补课列表
-      url: service.changeList.url,
-      method: "post",
+  getLIst(url){
+    ajax({// 上来获取一下换补课列表
+      url: url
     }).then((res) => {
-      this.setData({
-        list : res.data
-      });
+      if(res.data && res.data.length > 0){
+        this.setData({
+          list : res.data.map(v => {
+            return v = {
+              ...v,
+              url : v.studentHeadImageId ? getApp().globalData.imgUrl + v.studentHeadImageId : getApp().globalData.imgUrl + v.childrenHeadImageId,
+              time : v.lessonDate + " " + v.startTime + "~" + v.endTime
+            }
+          })
+        });
+      }else{
+        wx .showToast({
+          title : "暂无换补课信息",
+          icon : "none"
+        })
+      }
+    })
+  },
+ 
+  onShow: function () {
+    let url = service.changeList;
+    if(this.store.data.userInfo.userType === "40"){// 家长
+      url = service.parChangeList;
+    }
+    this.getLIst(url);
+  },
+
+  // 换补课
+  changClass(data) {
+    let index = data.currentTarget.dataset.index;
+    ajax({
+      url : service.sureUpLesson,
+      data : {
+        lessonRecordId : this.data.list[index].lessonRecordId
+      }
+    }).then(res => {
+      this.getLIst(service.changeList);
     })
   }
 })

@@ -1,22 +1,40 @@
 <view class="box">
+  <view bind:tap="hidePrompt">
+    <myOvermask hide="{{hidePromptBox}}"/>
+  </view>
   <view>
     <text wx:if="{{isMust}}" class="lable" style="color : #FF8711">* </text>
     <text class="lable">课程属性</text>
-    <text class="explanation">?</text>
+    <text class="explanation" bind:tap="showPrompt">?</text>
   </view>
   <view class="valBox">
     <picker class="val" bind:tap="click" bindchange="bindchange" range="{{list}}">
-      <view class="prompt">{{index === -1 ? '请选择' : list[index]}}</view>
+      <view class="prompt">{{(myValue[0] || value[0]) ? list[(myValue[0] || value[0])  - 1] : '请选择'}}</view>
     </picker>
   </view>
   <view class="valBox2">
     <picker class="val" bind:tap="click" bindchange="bindchange2" range="{{list}}">
-      <view class="prompt">{{index2 === -1 ? '请选择' : list[index2]}}</view>
+      <view class="prompt">{{(myValue[1] || value[1]) ? list[(myValue[1] || value[1])  - 1] : '请选择'}}</view>
     </picker>
   </view>
   <view class="valBox3">
     <picker class="val" bind:tap="click" bindchange="bindchange3" range="{{list}}">
-      <view class="prompt">{{index3 === -1 ? '请选择' : list[index3]}}</view>
+      <view class="prompt">{{(myValue[2] || value[2]) ? list[(myValue[2] || value[2])  - 1] : '请选择'}}</view>
     </picker>
+  </view>
+  <view class="promptBox" hidden="{{hidePromptBox}}">
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
+    哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或。
   </view>
 </view>

@@ -16,14 +16,19 @@ Component({
   // 组件的方法列表
   methods: {
     addItem : function(){
-      this.triggerEvent("addItem")
+      this.triggerEvent("addItem");
     },
-    clickItem : function(e){
-      let index = e.currentTarget.dataset['index'];// 当前点击的课程信息
-      this.triggerEvent("itemClick", index)
+    clickItem : function(e){// 点击事件，目前能点的是课程详情页的老师列表
+      let index = e.currentTarget.dataset['index'];
+      let data = this.data.list[index];
+      let id = data.childrenId || data.teacherId || data.assistantId;
+      this.triggerEvent("itemClick", index);
+    },
+    del(e) {// 删除事件
+      let index = e.currentTarget.dataset['index'];
+      let data = this.data.list[index];
+      let id = data.childrenId || data.teacherId || data.assistantId;
+      this.triggerEvent("del", id);
     }
-  },
-  ready: function () {
-    
   }
 })

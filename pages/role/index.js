@@ -62,15 +62,17 @@ create(store, {
         icon: 'none'
       })
     }else{
+      console.log(this.store.data.userInfo)
       // 注册一下
       getWXCode().then(code => {
         ajax({
-          url: service.register.url,
+          url: service.register,
           method: "post",
           data : {
             code : code,
             userType : this.data.role,
-            mobileNo : "18601669725"
+            encryptedData : this.store.data.userInfo.encryptedData,
+            iv : this.store.data.userInfo.iv
           }
         }).then((res) => {
           wx.setStorageSync('token', res.data.token);

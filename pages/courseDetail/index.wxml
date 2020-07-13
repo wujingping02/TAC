@@ -1,6 +1,6 @@
 <view class="box">
-  <myHeader title="{{title}}"/>
-  <view class="topBG">
+  <myHeader position="relative" title="{{title}}"/>
+  <view class="topBG" style="margin-top: 0">
     <view class="radius"></view>
   </view>
   <view class="courseCardBox">
@@ -8,19 +8,19 @@
       <view>
         <view class="name">{{name}}</view>
         <view class="age">{{ "适合年龄" + age + "岁" }}</view>
-        <view class="address" style="{{ calssId && userInfo.userType != '40' ? 'margin-bottom : 90rpx' : '' }}">{{address}}</view>
+        <view class="address" style="{{ classId && userInfo.userType != '40' ? 'margin-bottom : 90rpx' : '' }}">{{address}}</view>
       </view>
       <!-- 二维码报名，仅在班级详情时展示 -->
-      <view class="erweimaBox" wx:if="{{calssId && userInfo.userType != '40'}}">
+      <view class="erweimaBox" wx:if="{{classId && userInfo.userType != '40'}}">
         <text class="roundLeft"></text>
         <text class="roundRight"></text>
         <text class="rountCenter"></text>
         <view class="canvasBox">
-          <canvas class="canvas" canvas-id="canvas" style="width:300px; height:300px;"></canvas>
+          <canvas class="canvas" canvas-id="canvas" style="width:180px; height:180px;"></canvas>
         </view>
         <view class="ewmPrompt">扫描二维码，添加课程</view>
       </view>
-      <view wx:if="{{courseId || userInfo.userType === '40'}}">
+      <view wx:if="{{(courseId && !classId) || userInfo.userType === '40'}}">
         <view class="phoneBox" bind:tap="callOrg">
           <text class="phone">电话联系</text>
         </view>
@@ -28,12 +28,12 @@
     </view>
   </view>
   <!-- 预约模块，仅在课程详情时展示 -->
-  <myPopup wx:if="{{courseId && userInfo.userType === '40'}}" background="#f9f9f9" id="page" paddingTop="0rpx" list="{{fieldList}}"/>
-  <myButton wx:if="{{courseId && userInfo.userType === '40'}}" className="reservation" bind:click="submit" content="立即预约"/>
+  <myPopup wx:if="{{(courseId && !classId) && userInfo.userType === '40'}}" background="#f9f9f9" id="page" paddingTop="0rpx" list="{{fieldList}}"/>
+  <myButton wx:if="{{(courseId && !classId) && userInfo.userType === '40'}}" className="reservation" bind:click="submit" content="立即预约"/>
   <view class="introduction">{{courseIntrd}}</view>
   <myPhoto previewImage="{{true}}" disabled="{{true}}" padding="0 40rpx" value="{{orgPhoto}}"/>
   <!-- 课时列表，仅在班级详情时展示 -->
-  <view wx:if="{{calssId}}" class="lessonBigBox">
+  <view wx:if="{{classId}}" class="lessonBigBox">
     <view class="lessonBox">
       <view class="lessonTop">
         <text class="lessonTopLeft">日期</text>
@@ -42,7 +42,7 @@
       <view class="lessonDetail">
         <block wx:key="box" wx:for="{{lessonList}}">
           <view class="lessonDetailBox">
-            <text class="lessonDetailBoxLeft">{{item.date}}</text>
+            <text class="lessonDetailBoxLeft">{{item.lessonDate}}</text>
             <text class="lessonDetailBoxRight">{{item.startTime + "~" + item.endTime}}</text>
           </view>
         </block>
@@ -54,6 +54,6 @@
   </view>
   <myClassRoom type="teacher" className="preview" disable="{{true}}" list="{{classList}}" bind:itemClick="itemClick"></myClassRoom>
   <!-- 机构介绍，仅在班级详情时展示 -->
-  <view wx:if="{{courseId}}" class="orgName">{{orgName}}</view>
-  <view wx:if="{{courseId}}" class="introduction">{{orgIntrd}}</view>
+  <view wx:if="{{(courseId && !classId)}}" class="orgName">{{orgName}}</view>
+  <view wx:if="{{(courseId && !classId)}}" class="introduction">{{orgIntrd}}</view>
 </view>

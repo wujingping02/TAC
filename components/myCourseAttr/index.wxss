@@ -61,3 +61,16 @@
     background-repeat:no-repeat;
     background-size: 100% 100%;
 }
+.promptBox {
+    width: 80vw;
+    height: 50vh;
+    background: #ffffff;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    padding: 10rpx;
+    overflow-y: scroll;
+    border-radius: 10rpx;
+}

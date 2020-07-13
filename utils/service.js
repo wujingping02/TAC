@@ -2,464 +2,87 @@
 let domain = "https://timeafterschool.net/";
 
 export default{
-    // 获取登录信息
-    login : {
-        url : domain + "tas/user/login",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : {
-                name : "张三",
-                phone : "13112341234",
-                // 10 培训机构管理员
-                // 20 助教
-                // 30 教师
-                // 40 家长
-                userType : "30"
-            },
-            token : "123"
-        }
-    },
-    // 选课获取课程列表
-    courseList : {
-        url : domain + "tas/course/getCourseList",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {
-                    name : "英语1",
-                    url : "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2137031589,1389711183&fm=11&gp=0.jpg",
-                    sAge : "1",
-                    eAge : "2",
-                    address : "徐汇区宛平南路1109号",
-                    price : "200",
-                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
-                },{
-                    name : "英语2",
-                    url : "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3233389117,473746678&fm=11&gp=0.jpg",
-                    sAge : "2",
-                    eAge : "3",
-                    address : "徐汇区宛平南路1109号",
-                    price : "200",
-                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
-                },{
-                    name : "语文3",
-                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1264197438,3434707790&fm=11&gp=0.jpg",
-                    sAge : "3",
-                    eAge : "4",
-                    address : "徐汇区宛平南路1109号",
-                    price : "200",
-                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
-                },{
-                    name : "数学4",
-                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=905759001,1131007225&fm=11&gp=0.jpg",
-                    sAge : "4",
-                    eAge : "5",
-                    address : "徐汇区宛平南路1109号",
-                    price : "500",
-                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
-                }
-            ]
-        }
-    },
-    // 机构行事历获取班级列表
-    getCalendarLessonList : {
-        url : domain + "tas/institute/getCalendarLessonList"    
-    },
-    // 家长查询图片列表
-    photoList : {
-        url : domain + "parent/photo/list",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {
-                    name : "英语1",
-                    url : "http://t7.baidu.com/it/u=1278269090,484809810&fm=193",                    
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会",
-                    time : "2020-10-10 10:10~10:00"
-                },{
-                    name : "英语1",
-                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1134228055,3453265759&fm=26&gp=0.jpg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会",
-                    time : "2020-10-10 10:10~10:00"
-                },{
-                    name : "英语1",
-                    url : "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3660044098,2807486520&fm=26&gp=0.jpg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会",
-                    time : "2020-10-10 10:10~10:00"
-                },{
-                    name : "英语1",
-                    url : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3349106034,2428154400&fm=26&gp=0.jpg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会",
-                    time : "2020-10-10 10:10~10:00"
-                }
-            ]
-        }
-    },
-    // 机构获取课程列表
-    orgCourseList : {
-        url : domain + "tas/institute/getCourseList",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {
-                    name : "英语1",
-                    url : "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2137031589,1389711183&fm=11&gp=0.jpg",
-                    sAge : "1",
-                    eAge : "2",
-                    address : "徐汇区宛平南路1109号",
-                    price : "200",
-                    introd : "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈",
-                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
-                },{
-                    name : "英语2",
-                    url : "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3233389117,473746678&fm=11&gp=0.jpg",
-                    sAge : "2",
-                    eAge : "3",
-                    address : "徐汇区宛平南路1109号",
-                    price : "200",
-                    introd : "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈",
-                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
-                },{
-                    name : "语文3",
-                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1264197438,3434707790&fm=11&gp=0.jpg",
-                    sAge : "3",
-                    eAge : "4",
-                    address : "徐汇区宛平南路1109号",
-                    price : "200",
-                    introd : "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈",
-                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
-                },{
-                    name : "数学4",
-                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=905759001,1131007225&fm=11&gp=0.jpg",
-                    sAge : "4",
-                    eAge : "5",
-                    address : "徐汇区宛平南路1109号",
-                    price : "500",
-                    introd : "哈哈哈哈哈哈哈哈哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或哈哈哈哈哈哈哈哈哈哈",
-                    orgImg : "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592061513264&di=aaa15f42814931c75dd6ae677b84e18c&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fa_auto%2Cc_cut%2Cx_36%2Cy_68%2Cw_416%2Ch_416%2Fimages%2F20200509%2Fd590572f9dd04ce0932ca5af0ea29fc4.jpeg",
-                    orgName : "呵呵借款收到经安徽省登记哈数据库的好机会"
-                }
-            ]
-        }
-    },
-    // 机构新增课程
-    orgAddCourse : {
-        url : domain + "tas/institute/addCourse",
-    },
-    // 获取课节列表
-    lessonList : {
-        url : domain + "tas/institute/getClassLessonList",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {
-                    date : "2020-09-09",
-                    time : "10:00-10:00",
-                    name : "张三",
-                    url : "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1025402524,1094237387&fm=26&gp=0.jpg",
-                    className : "哈哈班"
-                }
-            ]
-        }
-    },
-    // 机构获取地址列表
-    addressList : {
-        url : domain + "tas/institute/getAddressList",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {
-                    name : "地址1",
-                    provice : "上海市",
-                    city : "上海市",
-                    area : "徐汇区",
-                    address : "宛平南路1109号"
-                },{
-                    name : "地址2",
-                    provice : "河北省",
-                    city : "石家庄市",
-                    area : "长安区",
-                    address : "宛平南路1109号"
-                }
-            ]
-        }
-    },
-    // 机构获取教室列表
-    classroomList : {
-        url : domain + "tas/institute/address/getClassroomList",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {name : "教室1",number : "20"},
-                {name : "教室1",number : "20"},
-                {name : "教室1",number : "20"},
-                {name : "教室1",number : "20"},
-                {name : "教室1",number : "20"},
-                {name : "教室1",number : "20"},
-                {name : "教室1",number : "20"},
-                {name : "教室1",number : "20"},
-                {name : "教室1",number : "20"},
-                {name : "教室1",number : "20"},
-                {name : "教室2",number : "20"}
-            ]
-        }
-    },
-    // 老师和助教获取机构列表
-    relativeList : {
-        url : domain + "institute/relative/list",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {name : "机构1"}
-            ]
-        }
-    },
-    // 老师换补课列表
-    changeList : {
-        url : domain + "teacher/lesson/change/list",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {
-                    name : "换补课1阿萨德法师的法师打发第三方",
-                    url : "http://t7.baidu.com/it/u=2693777839,2096851452&fm=193",
-                    teacher : "张三",
-                    address : "上海市徐汇区宛平南路1109号",
-                    date : "2020-07-09 10:00-11:00"
-                },{
-                    name : "换补课2",
-                    url : "http://t8.baidu.com/it/u=2247732864,1483251733&fm=193",
-                    teacher : "李四",
-                    address : "上海市徐汇区宛平南路1109号",
-                    date : "2020-07-09 10:00-11:00"
-                },
-            ]
-        }
-    },
-    // 家长查询子女信息
-    childrenList : {
-        url : domain + "parent/children/list",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {name : "子女1"}
-            ]
-        }
-    },
-    // 查询机构详情
-    introductionGetDetail : {
-        url : domain + "institute/introduction/getDetail",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : {
-                image : "http://img1.imgtn.bdimg.com/it/u=1931440835,1335623672&fm=26&gp=0.jpg",
-                name : "孙悟空",
-                detail : "《龙珠Z》（DRAGON BALLZ （Zetto）），是《龙珠》系列中的第二部，根据日本著名漫画家鸟山明的同名《龙珠》漫画改编，于1989年4月19日在日本富士电视台首播1996年1月31日播放完毕。改编于漫画中第195篇-第519篇，因为这期间鸟山明的漫画风格转为超激战，而且故事也和前194篇风格没有太大关联，因此由东映动画公司改编成为独立的动画片。题目中的“Z”为鸟山明所取，字母表最后一个字母，意为“结束”。",
-                phone : [
-                    "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592150153352&di=bd2c2d643e6b69e5a321c8057afad823&imgtype=0&src=http%3A%2F%2Fimg2.imgtn.bdimg.com%2Fit%2Fu%3D1731565382%2C3695015853%26fm%3D214%26gp%3D0.jpg"
-                    ,"http://img2.imgtn.bdimg.com/it/u=1873874002,1324989472&fm=26&gp=0.jpg"
-                    ,"http://img5.imgtn.bdimg.com/it/u=132539127,2703113384&fm=26&gp=0.jpg"
-                ],
-                address : [
-                    "徐汇区宛平我拿你1109号急急急",
-                    "徐汇区宛平我拿你1109号急急急",
-                    "徐汇区宛平我拿你1109号急急急"
-                ]
-            }
-        }
-    },
-    // 获取教师列表
-    teacherList : {
-        url : domain + "tas/institute/getTeacherList",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : [
-                {
-                    url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=773859522,545547748&fm=26&gp=0.jpg",
-                    name : "教师1",
-                    phone : "131123"
-                },
-                {   
-                    url : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3099595195,3442150895&fm=26&gp=0.jpg",
-                    name : "教师2",
-                    phone : "13114"
-                }
-            ]
-        }
-    },
-    // 添加教师
-    addTeacher : {
-        url : domain + "tas/institute/addTeacher"
-    },
-    // 查询教师、助教信息
-    userQuery : {
-        url : domain + "tas/institute/queryTeacher",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : {
-                name : "张三",
-                phone : "13112341234"
-            },
-        }
-    },
-    // 首页查询课程详情
-    courseQuery : {
-        url : domain + "tas/course/queryCourse",
-        mockData : {
-            code : "0000",
-            msg : "失败了",
-            data : {
-                name : "张三",
-                age1: "2",
-                age2: "3",
-                address: "岚皋路597号十八公尺806",
-                phone : "13112341234",
-                orgPhoto: [
-                    "http://img2.imgtn.bdimg.com/it/u=1873874002,1324989472&fm=26&gp=0.jpg",
-                    "http://img5.imgtn.bdimg.com/it/u=132539127,2703113384&fm=26&gp=0.jpg"
-                ],
-                teacher : [
-                    {
-                        url : "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=773859522,545547748&fm=26&gp=0.jpg",
-                        name : "教师1",
-                        phone : "13112341234"
-                    },{   
-                        url : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3099595195,3442150895&fm=26&gp=0.jpg",
-                        name : "教师2",
-                        phone : "13112341234"
-                    },{   
-                        url : "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3099595195,3442150895&fm=26&gp=0.jpg",
-                        name : "教师3",
-                        phone : "13112341234"
-                    }
-                ],
-                courseIntrd: "这是啊实打实大快速的拉升的接口连接上大师级的垃圾收到了sad就拉倒就卡死的进口丝萨贝达哈弗力缆狂澜喀什东路卡死了的卡拉斯科达拉斯",
-                orgName: "上海市第一师范附属小学",
-                orgIntrd: "看看监控登记卡SDK撒娇的凯撒肯德基卡时间段卡时间段卡加斯打卡机山东矿机撒开的凯撒奖打卡时间贷款啦啦啦啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿",
-                lessonList: [
-                    {
-                        date : "2020-09-01",
-                        startTime : "10:00", 
-                        endTime : "11:00"
-                    },{
-                        date : "2020-19-01",
-                        startTime : "11:00", 
-                        endTime : "11:00"
-                    },{
-                        date : "2020-09-01",
-                        startTime : "12:01", 
-                        endTime : "15:00"
-                    },{
-                        date : "2020-09-01",
-                        startTime : "12:01", 
-                        endTime : "15:00"
-                    },{
-                        date : "2020-09-01",
-                        startTime : "12:01", 
-                        endTime : "15:00"
-                    },{
-                        date : "2020-09-01",
-                        startTime : "12:01", 
-                        endTime : "15:00"
-                    }
-                ]
-            },
-        }
-    },
-    // 注册
-    register : {
-        url : domain + 'tas/user/register'
-    },
-    // 完善机构信息
-    submitInfo : {
-        url : domain + 'tas/institute/modifyBaseInfo'
-    },
-    // 查询基本信息
-    getAllInfo : {
-        url : domain + "tas/user/query"
-    },
-    // 新增机构校区
-    addAddress : {
-        url : domain + "tas/institute/addAddress"
-    },
-    // 编辑地址信息
-    editAddress : {
-        url : domain + "tas/institute/modifyAddress"
-    },
-    // 新增教室
-    addClassroom : {
-        url : domain + "tas/institute/address/addClassroom"
-    },
-    // 上传图片
-    upload : {
-        url : domain + "tas/image/uploadImage"
-    },
-    // 机构修改头像
-    changeAvatar : {
-        url : domain + "tas/institute/modifyHeadImage"
-    },
-    // 机构获取课程信息
-    getCourseInfo : {
-        url : domain + "tas/institute/queryCourse"
-    },
-    // 编辑课程信息
-    editCourseInfo : {
-        url : domain + "tas/institute/modifyCourse"
-    },
-    // 机构删除老师接口
-    delTeacher : {
-        url : domain + "tas/institute/deleteTeacher"
-    },
-    // 获取助教列表
-    getAssistantList : {
-        url : domain + "tas/institute/getAssistantList"
-    },
-    // 机构删除助教接口
-    deleteAssistant : {
-        url : domain + "tas/institute/deleteAssistant"
-    },
-    // 查询可添加助教
-    queryAssistant : {
-        url : domain + "tas/institute/queryAssistant"
-    },
-    // 添加助教
-    addAssistant : {
-        url : domain + "tas/institute/addAssistant"
-    },
-    // 机构详情查询机构图片接口
-    queryInstituteImages : {
-        url : domain + "tas/institute/queryInstituteImages"
-    },
-    // 保存机构相册接口
-    saveInstituteImages : {
-        url : domain + "tas/institute/saveInstituteImages"
-    },
-    // 发布课程
-    publishCourse : {
-        url : domain + "tas/institute/publishCourse"
-    },
-    // 下架课程
-    offShelfCourse : {
-        url : domain + "tas/institute/offShelfCourse"
-    }
+    login : domain + "tas/user/login",// 获取登录信息
+    courseList : domain + "tas/course/getCourseList",// 选课获取课程列表
+    courseQuery : domain + "tas/course/queryCourse",// 首页查询课程详情
+    register : domain + "tas/user/register",// 注册
+    getAllInfo : domain + "tas/user/query",// 查询基本信息
+    upload : domain + "tas/image/uploadImage",// 上传图片
+    /**----------------------------------------以上是公用接口--------------------------------------------------------*/
+    getCalendarLessonList : domain + "tas/institute/getCalendarLessonList",// 机构行事历获取班级列表
+    orgCourseList : domain + "tas/institute/getCourseList",// 机构获取课程列表
+    orgAddCourse : domain + "tas/institute/addCourse",// 机构新增课程
+    lessonList : domain + "tas/institute/getClassLessonList",// 获取课节列表
+    addressList : domain + "tas/institute/getAddressList",// 机构获取地址列表
+    classroomList : domain + "tas/institute/address/getClassroomList",// 机构获取教室列表
+    teacherList : domain + "tas/institute/getTeacherList",// 获取教师列表
+    addTeacher : domain + "tas/institute/addTeacher",// 添加教师
+    userQuery : domain + "tas/institute/queryTeacher",// 查询教师、助教信息
+    submitInfo : domain + "tas/institute/modifyBaseInfo",// 完善机构信息
+    addAddress : domain + "tas/institute/addAddress",// 新增机构校区
+    editAddress : domain + "tas/institute/modifyAddress",// 编辑地址信息
+    addClassroom : domain + "tas/institute/address/addClassroom",// 新增教室
+    changeAvatar : domain + "tas/institute/modifyHeadImage",// 机构修改头像
+    getCourseInfo : domain + "tas/institute/queryCourse",// 机构获取课程信息
+    editCourseInfo : domain + "tas/institute/modifyCourse",// 编辑课程信息
+    delTeacher : domain + "tas/institute/deleteTeacher",// 机构删除老师接口
+    getAssistantList : domain + "tas/institute/getAssistantList", // 获取助教列表
+    deleteAssistant : domain + "tas/institute/deleteAssistant",// 机构删除助教接口
+    queryAssistant : domain + "tas/institute/queryAssistant",// 查询可添加助教
+    addAssistant : domain + "tas/institute/addAssistant",// 添加助教
+    queryInstituteImages : domain + "tas/institute/queryInstituteImages",// 机构详情查询机构图片接口
+    saveInstituteImages : domain + "tas/institute/saveInstituteImages",// 保存机构相册接口
+    modifyIntroduction : domain + "tas/institute/modifyIntroduction",// 保存机构基本信息
+    publishCourse : domain + "tas/institute/publishCourse",// 发布课程
+    offShelfCourse : domain + "tas/institute/offShelfCourse",// 下架课程
+    addClass : domain + "tas/institute/addClass",// 新增一个班级
+    addLesson : domain + "tas/institute/addLesson",// 新增一个课时
+    deleteLesson : domain + "tas/institute/deleteLesson",// 删除一个课时
+    startClass : domain + "tas/institute/startClass",// 开班
+    deleteClass : domain + "tas/institute/deleteClass",// 删除班级
+    getClassTeacherList : domain + "tas/institute/getClassTeacherList",// 查询老师列表
+    getClassClassroomList : domain + "tas/institute/getClassClassroomList",// 查询教室列表
+    getClassList : domain + "tas/institute/getClassList",// 获取课程下班级列表接口
+    /**----------------------------------------以上是机构接口--------------------------------------------------------*/
+    teaSubmitInfo : domain + "tas/teacher/modifyBaseInfo",// 老师的保存基本信息接口
+    teaQueryTeacherImages : domain + "tas/teacher/queryTeacherImages",// 老师的照片列表
+    teaCourseQueryTeacherImages : domain + "tas/course/queryTeacherImages",// 课程详情页面老师的照片列表
+    teaChangeAvatar : domain + "tas/teacher/modifyHeadImage",// 老师换图像
+    teaModifyIntroduction : domain + "tas/teacher/modifyPersonalProfile",// 老师编辑简介
+    teaSaveInstituteImages : domain + "tas/teacher/saveTeacherImages",// 老师编辑图片
+    relativeList : domain + "tas/teacher/getInstituteList",// 老师获取机构列表
+    verifyInstitute : domain + "tas/teacher/verifyInstitute",// 老师获取机构列表
+    quitInstitute : domain + "tas/teacher/quitInstitute",// 老师获取机构列表
+    teaGetLessonList : domain + "tas/teacher/getLessonList",// 老师行事历接口
+    changeList : domain + "tas/teacher/getMakeUpLessonList",// 老师查询换补课列表
+    getEnrollList : domain + "tas/teacher/getEnrollList",// 点名列表接口
+    queryLessonImages : domain + "tas/teacher/queryLessonImages",// 获取班级图片接口
+    saveLessonImages : domain + "tas/teacher/saveLessonImages",// 保存班级图片接口
+    remarkLesson : domain + "tas/teacher/remarkLesson",// 给学生添加备注
+    signInLesson : domain + "tas/teacher/signInLesson",// 签到
+    makeUpLesson : domain + "tas/teacher/makeUpLesson",// 加入换补课列表
+    sureUpLesson : domain + "tas/teacher/confirmMakeUpLesson",// 换补课
+    teaGetClassList : domain + "tas/teacher/getClassList",// 老师查班级列表
+    teaGetCourseList : domain + "tas/teacher/getCourseList",// 老师查课程列表
+    /**----------------------------------------以上是老师接口--------------------------------------------------------*/
+    ZJmodifyBaseInfo : domain + "tas/assistant/modifyBaseInfo",// 助教提交基本信息
+    ZJChangeAvatar : domain + "tas/assistant/modifyHeadImage",// 助教换头像
+    ZJGetInstituteList : domain + "tas/assistant/getInstituteList",// 助教获取机构列表
+    ZJVerifyInstitute : domain + "tas/assistant/verifyInstitute",// 助教加入机构
+    ZJGetCourseList : domain + "tas/assistant/getCourseList",// 助教班级列表获取课程列表接口
+    ZJGetClassList : domain + "tas/assistant/getClassList",// 助教获取机构列表
+    /**----------------------------------------以上是助教接口--------------------------------------------------------*/
+    parChangeList : domain + "tas/parent/getMakeUpLessonList",// 家长换补课
+    parModifyBaseInfo : domain + "tas/parent/modifyBaseInfo",// 家长提交基本信息
+    enrollClass : domain + "tas/parent/enrollClass",// 家长预约班级
+    addChildren : domain + "tas/parent/addChildren",// 家长添加子女
+    childrenList : domain + "tas/parent/getChildrenList",// 家长查询子女信息
+    getAppointClassList : domain + "tas/course/getAppointClassList",// 查询可预约课程
+    auditionLesson : domain + "tas/parent/auditionLesson",// 试听
+    photoList : domain + "tas/parent/getPhotoList",// 家长查询图片列表
+    getEnrollLessonList : domain + "tas/parent/getEnrollLessonList",// 家长行事历接口
+    addCustomCourse : domain + "tas/parent/addCustomCourse",// 家长新增自定义课程
+    parChangeAvatar : domain + "tas/parent/modifyHeadImage",// 老师换头像
+
+    /**----------------------------------------以上是家长接口--------------------------------------------------------*/
 }

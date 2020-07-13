@@ -1,11 +1,11 @@
 import store from '../../store'
 import create from '../../utils/create'
-import { ajax, mockRequest, isLogin } from '../../utils/util'
+import { ajax, mockRequest, isLogin, uploadImg } from '../../utils/util'
 import service from '../../utils/service'
 
 create(store, {
   data: {
-    Avatar: "",
+    Avatar: null,
     userInfo: null
   },
 
@@ -18,14 +18,39 @@ create(store, {
   },
 
   onShow: function () {
-    
+    if(this.data.Avatar != this.store.data.userInfo.avatar){// 头像更新过
+      this.setData({
+        Avatar : null
+      });
+      setTimeout(() => {
+        this.setData({
+          Avatar : this.store.data.userInfo.avatar
+        });
+      }, 100);
+    }
   },
 
   // 编辑机构、老师介绍页
   editOrgdetail() {
-    // wx.navigateTo({
-    //   url: "/pages/orgDetail/index?edit=1"
-    // });
+    if(['10', '30'].includes()){// 机构和老师不能点
+      return
+    }
+    let url = service.parChangeAvatar;// 家长
+    if(this.store.data.userInfo.userType === "20"){
+      url = service.ZJChangeAvatar;
+    }
+    uploadImg({
+      url : url
+    }).then(res => {
+      this.setData({// 先把原来的图片清掉
+        Avatar : null
+      });
+      setTimeout(() => {// 在加载新的图片
+        this.setData({
+          Avatar : getApp().globalData.imgUrl + res.imageId
+        })
+      }, 100);
+    })
   },
 
   // 【所有人】查看基本信息

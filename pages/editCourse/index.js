@@ -9,20 +9,26 @@ create(store, {
     title: "课程管理"
   },
 
-  onShow: function () {
+  // 获取一下课程列表
+  getCourseList() {
     ajax({// 上来获取一下课程列表
-      url: service.orgCourseList.url
+      url: service.orgCourseList
     }).then((res) => {
-      this.store.data.courseList = res.data;// 把列表存一下
-      this.update();
+      this.setData({
+        courseList : res.data
+      });
     })
+  },
+
+  onShow: function () {
+    this.getCourseList();
   },
 
   // 跳到班级列表
   toEditClass: function (data) {
     let index = data.detail;
     wx.navigateTo({
-      url: "/pages/editClass/index?courseId=" + this.store.data.courseList[index].courseId
+      url: "/pages/editClass/index?courseId=" + this.data.courseList[index].courseId
     });
   },
 

@@ -6,12 +6,12 @@
       <view class="box" data-index="{{index}}">
         <image class="kidImg" src="{{item.url}}"/>
         <view class="leftBox">
-          <view class="name">{{item.name}}</view>
-          <view class="teacher">{{item.teacher}}</view>
-          <view wx:if="{{userInfo.userType === '30'}}" class="change">换补课</view>
-          <view class="date">{{item.date}}</view>
+          <view class="name">{{item.courseName}}</view>
+          <view class="teacher">{{item.studentName}}</view>
+          <view catch:tap="changClass" data-index="{{index}}" wx:if="{{userInfo.userType === '30'}}" class="change {{item.changeStatus === '20' ? 'active' : ''}}">换补课</view>
+          <view class="date">{{item.time}}</view>
         </view>
-        <view class="teacher">{{item.address}}</view>
+        <view wx:if="{{userInfo.userType === '40'}}" class="teacher">{{item.classAddress}}</view>
       </view>
     </block>
   </view>

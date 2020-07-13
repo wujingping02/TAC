@@ -79,7 +79,6 @@
     width: 100%;
     background: #FFCE00;
     height: 128rpx;
-    position: relative;
     position: fixed;
     top: 0;
     z-index: 9;

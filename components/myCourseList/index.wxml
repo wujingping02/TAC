@@ -13,8 +13,8 @@
           <!-- 课节时间 -->
           <text wx:if="{{type === 'photo'}}" class="lessonTime">{{item.time}}</text>
           <view wx:if="{{type != 'photo'}}">
-            <image class="orgImg" src="{{item.orgImg}}"></image>
-            <text class="orgName">{{item.orgName}}</text>
+            <image class="orgImg" src="{{item.orgUrl}}"></image>
+            <text class="orgName">{{item.instituteName}}</text>
           </view>
         </view>
       </view>
@@ -34,8 +34,8 @@
           <!-- 课节时间 -->
           <text wx:if="{{type === 'photo'}}" class="lessonTime">{{item.time}}</text>
           <view wx:if="{{type != 'photo'}}">
-            <image class="orgImg" src="{{item.orgImg}}"></image>
-            <text class="orgName">{{item.orgName}}</text>
+            <image class="orgImg" src="{{item.orgUrl}}"></image>
+            <text class="orgName">{{item.instituteName}}</text>
           </view>
         </view>
       </view>

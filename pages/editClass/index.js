@@ -8,8 +8,8 @@ create(store, {
     classList: null,
     title: "班级管理",
     fromMine: false,
-    list: [1,2,3,4,5],
-    idList: [1,2,3,4,5],
+    list: null,
+    idList: null,
     index: -1,
     courseId: ""
   },
@@ -20,28 +20,44 @@ create(store, {
         fromMine: true
       })
     }
-    this.setData({
-      courseId : options.courseId
-    });
-    ajax({// 上来获取一下课程列表
-      url: service.classList.url,
-      data: {
+    if(options.courseId){// 从课程列表过来的
+      this.setData({
         courseId : options.courseId
-      },
-    }).then((res) => {
-      this.store.data.classList = res.data;// 把列表存一下
-      this.update();
-    })
+      })
+    }
   },
 
   onShow: function () {
-    // ajax({// 上来获取一下课程列表
-    //   url: service.classList.url,
-    //   method: "post",
-    // }).then((res) => {
-    //   this.store.data.classList = res.data;// 把列表存一下
-    //   this.update();
-    // })
+    if(this.store.data.userInfo.userType === "10"){// 机构
+      ajax({// 上来获取一下班级列表
+        url: service.getClassList,
+        data: {
+          courseId : this.data && this.data.courseId
+        },
+      }).then((res) => {
+        this.setData({
+          classList : res.data
+        })
+      })
+    }else{
+      let url = service.ZJGetCourseList;
+      if(this.store.data.userInfo.userType === "30"){
+        url = service.teaGetCourseList;
+      }
+      ajax({// 上来获取一下可选课程列表
+        url: url
+      }).then((res) => {
+        if(this.data && this.data.length > 0){
+          this.data.list = res.data.map(v => {return v = v.courseName});
+          this.data.idList = res.data.map(v => {return v = v.courseId});
+          this.setData({
+            list : this.data.list,
+            idList : this.data.idList
+          })
+        }
+      })
+    }
+    
   },
 
   // 跳到班级列表
@@ -55,14 +71,28 @@ create(store, {
   // 新建一个课程
   click: function () {
     wx.navigateTo({
-      url: "/pages/addClass/index"
+      url: "/pages/addClass/index?courseId=" + this.data.courseId
     });
   },
 
-  bindchange : function(e){// 每次焦点离开，拿一下值
+  bindchange : function(e){// 获取班级列表
     this.setData({
       index : e.detail.value,
       value : this.properties.idList[e.detail.value]
+    });
+    let url = service.ZJGetClassList;
+    if(this.store.data.userInfo.userType === "30"){
+      url = service.teaGetClassList;
+    };
+    ajax({
+      url : url,
+      data : {
+        courseId : this.properties.idList[e.detail.value]
+      }
+    }).then(res => {
+      this.setData({
+        classList : res.data
+      })
     })
   },
   

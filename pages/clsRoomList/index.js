@@ -32,7 +32,7 @@ Page({
 
   onShow: function () {
     ajax({// 上来获取一下教室列表
-      url: service.classroomList.url,
+      url: service.classroomList,
       data: {
         addressId : this.data.addressId
       }
@@ -60,7 +60,7 @@ Page({
       classroomName : vals.classroomName
     };
     ajax({
-      url: service.addClassroom.url,
+      url: service.addClassroom,
       data: data
     }).then((res) => {
       this.data.classList.push(data);

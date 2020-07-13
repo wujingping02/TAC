@@ -40,24 +40,35 @@ Component({
   methods: {
     toClassDetail(data) {// 查看课程详情
       let index = data.currentTarget.dataset.index;
-      let id = this.data.list[index].name;
-      this.triggerEvent("toClassDetail", id);
+      var obj = JSON.stringify({
+          classId: this.data.list[index].classId,
+          courseId: this.data.list[index].courseId
+        });
+      this.triggerEvent("toClassDetail", obj);
     },
     rollCall(e) {// 点名
       let index = e.currentTarget.dataset['index'];
-      let id = this.data.list[index].name;
+      let data = {
+        lessonId : this.data.list[index].lessonId,
+        time :  this.data.list[index].time,
+        className : this.data.list[index].lessonName
+      };
       wx.navigateTo({
-        url: "/pages/checkStu/index?id=" + id
+        url: "/pages/checkStu/index?data=" + encodeURIComponent(JSON.stringify(data))
       });
     },
     photo(e) {// 拍照
       let index = e.currentTarget.dataset['index'];
-      let id = this.data.list[index].name;
+      let data = {
+        lessonId : this.data.list[index].lessonId,
+        time :  this.data.list[index].time,
+        classIdName : this.data.list[index].classIdName
+      };
       wx.navigateTo({
-        url: "/pages/classPhoto/index?id=" + id
+        url: "/pages/classPhoto/index?data=" + encodeURIComponent(JSON.stringify(data))
       });
     },
-    reFreshColor(data) {
+    reFreshColor(data) {// 换一下皮肤
       if(data === "activeL"){
         this.setData({
           classCardBG : "#FEE6D1"

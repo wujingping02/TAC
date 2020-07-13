@@ -31,7 +31,7 @@ Component({
     publishCourse(e) {// 发布课程
       let index = e.currentTarget.dataset['index'];
       ajax({
-        url : service.publishCourse.url,
+        url : service.publishCourse,
         data : {
           courseId : this.data.list[index].courseId
         }
@@ -43,9 +43,10 @@ Component({
       })
     },
     offShelfCourse(e) {// 下架课程
+      this.reiggerEvent("refresh");
       let index = e.currentTarget.dataset['index'];
       ajax({
-        url : service.offShelfCourse.url,
+        url : service.offShelfCourse,
         data : {
           courseId : this.data.list[index].courseId
         }

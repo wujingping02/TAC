@@ -1,9 +1,7 @@
 <view class="pageBox" style="background : #ffffff">
-  <myHeader color="#ffffff" title="{{title}}"></myHeader>
+  <myHeader color="#ffffff" title="{{title}}" hideBack="{{true}}"></myHeader>
   <myCalendar 
     color= "#FF8100"
-    minDate= "{{ minDate }}"
-    maxDate= "{{ maxDate }}"
     default-date= "{{ nowDate }}"
     bind:confirm= "bindchange"
     position="top"

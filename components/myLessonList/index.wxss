@@ -11,6 +11,7 @@
     border-radius: 44rpx;
     display: inline-block;
     box-sizing: border-box;
+    margin-bottom: 36rpx;
 }
 .time {
     font-size: 24rpx;

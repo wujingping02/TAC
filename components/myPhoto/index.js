@@ -24,27 +24,14 @@ Component({
     padding : {
       type : String,
       value : "0"
-    },
-
+    }
   },  
   // 组件的初始数据
   data: {  
-    orgPhoto : [],
-    myValue : []
+    myValue : null
   },  
   ready: function(){// 组件加载完毕
-    setTimeout(() => {
-      this.data.orgPhoto = this.properties.value.map(v => {
-        return v = {
-          isImage : true,
-          url : "https://timeafterschool.net/tas/image/preview?imageId=" + v
-        }
-      });
-      this.setData({
-        orgPhoto : this.data.orgPhoto,
-        myValue : this.properties.value
-      });
-    }, 400)
+    
   },
   // 组件的方法列表
   methods: {  
@@ -52,12 +39,16 @@ Component({
       
     },
     getValue : function(){// 获取值
-      return this.data.myValue;
+      this.data.myValue = this.data.myValue || this.properties.value;
+      return this.data.myValue.map(v => {
+        return v = v.url.split("imageId=")[1]
+      });;
     },
     check : function(){
+      this.data.myValue = this.data.myValue || this.properties.value;
       if(this.properties.isMust && this.data.myValue.length === 0){
         wx.showToast({
-          title: "请拍摄" + this.properties.lable,
+          title: "请上传" + this.properties.lable,
           icon: 'none'
         })
         return false
@@ -66,31 +57,34 @@ Component({
     upload : function(data){
       let file = data.detail.file.path;
       uploadImg({// 调用一下图片上传
-        path : file,
-        data : {
-          objectNo : "USE200629000002",
-          imageType : "jpg"
-        }
+        path : file
       }).then(fileId => {
-        this.data.orgPhoto.push({// 丢给图片上传插件的id
+        this.data.myValue = this.data.myValue || this.properties.value;// 用本地的图片接收下
+        this.data.myValue.push({
           isImage : true,
-          url : "https://timeafterschool.net/tas/image/preview?imageId=" + fileId
+          url : getApp().globalData.imgUrl + fileId
         });
-        this.data.myValue.push(fileId);// 丢出去的值
         this.setData({
-          orgPhoto : this.data.orgPhoto,
-          value : this.data.myValue
+          myValue : this.data.myValue
         });
       })
     },
     delete(res) {// 删除一张图片
       let index = res.detail;
-      this.data.orgPhoto.splice(index, 1);
+      this.data.myValue = this.data.myValue || this.properties.value;// 用本地的图片接收下
       this.data.myValue.splice(index, 1);
       this.setData({
-        orgPhoto : this.data.orgPhoto,
-        value : this.data.myValue
+        myValue : this.data.myValue
       });
+    },
+    changePhoto() {// 重新拍摄，仅仅round的时候才有用
+      uploadImg().then(fileId => {
+        this.data.myValue = this.data.myValue || this.properties.value;// 用本地的图片接收下
+        this.data.myValue[0].url = getApp().globalData.imgUrl + fileId;
+        this.setData({
+          myValue : this.data.myValue
+        });
+      })
     }
   }  
 })

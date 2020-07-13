@@ -10,19 +10,19 @@ create(store, {
     fieldList: [
       {
         "type" : "selector",
-        "lable" : "预约课程",
-        "key" : "calssName",
+        "lable" : "选课可预约课时",
+        "key" : "lessonId",
         "isMust" : "1",
-        "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
-        "idList" : ['0', '1','2','3','4','5','6'],
+        "nameList" : null,
+        "idList" : null,
         "className" : "reservation"
       },{
         "type" : "selector",
         "lable" : "选择子女",
-        "key" : "maxNumber",
+        "key" : "childrenId",
         "isMust" : "1",
-        "nameList" : ['0岁', '1岁','2岁','3岁','4岁','5岁','5岁以上'],
-        "idList" : ['0', '1','2','3','4','5','6'],
+        "nameList" : null,
+        "idList" : null,
         "className" : "reservation"
       }
     ],
@@ -36,7 +36,7 @@ create(store, {
     orgIntrd: "",
     orgPhoto: null,
     classList: null,
-    calssId: "",
+    classId: "",
     courseId: "",
     lessonList: null,
     allLessonList: null,
@@ -45,67 +45,58 @@ create(store, {
   },
 
   onLoad: function (options) {
-    if(options.calssId){// 页面从班级列表点进来的
-      this.setData({
-        calssId : options.calssId
-      });
-      ajax({// 上来获取一下班级详情
-        url: service.courseQuery.url,
-        method: "post",
-      }).then((res) => {
-        var qrcode = new QRCode('canvas', {
-          text: 'http://jindo.dev.naver.com/collie',
-          width: 300,
-          height: 300,
-          colorDark : '#000000',
-          colorLight : '#ffffff',
-          correctLevel : QRCode.correctLevel.H
-        });
-        qrcode.clear();
-        qrcode.makeCode('http://naver.com');
-        this.setData({
-          name: res.data.name,
-          age1: res.data.age1,
-          age2: res.data.age2,
-          address: res.data.address,
-          phone: res.data.phone,
-          orgPhoto: res.data.orgPhoto.map((v) => {
-            return v = {
-              isImage : true,
-              url : v
-            }
-          }),
-          classList: res.data.teacher,
-          courseIntrd: res.data.courseIntrd,
-          orgName: res.data.orgName,
-          orgIntrd: res.data.orgIntrd,
-          allLessonList: res.data.lessonList,
-          lessonList: res.data.lessonList.slice(0, 2)
-        })
-      })
-    }else{
+    if(options.courseId){// 显示课程详情
       this.setData({
         courseId : options.courseId
       });
-      ajax({// 上来获取一下课程详情
-        url: service.courseQuery.url,
+    }else{// 显示的是班级详情
+      let data = JSON.parse(options.data);
+      this.setData({
+        courseId : data.courseId,
+        classId : data.classId
+      })
+      // 渲染一下二维码
+      var qrcode = new QRCode('canvas', {
+        text: 'http://jindo.dev.naver.com/collie',
+        width: 180,
+        height: 180,
+        colorDark : '#000000',
+        colorLight : '#ffffff',
+        correctLevel : QRCode.correctLevel.H
+      });
+      qrcode.clear();
+      qrcode.makeCode(data.classId + "&" + data.courseId + "&" + data.className);
+      // 再获取一下课时列表
+      ajax({
+        url: service.lessonList,
         data: {
-          courseId : options.courseId
+          classId : data.classId
         }
       }).then((res) => {
         this.setData({
-          name: res.data.courseName,
-          age: res.data.ageStage,
-          address: res.data.classAddress,
-          phone: res.data.institutePhone,
-          orgPhoto: res.data.instituteImages,
-          classList: res.data.teachers,
-          courseIntrd: res.data.courseIntroduce,
-          orgName: res.data.instituteName,
-          orgIntrd: res.data.instituteIntro
+          allLessonList: res.data,
+          lessonList: res.data.slice(0, 2)
         })
+      });
+    };
+    ajax({// 无论课程详情还是班级详情都要获取一次课程详情
+      url: service.courseQuery,
+      data: {
+        courseId : this.data.courseId
+      }
+    }).then((res) => {
+      this.setData({
+        name: res.data.courseName,
+        age: res.data.ageStage,
+        address: res.data.classAddress,
+        phone: res.data.institutePhone,
+        orgPhoto: res.data.instituteImages.map(v => {return v = {isImage : true,url : getApp().globalData.imgUrl + v}}),
+        classList: res.data.teachers.map(v => {return v = {...v,url : getApp().globalData.imgUrl + v.teacherHeadImageId}}),
+        courseIntrd: res.data.courseIntroduce,
+        orgName: res.data.instituteName,
+        orgIntrd: res.data.instituteIntro
       })
-    }
+    })
   },
 
   // 打电话
@@ -118,14 +109,61 @@ create(store, {
   // 查看老师详情
   itemClick: function(data){
     let index = data.detail;
+    let teachInfo = this.data.classList[index];// 老师信息
+    this.store.data.teacherIntro = teachInfo.teacherIntro;
+    this.store.data.teacherName = teachInfo.teacherName;
+    this.store.data.teacherHeadImageId = teachInfo.teacherHeadImageId;
     wx.navigateTo({
-      url: "/pages/orgDetail/index?index=" + index
+      url: "/pages/orgDetail/index?teacherId=" + teachInfo.teacherId
     });
   },
 
   // 预约
   submit: function(){
-    
+    let vals = collectVals.call(this, this.data.fieldList);
+    if(vals === false){
+      return
+    };
+    ajax({
+      url : service.auditionLesson,
+      data : {
+        lessonId : vals.lessonId,
+        childrenId : vals.childrenId
+      }
+    }).then(res => {
+      wx.showToast({
+        title : "预约成功",
+        icon : "none"
+      })
+    })
+  },
+
+  // 家长获取一下课程列表和子女信息
+  onShow() {
+    if(this.store.data.userInfo.userType === "40"){// 家长
+      ajax({
+        url : service.getAppointClassList,
+        data : {
+          courseId : this.data.courseId
+        }
+      }).then((res) => {
+        this.data.fieldList[0].nameList = res.data.map(v => {return v = v.lessonDate + " " + v.startTime + "~" + v.startTime});
+        this.data.fieldList[0].idList = res.data.map(v => {return v = v.lessonId});
+        this.setData({
+          fieldList : this.data.fieldList
+        })
+      });
+      // 获取子女列表
+      ajax({
+        url: service.childrenList
+      }).then((res) => {
+        this.data.fieldList[1].nameList = res.data.map(v => {return v = v.childrenName});
+        this.data.fieldList[1].idList = res.data.map(v => {return v = v.childrenId});
+        this.setData({
+          fieldList : this.data.fieldList
+        })
+      });
+    }
   },
 
   // 展开课时

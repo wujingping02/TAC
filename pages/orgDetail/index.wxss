@@ -4,7 +4,7 @@
 }
 .orgAvatarBox {
     width: 102%;
-    background-image: url('https://timeafterschool.net/tas/static/bg.png');
+    background-image: url('https://timeafterschool.net/tas/static/bg.png?t=1');
     background-size: 100% 100%;
     text-align: center;
     display: inline-block;
@@ -48,8 +48,9 @@
     line-height: 40rpx; 
     border: 1px solid #999999;
     border-radius: 8rpx;
-    padding: 8rpx;
+    padding: 0 8rpx;
     box-sizing: border-box;
+    height: 160rpx;
 }
 .orgPhotoText {
     font-size: 28rpx;
