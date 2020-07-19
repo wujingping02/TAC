@@ -14,7 +14,8 @@ Component({
   },  
   // 组件的初始数据
   data: {  
-    value : ""
+    value : "",
+    background : String
   },  
   ready: function(){// 组件加载完毕
     
@@ -27,6 +28,9 @@ Component({
       })
     },
     onBlur : function(e){// 每次焦点离开，拿一下值
+      this.properties.value = e.detail.value;
+    },
+    bindinput : function(e){// 每次焦点离开，拿一下值
       this.properties.value = e.detail.value;
     },
     getValue : function(){// 获取值

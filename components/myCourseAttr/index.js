@@ -64,7 +64,13 @@ Component({
           icon: 'none'
         })
         return false
-      }
+      }else if(this.checkDif(this.data.myValue) === false){
+        wx.showToast({
+          title: "请勿选择重复的属性",
+          icon: 'none'
+        })
+        return false
+      };
     },
     click : function(){
       this.setData({
@@ -80,6 +86,15 @@ Component({
       this.setData({
         hidePromptBox : true,
       })
+    },
+    checkDif(arr) {
+      arr = arr.filter(v => {
+        return v != null
+      });
+      let n = arr.length;
+      if(arr.filter((v, i) => { return arr.indexOf(v, 0) === i }).length != n){
+        return false
+      }
     }
   }  
 })

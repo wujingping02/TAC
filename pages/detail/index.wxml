@@ -11,7 +11,7 @@
     bind:keepCalendar="keepCalendar"
     bind:select="getDate"
   />
-  <myPopup id="page" hidePopup="{{hidePopup}}" bind:sure="sureAdd" className="toast" list="{{fieldList}}"/>
+  <myPopup id="page" hidePopup="{{hidePopup}}" bind:sure="sureAdd" paddingTop="0" className="toast" list="{{fieldList}}"/>
   <view style="margin-top: {{top}};">
     <view wx:if="{{userInfo.userType === '10' || userInfo.userType === '40'}}" class="sortKey">
       <text wx:if="{{userInfo.userType === '10'}}" bind:tap="changeActiveL" class="classSort {{activeL}}">教室维度</text>

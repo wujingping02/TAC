@@ -6,6 +6,7 @@ import service from '../../utils/service'
 create(store, {
   data: {
     Avatar: null,
+    userName: null,
     userInfo: null
   },
 
@@ -18,29 +19,25 @@ create(store, {
   },
 
   onShow: function () {
-    if(this.data.Avatar != this.store.data.userInfo.avatar){// 头像更新过
-      this.setData({
-        Avatar : null
-      });
-      setTimeout(() => {
-        this.setData({
-          Avatar : this.store.data.userInfo.avatar
-        });
-      }, 100);
+    isLogin.call(this);
+    let data = {
+      userName : this.store.data.userInfo.instituteName || this.store.data.userInfo.userName || ""
+    };
+    if(["10", "30"].includes(this.store.data.userInfo.userType)){// 老师和机构每次刷新头像
+      data.Avatar = this.store.data.userInfo.avatar + "&t=" + new Date().getTime();
+    }else{
+      data.Avatar = this.store.data.userInfo.avatar;
     }
+    this.setData(data);
   },
 
   // 编辑机构、老师介绍页
   editOrgdetail() {
-    if(['10', '30'].includes()){// 机构和老师不能点
+    if(['10', '30'].includes(this.store.data.userInfo.userType)){// 机构和老师不能点
       return
     }
-    let url = service.parChangeAvatar;// 家长
-    if(this.store.data.userInfo.userType === "20"){
-      url = service.ZJChangeAvatar;
-    }
     uploadImg({
-      url : url
+      url : service.modifyHeadImage
     }).then(res => {
       this.setData({// 先把原来的图片清掉
         Avatar : null
@@ -135,7 +132,22 @@ create(store, {
     wx.scanCode({
       onlyFromCamera: true,
       success (res) {
-        wx.navigateTo({ url : "/pages/ewmdk/index?data=" + res.result})
+        // 查一下当前课程下有没有课时
+        ajax({
+          url : service.lessonList,
+          data : {
+            classId: res.result
+          }
+        }).then(res => {
+          if(res.data && res.data.length > 0){
+            wx.navigateTo({ url : "/pages/ewmdk/index?data=" + res.result})
+          }else{
+            wx.showToast({
+              title : "该课程下暂无可报名的班级",
+              icon : "none"
+            })
+          }
+        });
       }
     })
   },

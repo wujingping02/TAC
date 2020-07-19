@@ -141,6 +141,7 @@ create(store, {
   // 家长获取一下课程列表和子女信息
   onShow() {
     if(this.store.data.userInfo.userType === "40"){// 家长
+      // 获取可预约试听的课时信息
       ajax({
         url : service.getAppointClassList,
         data : {

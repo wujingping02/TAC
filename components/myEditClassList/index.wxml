@@ -12,6 +12,6 @@
     </view>
   </block>
   <!-- <view class="bottomBox"></view> -->
-  <text class="noAddress noAddress2" wx:if='{{list.length === 0}}'>暂无课程</text>
-  <text class="noAddress" wx:if='{{list.length === 0}}'>请点击底部按钮添加课程信息</text>
+  <text class="noAddress noAddress2" wx:if='{{list.length === 0}}'>{{prompt1}}</text>
+  <text class="noAddress" wx:if='{{list.length === 0 && prompt2}}'>{{prompt2}}</text>
 </view>

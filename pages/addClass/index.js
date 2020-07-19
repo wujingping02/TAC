@@ -37,6 +37,7 @@ create(store, {
         "lable" : "开班日期",
         "key" : "lessonDateArray",
         "color" : "#FF8100",
+        "multiple" : "multiple",
         "isMust" : "1"
       },{
         "type" : "selector",
@@ -55,8 +56,7 @@ create(store, {
       },{
         "type" : "text",
         "lable" : "备注",
-        "key" : "remark",
-        "isMust" : "1"
+        "key" : "remark"
       }
     ],
     hidePopup: true,

@@ -1,5 +1,5 @@
 <view class="orgDetail">
-  <view class="orgAvatarBox" style="height : {{userInfo.userType === '30' ? '700rpx' : '600rpx'}}">
+  <view class="orgAvatarBox" style="height : {{userInfo.userType === '30' || teacherId ? '700rpx' : '600rpx'}}">
     <view class="headerBox">
       <view bind:tap="back" class="backBox">
         <image class="back" src="../../images/back.png"/>
@@ -10,19 +10,19 @@
       <view  wx:if="{{edit}}" class="changeAvatarText">编辑</view>
       <image class="avatarImg" src="{{ orgAvatar }}"/>
     </view>
-    <view class="teachName" wx:if="{{userInfo.userType === '30'}}">{{orgName}}</view>
+    <view class="teachName" wx:if="{{userInfo.userType === '30' || teacherId}}">{{orgName}}</view>
   </view>
   <view class="orgDetailBox">
-    <view class="name" wx:if="{{userInfo.userType === '10'}}">{{userInfo.instituteName}}</view>
+    <view class="name" wx:if="{{userInfo.userType === '10' && !teacherId}}">{{userInfo.instituteName}}</view>
     <view wx:if="{{!edit}}" class="introduction">{{orgDetail}}</view>
     <view wx:if="{{edit}}" style="padding : 0 40rpx;">
       <textarea class="textarea" bindblur="bindTextAreaBlur" maxlength="300" value="{{orgDetail}}"></textarea>
     </view>
-    <view class="orgPhotoText" wx:if="{{userInfo.userType === '10'}}">机构相册</view>
-    <view class="orgPhotoText" wx:if="{{userInfo.userType === '30'}}">个人相册</view>
+    <view class="orgPhotoText" wx:if="{{userInfo.userType === '10' && !teacherId}}">机构相册</view>
+    <view class="orgPhotoText" wx:if="{{(userInfo.userType === '30' && !teacherId) || (teacherId && orgPhoto.length > 0)}}">个人相册</view>
     <myPhoto id="photo" previewImage="{{true}}" padding="0 40rpx" disabled="{{!edit}}" value="{{orgPhoto}}"/>
-    <view class="orgPhotoText" wx:if="{{userInfo.userType === '10'}}">机构地址</view>
-    <view class="orgAddressBox" wx:if="{{userInfo.userType === '10'}}">
+    <view class="orgPhotoText" wx:if="{{userInfo.userType === '10' && !teacherId}}">机构地址</view>
+    <view class="orgAddressBox" wx:if="{{userInfo.userType === '10' && !teacherId}}">
       <block wx:key="box" wx:for="{{orgAddress}}">
         <view class="orgAddress">{{item}}</view>
       </block>

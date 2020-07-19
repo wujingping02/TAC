@@ -49,3 +49,10 @@
     padding: 0 22rpx;
     margin-left: 16rpx;
 }
+.status {
+    position: absolute;
+    top: 32rpx;
+    right: 20rpx;
+    font-size: 24rpx;
+    color: #333;
+}

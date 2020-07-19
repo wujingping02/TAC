@@ -28,3 +28,12 @@
 .fuxy,.ystk {
     color: #FF8711;
 }
+.button {
+    width: 88%;
+    background: transparent;
+    height: 120rpx;
+    color:#ffffff;
+    position: absolute;
+    top: 550rpx;
+    left: 6%;
+}

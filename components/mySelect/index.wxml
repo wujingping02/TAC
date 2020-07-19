@@ -3,17 +3,13 @@
   <text class="lable">{{lable}}</text>
   <picker class="val" mode="{{type}}" bind:tap="click" bindchange="bindchange" range="{{list}}">
     <view wx:if="{{type === 'selector'}}" class="prompt">{{(myIndex || value) ? list[myIndex || value] : '请选择' + lable}}</view>
-    <view wx:if="{{type === 'time'}}" class="prompt">{{(myValue || value) ? (myValue || value) : '请选择' + lable}}</view>
-    <view wx:if="{{type === 'region'}}" class="prompt">{{(myValue || value) ? (myValue || value) : '请选择' + lable}}</view>
-    <view wx:if="{{type === 'calendar'}}" class="prompt">
-      {{(myValue || value) ? (myValue || value) : '请选择' + lable}}
-      <van-calendar
-        show="{{ show }}"
-        type="{{multiple}}"
-        bind:close="onClose"
-        bind:confirm="bindchange"
-        color="{{ color }}"
-      ></van-calendar>
-    </view>
+    <view wx:else="{{type === 'time'}}" class="prompt">{{(myValue || value) ? (myValue || value) : '请选择' + lable}}</view>
   </picker>
+  <van-calendar
+      show="{{ show }}"
+      type="{{multiple}}"
+      bind:close="onClose"
+      bind:confirm="bindchange"
+      color="{{ color }}"
+    ></van-calendar>
 </view>

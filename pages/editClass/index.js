@@ -11,13 +11,19 @@ create(store, {
     list: null,
     idList: null,
     index: -1,
-    courseId: ""
+    courseId: "",
+    prompt1: "暂无课程",
+    prompt2: "请点击底部按钮添加课程信息",
+    disabled: false
   },
 
   onLoad(options) {
     if(options.fromMine === "1"){// 从个人中心来的
       this.setData({
-        fromMine: true
+        fromMine: true,
+        title: "班级列表",
+        prompt1: "暂无班级信息",
+        prompt2: null
       })
     }
     if(options.courseId){// 从课程列表过来的
@@ -47,12 +53,17 @@ create(store, {
       ajax({// 上来获取一下可选课程列表
         url: url
       }).then((res) => {
-        if(this.data && this.data.length > 0){
+        if(res.data && res.data.length > 0){
           this.data.list = res.data.map(v => {return v = v.courseName});
           this.data.idList = res.data.map(v => {return v = v.courseId});
           this.setData({
             list : this.data.list,
-            idList : this.data.idList
+            idList : this.data.idList,
+            disabled : false 
+          })
+        }else{
+          this.setData({
+            disabled : true 
           })
         }
       })

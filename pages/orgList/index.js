@@ -5,10 +5,11 @@ import service from '../../utils/service'
 
 create(store, {
   data: {
-    title: "点名",
+    title: "机构列表",
     list: [],
-    className: "英语1",
-    time: "10:00~11:00",
+    className: "",
+    time: "",
+    userInfo: null
   },
 
   getRelativeList() {// 获取机构列表
@@ -23,6 +24,7 @@ create(store, {
       this.setData({
         list : res.data.map(v => {
           return v = {
+            ...v,
             url: getApp().globalData.imgUrl + v.headImageId,
             instituteId: v.instituteId,
             name: v.instituteName

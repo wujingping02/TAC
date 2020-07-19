@@ -16,7 +16,8 @@ Page({
     hidePopup : true,
     type : "teacher",
     prompt : "",
-    teacherId : ""// 找到老师信息了
+    teacherId : "",// 找到老师信息了
+    lable : "老师"
   },
 
   onLoad: function (options) {
@@ -24,6 +25,7 @@ Page({
       this.setData({
         title: "助教管理",
         type : "assistant",
+        lable : "助教",
         fieldList : [{
           "type" : "search",
           "lable" : "请输入助教手机号",
@@ -70,7 +72,7 @@ Page({
       fieldList : [
         {
           "type" : "search",
-          "lable" : "请输入老师手机号",
+          "lable" : "请输入" + this.data.lable + "手机号",
           "key" : "orgName",
           "isMust" : "1",
           "value" : "",
@@ -83,7 +85,7 @@ Page({
   sureAdd: function () {// 添加该老师or助教
     if(!this.data.teacherId){
       wx.showToast({
-        title: "暂无该老师信息，请先搜索老师信息",
+        title: "暂无该" + this.data.lable + "信息，请先搜索" + this.data.lable + "信息",
         icon: 'none'
       });
       return
@@ -121,7 +123,7 @@ Page({
           teacherId : data.detail
         }
       }).then(res => {
-
+        
       })
     }
   },
@@ -147,12 +149,12 @@ Page({
       let name = (res.data && res.data.name) || "该";
       if(res.data && res.data.teacherId){
         this.setData({
-          prompt : "已找到" + name + "老师，请点击按钮提示老师验证",
+          prompt : "已找到" + name + this.data.lable + "，请点击按钮提示" + this.data.lable + "验证",
           teacherId : res.data.teacherId
         })
       }else{
         this.setData({
-          prompt : "暂无该老师信息",
+          prompt : "暂无该" + this.data.lable + "信息",
           teacherId : ""
         })
       }

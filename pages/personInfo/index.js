@@ -85,7 +85,7 @@ create(store, {
             },
           ]
         })
-      }else{// 老师
+      }else{// 老师，助教
         let disabled = res.data.userName ? true : false;
         this.setData({
           disabled: disabled,
@@ -149,6 +149,7 @@ create(store, {
       url : url,
       data : data
     }).then(data => {
+      this.store.data.userInfo.userName = vals.userName;
       wx.navigateBack({delta: 1})
     })
   }

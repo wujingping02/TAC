@@ -14,8 +14,24 @@ create(store, {
     ajax({// 上来获取一下课程列表
       url: service.orgCourseList
     }).then((res) => {
+      function mapStatus (s){
+        let sName = "";
+        if(s === "10"){
+          sName = "待发布";
+        }else if(s === "20"){
+          sName = "已发布";
+        }else if(s === "40"){
+          sName = "已下架";
+        }
+        return sName
+      };
       this.setData({
-        courseList : res.data
+        courseList : res.data.map(v => {
+          return {
+            ...v,
+            status : mapStatus(v.courseStatus)
+          }
+        })
       });
     })
   },

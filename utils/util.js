@@ -93,12 +93,13 @@ function isLogin() {
             url : service.getAllInfo
           }).then(obj => {
             this.store.data.userInfo = obj.data;
-            this.store.data.userInfo.userType = res.data.userType;// 10 培训机构管理员，20 助教，30 教师，40 家长
-            // this.store.data.userInfo.userType = "30";// 10 培训机构管理员，20 助教，30 教师，40 家长
+            // this.store.data.userInfo.userType = "20";// 10 培训机构管理员，20 助教，30 教师，40 家长
             this.store.data.userInfo.photo = res.data.mobileNo;
-            this.store.data.userInfo.userName = res.data.userName;// 姓名
             this.store.data.userInfo.avatar = getApp().globalData.imgUrl + res.data.headImageId;
-            this.setData({Avatar : this.store.data.userInfo.avatar});
+            this.setData({
+              Avatar : this.store.data.userInfo.avatar,
+              userName : res.data.userName
+            });
             this.update();
             // if(!res.data.headImageId){// 没有头像使用微信头像
             //   let that = this;
@@ -152,10 +153,11 @@ function uploadImg(data) {
           if(res.code === '0000'){
             suc(res.data)
           }else{
-            wx.showToast({title: "系统异常，请稍后再试",icon: "none"})
+            wx.showToast({title: res.msg,icon: "none"});
           }
         },
         fail (){
+          debugger
           wx.hideLoading()
           wx.showToast({title: "系统异常，请稍后再试",icon: "none"})
         }

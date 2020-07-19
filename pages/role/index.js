@@ -62,7 +62,6 @@ create(store, {
         icon: 'none'
       })
     }else{
-      console.log(this.store.data.userInfo)
       // 注册一下
       getWXCode().then(code => {
         ajax({
@@ -76,7 +75,7 @@ create(store, {
           }
         }).then((res) => {
           wx.setStorageSync('token', res.data.token);
-          wx.navigateBack({delta: 2})
+          wx.navigateBack({delta: 2});
         })
       })
     }

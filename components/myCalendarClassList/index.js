@@ -62,7 +62,7 @@ Component({
       let data = {
         lessonId : this.data.list[index].lessonId,
         time :  this.data.list[index].time,
-        classIdName : this.data.list[index].classIdName
+        className : this.data.list[index].lessonName
       };
       wx.navigateTo({
         url: "/pages/classPhoto/index?data=" + encodeURIComponent(JSON.stringify(data))

@@ -11,7 +11,9 @@ Component({
       type: Array,  
       value: []
     },
-    fromMine: Boolean
+    fromMine: Boolean,
+    prompt1: null,
+    prompt2: null
   },  
   // 组件的初始数据   
   data: {  
@@ -44,6 +46,11 @@ Component({
         data : {
           classId : classId
         }
+      }).then(res => {
+        this.data.list.splice(index, 1);
+        this.setData({
+          list : this.data.list
+        });
       })
     },
     startClass : function(e) {// 开班
@@ -54,6 +61,11 @@ Component({
         data : {
           classId : classId
         }
+      }).then(res => {
+        wx.showToast({
+          title : "开班成功",
+          icon : "none"
+        })
       })
     },
     toClassDetail : function(e) {// 查看班级详情

@@ -8,6 +8,7 @@ export default{
     register : domain + "tas/user/register",// 注册
     getAllInfo : domain + "tas/user/query",// 查询基本信息
     upload : domain + "tas/image/uploadImage",// 上传图片
+    modifyHeadImage : domain + "tas/user/modifyHeadImage",// 换头像
     /**----------------------------------------以上是公用接口--------------------------------------------------------*/
     getCalendarLessonList : domain + "tas/institute/getCalendarLessonList",// 机构行事历获取班级列表
     orgCourseList : domain + "tas/institute/getCourseList",// 机构获取课程列表
@@ -22,7 +23,6 @@ export default{
     addAddress : domain + "tas/institute/addAddress",// 新增机构校区
     editAddress : domain + "tas/institute/modifyAddress",// 编辑地址信息
     addClassroom : domain + "tas/institute/address/addClassroom",// 新增教室
-    changeAvatar : domain + "tas/institute/modifyHeadImage",// 机构修改头像
     getCourseInfo : domain + "tas/institute/queryCourse",// 机构获取课程信息
     editCourseInfo : domain + "tas/institute/modifyCourse",// 编辑课程信息
     delTeacher : domain + "tas/institute/deleteTeacher",// 机构删除老师接口
@@ -47,7 +47,6 @@ export default{
     teaSubmitInfo : domain + "tas/teacher/modifyBaseInfo",// 老师的保存基本信息接口
     teaQueryTeacherImages : domain + "tas/teacher/queryTeacherImages",// 老师的照片列表
     teaCourseQueryTeacherImages : domain + "tas/course/queryTeacherImages",// 课程详情页面老师的照片列表
-    teaChangeAvatar : domain + "tas/teacher/modifyHeadImage",// 老师换图像
     teaModifyIntroduction : domain + "tas/teacher/modifyPersonalProfile",// 老师编辑简介
     teaSaveInstituteImages : domain + "tas/teacher/saveTeacherImages",// 老师编辑图片
     relativeList : domain + "tas/teacher/getInstituteList",// 老师获取机构列表
@@ -66,7 +65,6 @@ export default{
     teaGetCourseList : domain + "tas/teacher/getCourseList",// 老师查课程列表
     /**----------------------------------------以上是老师接口--------------------------------------------------------*/
     ZJmodifyBaseInfo : domain + "tas/assistant/modifyBaseInfo",// 助教提交基本信息
-    ZJChangeAvatar : domain + "tas/assistant/modifyHeadImage",// 助教换头像
     ZJGetInstituteList : domain + "tas/assistant/getInstituteList",// 助教获取机构列表
     ZJVerifyInstitute : domain + "tas/assistant/verifyInstitute",// 助教加入机构
     ZJGetCourseList : domain + "tas/assistant/getCourseList",// 助教班级列表获取课程列表接口
@@ -82,7 +80,5 @@ export default{
     photoList : domain + "tas/parent/getPhotoList",// 家长查询图片列表
     getEnrollLessonList : domain + "tas/parent/getEnrollLessonList",// 家长行事历接口
     addCustomCourse : domain + "tas/parent/addCustomCourse",// 家长新增自定义课程
-    parChangeAvatar : domain + "tas/parent/modifyHeadImage",// 老师换头像
-
     /**----------------------------------------以上是家长接口--------------------------------------------------------*/
 }

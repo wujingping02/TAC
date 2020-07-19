@@ -80,6 +80,9 @@
     line-height: 20px; 
     margin-top: 16rpx;
     padding: 0 40rpx;
+    width: 100%;
+    word-wrap: break-word;
+    box-sizing: border-box;
 }
 .orgPhotoBox {
     margin-top: 24rpx;

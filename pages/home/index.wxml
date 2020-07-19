@@ -1,6 +1,6 @@
 <view class="home {{fixed}}">
   <view class="searchBg">
-    <view class="searchBox">
+    <view class="searchBox" style="margin-top: {{marginTop}}">
       <van-search 
         background="transparent"
         id="search"

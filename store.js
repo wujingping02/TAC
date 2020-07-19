@@ -2,7 +2,6 @@ export default {
     data: {
         userInfo: {},// 用户信息，记录的用户的角色信息
         teacherHeadImageId: "bbe02401514443e0b0315b4274397981",
-        teacherId: "",
         teacherIntro: "",
         teacherName: "",
         parentPhotos: null

@@ -57,6 +57,11 @@ create(store, {
   onLoad() {
     isLogin.call(this);
   },
+
+  // 每次查一下课时列表
+  onShow() {
+    this.getClassList();
+  },
  
   // 给课表元素赋值
   setClassVal(v) {
@@ -81,11 +86,15 @@ create(store, {
 
   // 获取一下班级列表
   getClassList() {
-    let url = service.teaGetLessonList;
+    let url;
     if(this.store.data.userInfo.userType === "10"){// 机构
       url = service.getCalendarLessonList;
     }else if(this.store.data.userInfo.userType === "40"){// 家长
       url = service.getEnrollLessonList;
+    }else if(this.store.data.userInfo.userType === "30"){// 没拿到不查
+      url = service.teaGetLessonList;
+    }else{// 没拿到不查
+      return
     }
     ajax({
       url: url,
@@ -120,9 +129,7 @@ create(store, {
         this.setData({
           classList: null
         })
-        setTimeout(() => {
-          wx.showToast({title : "当天暂无课程安排",icon : "none"})
-        },500)
+        wx.showToast({title : "当天暂无课程安排",icon : "none"})
       }
     })
   },

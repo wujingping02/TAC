@@ -5,6 +5,7 @@
     bindgetphonenumber="bindgetphonenumber">
     微信手机号快捷登录
   </button>
+  <view bind:tap="checkAgree" hidden="{{agree}}" class="button"></view>
   <view class="protocol">
     <text wx:if="{{!agree}}" class="gou" bind:tap="checked"></text>
     <image wx:if="{{agree}}" class="agree" src="../../images/agree.png" bind:tap="checked"/>

@@ -24,9 +24,20 @@ create(store, {
     })
   },
 
+  // 拿一下加密的手机信息
   bindgetphonenumber(res) {
+    if(!res.detail.encryptedData){
+      return
+    }
     this.store.data.userInfo.encryptedData = res.detail.encryptedData;
     this.store.data.userInfo.iv = res.detail.iv;
+    wx.navigateTo({
+      url: "/pages/role/index"
+    })    
+  },
+
+  // 检查下协议
+  checkAgree() {
     if(this.data.agree === false){
       wx.showToast({
         title: '请先勾选协议',
@@ -34,9 +45,6 @@ create(store, {
       });
       return
     };
-    wx.navigateTo({
-      url: "/pages/role/index"
-    })    
   },
 
   // 勾选协议

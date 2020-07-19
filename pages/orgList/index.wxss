@@ -47,9 +47,11 @@
     background: #ffffff;
     color: #FF8814;
     border: 1px solid #FF8814;
+    margin-top: 30rpx;
+    margin-bottom: 40rpx;
 }
 .rollCall {
     color: #ffffff;
     background: #FF8814;
-    margin: 30rpx 20rpx 40rpx 0;
+    margin-right: 20rpx;
 }

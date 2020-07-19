@@ -41,4 +41,5 @@
       </view>
     </block>
   </view>
+  <text class="noAddress" wx:if='{{listLeft.length === 0 && listRight.length === 0}}'>没有找到符合条件的课程</text>
 </view>

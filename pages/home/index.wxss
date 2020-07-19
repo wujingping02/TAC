@@ -12,8 +12,7 @@
 }
 .searchBox {
     width: 70%;
-    margin-top: 2vh;
-    padding-left: 40rpx;
+    padding-left: 28rpx;
     box-sizing: border-box;
     opacity: 0.8;
 }

@@ -8,7 +8,7 @@
           <image class="teac_url" src="{{item.url}}"/>
           <view class="teac_box_right">
             <view class="teac_time">{{item.name}}</view>
-            <text bindtap="signIn" data-index="{{index}}" class="rollCall">确认加入</text>
+            <text wx:if="{{item.status != '20'}}" bindtap="signIn" data-index="{{index}}" class="rollCall">确认加入</text>
             <text wx:if="{{userInfo.userType === '30'}}" bindtap="changeClass" data-index="{{index}}" class="photo">退出机构</text>
           </view>
         </view>

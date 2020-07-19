@@ -6,7 +6,7 @@
     <view class="avatarBg">
       <image bind:tap="editOrgdetail" class="avatarImg" src="{{ Avatar }}"/>
     </view>
-    <view class="avatarName">{{ userInfo.userName }}</view>
+    <view class="avatarName">{{ userName || "" }}</view>
   </view>
   <view class="listBox">
     <!-- <view wx-if="{{ userInfo.userType === '10' || userInfo.userType == '20' || userInfo.userType == '30' }}" bindtap="toPersonInfo"> -->
@@ -14,35 +14,35 @@
       <image src="../../images/JBXX.png"/>
       <text class="text">基本信息</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '10'}}" bindtap="toOrgDetail">
+    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toOrgDetail">
       <image src="../../images/JGJS.png"/>
       <text class="text">机构介绍</text>
     </view> 
-    <view wx-if="{{ userInfo.userType === '30' }}" bindtap="toOrgDetail">
+    <view wx-if="{{ userInfo.userType === '30' && userName }}" bindtap="toOrgDetail">
       <image src="../../images/JSGL.png"/>
       <text class="text">老师介绍</text>
     </view> 
-    <view wx-if="{{ userInfo.userType === '10' }}" bindtap="toEditAddress">
+    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toEditAddress">
       <image src="../../images/DZGL.png"/>
       <text class="text">地址管理</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '10' }}" bindtap="toTeacherList">
+    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toTeacherList">
       <image src="../../images/JSGL.png"/>
       <text class="text">教师管理</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '10' }}" bindtap="toAssistantList">
+    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toAssistantList">
       <image src="../../images/ZJGL.png"/>
       <text class="text">助教管理</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '10' }}" bindtap="toEditCourse">
+    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toEditCourse">
       <image src="../../images/KCGL.png"/>
       <text class="text">课程列表</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '20' || userInfo.userType === '30' }}" bindtap="toOrgList">
+    <view wx-if="{{ (userInfo.userType === '20' || userInfo.userType === '30') && userName }}" bindtap="toOrgList">
       <image src="../../images/JGJS.png"/>
       <text class="text">机构列表</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '30' || userInfo.userType === '40' }}" bindtap="toChangeClsList">
+    <view wx-if="{{ (userInfo.userType === '30' && userName) || userInfo.userType === '40' }}" bindtap="toChangeClsList">
       <image src="../../images/HBKGL.png"/>
       <text class="text">换补课列表</text>
     </view>
@@ -54,7 +54,7 @@
       <image src="../../images/WDZN.png"/>
       <text class="text">子女信息</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '20' || userInfo.userType === '30' }}" bindtap="toClassList">
+    <view wx-if="{{ (userInfo.userType === '20' || userInfo.userType) === '30' && userName }}" bindtap="toClassList">
       <image src="../../images/BJLB.png"/>
       <text class="text">班级列表</text>
     </view>

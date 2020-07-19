@@ -13,7 +13,8 @@ create(store, {
     hideAge: true,
     upArrow: "",
     searchValue: "",
-    fixed: ""
+    fixed: "",
+    marginTop: ""
   },
  
   // 生命周期函数--监听页面加载
@@ -58,6 +59,10 @@ create(store, {
  
   // 生命周期函数--监听页面显示
   onShow: function () {
+    // 处理下搜索框的高度
+    this.setData({
+      marginTop : wx.getMenuButtonBoundingClientRect().top - 10 + "px"
+    })
     ajax({// 上来获取一下课程列表
       url: service.courseList,
       method: "post",

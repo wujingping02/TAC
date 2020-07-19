@@ -98,9 +98,11 @@ Component({
       }
     },
     click : function(){// 显示日历
-      this.setData({
-        show : true
-      })
+      if(this.properties.type === "calendar"){
+        this.setData({
+          show : true
+        })
+      }
     },
     onClose() {// 隐藏日历
       this.setData({

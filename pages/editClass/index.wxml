@@ -2,10 +2,10 @@
   <myHeader title="{{title}}"/>
   <view class="topBG"></view>
   <view class="addressBox">
-    <picker wx:if="{{fromMine}}" class="val" mode="selector" bind:tap="clickSel" bindchange="bindchange" range="{{list}}">
+    <picker wx:if="{{fromMine}}" disabled="{{disabled}}" class="val" mode="selector" bind:tap="clickSel" bindchange="bindchange" range="{{list}}">
       <view class="prompt">{{index === -1 ? '课程选择' : list[index]}}</view>
     </picker>
-    <myEditClassList fromMine="{{fromMine}}" list="{{classList}}" bind:toClsRoomList="toClsRoomList"></myEditClassList>
+    <myEditClassList prompt1="{{prompt1}}" prompt2="{{prompt2}}" fromMine="{{fromMine}}" list="{{classList}}" bind:toClsRoomList="toClsRoomList"></myEditClassList>
   </view>
   <myButton wx:if="{{!fromMine}}" className="add" bind:click="click" content="添加班级"/>
 </view>

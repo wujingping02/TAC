@@ -43,7 +43,6 @@ Component({
       })
     },
     offShelfCourse(e) {// 下架课程
-      this.reiggerEvent("refresh");
       let index = e.currentTarget.dataset['index'];
       ajax({
         url : service.offShelfCourse,
@@ -51,10 +50,11 @@ Component({
           courseId : this.data.list[index].courseId
         }
       }).then(res => {
-        wx.showToast({
-          title : "下架成功",
-          icon : 'none'
-        })
+        this.triggerEvent("refresh");
+        // wx.showToast({
+        //   title : "下架成功",
+        //   icon : 'none'
+        // })
       })
     }
   }   

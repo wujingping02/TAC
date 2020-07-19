@@ -13,7 +13,7 @@ create(store, {
     orgAddress : [],
     userInfo : null,
     edit : false,
-    teacherId : ""
+    teacherId : null
   },
 
   onLoad(options) {
@@ -22,14 +22,16 @@ create(store, {
         edit : true
       })
     };
-    this.setData({// 渲染一下头像，姓名，简介
-      orgAvatar : this.store.data.userInfo.avatar,
-      orgName : this.store.data.userInfo.userName,
-      orgDetail : this.store.data.userInfo.remark,
-      title : "机构简介"
-    });
+    if(!options.teacherId){
+      this.setData({// 渲染一下头像，姓名，简介
+        orgAvatar : this.store.data.userInfo.avatar,
+        orgName : this.store.data.userInfo.userName,
+        orgDetail : this.store.data.userInfo.remark,
+        title : "机构简介"
+      });
+    }
     let url = service.queryInstituteImages;// 默认是机构
-    if(this.store.data.userInfo.userType === "10"){// 机构
+    if(this.store.data.userInfo.userType === "10" && options && !options.teacherId ){// 机构
       // 查询下机构下的地址
       ajax({
         url : service.addressList
@@ -86,12 +88,8 @@ create(store, {
     if(!this.data.edit){
       return
     }
-    let url = service.changeAvatar;
-    if(this.store.data.userInfo.userType === "30"){
-      url = service.teaChangeAvatar;
-    }
     uploadImg({
-      url : url
+      url : service.modifyHeadImage
     }).then(res => {
       this.store.data.userInfo.avatar = getApp().globalData.imgUrl + res.imageId;
       this.setData({// 先把原来的图片清掉
