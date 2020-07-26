@@ -16,6 +16,7 @@
     display: inline-block;
     max-height: 80vh;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 .cancel {
     display: inline-block;

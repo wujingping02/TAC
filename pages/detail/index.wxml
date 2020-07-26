@@ -29,4 +29,5 @@
   </view>  
   <myHeader color="#ffffff" title="{{title}}" hideBack="{{true}}"></myHeader>
   <text class="noAddress" wx:if="{{userInfo.userType === '20'}}">暂未开通，敬请期待</text>
+  <text class="noAddress" wx:if="{{!userInfo.userType}}">内容加载中。。。</text>
 </view>

@@ -26,42 +26,6 @@ create(store, {
         "key" : "email",
         "check" : "email",
         "isMust" : "1"
-      },
-
-      {
-        "type" : "courseAttr",
-        "lable" : "课程属性",
-        "key" : "mainLabel",
-        "value" : ["1", "2", "3"],
-        "isMust" : "1"
-      },{
-        "type" : "time",
-        "lable" : "开始时间",
-        "key" : "startTime",
-        "value" : "10:00",
-        "isMust" : "1"
-      },{
-        "type" : "time",
-        "lable" : "结束时间",
-        "key" : "endTime",
-        "value" : "11:00",
-        "isMust" : "1"
-      },{
-        "type" : "calendar",
-        "lable" : "上课日期",
-        "key" : "lessonDate",
-        "color" : "#FF8100",
-        "multiple" : "single",
-        "value" : "2020-01-01",
-        "isMust" : "1"
-      },{
-        "type" : "selector",
-        "lable" : "选择子女",
-        "key" : "studentId",
-        "isMust" : "1",
-        "value" : "1",
-        "nameList" : ["a", "b"],
-        "idList" : ["01", "02"]
       }
     ],
     disabled: false

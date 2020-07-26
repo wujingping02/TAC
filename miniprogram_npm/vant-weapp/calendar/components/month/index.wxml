@@ -19,7 +19,7 @@
       data-index="{{ index }}"
       bindtap="onClick"
     >
-      <view wx:if="{{ item.type === 'selected' }}" class="van-calendar__selected-day" style="background: {{ color }}">
+      <view wx:if="{{ item.type === 'selected' }}" class="van-calendar__selected-day" style="border-radius:50%;background: {{ color }}">
         <view wx:if="{{ item.topInfo }}" class="van-calendar__top-info">{{ item.topInfo }}</view>
         {{ item.text }}
         <view wx:if="{{ item.bottomInfo }}" class="van-calendar__bottom-info">
@@ -28,7 +28,7 @@
       </view>
 
       <view wx:else>
-        <view wx:if="{{ item.topInfo }}" class="van-calendar__top-info">{{ item.topInfo }}</view>
+        <view wx:if="{{ item.topInfo }}" class="van-calendar__top-info" style="border-radius:50%">{{ item.topInfo }}</view>
         {{ item.text }}
         <view wx:if="{{ item.bottomInfo }}" class="van-calendar__bottom-info">
           {{ item.bottomInfo }}
