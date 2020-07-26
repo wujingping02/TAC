@@ -31,7 +31,9 @@ Component({
   // 组件的方法列表
   methods: { 
     setValue : function(val){
-      
+      this.setData({
+        myValue : val
+      })
     },
     bindchange : function(e){// 每次焦点离开，拿一下值
       this.data.myValue[0] = this.properties.idList[e.detail.value];

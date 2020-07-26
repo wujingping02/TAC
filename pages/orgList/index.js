@@ -51,6 +51,7 @@ create(store, {
         instituteId : this.data.list[index].instituteId
       }
     }).then(res => {
+      this.getRelativeList();
       wx.showToast({
         title : "加入成功",
         icon : "none"

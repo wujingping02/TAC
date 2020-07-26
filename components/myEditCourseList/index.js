@@ -36,6 +36,7 @@ Component({
           courseId : this.data.list[index].courseId
         }
       }).then(res => {
+        this.triggerEvent("refresh");
         wx.showToast({
           title : "发布成功",
           icon : 'none'
@@ -51,10 +52,10 @@ Component({
         }
       }).then(res => {
         this.triggerEvent("refresh");
-        // wx.showToast({
-        //   title : "下架成功",
-        //   icon : 'none'
-        // })
+        wx.showToast({
+          title : "下架成功",
+          icon : 'none'
+        })
       })
     }
   }   

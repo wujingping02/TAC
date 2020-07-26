@@ -20,13 +20,19 @@ create(store, {
 
   onShow: function () {
     isLogin.call(this);
+    let name = "";
+    if(this.store.data.userInfo.userType === '10'){// 机构
+      name = this.store.data.userInfo.instituteName || "";
+    }else{// 其他
+      name = this.store.data.userInfo.userName || "";
+    }
     let data = {
-      userName : this.store.data.userInfo.instituteName || this.store.data.userInfo.userName || ""
+      userName : name
     };
     if(["10", "30"].includes(this.store.data.userInfo.userType)){// 老师和机构每次刷新头像
       data.Avatar = this.store.data.userInfo.avatar + "&t=" + new Date().getTime();
     }else{
-      data.Avatar = this.store.data.userInfo.avatar;
+      data.Avatar = this.store.data.userInfo.avatar || "";
     }
     this.setData(data);
   },
@@ -131,16 +137,18 @@ create(store, {
   saomadingke() {
     wx.scanCode({
       onlyFromCamera: true,
-      success (res) {
+      success (obj) {
+        let str = decodeURIComponent(obj.result);
+        let classId = str.split('__')[1];
         // 查一下当前课程下有没有课时
         ajax({
           url : service.lessonList,
           data : {
-            classId: res.result
+            classId: classId
           }
         }).then(res => {
           if(res.data && res.data.length > 0){
-            wx.navigateTo({ url : "/pages/ewmdk/index?data=" + res.result})
+            wx.navigateTo({ url : "/pages/ewmdk/index?data=" + obj.result})
           }else{
             wx.showToast({
               title : "该课程下暂无可报名的班级",

@@ -28,9 +28,15 @@
 .name {
     position: absolute;
     top: 79rpx;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 36rpx;
+    left: 0;
+    font-size: 30rpx;
+    width: 100%;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
 }
 .number {
     position: absolute;

@@ -121,5 +121,19 @@ create(store, {
     this.setData({
       show : true
     })
+  },
+
+  // 开班
+  startClass() {
+    ajax({// 上来获取一下班级列表
+      url: service.getClassList,
+      data: {
+        courseId : this.data && this.data.courseId
+      },
+    }).then((res) => {
+      this.setData({
+        classList : res.data
+      })
+    })
   }
 })

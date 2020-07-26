@@ -70,6 +70,7 @@ create(store, {
       let data = JSON.parse(options.classInfo);
       this.setData({
         classId : data.classId,
+        courseId : data.courseId,
         fieldList : [
           {
             "type" : "text",
@@ -121,7 +122,10 @@ create(store, {
       url: service.getClassTeacherList
     }).then((res) => {
       ajax({
-        url: service.getClassClassroomList
+        url: service.getClassClassroomList,
+        data: {
+          courseId : this.data.courseId
+        }
       }).then((obj) => {
         this.data.fieldList2[3].idList = res.data.map(v => {return v = v.teacherId});
         this.data.fieldList2[3].nameList = res.data.map(v => {return v = v.teacherName});

@@ -73,7 +73,7 @@ function mockRequest(data) {
 }
 
 // 获取用户登录信息
-function isLogin() {
+function isLogin(cb) {
   if(!this.store.data.userInfo.userType){// 没有角色信息就去拿一下
     function login() {
       ajax({
@@ -101,23 +101,14 @@ function isLogin() {
               userName : res.data.userName
             });
             this.update();
-            // if(!res.data.headImageId){// 没有头像使用微信头像
-            //   let that = this;
-            //   wx.getUserInfo({
-            //     success(res) {
-            //       that.store.data.userInfo.avatar = res.userInfo.avatarUrl;// 头像
-            //       that.store.update();
-            //     }
-            //   });
-            // }else{// 有头像用上传后的头像
-            //   this.store.data.userInfo.avatar = getApp().globalData.imgUrl + res.data.headImageId;
-            //   this.setData({Avatar : this.store.data.userInfo.avatar});
-            //   this.update();
-            // }
+            if(typeof cb === 'function'){
+              cb.call(this);
+            }
           });
         }
       })
     };
+    
     if(!this.store.data.userInfo.loginCode){// 注册过来的
       getWXCode().then(code => {
         this.store.data.userInfo.loginCode = code;
@@ -197,6 +188,9 @@ function getWXCode() {
         }else{
           wx.showToast({title: res.msg,icon: "none"})
         }
+      },
+      fail (res){
+        console.log(res)
       }
     })
   }) 

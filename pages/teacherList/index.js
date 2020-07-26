@@ -20,8 +20,8 @@ Page({
     lable : "老师"
   },
 
-  onLoad: function (options) {
-    if(options.type === "assistant"){// 上来获取一下助教列表
+  getList() {
+    if(this.data.type === "assistant"){// 上来获取一下助教列表
       this.setData({
         title: "助教管理",
         type : "assistant",
@@ -40,8 +40,10 @@ Page({
           classList : res.data.map(v => {
             return v = {
               ...v,
-              url : getApp().globalData.imgUrl + v.teacherHeadImageId
+              url : getApp().globalData.imgUrl + v.assistantHeadImageId
             }
+          }).filter(v => {
+            return v.status === '20'
           })
         })
       })
@@ -55,10 +57,17 @@ Page({
               ...v,
               url : getApp().globalData.imgUrl + v.teacherHeadImageId
             }
+          }).filter(v => {
+            return v.status === '20'
           })
         })
       })
     }
+  },
+
+  onLoad: function (options) {
+    this.data.type = options.type;
+    this.getList();
   },
 
   onShow: function () {
@@ -111,10 +120,10 @@ Page({
       ajax({
         url : service.deleteAssistant,
         data : {
-          teacherId : data.detail
+          assistantId : data.detail
         }
       }).then(res => {
-
+        this.getList();
       })
     }else{// 删除老师
       ajax({
@@ -123,7 +132,7 @@ Page({
           teacherId : data.detail
         }
       }).then(res => {
-        
+        this.getList();
       })
     }
   },
@@ -146,11 +155,11 @@ Page({
         mobileNo : val.detail
       },
     }).then((res) => {
-      let name = (res.data && res.data.name) || "该";
-      if(res.data && res.data.teacherId){
+      let name = (res.data && (res.data.teacherName || res.data.assistantName)) || "该";
+      if(res.data && (res.data.teacherId || res.data.assistantId)){
         this.setData({
           prompt : "已找到" + name + this.data.lable + "，请点击按钮提示" + this.data.lable + "验证",
-          teacherId : res.data.teacherId
+          teacherId : res.data.teacherId || res.data.assistantId
         })
       }else{
         this.setData({

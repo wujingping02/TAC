@@ -80,5 +80,6 @@ export default{
     photoList : domain + "tas/parent/getPhotoList",// 家长查询图片列表
     getEnrollLessonList : domain + "tas/parent/getEnrollLessonList",// 家长行事历接口
     addCustomCourse : domain + "tas/parent/addCustomCourse",// 家长新增自定义课程
+    getCustomList : domain + "tas/parent/getCustomList"// 家长自定义课表
     /**----------------------------------------以上是家长接口--------------------------------------------------------*/
 }

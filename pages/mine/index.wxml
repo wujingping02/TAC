@@ -14,7 +14,7 @@
       <image src="../../images/JBXX.png"/>
       <text class="text">基本信息</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toOrgDetail">
+    <view wx-if="{{ userInfo.userType === '10' && userName && userInfo.status === '30' }}" bindtap="toOrgDetail">
       <image src="../../images/JGJS.png"/>
       <text class="text">机构介绍</text>
     </view> 
@@ -22,19 +22,19 @@
       <image src="../../images/JSGL.png"/>
       <text class="text">老师介绍</text>
     </view> 
-    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toEditAddress">
+    <view wx-if="{{ userInfo.userType === '10' && userName && userInfo.status === '30' }}" bindtap="toEditAddress">
       <image src="../../images/DZGL.png"/>
       <text class="text">地址管理</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toTeacherList">
+    <view wx-if="{{ userInfo.userType === '10' && userName && userInfo.status === '30' }}" bindtap="toTeacherList">
       <image src="../../images/JSGL.png"/>
       <text class="text">教师管理</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toAssistantList">
+    <view wx-if="{{ userInfo.userType === '10' && userName && userInfo.status === '30' }}" bindtap="toAssistantList">
       <image src="../../images/ZJGL.png"/>
       <text class="text">助教管理</text>
     </view>
-    <view wx-if="{{ userInfo.userType === '10' && userName }}" bindtap="toEditCourse">
+    <view wx-if="{{ userInfo.userType === '10' && userName && userInfo.status === '30' }}" bindtap="toEditCourse">
       <image src="../../images/KCGL.png"/>
       <text class="text">课程列表</text>
     </view>
@@ -54,7 +54,7 @@
       <image src="../../images/WDZN.png"/>
       <text class="text">子女信息</text>
     </view>
-    <view wx-if="{{ (userInfo.userType === '20' || userInfo.userType) === '30' && userName }}" bindtap="toClassList">
+    <view wx-if="{{ (userInfo.userType === '20' || userInfo.userType === '30') && userName }}" bindtap="toClassList">
       <image src="../../images/BJLB.png"/>
       <text class="text">班级列表</text>
     </view>

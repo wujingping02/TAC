@@ -5,9 +5,9 @@
       <view class="addressDetail">{{item.className}}</view>
       <view class="introd">{{item.classAddress}}</view>
       <view class="addClassBox">
-        <view wx:if="{{!fromMine}}" class="addClass" catchtap="deleClass" data-index="{{index}}">删除</view>
-        <view wx:if="{{!fromMine}}" class="addClass" catchtap="startClass" data-index="{{index}}">开班</view>
-        <view class="addClass" catchtap="toClassDetail" data-index="{{index}}">班级详情</view>
+        <view wx:if="{{!fromMine}}" class="addClass addClass_del" catchtap="deleClass" data-index="{{index}}">删除</view>
+        <view wx:if="{{!fromMine && item.classStatus === '10'}}" class="addClass" catchtap="startClass" data-index="{{index}}">开班</view>
+        <view class="addClass addClass_detail" catchtap="toClassDetail" data-index="{{index}}">班级详情</view>
       </view>
     </view>
   </block>

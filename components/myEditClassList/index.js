@@ -26,6 +26,9 @@ Component({
   methods: {
     toClassList : function(e) {// 跳转到班级列表
       let index = e.currentTarget.dataset['index'];
+      if(this.properties.fromMine){
+        return
+      }
       if(["20", "30"].indexOf(this.data.list[index].classStatus) > -1){
         wx.showToast({
           title : "该班级无法操作",
@@ -62,6 +65,7 @@ Component({
           classId : classId
         }
       }).then(res => {
+        this.triggerEvent('startClass');
         wx.showToast({
           title : "开班成功",
           icon : "none"
@@ -79,7 +83,8 @@ Component({
       }
       var obj = JSON.stringify({
         classId: this.data.list[index].classId,
-        courseId: this.data.list[index].courseId
+        courseId: this.data.list[index].courseId,
+        className: this.data.list[index].className
       });
       wx.navigateTo({
         url: "/pages/courseDetail/index?data=" + obj

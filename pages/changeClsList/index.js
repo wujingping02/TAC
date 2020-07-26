@@ -14,22 +14,21 @@ create(store, {
     ajax({// 上来获取一下换补课列表
       url: url
     }).then((res) => {
-      if(res.data && res.data.length > 0){
-        this.setData({
-          list : res.data.map(v => {
-            return v = {
-              ...v,
-              url : v.studentHeadImageId ? getApp().globalData.imgUrl + v.studentHeadImageId : getApp().globalData.imgUrl + v.childrenHeadImageId,
-              time : v.lessonDate + " " + v.startTime + "~" + v.endTime
-            }
-          })
+        let list = res.data.map(v => {
+          return v = {
+            ...v,
+            url : v.studentHeadImageId ? getApp().globalData.imgUrl + v.studentHeadImageId : getApp().globalData.imgUrl + v.childrenHeadImageId,
+            time : v.lessonDate + " " + v.startTime + "~" + v.endTime
+          }
         });
-      }else{
-        wx .showToast({
-          title : "暂无换补课信息",
-          icon : "none"
-        })
-      }
+        if(this.store.data.userInfo.userType === "40"){// 家长
+          list = list.filter(v => {
+            return v.changeStatus === '10'
+          })
+        };
+        this.setData({
+          list : list
+        });
     })
   },
  
@@ -51,6 +50,10 @@ create(store, {
       }
     }).then(res => {
       this.getLIst(service.changeList);
+      wx.showToast({
+        title : "换补课成功",
+        icon : "none"
+      })
     })
   }
 })

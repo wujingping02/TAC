@@ -40,6 +40,9 @@ Component({
   methods: {
     toClassDetail(data) {// 查看课程详情
       let index = data.currentTarget.dataset.index;
+      if(this.data.list[index].type === "zdy"){
+        return
+      }
       var obj = JSON.stringify({
           classId: this.data.list[index].classId,
           courseId: this.data.list[index].courseId
@@ -78,6 +81,11 @@ Component({
           classCardBG : "#DBF0FF"
         })
       }
+    },
+    myPhoto(e) {// 看一下相册
+      let index = e.currentTarget.dataset['index'];
+      let classId = this.data.list[index].classId;
+      this.triggerEvent("getMyPhoto", classId);
     }
   }   
 })

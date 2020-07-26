@@ -34,7 +34,7 @@ create(store, {
 
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
-    ajax({// 上来获取一下课程列表
+    ajax({
       url: service.photoList
     }).then((res) => {
       let arr = [];// 当前页面要显示的list
@@ -48,7 +48,7 @@ create(store, {
         return v = {
           ...v,
           time : v.lessonDate + " " + v.startTime + "~" + v.endTime,
-          courseName : v.courseName + "：" + v.className,
+          courseName : v.className,
           url : getApp().globalData.imgUrl + v.imageId
         }
       }).sort((a, b) => {

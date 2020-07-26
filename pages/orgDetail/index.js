@@ -92,14 +92,9 @@ create(store, {
       url : service.modifyHeadImage
     }).then(res => {
       this.store.data.userInfo.avatar = getApp().globalData.imgUrl + res.imageId;
-      this.setData({// 先把原来的图片清掉
-        orgAvatar : null
-      });
-      setTimeout(() => {// 在加载新的图片
-        this.setData({
-          orgAvatar : getApp().globalData.imgUrl + res.imageId
-        })
-      }, 100);
+      this.setData({
+        orgAvatar : getApp().globalData.imgUrl + res.imageId + "&t=" + new Date().getTime()
+      })
     })
   },
 

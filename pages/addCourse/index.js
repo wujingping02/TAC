@@ -104,11 +104,13 @@ create(store, {
             courseId : this.data.courseId
           }
         }).then((res) => {
+          res.data.subLabel1 = "null" ? null : res.data.subLabel1;
+          res.data.subLabel2 = "null" ? null : res.data.subLabel2;
           this.data.fieldList[0].value = res.data.courseName;
           this.data.fieldList[1].value = [{isImage : true, url : getApp().globalData.imgUrl + res.data.mainImageId}];
-          this.data.fieldList[2].value = this.data.fieldList[2].idList.indexOf(res.data.ageStage.split("-")[0]);
-          this.data.fieldList[3].value = this.data.fieldList[3].idList.indexOf(res.data.ageStage.split("-")[1]);
-          this.data.fieldList[4].value = this.data.fieldList[4].idList.indexOf(res.data.addressId);
+          this.data.fieldList[2].value = this.data.fieldList[2].idList.indexOf(res.data.ageStage.split("-")[0]) + "";
+          this.data.fieldList[3].value = this.data.fieldList[3].idList.indexOf(res.data.ageStage.split("-")[1]) + "";
+          this.data.fieldList[4].value = this.data.fieldList[4].idList.indexOf(res.data.addressId) + "";
           this.data.fieldList[5].value = [res.data.mainLabel, res.data.subLabel1, res.data.subLabel2];
           this.data.fieldList[6].value = res.data.remark;
           this.data.fieldList[7].value = res.data.price;
@@ -134,7 +136,7 @@ create(store, {
     if(vals.sAgae > vals.eAgae){
       wx.showToast({
         title : "最小适合年龄不可以大于最大适合年龄",
-        icon : "nonde"
+        icon : "none"
       })
       return
     }

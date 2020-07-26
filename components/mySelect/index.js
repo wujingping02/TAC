@@ -34,7 +34,10 @@ Component({
   // 组件的方法列表
   methods: {
     setValue : function(val){
-      
+      this.setData({
+        myValue : val,
+        myIndex : val
+      })
     },
     bindchange : function(e){// 每次焦点离开，拿一下值
       if(this.properties.type === "selector"){// 下拉框最特殊，传进来的是码值，要特殊处理

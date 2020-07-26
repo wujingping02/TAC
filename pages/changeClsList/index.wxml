@@ -15,4 +15,5 @@
       </view>
     </block>
   </view>
+  <text class="noAddress" wx:if='{{list.length === 0}}'>暂无换补课信息</text>
 </view>

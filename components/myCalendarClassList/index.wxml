@@ -6,6 +6,7 @@
         <view class="name">{{item.leftName}}</view>
         <text wx:if="{{activeL === 'active' && userType === '10'}}" class="nowPeo">{{item.nowPeo + "/"}}</text>
         <text wx:if="{{activeL === 'active' && userType === '10'}}" class="maxPeo">{{item.maxPeo}}</text>
+        <text wx:if="{{activeL === 'active' && userType === '40' && item.type != 'zdy'}}" catchtap="myPhoto" data-index="{{index}}" class="myPhoto">照片</text>
       </view>
       <view class="classBoxRight" style="background : {{classCardBG}}">
         <!-- 班级维度班级列表 -->

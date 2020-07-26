@@ -64,8 +64,7 @@ create(store, {
       marginTop : wx.getMenuButtonBoundingClientRect().top - 10 + "px"
     })
     ajax({// 上来获取一下课程列表
-      url: service.courseList,
-      method: "post",
+      url: service.courseList
     }).then((res) => {
       this.data.courseList = res.data.map(v => {
         return v = {
@@ -125,22 +124,37 @@ create(store, {
       }
     });
     let list;
-    if(index < 7){
-      list = this.data.courseList.filter(v => {
-        return index > (v.sAge - 1) && index < (v.eAge * 1 + 1)
+    ajax({// 上来获取一下课程列表
+      url: service.courseList
+    }).then((res) => {
+      this.data.courseList = res.data.map(v => {
+        return v = {
+          ...v,
+          url : getApp().globalData.imgUrl + v.mainImageId,
+          orgUrl : getApp().globalData.imgUrl + v.instituteHeadImageId,
+          sAge : v.ageStage.split("-")[0],
+          eAge : v.ageStage.split("-")[1]
+        };
+      });
+      if(index < 7){
+        list = this.data.courseList.filter(v => {
+          return index > (v.sAge - 1) && index < (v.eAge * 1 + 1)
+        })
+      }else{
+        list = this.data.courseList;
+      }
+      let obj = this.getNewList(list);
+      this.setData({
+        listLeft: obj.l,
+        listRight: obj.r,
+        ageList : ageList,
+        courseList : this.data.courseList,
+        fixed: this.data.upArrow ? '' : 'fixed',
+        hideAge: true,
+        upArrow: this.data.upArrow ? "" : "upArrow"
       })
-    }else{
-      list = this.data.courseList;
-    }
-    let obj = this.getNewList(list);
-    this.setData({
-      listLeft: obj.l,
-      listRight: obj.r,
-      ageList : ageList,
-      fixed: this.data.upArrow ? '' : 'fixed',
-      hideAge: true,
-      upArrow: this.data.upArrow ? "" : "upArrow"
     })
+    
   },
 
   // 显示一下年龄筛选列表

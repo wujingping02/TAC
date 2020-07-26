@@ -139,3 +139,13 @@
     color: #ffffff;
     text-align: center;
 }
+.myPhoto {
+    display: inline-block;
+    border: 1px solid #FF8814;
+    border-radius: 28rpx;
+    border-radius: 28rpx;
+    font-size: 24rpx;
+    color: #FF8814;
+    padding: 6rpx 14rpx;
+    transform: translateY(20rpx);
+}

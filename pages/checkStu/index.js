@@ -71,6 +71,10 @@ create(store, {
       }
     }).then(res => {
       this.getStuList();
+      wx.showToast({
+        title: "签到成功",
+        icon: "none"
+      })
     })
   },
 
@@ -82,6 +86,11 @@ create(store, {
       data : {
         lessonEnrollId : this.data.list[index].lessonEnrollId
       }
+    }).then(res => {
+      wx.showToast({
+        title: "换补课成功",
+        icon: "none"
+      })
     })
   }
 })

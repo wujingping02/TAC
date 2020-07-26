@@ -55,7 +55,7 @@ create(store, {
 
   // 上来登录一下
   onLoad() {
-    isLogin.call(this);
+    isLogin.call(this, this.getClassList);
   },
 
   // 每次查一下课时列表
@@ -66,22 +66,35 @@ create(store, {
   // 给课表元素赋值
   setClassVal(v) {
     return {
-      leftName : v.classroomName || v.className || v.classroom_name,
+      leftName : v.classroomName || v.className || v.classroom_name || v.courseName,
       nowPeo : v.nowPeo || "0",
       maxPeo : v.totalSize,
       time : v.lessonDate.split("-")[1] + "-" + v.lessonDate.split("-")[2] +  " " + v.startTime + "~" + v.endTime,
-      // time : v.startTime + "~" + v.endTime,
       lessonName : v.className,
       teacher : v.teacherName,
-      address : (v.classCity || "") + (v.classArea || "") + v.classAddress,
+      address : (v.classCity || "") + (v.classArea || "") + (v.classAddress || ""),
       url : v.teacherHeadImageId ? getApp().globalData.imgUrl + v.teacherHeadImageId : getApp().globalData.imgUrl + v.childrenHeadImageId,
-      teacherName : v.teacherName,
-      remark : v.remark,
+      teacherName : v.teacherName || "",
+      remark : v.remark || "",
       courseId : v.courseId,
       classId : v.classId,
       lessonId : v.lessonId,
       checkinStatus : v.checkinStatus
     };
+  },
+
+  // 获取自定义课程
+  getCustomizeClass() {
+    return new Promise((s, f) => {
+      ajax({
+        url: service.getCustomList,
+        data : {
+          lessonDate : this.data.date
+        }
+      }).then(res => {
+        s(res);
+      })
+    })
   },
 
   // 获取一下班级列表
@@ -95,7 +108,7 @@ create(store, {
       url = service.teaGetLessonList;
     }else{// 没拿到不查
       return
-    }
+    };
     ajax({
       url: url,
       data : {
@@ -122,14 +135,46 @@ create(store, {
             newList.push(data);
           }
         });
-        this.setData({
-          classList : newList
-        });
+        if(this.store.data.userInfo.userType === '40'){// 家长需要合并一下自定义列表的数据
+          this.getCustomizeClass().then(res => {
+            res.data.forEach(v => {
+              newList.push({
+                ...this.setClassVal(v),
+                lessonName : v.courseName,
+                type : "zdy"
+              });
+            });
+            this.setData({
+              classList : newList
+            });
+          })
+        }else{
+          this.setData({
+            classList : newList
+          });
+        }
       }else{
-        this.setData({
-          classList: null
-        })
-        wx.showToast({title : "当天暂无课程安排",icon : "none"})
+        if(this.store.data.userInfo.userType === '40'){// 家长需要合并一下自定义列表的数据
+          this.getCustomizeClass().then(res => {
+            if(res.data && res.data.length > 0){
+              res.data.forEach(v => {
+                newList.push({
+                  ...this.setClassVal(v),
+                  lessonName : v.courseName,
+                  type : "zdy"
+                });
+              });
+              this.setData({
+                classList : newList
+              });
+            }else{
+              this.setData({
+                classList: null
+              })
+              wx.showToast({title : "当天暂无课程安排",icon : "none"})
+            }
+          })
+        }
       }
     })
   },
@@ -188,6 +233,12 @@ create(store, {
     this.setData({
       hidePopup : false
     });
+    this.selectComponent("#page").selectComponent("#courseName").setValue("");
+    this.selectComponent("#page").selectComponent("#mainLabel").setValue([null, null, null]);
+    this.selectComponent("#page").selectComponent("#startTime").setValue("");
+    this.selectComponent("#page").selectComponent("#endTime").setValue("");
+    this.selectComponent("#page").selectComponent("#lessonDate").setValue("");
+    this.selectComponent("#page").selectComponent("#studentId").setValue("");
     // 获取子女列表
     ajax({
       url: service.childrenList
@@ -224,10 +275,31 @@ create(store, {
         title : "添加成功",
         icon : "none"
       });
+      this.getClassList();
       this.setData({
         hidePopup : true
       });
     })
-  }
+  },
 
+  // 获取图片列表
+  getMyPhoto(detail) {
+    let classId = detail.detail;
+    ajax({
+      url: service.photoList
+    }).then((res) => {
+      if(res.data && res.data.length > 0){
+        this.store.data.parentPhotos = res.data[classId].map(v => {return v.imageId});
+        wx.navigateTo({
+          url: "/pages/photoDetail/index"
+        });
+      }else{
+        this.store.data.parentPhotos = [];
+        wx.navigateTo({
+          url: "/pages/photoDetail/index"
+        });
+      }
+    })
+  }
+  
 })

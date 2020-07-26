@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/mine/index",
-    "pages/detail/index",
     
+    "pages/detail/index",
+    "pages/mine/index",
     "pages/home/index",
     "pages/ewmdk/index",
     "pages/login/index",

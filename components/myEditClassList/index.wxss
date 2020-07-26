@@ -49,3 +49,11 @@
     padding: 0 22rpx;
     margin-left: 16rpx;
 }
+.addClass_detail {
+    color: #ffffff;
+    background: #FF8711;
+}
+.addClass_del {
+    color: #666;
+    border: 1px solid #666666;
+}

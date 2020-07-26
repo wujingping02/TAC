@@ -1,5 +1,5 @@
 <view class="box">
-    <text wx:if="{{isMust}}" class="lable" style="color : #FF8711">* </text>
+    <text wx:if="{{isMust && className != 'noBorder'}}" class="lable" style="color : #FF8711">* </text>
     <text class="lable">{{lable}}</text>
-    <input style="background: {{disabled ? '#e5e5e5' : ''}}" disabled="{{disabled}}" bindinput="bindinput" class="val {{className}}" placeholder="{{'请输入' + lable}}" value="{{value}}" bindblur="onBlur" id="val" type="{{type}}" label="{{lable}}"/>
+    <input style="color: {{disabled && className != 'noBorder' ? '#999999' : ''}}" disabled="{{disabled}}" bindinput="bindinput" class="val {{className}}" placeholder="{{'请输入' + lable}}" value="{{value}}" bindblur="onBlur" id="val" type="{{type}}" label="{{lable}}"/>
 </view>

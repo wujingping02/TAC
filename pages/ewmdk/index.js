@@ -56,12 +56,14 @@ create(store, {
     ajax({
       url: service.childrenList
     }).then((res) => {
+      this.data.fieldList[0].value = data.data.split("__")[2];// 班级名称
+      this.data.fieldList[1].value = data.data.split("__")[0];// 课程名称
+      this.data.fieldList[2].value = data.data.split("__")[3];// 机构名称
       this.data.fieldList[3].nameList = res.data.map(v => {return v = v.childrenName});
       this.data.fieldList[3].idList = res.data.map(v => {return v = v.childrenId});
       this.setData({
         fieldList : this.data.fieldList,
-        classId : data.data.split("&")[0],
-        courseId : data.data.split("&")[1]
+        classId : data.data.split("__")[1]
       })
     })
   },

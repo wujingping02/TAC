@@ -5,7 +5,7 @@
       <view class="addressDetail">{{item.courseName}}</view>
       <view class="introd">{{item.courseIntroduce}}</view>
       <view class="addClassBox">
-        <view class="addClass" bindtap="publishCourse" data-index="{{index}}">发布</view>
+        <view class="addClass" wx:if="{{item.courseStatus != '20'}}" bindtap="publishCourse" data-index="{{index}}">发布</view>
         <view class="addClass" wx:if="{{item.courseStatus != '40'}}" bindtap="toEditClass" data-index="{{index}}">排班</view>
         <view class="addClass" wx:if="{{item.courseStatus != '40'}}" bindtap="offShelfCourse" data-index="{{index}}">下架</view>
         <view class="addClass" wx:if="{{item.courseStatus != '40'}}" bindtap="toEditCourse" data-index="{{index}}">编辑</view>

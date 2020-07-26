@@ -53,19 +53,9 @@ create(store, {
       let data = JSON.parse(options.data);
       this.setData({
         courseId : data.courseId,
-        classId : data.classId
+        classId : data.classId,
+        className : data.className
       })
-      // 渲染一下二维码
-      var qrcode = new QRCode('canvas', {
-        text: 'http://jindo.dev.naver.com/collie',
-        width: 180,
-        height: 180,
-        colorDark : '#000000',
-        colorLight : '#ffffff',
-        correctLevel : QRCode.correctLevel.H
-      });
-      qrcode.clear();
-      qrcode.makeCode(data.classId + "&" + data.courseId + "&" + data.className);
       // 再获取一下课时列表
       ajax({
         url: service.lessonList,
@@ -90,12 +80,25 @@ create(store, {
         age: res.data.ageStage,
         address: res.data.classAddress,
         phone: res.data.institutePhone,
-        orgPhoto: res.data.instituteImages.map(v => {return v = {isImage : true,url : getApp().globalData.imgUrl + v}}),
+        orgPhoto: res.data.courseImages.map(v => {return v = {isImage : true,url : getApp().globalData.imgUrl + v}}),
         classList: res.data.teachers.map(v => {return v = {...v,url : getApp().globalData.imgUrl + v.teacherHeadImageId}}),
         courseIntrd: res.data.courseIntroduce,
         orgName: res.data.instituteName,
         orgIntrd: res.data.instituteIntro
-      })
+      });
+      if(!options.courseId){
+        // 渲染一下二维码，二维码包含班级id，课程id，班级名称，机构名称
+        var qrcode = new QRCode('canvas', {
+          text: 'http://jindo.dev.naver.com/collie',
+          width: 180,
+          height: 180,
+          colorDark : '#000000',
+          colorLight : '#ffffff',
+          correctLevel : QRCode.correctLevel.H
+        });
+        qrcode.clear();
+        qrcode.makeCode(this.data.name + "__" + this.data.classId + "__" + this.data.className + "__" + this.data.orgName);
+      }
     })
   },
 
@@ -148,7 +151,7 @@ create(store, {
           courseId : this.data.courseId
         }
       }).then((res) => {
-        this.data.fieldList[0].nameList = res.data.map(v => {return v = v.lessonDate + " " + v.startTime + "~" + v.startTime});
+        this.data.fieldList[0].nameList = res.data.map(v => {return v = v.lessonDate + " " + v.startTime + "~" + v.endTime});
         this.data.fieldList[0].idList = res.data.map(v => {return v = v.lessonId});
         this.setData({
           fieldList : this.data.fieldList
