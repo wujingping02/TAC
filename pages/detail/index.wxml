@@ -1,8 +1,8 @@
 <view class="pageBox" style="background : #ffffff">
-  <view wx:if="{{userInfo.userType != '20'}}">
+  <view wx:if="{{userInfo.userType && userInfo.userType != '20'}}">
     <myCalendar 
       color= "#FF8100"
-      default-date= "{{ nowDate }}"
+      default-date= "2020-08-01"
       bind:confirm= "bindchange"
       position="top"
       title= "日期"

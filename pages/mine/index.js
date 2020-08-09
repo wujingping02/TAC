@@ -11,7 +11,7 @@ create(store, {
   },
 
   onLoad() {
-    isLogin.call(this);
+    // isLogin.call(this);
   },
 
   onReady() {

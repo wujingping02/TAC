@@ -82,7 +82,7 @@ Component({
         })
       }
     },
-    myPhoto(e) {// 看一下相册
+    myPhoto(e) {// 看一下相册看一下相册
       let index = e.currentTarget.dataset['index'];
       let classId = this.data.list[index].classId;
       this.triggerEvent("getMyPhoto", classId);

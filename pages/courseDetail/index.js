@@ -75,6 +75,7 @@ create(store, {
         courseId : this.data.courseId
       }
     }).then((res) => {
+      res.data.instituteIntro = res.data.instituteIntro === 'null' ? '' : res.data.instituteIntro;
       this.setData({
         name: res.data.courseName,
         age: res.data.ageStage,

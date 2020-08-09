@@ -104,8 +104,8 @@ create(store, {
             courseId : this.data.courseId
           }
         }).then((res) => {
-          res.data.subLabel1 = "null" ? null : res.data.subLabel1;
-          res.data.subLabel2 = "null" ? null : res.data.subLabel2;
+          res.data.subLabel1 = res.data.subLabel1 == "null" ? null : res.data.subLabel1;
+          res.data.subLabel2 = res.data.subLabel2 == "null" ? null : res.data.subLabel2;
           this.data.fieldList[0].value = res.data.courseName;
           this.data.fieldList[1].value = [{isImage : true, url : getApp().globalData.imgUrl + res.data.mainImageId}];
           this.data.fieldList[2].value = this.data.fieldList[2].idList.indexOf(res.data.ageStage.split("-")[0]) + "";

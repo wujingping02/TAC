@@ -1,4 +1,4 @@
-<view class="{{className}}" style="width : 100vw;overflow-x: hidden;padding-top : {{paddingTop}};background : {{background}}" hidden="{{hidePopup}}">
+<view class="{{className}}" style="width : 100vw;padding-top : {{paddingTop}};background : {{background}}" hidden="{{hidePopup}}">
   <myOvermask wx:if="{{className === 'toast'}}" zIndex="999"/>
   <view class="contBox">
     <block wx:key="box" wx:for="{{list}}">

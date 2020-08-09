@@ -1,4 +1,4 @@
-<view class="pageBox">
+<view class="pageBox" style="min-height: 2000rpx;">
   <myHeader title="{{title}}"/>
   <myPopup id="page" list="{{fieldList}}"/>
   <myButton className="submit" bind:click="click" content="保存"/>

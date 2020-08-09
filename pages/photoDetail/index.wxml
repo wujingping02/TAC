@@ -3,4 +3,5 @@
   <view style="padding-top : 140rpx">
     <myPhoto disabled="{{true}}" padding="0 40rpx" value="{{list}}"/>
   </view>
+  <text class="noAddress" wx:if='{{!list}}'>次课程暂无照片</text>
 </view>

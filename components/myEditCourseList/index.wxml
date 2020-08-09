@@ -5,10 +5,14 @@
       <view class="addressDetail">{{item.courseName}}</view>
       <view class="introd">{{item.courseIntroduce}}</view>
       <view class="addClassBox">
+        <!-- 20：已发布，已发布的课没有发布按钮 -->
         <view class="addClass" wx:if="{{item.courseStatus != '20'}}" bindtap="publishCourse" data-index="{{index}}">发布</view>
+        <!-- 40：下架，没有下架的课可以排班 -->
         <view class="addClass" wx:if="{{item.courseStatus != '40'}}" bindtap="toEditClass" data-index="{{index}}">排班</view>
+        <!-- 40：下架，没有下架的课可以下架 -->
         <view class="addClass" wx:if="{{item.courseStatus != '40'}}" bindtap="offShelfCourse" data-index="{{index}}">下架</view>
-        <view class="addClass" wx:if="{{item.courseStatus != '40'}}" bindtap="toEditCourse" data-index="{{index}}">编辑</view>
+        <!-- 40：下架，既没发布，也没下架的课，才能编辑 -->
+        <view class="addClass" wx:if="{{item.courseStatus != '40' && item.courseStatus != '20'}}" bindtap="toEditCourse" data-index="{{index}}">编辑</view>
       </view>
       <text class="status">{{item.status}}</text>
     </view>

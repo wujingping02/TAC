@@ -1,6 +1,6 @@
 <view class="box">
   <button style=
-    "font-size: 40rpx;font-weight: 100;box-sizing: border-box;width: 88%;background: #07c160;height: 120rpx;line-height: 100rpx;border-radius: 120rpx;margin: 550rpx auto;color:#ffffff"
+    "font-size: 40rpx;font-weight: 900;font-family: PingFangSC-Regular;box-sizing: border-box;width: 88%;background: #07c160;height: 120rpx;line-height: 100rpx;border-radius: 120rpx;margin: 550rpx auto;color:#ffffff"
     open-type="getPhoneNumber"
     bindgetphonenumber="bindgetphonenumber">
     微信手机号快捷登录

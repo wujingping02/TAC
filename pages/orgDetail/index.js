@@ -71,8 +71,7 @@ create(store, {
           }
         })
       })
-    });
-    
+    })
   },
 
   onShow: function () {
@@ -107,9 +106,18 @@ create(store, {
   click() {
     let imgUrl = service.saveInstituteImages;
     let remarkUrl = service.modifyIntroduction;
+    let prompt = "请输入机构介绍";
     if(this.store.data.userInfo.userType === "30"){
       imgUrl = service.teaSaveInstituteImages;
       remarkUrl = service.teaModifyIntroduction;
+      prompt = "请输入老师介绍"
+    }
+    if(!this.data.orgDetail){
+      wx.showToast({
+        title : prompt,
+        icon: "none"
+      });
+      return
     }
     ajax({
       url : imgUrl,

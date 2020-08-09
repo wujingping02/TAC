@@ -92,6 +92,7 @@ function isLogin(cb) {
           ajax({
             url : service.getAllInfo
           }).then(obj => {
+            obj.data.remark = obj.data.remark === 'null' ? "" : obj.data.remark;
             this.store.data.userInfo = obj.data;
             // this.store.data.userInfo.userType = "20";// 10 培训机构管理员，20 助教，30 教师，40 家长
             this.store.data.userInfo.photo = res.data.mobileNo;

@@ -4,7 +4,7 @@
       <text class="title">个人中心</text>
     </view>
     <view class="avatarBg">
-      <image bind:tap="editOrgdetail" class="avatarImg" src="{{ Avatar }}"/>
+      <image bind:tap="editOrgdetail" mode="aspectFill" class="avatarImg" src="{{ Avatar }}"/>
     </view>
     <view class="avatarName">{{ userName || "" }}</view>
   </view>

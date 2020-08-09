@@ -54,12 +54,15 @@ Component({
       })
     },
     getValue : function(){// 获取值
-      if(!this.data.myValue[0]){
-        return this.properties.value
-      }
+      this.data.myValue = this.data.myValue.map((v, i) => {
+        return v = v ? v : this.properties.value[i]
+      })
       return this.data.myValue
     },
     check : function(){
+      this.data.myValue = this.data.myValue.map((v, i) => {
+        return v = v ? v : this.properties.value[i]
+      })
       if(this.properties.isMust && !this.data.myValue[0] && !this.properties.value[0]){
         wx.showToast({
           title: "请选择" + this.properties.lable,
@@ -69,6 +72,12 @@ Component({
       }else if(this.checkDif(this.data.myValue) === false){
         wx.showToast({
           title: "请勿选择重复的属性",
+          icon: 'none'
+        })
+        return false
+      }else if(this.data.myValue[2] && !this.data.myValue[1]){
+        wx.showToast({
+          title: "请选择次要属性",
           icon: 'none'
         })
         return false

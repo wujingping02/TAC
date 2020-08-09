@@ -20,7 +20,7 @@
         </view>
         <!-- 老师维度班级列表 -->
         <view wx:else class="teac_box">
-          <image class="url" src="{{item.url}}"/>
+          <image mode="aspectFill" class="url" src="{{item.url}}"/>
           <view class="teac_box_right">
             <view class="teac_time">{{item.time}}</view>
             <view class="teac_lessonName">{{item.lessonName}}</view>

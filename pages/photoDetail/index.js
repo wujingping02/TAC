@@ -10,14 +10,16 @@ create(store, {
  
   // 生命周期函数--监听页面初次渲染完成
   onReady: function () {
-    this.data.list = this.store.data.parentPhotos.map(v => {
-      return v = {
-        isImage : true,
-        url : getApp().globalData.imgUrl + v
-      }
-    });
-    this.setData({
-      list : this.data.list
-    })
+    if(this.store.data.parentPhotos && this.store.data.parentPhotos.length > 0){
+      this.data.list = this.store.data.parentPhotos.map(v => {
+        return v = {
+          isImage : true,
+          url : getApp().globalData.imgUrl + v
+        }
+      });
+      this.setData({
+        list : this.data.list
+      })
+    }
   }
 })

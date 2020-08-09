@@ -3,7 +3,7 @@
     <block wx:key="box" wx:for="{{listLeft}}">
       <view class="box" bindtap="toCourseDetail" data-index="{{'l' + index}}">
         <view class="imgBox">
-          <text wx:if="{{type != 'photo'}}" class="eAge" >{{item.ageStage + "岁"}}</text>
+          <text wx:if="{{type != 'photo'}}" class="eAge" >{{item.ageStage === '6-6' ? "5岁以上" : item.ageStage + "岁"}}</text>
           <image class="url" src="{{item.url}}" mode="widthFix"></image>
           <text wx:if="{{type != 'photo'}}" class="address">{{item.classArea + item.classAddress}}</text>
         </view>
@@ -24,7 +24,7 @@
     <block wx:key="box" wx:for="{{listRight}}">
       <view class="box" bindtap="toCourseDetail" data-index="{{'r' + index}}">
         <view class="imgBox">
-          <text wx:if="{{type != 'photo'}}" class="eAge" >{{item.ageStage + "岁"}}</text>
+          <text wx:if="{{type != 'photo'}}" class="eAge" >{{item.ageStage === '6-6' ? "5岁以上" : item.ageStage + "岁"}}</text>
           <image class="url" src="{{item.url}}" mode="widthFix"></image>
           <text wx:if="{{type != 'photo'}}" class="address">{{item.classArea + item.classAddress}}</text>
         </view>

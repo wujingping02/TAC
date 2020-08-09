@@ -45,3 +45,14 @@
     display: inline-block;
     position: absolute;
 }
+.noAddress {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    font-size: 32rpx;
+    color: #9D9DAF;
+    line-height: 52rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}

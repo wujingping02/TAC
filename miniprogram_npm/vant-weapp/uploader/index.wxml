@@ -13,7 +13,7 @@
     >
       <image
         wx:if="{{ item.isImage }}"
-        mode="{{ imageFit }}"
+        mode="aspectFill"
         src="{{ item.url || item.path }}"
         alt="{{ item.name || ('图片' + index) }}"
         class="van-uploader__preview-image"

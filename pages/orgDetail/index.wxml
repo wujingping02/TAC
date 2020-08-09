@@ -2,13 +2,13 @@
   <view class="orgAvatarBox" style="height : {{userInfo.userType === '30' || teacherId ? '700rpx' : '600rpx'}}">
     <view class="headerBox">
       <view bind:tap="back" class="backBox">
-        <image class="back" src="../../images/back.png"/>
+        <image mode="aspectFill" class="back" src="../../images/back.png"/>
       </view>
       <text class="title">{{title}}</text>
     </view>
     <view bind:tap="changeAvatar" class="avatarBg">
       <view  wx:if="{{edit}}" class="changeAvatarText">编辑</view>
-      <image class="avatarImg" src="{{ orgAvatar }}"/>
+      <image mode="aspectFill" class="avatarImg" src="{{ orgAvatar }}"/>
     </view>
     <view class="teachName" wx:if="{{userInfo.userType === '30' || teacherId}}">{{orgName}}</view>
   </view>

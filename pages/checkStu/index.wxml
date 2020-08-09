@@ -10,7 +10,7 @@
     <block wx:key="box" wx:for="{{list}}">
       <view class="bigBox">
         <view class="classBoxRight">
-          <image class="teac_url" src="{{item.url}}"/>
+          <image mode="aspectFill" class="teac_url" src="{{item.url}}"/>
           <view class="teac_box_right">
             <view class="teac_time">{{item.studentName}}</view>
             <text bindtap="signIn" data-index="{{index}}" class="rollCall {{item.checkinStatus === '20' ? 'active' : ''}}">签到</text>

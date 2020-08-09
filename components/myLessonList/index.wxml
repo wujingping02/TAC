@@ -3,7 +3,7 @@
     <view class="box">
       <view class="time">{{item.lessonDate + " " + item.startTime + "~" + item.endTime}}</view>
       <view class="calssBox">
-        <image class="url" src="{{item.url}}"/>
+        <image mode="aspectFill" class="url" src="{{item.url}}"/>
         <text class="name">{{item.teacherName}}</text>
         <text class="className">{{item.classroomName}}</text>
         <text class="del" bind:tap="delLseeon" data-index="{{index}}">删除</text>

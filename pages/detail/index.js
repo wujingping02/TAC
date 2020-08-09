@@ -67,7 +67,7 @@ create(store, {
   setClassVal(v) {
     return {
       leftName : v.classroomName || v.className || v.classroom_name || v.courseName,
-      nowPeo : v.nowPeo || "0",
+      nowPeo : v.enrollNumber || "0",
       maxPeo : v.totalSize,
       time : v.lessonDate.split("-")[1] + "-" + v.lessonDate.split("-")[2] +  " " + v.startTime + "~" + v.endTime,
       lessonName : v.className,
@@ -148,12 +148,12 @@ create(store, {
               classList : newList
             });
           })
-        }else{
+        }else{// 其他人直接渲染数据
           this.setData({
             classList : newList
           });
         }
-      }else{
+      }else{// 如果本身的课表里没课，再去看下家长的自定义课表
         if(this.store.data.userInfo.userType === '40'){// 家长需要合并一下自定义列表的数据
           this.getCustomizeClass().then(res => {
             if(res.data && res.data.length > 0){
@@ -174,6 +174,11 @@ create(store, {
               wx.showToast({title : "当天暂无课程安排",icon : "none"})
             }
           })
+        }else{
+          this.setData({
+            classList: null
+          })
+          wx.showToast({title : "当天暂无课程安排",icon : "none"})
         }
       }
     })
@@ -288,7 +293,7 @@ create(store, {
     ajax({
       url: service.photoList
     }).then((res) => {
-      if(res.data && res.data.length > 0){
+      if(res.data && JSON.stringify(res.data) != '{}' && res.data[classId]){
         this.store.data.parentPhotos = res.data[classId].map(v => {return v.imageId});
         wx.navigateTo({
           url: "/pages/photoDetail/index"
